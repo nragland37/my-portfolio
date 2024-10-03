@@ -1,15 +1,85 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-// Keyframe animation for fading in the text "N"
-const fadeIn = keyframes`
+// Keyframe animation for glitchy flicker effect
+const glitchFlicker = keyframes`
   0% {
     opacity: 0;
+    transform: translate(0, 0);
+  }
+  5% {
+    opacity: 1;
+    transform: translate(2px, -3px) scale(1.02);
+    color: #f57dff; 
+  }
+  10% {
+    opacity: 0;
+    transform: translate(-3px, 3px) scale(0.9);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(1px, -1px) scale(1.1);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translate(4px, -2px) scale(0.75);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-5px, 5px) scale(1.4);
+    color: #57cbff;
+  }
+  30% {
+    opacity: 0.6;
+    transform: translate(-1px, -4px) scale(1.1);
+  }
+  35% {
+    opacity: 1;
+    transform: translate(6px, -6px) scale(0.9);
+    color: #64ffda;
+  }
+  40% {
+    opacity: 0.8;
+    transform: translate(3px, 3px) scale(1.2);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(-2px, 2px) scale(1.1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(1px, -2px) scale(1.05);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(1.02);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-2px, 2px) scale(1);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(1px, 0px) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
   }
   100% {
     opacity: 1;
+    transform: translate(0, 0) scale(1);
   }
 `;
+
 
 // Styled component for the SVG
 const StyledSvg = styled.svg`
@@ -17,19 +87,28 @@ const StyledSvg = styled.svg`
   height: 100px;
 
   #logo {
-    color: var(--contessa); /* Using CSS variable from global styles */
+    color: var(--white);
   }
 `;
 
-// Styled component for the "N" text with animation
+// Styled component for the "N" text with enhanced glitchy flicker animation
 const LoaderText = styled.text`
-  opacity: 0;
-  animation: ${fadeIn} 1.5s ease-in-out 1.5s forwards; /* Fade in with delay */
+  opacity: 0; 
+  animation: ${glitchFlicker} 2.5s ease-in-out forwards;
   font-size: 40px;
   fill: currentColor;
   font-family: Arial, Helvetica, sans-serif;
   dominant-baseline: middle;
   text-anchor: middle;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+`;
+
+const GlitchTextCopy = styled(LoaderText)`
+  position: absolute;
+  opacity: 0.4;
+  transform: translate(2px, 2px);
+  filter: blur(2px);
+  animation: ${glitchFlicker} 1s ease-in-out forwards;
 `;
 
 const IconLoader = () => (
@@ -37,6 +116,9 @@ const IconLoader = () => (
     <title>Loader Logo</title>
     <g>
       <g id="N" transform="translate(11.000000, 5.000000)">
+        <GlitchTextCopy x="39" y="50">
+          N
+        </GlitchTextCopy>
         <LoaderText x="39" y="50">
           N
         </LoaderText>

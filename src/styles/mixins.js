@@ -141,7 +141,7 @@ const mixins = {
 
     &:hover,
     &:focus-visible {
-      box-shadow: 0 20px 30px -15px var(--contessa);
+      box-shadow: 0 20px 30px -15px var(--green);
     }
   `,
 

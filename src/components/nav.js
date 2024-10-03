@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: var(--lightest-navy);
+  background-color: var(--navy);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -57,7 +57,7 @@ const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
   position: relative;
   width: 100%;
-  color: var(--white);
+  color: var(--green);
   font-family: var(--font-mono);
   counter-reset: item 0;
   z-index: 12;
@@ -92,7 +92,7 @@ const StyledNav = styled.nav`
             transition: var(--transition);
           }
           polygon {
-            fill: var(--navy);
+            fill: var(--zeus);
           }
         }
       }
@@ -135,7 +135,7 @@ const StyledLinks = styled.div`
         &:before {
           content: '0' counter(item) '.';
           margin-right: 5px;
-          color: var(--light-slate);
+          color: var(--green);
           font-size: var(--fz-xxs);
           text-align: right;
         }
