@@ -154,6 +154,15 @@ const About = () => {
         <StyledText>
           <div>
             <p>Hello!</p>
+            <p>
+              I specialize in computer science, 
+              cybersecurity, and data analytics, with a strong interest in fullstack 
+              development, always pushing myself to learn more. When I'm not coding, 
+              you’ll find me diving into hackathons, solving CTF challenges, or 
+              exploring data-driven projects. I love turning complex problems into 
+              simple, elegant solutions. Outside of tech, I enjoy traveling, hiking, 
+              camping, music, and skateboarding.
+            </p>
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
 
