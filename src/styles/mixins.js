@@ -141,7 +141,7 @@ const mixins = {
 
     &:hover,
     &:focus-visible {
-      box-shadow: 0 20px 30px -15px var(--green);
+      box-shadow: 0 20px 30px -15px var(--sand);
     }
   `,
 
@@ -158,7 +158,7 @@ const mixins = {
         content: '▹';
         position: absolute;
         left: 0;
-        color: var(--white);
+        color: var(--green);
       }
     }
   `,

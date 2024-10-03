@@ -40,7 +40,7 @@ const StyledText = styled.div`
         position: absolute;
         left: 0;
         color: var(--green);
-        font-size: var(--fz-sm);
+        font-size: var(--fz-lg);
         line-height: 12px;
       }
     }
@@ -100,12 +100,12 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--navy);
+      background-color: var(--sand);
       mix-blend-mode: screen;
     }
 
     &:after {
-      border: 2px solid var(--green);
+      border: 2px solid var(--sand);
       top: 14px;
       left: 14px;
       z-index: -1;

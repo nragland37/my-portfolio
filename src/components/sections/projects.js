@@ -136,7 +136,7 @@ const StyledProject = styled.li`
   }
 
   .project-description {
-    color: var(--light-slate);
+    color: var(--lightest-slate);
     font-size: 17px;
 
     a {

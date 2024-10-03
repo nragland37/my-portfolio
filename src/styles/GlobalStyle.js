@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--dark-navy);
+    background: var(--light-zues);
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--slate);
@@ -294,7 +294,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     & > code {
-      background-color: var(--light-navy);
+      background-color: var(--light-zues);
       color: var(--white);
       font-size: var(--fz-sm);
       border-radius: var(--border-radius);
@@ -360,8 +360,8 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      background-color: var(--sand);
-      color: var(--navy);
+      background-color: var(--zeus);
+      color: var(--green);
       top: 0;
       left: 0;
       width: auto;

@@ -160,7 +160,7 @@ const StyledTabPanel = styled.div`
     margin-bottom: 10px;
     color: var(--light-slate);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);  /* Smaller font size */
+    font-size: var(--fz-xs);  
   }
 
   .range {
@@ -236,7 +236,7 @@ const Jobs = () => {
       tabs.current[tabFocus].focus();
       return;
     }
-    // If we're at the end, go to the start
+    // If we're at the end, move to the start
     if (tabFocus >= tabs.current.length) {
       setTabFocus(0);
     }
