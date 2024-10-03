@@ -10,7 +10,7 @@ const glitchFlicker = keyframes`
   5% {
     opacity: 1;
     transform: translate(2px, -3px) scale(1.02);
-    color: #f57dff; 
+    color: var(--manatee);
   }
   10% {
     opacity: 0;
@@ -27,7 +27,7 @@ const glitchFlicker = keyframes`
   25% {
     opacity: 1;
     transform: translate(-5px, 5px) scale(1.4);
-    color: #57cbff;
+    color: var(--blue);
   }
   30% {
     opacity: 0.6;
@@ -36,7 +36,7 @@ const glitchFlicker = keyframes`
   35% {
     opacity: 1;
     transform: translate(6px, -6px) scale(0.9);
-    color: #64ffda;
+    color: var(--white);
   }
   40% {
     opacity: 0.8;

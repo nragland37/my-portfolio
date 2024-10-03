@@ -124,7 +124,7 @@ const StyledProject = styled.li`
   }
 
   .project-title {
-    color: var(--lightest-slate);
+    color: var(--white);
     font-size: clamp(24px, 5vw, 28px);
 
     @media (min-width: 768px) {
@@ -157,8 +157,8 @@ const StyledProject = styled.li`
     z-index: 2;
     padding: 25px;
     border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    color: var(--light-slate);
+    background-color: var(--light-zeus);
+    color: var(--lightest-slate);
     font-size: var(--fz-lg);
 
     @media (max-width: 768px) {
@@ -256,7 +256,7 @@ const StyledProject = styled.li`
     a {
       width: 100%;
       height: 100%;
-      background-color: var(--green);
+      background-color: var(--white);
       border-radius: var(--border-radius);
       vertical-align: middle;
 
@@ -283,7 +283,7 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--navy);
+        background-color: var(--zeus);
         mix-blend-mode: screen;
       }
     }
