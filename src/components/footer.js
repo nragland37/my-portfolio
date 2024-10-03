@@ -77,7 +77,7 @@ const Footer = () => {
     if (process.env.NODE_ENV !== 'production') {
       return;
     }
-    fetch('https://api.github.com/repos/bchiang7/v4')
+    fetch('https://api.github.com/nragland37/my-resume')
       .then(response => response.json())
       .then(json => {
         const { stargazers_count, forks_count } = json;
@@ -105,10 +105,9 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-        <a href="https://github.com/nragland37/my-resume-test">
+        <a href="https://github.com/nragland37/my-resume">
           <div>
-            MIT License <br />
-            Copyright (c) 2024 Nicholas Ragland
+            © 2024 Nicholas Ragland
           </div>
 
           {githubInfo.stars && githubInfo.forks && (
