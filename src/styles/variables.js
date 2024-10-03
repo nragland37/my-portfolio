@@ -9,8 +9,8 @@ const variables = css`
     --lightest-navy: #7e8aa3;
     --navy-shadow: rgba(76, 83, 100, 0.7);
 
-    --zeus: #1c1814;
-    --light-zeus: #2c2c2c;
+    --zeus: #171717;
+    --light-zeus: #2b2b2b;
     --lightest-zeus: #3c3c3c;
     --dark-slate: #4e565f;
     --slate: #6e767e;

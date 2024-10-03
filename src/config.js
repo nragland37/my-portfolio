@@ -44,12 +44,12 @@ module.exports = {
   ],
 
   colors: {
-    red: '#FF0000',
-    navy: '#0a192f',
-    darkNavy: '#020c1b',
+    zeus: '#100e0b', // Background color (dark)
+    green: '#1df8d7', // Highlight green color
+    sand: '#ffcc94', // Sand for accent
   },
 
-  srConfig: (delay = 250, viewFactor = 0.3) => ({
+  srConfig: (delay = 200, viewFactor = 0.25) => ({
     origin: 'bottom',
     distance: '20px',
     duration: 500,

@@ -4,8 +4,8 @@ module.exports = {
   siteMetadata: {
     title: 'Nicholas Ragland',
     description:
-      'Portfolio of Nicholas Ragland, a software engineer based in the United States.',
-    siteUrl: 'https://www.nicholasragland.vercel.app', 
+      'Portfolio of Nicholas Ragland, a software engineer in the United States.',
+    siteUrl: 'https://www.nicholasragland.com', 
     image: '/og.png', 
     twitterUsername: '@nragland37',
   },
@@ -23,8 +23,8 @@ module.exports = {
         name: 'Nicholas Ragland',
         short_name: 'Nicholas Ragland',
         start_url: '/',
-        background_color: config.colors.darkNavy,
-        theme_color: config.colors.navy,
+        background_color: config.colors.zeus,
+        theme_color: config.colors.green,
         display: 'minimal-ui',
         icon: 'src/images/logo.png',
       },
@@ -147,12 +147,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-45666519-2',
       },
     },
   ],
