@@ -73,7 +73,7 @@ const StyledTabButton = styled.button`
   width: 100%;
   height: var(--tab-height);
   padding: 0 20px 2px;
-  border-left: 2px solid var(--contessa);
+  border-left: 2px solid var(--sand);
   background-color: transparent;
   color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--white)')};
   font-family: var(--font-mono);
@@ -89,7 +89,7 @@ const StyledTabButton = styled.button`
     min-width: 120px;
     padding: 0 15px;
     border-left: 0;
-    border-bottom: 2px solid var(--lightest-navy);
+    border-bottom: 2px solid var(--white);
     text-align: center;
   }
 
@@ -152,19 +152,46 @@ const StyledTabPanel = styled.div`
     line-height: 1.3;
 
     .company {
-      color: var(--green);
+      color: var(--sand);
     }
+  }
+    
+  .department {
+    margin-bottom: 10px;
+    color: var(--light-slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);  /* Smaller font size */
   }
 
   .range {
     margin-bottom: 25px;
-    color: var(--light-slate);
+    color: var(--green);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
   }
 `;
 
 const Jobs = () => {
+  /**
+   * Fetches job data from Markdown files located in the "content/jobs/" directory.
+   * The data is sorted by the `date` field in the frontmatter of each Markdown file in descending order.
+   *
+   * @typedef {Object} Job
+   * @property {string} title 
+   * @property {string} company 
+   * @property {string} department 
+   * @property {string} location 
+   * @property {string} range 
+   * @property {string} url 
+   * @property {string} html
+   *
+   * @returns {Object} An object containing an array of job nodes.
+   * @returns {Job[]} jobs.edges.node.frontmatter - The frontmatter data of each job.
+   * @returns {string} jobs.edges.node.html - The HTML content of each job.
+   *
+   * @note The `frontmatter___date` field is a part of the frontmatter metadata in each Markdown file.
+   * It is defined within the Markdown files under the "content/jobs/" directory.
+   */
   const data = useStaticQuery(graphql`
     query {
       jobs: allMarkdownRemark(
@@ -176,6 +203,7 @@ const Jobs = () => {
             frontmatter {
               title
               company
+              department    
               location
               range
               url
@@ -185,7 +213,7 @@ const Jobs = () => {
         }
       }
     }
-  `);
+  `);  
 
   const jobsData = data.jobs.edges;
 
@@ -250,7 +278,7 @@ const Jobs = () => {
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
+              const { title } = node.frontmatter;
               return (
                 <StyledTabButton
                   key={i}
@@ -262,7 +290,7 @@ const Jobs = () => {
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
                   aria-controls={`panel-${i}`}>
-                  <span>{company}</span>
+                  <span>{title}</span>
                 </StyledTabButton>
               );
             })}
@@ -273,7 +301,7 @@ const Jobs = () => {
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
+              const { title, url, company, range, department } = frontmatter;
 
               return (
                 <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
@@ -293,6 +321,11 @@ const Jobs = () => {
                         </a>
                       </span>
                     </h3>
+                    {department && (
+                      <p className="department">
+                        {department}
+                      </p>
+                    )}
 
                     <p className="range">{range}</p>
 

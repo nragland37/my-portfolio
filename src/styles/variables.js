@@ -9,6 +9,9 @@ const variables = css`
     --lightest-navy: #7e8aa3;
     --navy-shadow: rgba(76, 83, 100, 0.7);
 
+    --zeus: #1c1814;
+    --light-zeus: #2c2c2c;
+    --lightest-zeus: #3c3c3c;
     --dark-slate: #4e565f;
     --slate: #6e767e;
     --light-slate: #c5cacc;
@@ -16,7 +19,7 @@ const variables = css`
     --white: #f0f4f5;
     --white-shadow: rgba(240, 244, 245, 0.7);
 
-    --green: #64ffda;
+    --green: #1df8d7;
     --green-tint: rgba(100, 255, 218, 0.1);
     --pink: #f57dff;
     --blue: #57cbff;
@@ -24,6 +27,7 @@ const variables = css`
 
     --contessa: #c46c6c;
     --light-contessa: #e0a4a4;
+    --sand: #ffcc94;
     --trout: #4c5464;
     --gulf-stream: #78acb0;
     --studio: #7854b4;
@@ -31,8 +35,6 @@ const variables = css`
 
     --hint-of-red: #f6f4f3;
     --santas-gray: #a3a3ac;
-    --zeus: #1c1814;
-    --light-zeus: #2c2c2c;
     --mirage: #1c243c;
     --manatee: #8e8d94;
     --rolling-stone: #747c83;

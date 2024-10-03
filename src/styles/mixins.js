@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const button = css`
   color: var(--white);
   background-color: transparent;
-  border: 1px solid var(--contessa);
+  border: 1px solid var(--sand);
   border-radius: var(--border-radius);
   font-size: var(--fz-xs);
   font-family: var(--font-mono);
@@ -15,7 +15,7 @@ const button = css`
   &:hover,
   &:focus-visible {
     outline: none;
-    box-shadow: 4px 4px 0 0 var(--contessa);
+    box-shadow: 4px 4px 0 0 var(--sand);
     transform: translate(-5px, -5px);
     background-color: var(--transparent);
   }
@@ -47,7 +47,7 @@ const mixins = {
 
     &:hover,
     &:focus-visible {
-      color: var(--contessa);
+      color: var(--sand);
       outline: 0;
     }
   `,
@@ -90,7 +90,7 @@ const mixins = {
   smallButton: css`
     color: var(--white);
     background-color: transparent;
-    border: 1px solid var(--contessa);
+    border: 1px solid var(--sand);
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
     font-size: var(--fz-xs);
@@ -102,7 +102,7 @@ const mixins = {
     &:hover,
     &:focus-visible {
       outline: none;
-      box-shadow: 3px 3px 0 0 var(--contessa);
+      box-shadow: 3px 3px 0 0 var(--sand);
       transform: translate(-4px, -4px);
       background-color: var(--transparent);
     }
