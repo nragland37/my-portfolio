@@ -48,13 +48,15 @@ const TagsPage = ({
 
       <h1>Tags</h1>
       <ul className="fancy-list">
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`} className="inline-link">
-              {tag.fieldValue} <span className="count">({tag.totalCount})</span>
-            </Link>
-          </li>
-        ))}
+        {group
+          .filter(tag => tag.fieldValue) // Filter out any tags with an empty fieldValue
+          .map(tag => (
+            <li key={tag.fieldValue}>
+              <Link to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`} className="inline-link">
+                {tag.fieldValue} <span className="count">({tag.totalCount})</span>
+              </Link>
+            </li>
+          ))}
       </ul>
     </StyledTagsContainer>
   </Layout>

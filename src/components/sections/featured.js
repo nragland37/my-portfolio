@@ -312,14 +312,14 @@ const Featured = () => {
           node {
             frontmatter {
               title
+              coverFileType: cover {
+                extension
+                publicURL
+              }
               cover {
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
-              }
-              coverFileType: cover {
-                extension
-                publicURL
               }
               tech
               github
@@ -331,7 +331,7 @@ const Featured = () => {
         }
       }
     }
-  `);
+  `);  
 
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
