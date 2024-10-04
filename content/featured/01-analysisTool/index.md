@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: 'Student Time Analysis Tool'
-cover: './demo.gif'
+cover: './demo.png'
 github: 'https://github.com/nragland37/Student-Time-Analysis-Tool'
 external: 'https://nragland37.shinyapps.io/timeanalysis/'
 cta: 'https://nragland37.shinyapps.io/timeanalysis/'

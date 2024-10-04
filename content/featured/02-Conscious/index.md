@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'Conscious Chrome Extension'
-cover: './demo.gif'
+cover: './demo.png'
 github: 'https://github.com/nragland37/Conscious-Chrome-Extension'
 external: 'https://github.com/nragland37/Conscious-Chrome-Extension'
 
