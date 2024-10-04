@@ -40,6 +40,15 @@ const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const animate = () => {
+    const audio = new Audio('/sounds/glitch1.wav');
+    
+    // Attempt to play audio and catch any autoplay restrictions
+    audio.play().catch(error => {
+      console.error('Audio playback failed:', error);
+      // This error happens if autoplay is blocked by browser policies
+      // No further action is needed, the animation continues
+    });
+
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
@@ -77,7 +86,7 @@ const Loader = ({ finishLoading }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();
+    animate();  // Trigger the animation and sound on page load
     return () => clearTimeout(timeout);
   }, []);
 

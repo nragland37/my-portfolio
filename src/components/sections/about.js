@@ -21,7 +21,7 @@ const StyledAboutSection = styled.section`
 const StyledText = styled.div`
   ul.skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
+    grid-template-columns: repeat(2, minmax(140px, 250px));
     grid-gap: 0 10px;
     padding: 0;
     margin: 20px 0 0 0;
@@ -116,6 +116,10 @@ const StyledPic = styled.div`
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const Category = styled.strong`
+    color: var(--green);
+    font-weight: bold;
+  `;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -127,24 +131,49 @@ const About = () => {
 
   const skills = [
     {
-      category: 'Programming Languages:',
-      details: 'Python C++ R SQL JavaScript TypeScript HTML CSS',
+      category: 'Programming Languages',
+      details: 'Python, C++, R, SQL, JavaScript, TypeScript, HTML, CSS',
     },
     {
-      category: 'Libraries/Frameworks:',
-      details: 'React Next.js Pandas NumPy Shiny Plotly Tidyverse Tailwind',
+      category: (
+        <>
+          Web Development <br /> Libraries/Frameworks
+        </>
+      ),
+      details: 'React, Next.js, Gatsby, Tailwind CSS',
     },
     {
-      category: 'Tools/Platforms:',
-      details:
-        'GitHub Git VSCode Docker Jupyter (Notebook/Lab) RStudio Anaconda Virtual Machines WSL2 MSYS2 MinGW Vercel Firebase APIs Figma Adobe InDesign & Acrobat Microsoft Excel',
+      category: (
+        <>
+          Data Science <br /> Libraries/Frameworks
+        </>
+      ),
+      details: 'Pandas, NumPy, Shiny, Plotly, Tidyverse',
     },
     {
-      category: 'Security/Networking:',
-      details:
-        'Kali Linux GNU/Linux Windows Security Hardening Bash Scripting PowerShell Penetration Testing Wireshark Command Line Tools CTF Challenges',
+      category: 'Design & Productivity Tools',
+      details: 'Figma, Adobe InDesign & Acrobat, Microsoft Excel',
+    },
+    {
+      category: (
+        <>
+          Development <br /> Tools & Platforms
+        </>
+      ),
+      details: `
+      Git, GitHub, VSCode, Docker, Jupyter(Notebook/Lab), RStudio, Anaconda,
+      Virtual Machines, WSL2, MSYS2, MinGW, Vercel, Firebase, Oracle Apex, APIs
+    `,
+    },
+    {
+      category: 'Security & Networking',
+      details: `
+      Kali Linux, GNU/Linux, Windows Security Hardening, Bash Scripting, PowerShell, 
+      Penetration Testing, Wireshark, Command Line Tools, CTF Challenges
+    `,
     },
   ];
+  
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -155,13 +184,13 @@ const About = () => {
           <div>
             <p>Hello!</p>
             <p>
-              I specialize in computer science, 
-              cybersecurity, and data analytics, with a strong interest in fullstack 
-              development, always pushing myself to learn more. When I'm not coding, 
-              you’ll find me diving into hackathons, solving CTF challenges, or 
-              exploring data-driven projects. I love turning complex problems into 
-              simple, elegant solutions. Outside of tech, I enjoy traveling, hiking, 
-              camping, music, and skateboarding.
+              I specialize in computer science,
+              cybersecurity, and data analytics, with a strong interest in fullstack
+              development, always pushing myself to learn more. When I'm not coding,
+              you’ll find me diving into hackathons, solving CTF challenges, or
+              exploring data-driven projects. I love turning complex problems into
+              simple, elegant solutions. Outside of tech, I enjoy traveling, hiking,
+              camping, gaming, music, and skateboarding.
             </p>
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
@@ -170,7 +199,8 @@ const About = () => {
             {skills &&
               skills.map((skill, i) => (
                 <li key={i}>
-                  <strong>{skill.category}</strong> {skill.details}
+                  <Category>{skill.category}</Category> <br />
+                  {skill.details}
                 </li>
               ))}
           </ul>
@@ -184,7 +214,7 @@ const About = () => {
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Profile picture"
             />
           </div>
         </StyledPic>
