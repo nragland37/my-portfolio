@@ -40,7 +40,7 @@ const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const animate = () => {
-    const audio = new Audio('/sounds/glitch1.wav');
+    const audio = new Audio('/sounds/01-glitch.wav');
     
     // Attempt to play audio and catch any autoplay restrictions
     audio.play().catch(error => {
