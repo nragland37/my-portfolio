@@ -279,8 +279,6 @@ const StyledProject = styled.li`
         height: 100%;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
         z-index: 3;
         transition: var(--transition);
         background-color: var(--zeus);
@@ -359,7 +357,7 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, coverFileType, cta } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -407,9 +405,14 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    {coverFileType && coverFileType.extension === 'gif' ? (
+                      <img src={coverFileType.publicURL} alt={title} className="img" />
+                    ) : (
+                      <GatsbyImage image={image} alt={title} className="img" />
+                    )}
                   </a>
                 </div>
+                
               </StyledProject>
             );
           })}
