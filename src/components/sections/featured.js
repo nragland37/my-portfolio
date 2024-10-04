@@ -357,7 +357,7 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, coverFileType, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -386,7 +386,7 @@ const Featured = () => {
                     <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
+                          Try it Now
                         </a>
                       )}
                       {github && (
@@ -405,11 +405,7 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    {coverFileType.extension === 'gif' ? (
-                      <img src={coverFileType.publicURL} alt={title} className="img" />
-                    ) : (
-                      <GatsbyImage image={image} alt={title} className="img" />
-                    )}
+                    <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
               </StyledProject>
