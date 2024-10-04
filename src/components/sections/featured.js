@@ -319,6 +319,10 @@ const Featured = () => {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
               }
+              coverFileType: cover {
+                extension
+                publicURL
+              }
               tech
               github
               external
@@ -355,8 +359,8 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
+            const { external, title, tech, github, cover, coverFileType, cta } = frontmatter;
+            const image = cover?.childImageSharp ? getImage(cover) : null;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -384,7 +388,7 @@ const Featured = () => {
                     <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
+                          Try Now
                         </a>
                       )}
                       {github && (
@@ -403,7 +407,11 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    {coverFileType.extension === 'gif' ? (
+                      <img src={coverFileType.publicURL} alt={title} className="img" />
+                    ) : (
+                      <GatsbyImage image={image} alt={title} className="img" />
+                    )}
                   </a>
                 </div>
               </StyledProject>
