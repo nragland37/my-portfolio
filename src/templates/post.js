@@ -54,6 +54,17 @@ const StyledPostContent = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
+  if (!data || !data.markdownRemark) {
+    return (
+      <Layout location={location}>
+        <StyledPostContainer>
+          <p>Sorry, the post you're looking for doesn't exist or has been removed.</p>
+          <Link to="/pensieve">Go back to all posts</Link>
+        </StyledPostContainer>
+      </Layout>
+    );
+  }
+
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags, description } = frontmatter;
 
@@ -62,7 +73,6 @@ const PostTemplate = ({ data, location }) => {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
-        {/* Additional SEO or OpenGraph tags can be added here */}
       </Helmet>
 
       <StyledPostContainer>
