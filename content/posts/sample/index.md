@@ -5,8 +5,9 @@ date: 2024-10-03
 draft: false
 slug: /pensieve/sample
 tags:
-  - ...
-  - ...
+  - sample
+  - test
+  - code
 ---
 
 
