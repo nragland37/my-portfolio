@@ -105,7 +105,7 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-        <a href="https://github.com/nragland37/my-resume">
+        <a href="https://github.com/nragland37/my-portfolio">
           <div>© 2024 Nicholas Ragland</div>
 
           {githubInfo.stars && githubInfo.forks && (
