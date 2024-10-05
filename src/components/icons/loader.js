@@ -9,81 +9,90 @@ const glitchFlicker = keyframes`
   }
   5% {
     opacity: 1;
-    transform: translate(2px, -3px) scale(1.02);
+    transform: translate(3px, -4px) scale(1.05);
     color: var(--manatee);
   }
   10% {
     opacity: 0;
-    transform: translate(-3px, 3px) scale(0.9);
+    transform: translate(-5px, 5px) scale(0.9);
+    color: var(--white);
   }
   15% {
     opacity: 1;
-    transform: translate(1px, -1px) scale(1.1);
+    transform: translate(6px, -2px) scale(1.2);
+    color: var(--green);
   }
   20% {
-    opacity: 0.5;
-    transform: translate(4px, -2px) scale(0.75);
+    opacity: 0.4;
+    transform: translate(-8px, 7px) scale(0.8);
   }
   25% {
     opacity: 1;
-    transform: translate(-5px, 5px) scale(1.4);
-    color: var(--blue);
+    transform: translate(5px, -6px) scale(1.3);
+    color: var(--green);
   }
   30% {
-    opacity: 0.6;
-    transform: translate(-1px, -4px) scale(1.1);
+    opacity: 0.5;
+    transform: translate(-3px, -8px) scale(1.2);
   }
   35% {
     opacity: 1;
-    transform: translate(6px, -6px) scale(0.9);
-    color: var(--white);
+    transform: translate(9px, -3px) scale(0.9);
+    color: var(--manatee);
   }
   40% {
-    opacity: 0.8;
-    transform: translate(3px, 3px) scale(1.2);
-    color: var(--green);
+    opacity: 0.7;
+    transform: translate(-7px, 5px) scale(1.4);
   }
   45% {
     opacity: 1;
-    transform: translate(-2px, 2px) scale(1.1);
+    transform: translate(4px, -9px) scale(1.1);
+    color: var(--white);
   }
   50% {
     opacity: 0.9;
-    transform: translate(1px, -2px) scale(1.05);
+    transform: translate(-4px, 4px) scale(1.3);
     color: var(--green);
   }
   55% {
     opacity: 1;
-    transform: translate(0px, 0px) scale(1.02);
+    transform: translate(2px, -2px) scale(1.05);
+    color: var(--blue);
   }
   60% {
-    opacity: 1;
-    transform: translate(-2px, 2px) scale(1);
+    opacity: 0.6;
+    transform: translate(-6px, 3px) scale(1.15);
+    color: var(--contessa);
   }
   65% {
     opacity: 1;
-    transform: translate(1px, 0px) scale(1);
+    transform: translate(4px, -6px) scale(1.05);
+    color: var(--white);
   }
   70% {
-    opacity: 1;
-    transform: translate(0px, 0px) scale(1);
+    opacity: 0.8;
+    transform: translate(0px, 0px) scale(1.02);
     color: var(--blue);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(2px, -4px) scale(1.05);
+    color: var(--white);
   }
   80% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translate(0px, 0px) scale(1);
   }
   90% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translate(0px, 0px) scale(1);
   }
   100% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translate(0px, 0px) scale(1);
   }
 `;
 
-// Styled component for the SVG
 const StyledSvg = styled.svg`
   width: 100px;
   height: 100px;
@@ -93,7 +102,6 @@ const StyledSvg = styled.svg`
   }
 `;
 
-// Styled component for the "N" text with enhanced glitchy flicker animation
 const LoaderText = styled.text`
   opacity: 0;
   animation: ${glitchFlicker} 2.5s ease-in-out forwards;
