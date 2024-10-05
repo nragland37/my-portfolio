@@ -58,7 +58,10 @@ const PostTemplate = ({ data, location }) => {
     return (
       <Layout location={location}>
         <StyledPostContainer>
-          <p>Sorry, the post you're looking for doesn't exist or has been removed.</p>
+          <p>
+            Sorry, the post you're looking for doesn't exist or has been
+            removed.
+          </p>
           <Link to="/pensieve">Go back to all posts</Link>
         </StyledPostContainer>
       </Layout>

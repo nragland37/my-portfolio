@@ -1,10 +1,10 @@
 ---
-title: "markdown-playground"
-description: "Markdown playground for testing"
-date: "2024-10-03"
-slug: "/pensieve/markdown-playground"
+title: 'markdown-playground'
+description: 'Markdown playground for testing'
+date: '2024-10-03'
+slug: '/pensieve/markdown-playground'
 tags:
-  - "Testing"
+  - 'Testing'
 ---
 
 ![Image Alt](./image.jpg)

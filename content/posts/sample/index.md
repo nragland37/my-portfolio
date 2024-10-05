@@ -1,12 +1,12 @@
 ---
-title: "Sample Title"
-description: "This is a sample description"
-date: "2024-10-03"
-slug: "/pensieve/sample"
+title: 'Sample Title'
+description: 'This is a sample description'
+date: '2024-10-03'
+slug: '/pensieve/sample'
 tags:
-  - "sample"
-  - "test"
-  - "code"
+  - 'sample'
+  - 'test'
+  - 'code'
 draft: false
 ---
 
