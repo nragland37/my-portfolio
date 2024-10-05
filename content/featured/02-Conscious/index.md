@@ -6,7 +6,7 @@ github: 'https://github.com/nragland37/Conscious-Chrome-Extension'
 external: 'https://github.com/nragland37/Conscious-Chrome-Extension'
 
 tech:
-  - React JS
+  - React
   - Tailwind CSS
   - TypeScript
   - APIs (GPT-3.5-Turbo, TheNewsAPI)
