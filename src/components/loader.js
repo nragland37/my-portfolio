@@ -38,22 +38,13 @@ const StyledLoader = styled.div`
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [audioPlayed, setAudioPlayed] = useState(false);
 
   const playAudio = useCallback(() => {
-    if (!audioPlayed) {
-      const audio = new Audio('/sounds/01-glitch.wav');
-      audio.play().catch((error) => {
-        console.error('Audio playback failed:', error);
-      });
-      setAudioPlayed(true);
-    }
-  }, [audioPlayed]);
-
-  const handleUserInteraction = useCallback(() => {
-    playAudio();
-    document.removeEventListener('click', handleUserInteraction);
-  }, [playAudio]);
+    const audio = new Audio('/sounds/02-glitch.wav');
+    audio.play().catch((error) => {
+      console.error('Audio playback failed:', error);
+    });
+  }, []);
 
   const animate = useCallback(() => {
     playAudio();
@@ -96,13 +87,8 @@ const Loader = ({ finishLoading }) => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
     animate();
 
-    document.addEventListener('click', handleUserInteraction);
-
-    return () => {
-      clearTimeout(timeout);
-      document.removeEventListener('click', handleUserInteraction);
-    };
-  }, [animate, handleUserInteraction]);
+    return () => clearTimeout(timeout);
+  }, [animate]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
