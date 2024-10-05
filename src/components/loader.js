@@ -38,15 +38,24 @@ const StyledLoader = styled.div`
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const [audioTriggered, setAudioTriggered] = useState(false);
+
+  const isMobileDevice = () => /Mobi|Android/i.test(navigator.userAgent);
 
   const playAudio = useCallback(() => {
     const audio = new Audio('/sounds/02-glitch.wav');
     audio.preload = 'auto'; // Preload audio to improve loading speed
     audio.play().catch((error) => {
-      // If the playback fails (likely on mobile), log the error but continue
       console.error('Audio playback failed:', error);
     });
   }, []);
+
+  const handleMobileTouch = useCallback(() => {
+    if (!audioTriggered) {
+      playAudio();
+      setAudioTriggered(true); // Ensure audio plays only once
+    }
+  }, [audioTriggered, playAudio]);
 
   const animate = useCallback(() => {
     const loader = anime.timeline({
@@ -87,15 +96,22 @@ const Loader = ({ finishLoading }) => {
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
 
-    // Try to play the sound immediately on both desktop and mobile
-    playAudio();
+    // wait for user interaction to trigger audio
+    // mobile devices have strict autoplay policies
+    if (isMobileDevice()) {
+      window.addEventListener('touchstart', handleMobileTouch, { once: true });
+    } else {
+      // play the audio immediately for non-mobile devices
+      playAudio();
+    }
 
     animate();
 
     return () => {
       clearTimeout(timeout);
+      window.removeEventListener('touchstart', handleMobileTouch);
     };
-  }, [animate, playAudio]);
+  }, [animate, handleMobileTouch, playAudio]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
