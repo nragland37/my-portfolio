@@ -183,13 +183,12 @@ const About = () => {
           <div>
             <p>Hello!</p>
             <p>
-              I specialize in computer science, cybersecurity, and data
-              analytics, with a strong interest in fullstack development, always
-              pushing myself to learn more. When I'm not coding, you’ll find me
-              diving into hackathons, solving CTF challenges, or exploring
-              data-driven projects. I love turning complex problems into simple,
-              elegant solutions. Outside of tech, I enjoy traveling, hiking,
-              camping, gaming, music, and skateboarding.
+            I specialize in computer science, cybersecurity, and data analytics, 
+            with a focus on fullstack development. I’m always challenging myself to 
+            learn more and explore new technologies. Outside of coding, I’m involved 
+            in hackathons, CTF challenges, and data-driven projects. I enjoy turning 
+            complex problems into simple and elegant solutions. Outside of tech, I love 
+            traveling, hiking, camping, gaming, music, and skateboarding.
             </p>
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
