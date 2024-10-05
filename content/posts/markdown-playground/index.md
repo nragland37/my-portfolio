@@ -2,7 +2,6 @@
 title: "markdown-playground"
 description: "Markdown playground for testing"
 date: "2024-10-03"
-draft: true
 slug: "/pensieve/markdown-playground"
 tags:
   - "Testing"
