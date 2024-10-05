@@ -38,16 +38,29 @@ const StyledLoader = styled.div`
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
+  // state to track if the sound has played
+  const [audioPlayed, setAudioPlayed] = useState(false); 
+
+  const playAudio = () => {
+    if (!audioPlayed) { // play audio if it hasn't been played yet
+      const audio = new Audio('/sounds/01-glitch.wav');
+      
+      // attempt to play the audio
+      audio.play().catch(error => {
+        console.error('Audio playback failed:', error);
+      });
+      
+      setAudioPlayed(true); // audio as played
+    }
+  };
+
+  const handleUserInteraction = () => {
+    playAudio();  // play audio on user interaction
+    document.removeEventListener('click', handleUserInteraction);
+  };
 
   const animate = () => {
-    const audio = new Audio('/sounds/01-glitch.wav');
-    
-    // Attempt to play audio and catch any autoplay restrictions
-    audio.play().catch(error => {
-      console.error('Audio playback failed:', error);
-      // This error happens if autoplay is blocked by browser policies
-      // No further action is needed, the animation continues
-    });
+    playAudio();  // playing audio on page load (may fail due to autoplay restrictions)
 
     const loader = anime.timeline({
       complete: () => finishLoading(),
@@ -86,8 +99,15 @@ const Loader = ({ finishLoading }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();  // Trigger the animation and sound on page load
-    return () => clearTimeout(timeout);
+    animate();  // animation and sound on page load
+
+    // click event listener for mobile browsers that require user interaction
+    document.addEventListener('click', handleUserInteraction);
+
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener('click', handleUserInteraction);
+    };
   }, []);
 
   return (
