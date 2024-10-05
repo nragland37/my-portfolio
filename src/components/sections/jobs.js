@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
@@ -12,18 +12,16 @@ const StyledJobsSection = styled.section`
 
   .inner {
     display: flex;
-
     @media (max-width: 600px) {
       display: block;
     }
-
     @media (min-width: 700px) {
       min-height: 340px;
     }
   }
 `;
 
-const StyledTabList = styled.div`
+const StyledTabList = styled.ul`
   position: relative;
   z-index: 3;
   width: max-content;
@@ -33,33 +31,21 @@ const StyledTabList = styled.div`
 
   @media (max-width: 600px) {
     display: flex;
-    overflow-x: auto;
-    width: calc(100% + 100px);
-    padding-left: 50px;
-    margin-left: -50px;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
     margin-bottom: 30px;
-  }
-  @media (max-width: 480px) {
-    width: calc(100% + 50px);
-    padding-left: 25px;
-    margin-left: -25px;
   }
 
   li {
     &:first-of-type {
       @media (max-width: 600px) {
-        margin-left: 50px;
-      }
-      @media (max-width: 480px) {
-        margin-left: 25px;
+        margin-left: 0;
       }
     }
     &:last-of-type {
       @media (max-width: 600px) {
-        padding-right: 50px;
-      }
-      @media (max-width: 480px) {
-        padding-right: 25px;
+        padding-right: 0;
       }
     }
   }
@@ -83,13 +69,16 @@ const StyledTabButton = styled.button`
   @media (max-width: 768px) {
     padding: 0 15px 2px;
   }
+
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
-    padding: 0 15px;
+    width: 100%;
     border-left: 0;
-    border-bottom: 2px solid var(--white);
-    text-align: center;
+    border-bottom: none; /* Remove white underline only on mobile */
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 15px;
   }
 
   &:hover,
@@ -114,18 +103,7 @@ const StyledHighlight = styled.div`
   transition-delay: 0.1s;
 
   @media (max-width: 600px) {
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
-    height: 2px;
-    margin-left: 50px;
-    transform: translateX(
-      calc(${({ activeTabId }) => activeTabId} * var(--tab-width))
-    );
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
+    display: none; /* Hide green highlight for mobile */
   }
 `;
 
@@ -179,7 +157,7 @@ const Jobs = () => {
     query {
       jobs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { frontmatter: { date: DESC } }
+        sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
           node {
@@ -199,13 +177,20 @@ const Jobs = () => {
   `);
 
   const jobsData = data.jobs.edges;
+
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const focusTab = useCallback(() => {
+  useEffect(() => {
+    if (!prefersReducedMotion) {
+      sr.reveal(revealContainer.current, srConfig());
+    }
+  }, [prefersReducedMotion]);
+
+  const focusTab = () => {
     if (tabs.current[tabFocus]) {
       tabs.current[tabFocus].focus();
       return;
@@ -216,30 +201,27 @@ const Jobs = () => {
     if (tabFocus < 0) {
       setTabFocus(tabs.current.length - 1);
     }
-  }, [tabFocus]);
+  };
 
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealContainer.current, srConfig());
-  }, [prefersReducedMotion]);
-
-  useEffect(() => focusTab(), [tabFocus, focusTab]);
+  useEffect(() => focusTab(), [tabFocus]);
 
   const onKeyDown = (e) => {
     switch (e.key) {
-      case KEY_CODES.ARROW_UP:
+      case KEY_CODES.ARROW_UP: {
         e.preventDefault();
         setTabFocus(tabFocus - 1);
         break;
-      case KEY_CODES.ARROW_DOWN:
+      }
+
+      case KEY_CODES.ARROW_DOWN: {
         e.preventDefault();
         setTabFocus(tabFocus + 1);
         break;
-      default:
+      }
+
+      default: {
         break;
+      }
     }
   };
 
@@ -257,19 +239,20 @@ const Jobs = () => {
             jobsData.map(({ node }, i) => {
               const { title } = node.frontmatter;
               return (
-                <StyledTabButton
-                  key={i}
-                  isActive={activeTabId === i}
-                  onClick={() => setActiveTabId(i)}
-                  ref={(el) => (tabs.current[i] = el)}
-                  id={`tab-${i}`}
-                  role="tab"
-                  tabIndex={activeTabId === i ? '0' : '-1'}
-                  aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}
-                >
-                  <span>{title}</span>
-                </StyledTabButton>
+                <li key={i}>
+                  <StyledTabButton
+                    isActive={activeTabId === i}
+                    onClick={() => setActiveTabId(i)}
+                    ref={(el) => (tabs.current[i] = el)}
+                    id={`tab-${i}`}
+                    role="tab"
+                    tabIndex={activeTabId === i ? '0' : '-1'}
+                    aria-selected={activeTabId === i ? true : false}
+                    aria-controls={`panel-${i}`}
+                  >
+                    <span>{title}</span>
+                  </StyledTabButton>
+                </li>
               );
             })}
           <StyledHighlight activeTabId={activeTabId} />
@@ -306,9 +289,7 @@ const Jobs = () => {
                       </span>
                     </h3>
                     {department && <p className="department">{department}</p>}
-
                     <p className="range">{range}</p>
-
                     <div dangerouslySetInnerHTML={{ __html: html }} />
                   </StyledTabPanel>
                 </CSSTransition>
