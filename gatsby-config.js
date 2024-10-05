@@ -25,7 +25,7 @@ module.exports = {
         background_color: config.colors.zeus,
         theme_color: config.colors.green,
         display: 'minimal-ui',
-        icon: 'src/images/logo.png',
+        icon: 'static/favicon_io/android-chrome-512x512.png', // Main PNG icon
       },
     },
     `gatsby-plugin-offline`,
