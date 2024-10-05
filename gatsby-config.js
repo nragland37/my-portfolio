@@ -5,8 +5,8 @@ module.exports = {
     title: 'Nicholas Ragland',
     description:
       'Portfolio of Nicholas Ragland, a software engineer in the United States.',
-    siteUrl: 'https://www.nicholasragland.com', 
-    image: '/og.png', 
+    siteUrl: 'https://www.nicholasragland.com',
+    image: '/og.png',
     twitterUsername: '@nragland37',
   },
   plugins: [

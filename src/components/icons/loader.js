@@ -83,7 +83,6 @@ const glitchFlicker = keyframes`
   }
 `;
 
-
 // Styled component for the SVG
 const StyledSvg = styled.svg`
   width: 100px;
@@ -96,7 +95,7 @@ const StyledSvg = styled.svg`
 
 // Styled component for the "N" text with enhanced glitchy flicker animation
 const LoaderText = styled.text`
-  opacity: 0; 
+  opacity: 0;
   animation: ${glitchFlicker} 2.5s ease-in-out forwards;
   font-size: 40px;
   fill: currentColor;

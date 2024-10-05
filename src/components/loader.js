@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
@@ -21,7 +21,7 @@ const StyledLoader = styled.div`
     width: max-content;
     max-width: 100px;
     transition: var(--transition);
-    opacity: ${props => (props.isMounted ? 1 : 0)};
+    opacity: ${(props) => (props.isMounted ? 1 : 0)};
     svg {
       display: block;
       width: 100%;
@@ -38,30 +38,25 @@ const StyledLoader = styled.div`
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
-  // state to track if the sound has played
-  const [audioPlayed, setAudioPlayed] = useState(false); 
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
-  const playAudio = () => {
-    if (!audioPlayed) { // play audio if it hasn't been played yet
+  const playAudio = useCallback(() => {
+    if (!audioPlayed) {
       const audio = new Audio('/sounds/01-glitch.wav');
-      
-      // attempt to play the audio
-      audio.play().catch(error => {
+      audio.play().catch((error) => {
         console.error('Audio playback failed:', error);
       });
-      
-      setAudioPlayed(true); // audio as played
+      setAudioPlayed(true);
     }
-  };
+  }, [audioPlayed]);
 
-  const handleUserInteraction = () => {
-    playAudio();  // play audio on user interaction
+  const handleUserInteraction = useCallback(() => {
+    playAudio();
     document.removeEventListener('click', handleUserInteraction);
-  };
+  }, [playAudio]);
 
-  const animate = () => {
-    playAudio();  // playing audio on page load (may fail due to autoplay restrictions)
-
+  const animate = useCallback(() => {
+    playAudio();
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
@@ -95,20 +90,19 @@ const Loader = ({ finishLoading }) => {
         opacity: 0,
         zIndex: -1,
       });
-  };
+  }, [finishLoading, playAudio]);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();  // animation and sound on page load
+    animate();
 
-    // click event listener for mobile browsers that require user interaction
     document.addEventListener('click', handleUserInteraction);
 
     return () => {
       clearTimeout(timeout);
       document.removeEventListener('click', handleUserInteraction);
     };
-  }, []);
+  }, [animate, handleUserInteraction]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>

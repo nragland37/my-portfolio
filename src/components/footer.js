@@ -78,15 +78,15 @@ const Footer = () => {
       return;
     }
     fetch('https://api.github.com/nragland37/my-resume')
-      .then(response => response.json())
-      .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         const { stargazers_count, forks_count } = json;
         setGitHubInfo({
           stars: stargazers_count,
           forks: forks_count,
         });
       })
-      .catch(e => console.error(e));
+      .catch((e) => console.error(e));
   }, []);
 
   return (
@@ -106,9 +106,7 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/nragland37/my-resume">
-          <div>
-            © 2024 Nicholas Ragland
-          </div>
+          <div>© 2024 Nicholas Ragland</div>
 
           {githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">

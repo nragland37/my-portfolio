@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
@@ -17,7 +17,6 @@ const StyledJobsSection = styled.section`
       display: block;
     }
 
-    // Prevent container from jumping
     @media (min-width: 700px) {
       min-height: 340px;
     }
@@ -108,7 +107,9 @@ const StyledHighlight = styled.div`
   height: var(--tab-height);
   border-radius: var(--border-radius);
   background: var(--green);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
+  transform: translateY(
+    calc(${({ activeTabId }) => activeTabId} * var(--tab-height))
+  );
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
 
@@ -119,7 +120,9 @@ const StyledHighlight = styled.div`
     max-width: var(--tab-width);
     height: 2px;
     margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+    transform: translateX(
+      calc(${({ activeTabId }) => activeTabId} * var(--tab-width))
+    );
   }
   @media (max-width: 480px) {
     margin-left: 25px;
@@ -155,12 +158,12 @@ const StyledTabPanel = styled.div`
       color: var(--sand);
     }
   }
-    
+
   .department {
     margin-bottom: 10px;
     color: var(--light-slate);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);  
+    font-size: var(--fz-xs);
   }
 
   .range {
@@ -172,38 +175,18 @@ const StyledTabPanel = styled.div`
 `;
 
 const Jobs = () => {
-  /**
-   * Fetches job data from Markdown files located in the "content/jobs/" directory.
-   * The data is sorted by the `date` field in the frontmatter of each Markdown file in descending order.
-   *
-   * @typedef {Object} Job
-   * @property {string} title 
-   * @property {string} company 
-   * @property {string} department 
-   * @property {string} location 
-   * @property {string} range 
-   * @property {string} url 
-   * @property {string} html
-   *
-   * @returns {Object} An object containing an array of job nodes.
-   * @returns {Job[]} jobs.edges.node.frontmatter - The frontmatter data of each job.
-   * @returns {string} jobs.edges.node.html - The HTML content of each job.
-   *
-   * @note The `frontmatter___date` field is a part of the frontmatter metadata in each Markdown file.
-   * It is defined within the Markdown files under the "content/jobs/" directory.
-   */
   const data = useStaticQuery(graphql`
     query {
       jobs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
             frontmatter {
               title
               company
-              department    
+              department
               location
               range
               url
@@ -213,15 +196,27 @@ const Jobs = () => {
         }
       }
     }
-  `);  
+  `);
 
   const jobsData = data.jobs.edges;
-
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const focusTab = useCallback(() => {
+    if (tabs.current[tabFocus]) {
+      tabs.current[tabFocus].focus();
+      return;
+    }
+    if (tabFocus >= tabs.current.length) {
+      setTabFocus(0);
+    }
+    if (tabFocus < 0) {
+      setTabFocus(tabs.current.length - 1);
+    }
+  }, [tabFocus]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -229,44 +224,22 @@ const Jobs = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
-  const focusTab = () => {
-    if (tabs.current[tabFocus]) {
-      tabs.current[tabFocus].focus();
-      return;
-    }
-    // If we're at the end, move to the start
-    if (tabFocus >= tabs.current.length) {
-      setTabFocus(0);
-    }
-    // If we're at the start, move to the end
-    if (tabFocus < 0) {
-      setTabFocus(tabs.current.length - 1);
-    }
-  };
+  useEffect(() => focusTab(), [tabFocus, focusTab]);
 
-  // Only re-run the effect if tabFocus changes
-  useEffect(() => focusTab(), [tabFocus]);
-
-  // Focus on tabs when using up & down arrow keys
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     switch (e.key) {
-      case KEY_CODES.ARROW_UP: {
+      case KEY_CODES.ARROW_UP:
         e.preventDefault();
         setTabFocus(tabFocus - 1);
         break;
-      }
-
-      case KEY_CODES.ARROW_DOWN: {
+      case KEY_CODES.ARROW_DOWN:
         e.preventDefault();
         setTabFocus(tabFocus + 1);
         break;
-      }
-
-      default: {
+      default:
         break;
-      }
     }
   };
 
@@ -275,7 +248,11 @@ const Jobs = () => {
       <h2 className="numbered-heading">Where I’ve Worked</h2>
 
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
+        <StyledTabList
+          role="tablist"
+          aria-label="Job tabs"
+          onKeyDown={(e) => onKeyDown(e)}
+        >
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { title } = node.frontmatter;
@@ -284,12 +261,13 @@ const Jobs = () => {
                   key={i}
                   isActive={activeTabId === i}
                   onClick={() => setActiveTabId(i)}
-                  ref={el => (tabs.current[i] = el)}
+                  ref={(el) => (tabs.current[i] = el)}
                   id={`tab-${i}`}
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
+                  aria-controls={`panel-${i}`}
+                >
                   <span>{title}</span>
                 </StyledTabButton>
               );
@@ -304,14 +282,20 @@ const Jobs = () => {
               const { title, url, company, range, department } = frontmatter;
 
               return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                <CSSTransition
+                  key={i}
+                  in={activeTabId === i}
+                  timeout={250}
+                  classNames="fade"
+                >
                   <StyledTabPanel
                     id={`panel-${i}`}
                     role="tabpanel"
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
+                    hidden={activeTabId !== i}
+                  >
                     <h3>
                       <span>{title}</span>
                       <span className="company">
@@ -321,11 +305,7 @@ const Jobs = () => {
                         </a>
                       </span>
                     </h3>
-                    {department && (
-                      <p className="department">
-                        {department}
-                      </p>
-                    )}
+                    {department && <p className="department">{department}</p>}
 
                     <p className="range">{range}</p>
 

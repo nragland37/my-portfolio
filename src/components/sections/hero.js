@@ -57,7 +57,7 @@ const Hero = () => {
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Nicholas Ragland.</h2>;
@@ -65,8 +65,8 @@ const Hero = () => {
   const four = (
     <>
       <p>
-      I'm a software engineer with a passion for creating clean, functional, 
-      and user-friendly technology. 
+        I'm a software engineer with a passion for creating clean, functional,
+        and user-friendly technology.
       </p>
     </>
   );
@@ -75,7 +75,8 @@ const Hero = () => {
       className="email-link"
       href="https://www.github.com/nragland37"
       target="_blank"
-      rel="noreferrer">
+      rel="noreferrer"
+    >
       Check out my GitHub!
     </a>
   );

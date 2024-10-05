@@ -9,14 +9,17 @@ import { Layout } from '@components';
 const StyledPostContainer = styled.main`
   max-width: 1000px;
 `;
+
 const StyledPostHeader = styled.header`
   margin-bottom: 50px;
   .tag {
     margin-right: 10px;
   }
 `;
+
 const StyledPostContent = styled.div`
   margin-bottom: 100px;
+
   h1,
   h2,
   h3,
@@ -52,11 +55,15 @@ const StyledPostContent = styled.div`
 
 const PostTemplate = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark;
-  const { title, date, tags } = frontmatter;
+  const { title, date, tags, description } = frontmatter;
 
   return (
     <Layout location={location}>
-      <Helmet title={title} />
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        {/* Additional SEO or OpenGraph tags can be added here */}
+      </Helmet>
 
       <StyledPostContainer>
         <span className="breadcrumb">
@@ -78,7 +85,11 @@ const PostTemplate = ({ data, location }) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, i) => (
-                <Link key={i} to={`/pensieve/tags/${kebabCase(tag)}/`} className="tag">
+                <Link
+                  key={i}
+                  to={`/pensieve/tags/${kebabCase(tag)}/`}
+                  className="tag"
+                >
                   #{tag}
                 </Link>
               ))}
@@ -91,15 +102,13 @@ const PostTemplate = ({ data, location }) => {
   );
 };
 
-export default PostTemplate;
-
 PostTemplate.propTypes = {
   data: PropTypes.object,
   location: PropTypes.object,
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query ($path: String!) {
     markdownRemark(frontmatter: { slug: { eq: $path } }) {
       html
       frontmatter {
@@ -112,3 +121,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default PostTemplate;

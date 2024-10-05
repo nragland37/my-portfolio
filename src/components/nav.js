@@ -32,8 +32,8 @@ const StyledHeader = styled.header`
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    ${props =>
-    props.scrollDirection === 'up' &&
+    ${(props) =>
+      props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -42,8 +42,8 @@ const StyledHeader = styled.header`
         box-shadow: 0 10px 30px -10px var(--green);
       `};
 
-    ${props =>
-    props.scrollDirection === 'down' &&
+    ${(props) =>
+      props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -175,7 +175,7 @@ const Nav = ({ isHome }) => {
       clearTimeout(timeout);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prefersReducedMotion, isHome]);
 
   const timeout = isHome ? loaderDelay : 0;
   const fadeClass = isHome ? 'fade' : '';
@@ -206,13 +206,21 @@ const Nav = ({ isHome }) => {
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+    <a
+      className="resume-button"
+      href="/resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       Resume
     </a>
   );
 
   return (
-    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
+    <StyledHeader
+      scrollDirection={scrollDirection}
+      scrolledToTop={scrolledToTop}
+    >
       <StyledNav>
         {prefersReducedMotion ? (
           <>
@@ -248,8 +256,17 @@ const Nav = ({ isHome }) => {
                   {isMounted &&
                     navLinks &&
                     navLinks.map(({ url, name }, i) => (
-                      <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
-                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                      <CSSTransition
+                        key={i}
+                        classNames={fadeDownClass}
+                        timeout={timeout}
+                      >
+                        <li
+                          key={i}
+                          style={{
+                            transitionDelay: `${isHome ? i * 100 : 0}ms`,
+                          }}
+                        >
                           <Link to={url}>{name}</Link>
                         </li>
                       </CSSTransition>
@@ -260,7 +277,13 @@ const Nav = ({ isHome }) => {
               <TransitionGroup component={null}>
                 {isMounted && (
                   <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                    <div
+                      style={{
+                        transitionDelay: `${
+                          isHome ? navLinks.length * 100 : 0
+                        }ms`,
+                      }}
+                    >
                       {ResumeLink}
                     </div>
                   </CSSTransition>

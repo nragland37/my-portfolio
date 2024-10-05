@@ -38,7 +38,7 @@ const NotFoundPage = ({ location }) => {
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const content = (
     <StyledMainContainer className="fillHeight">
@@ -51,7 +51,6 @@ const NotFoundPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Helmet title="Page Not Found" />
-
       {prefersReducedMotion ? (
         <>{content}</>
       ) : (
