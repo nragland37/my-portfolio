@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
@@ -157,7 +157,7 @@ const Jobs = () => {
     query {
       jobs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -190,7 +190,7 @@ const Jobs = () => {
     }
   }, [prefersReducedMotion]);
 
-  const focusTab = () => {
+  const focusTab = useCallback(() => {
     if (tabs.current[tabFocus]) {
       tabs.current[tabFocus].focus();
       return;
@@ -201,9 +201,9 @@ const Jobs = () => {
     if (tabFocus < 0) {
       setTabFocus(tabs.current.length - 1);
     }
-  };
+  }, [tabFocus]);
 
-  useEffect(() => focusTab(), [tabFocus]);
+  useEffect(() => focusTab(), [tabFocus, focusTab]);
 
   const onKeyDown = (e) => {
     switch (e.key) {
