@@ -41,13 +41,14 @@ const Loader = ({ finishLoading }) => {
 
   const playAudio = useCallback(() => {
     const audio = new Audio('/sounds/02-glitch.wav');
+    audio.preload = 'auto'; // Preload audio to improve loading speed
     audio.play().catch((error) => {
+      // If the playback fails (likely on mobile), log the error but continue
       console.error('Audio playback failed:', error);
     });
   }, []);
 
   const animate = useCallback(() => {
-    playAudio();
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
@@ -81,14 +82,20 @@ const Loader = ({ finishLoading }) => {
         opacity: 0,
         zIndex: -1,
       });
-  }, [finishLoading, playAudio]);
+  }, [finishLoading]);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
+
+    // Try to play the sound immediately on both desktop and mobile
+    playAudio();
+
     animate();
 
-    return () => clearTimeout(timeout);
-  }, [animate]);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [animate, playAudio]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
