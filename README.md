@@ -8,6 +8,7 @@ This directory is a brief example of a [Gatsby](https://www.gatsbyjs.org/) app t
 
 Deploy your own Gatsby project, along with Serverless Functions, with Vercel.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/95d0abf8efd7436eab9a01013617bb1c)](https://app.codacy.com/gh/nragland37/my-portfolio?utm_source=github.com&utm_medium=referral&utm_content=nragland37/my-portfolio&utm_campaign=Badge_Grade)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/gatsby&template=gatsby)
 
 _Live Example: https://gatsby.vercel.app_
