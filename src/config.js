@@ -7,6 +7,10 @@ module.exports = {
       url: 'https://github.com/nragland37',
     },
     /*{
+      name: 'LeetCode',
+      url: 'https://leetcode.com/u/nragland37/',
+    },
+    {
       name: 'Instagram',
       url: 'https://www.instagram.com',
     },
