@@ -8,7 +8,7 @@
   nicholasragland.com
 </h1>
 <p align="center">
-  Built with <a href="https://www.gatsbyjs.com/" target="_blank">Gatsby</a> and hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>
+  Built with <a href="https://www.gatsbyjs.com/" target="_blank">Gatsby.js</a> and hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>
 </p>
 
 <div align="center">
@@ -66,8 +66,6 @@ To prepare your project for deployment:
 
 <br />
 <br />
-
-<div align='center'>
   
 | Command        | Description                                                      |
 | -------------- | ---------------------------------------------------------------- |
@@ -89,5 +87,3 @@ To prepare your project for deployment:
 | White             | ![#f0f4f5](https://via.placeholder.com/10/f0f4f5?text=+) `#f0f4f5` |
 | Green             | ![#1df8d7](https://via.placeholder.com/10/1df8d7?text=+) `#1df8d7` |
 | Sand              | ![#ffcc94](https://via.placeholder.com/10/ffcc94?text=+) `#ffcc94` |
-
-</div>
