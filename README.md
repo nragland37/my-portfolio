@@ -65,7 +65,6 @@ To prepare your project for deployment:
    Open in browser: http://localhost:9000
 
 <br />
-<br />
   
 | Command        | Description                                                      |
 | -------------- | ---------------------------------------------------------------- |
@@ -75,6 +74,8 @@ To prepare your project for deployment:
 | `npm run clean`| Clears Gatsby's .cache and public directories.                   |
 | `npm run format`| Formats code using Prettier.                                    |
 | `npm run check`| Checks if the code is formatted correctly without making changes.|
+
+<br />
 
 | Color Name        | Hex                                                                |
 |-------------------|--------------------------------------------------------------------|
