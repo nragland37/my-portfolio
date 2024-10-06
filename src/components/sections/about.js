@@ -142,7 +142,7 @@ const About = () => {
           Web Development <br /> Libraries/Frameworks
         </>
       ),
-      details: 'React, Next.js, Gatsby, Tailwind CSS',
+      details: 'React, Next.js, Gatsby.js, Tailwind CSS',
     },
     {
       category: (
