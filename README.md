@@ -19,6 +19,9 @@
 
 ![demo](https://raw.githubusercontent.com/nragland37/my-portfolio/main/src/images/demo.png)
 
+> [!IMPORTANT] 
+> This project requires **Node.js version 18 or higher**: [Node.js official website](https://nodejs.org/)
+
 ## Getting Started
 
 1. **Install the Gatsby CLI**
@@ -29,19 +32,15 @@
 2. **Clone the repository**
    ```sh
    git clone https://github.com/nragland37/my-portfolio.git
-   ```
-
-3. **Navigate to the project directory**
-   ```sh
    cd my-portfolio
    ```
 
-4. **Install dependencies**
+3. **Install dependencies**
    ```sh
    npm install # or yarn, pnpm, bun
    ```
 
-5. **Start the development server**
+4. **Start the development server**
    ```sh
    npm start # or yarn start, pnpm start, bun start
    ```
