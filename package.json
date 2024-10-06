@@ -9,8 +9,7 @@
     "clean": "gatsby clean",
     "format": "prettier --write .",
     "prebuild": "npm run format",
-    "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "check": "prettier --check ."
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.0.12",
