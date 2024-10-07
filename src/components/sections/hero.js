@@ -66,7 +66,7 @@ const Hero = () => {
     <>
       <p>
         I'm a software engineer with a passion for creating clean, functional,
-        and user-friendly technology.
+        and user-friendly solutions.
       </p>
     </>
   );
