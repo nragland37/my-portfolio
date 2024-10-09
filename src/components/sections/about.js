@@ -134,7 +134,7 @@ const About = () => {
   const skills = [
     {
       category: 'Programming Languages',
-      details: 'Python, C++, R, SQL, JavaScript, TypeScript, HTML, CSS',
+      details: 'Python, C++, R, SQL, JavaScript, TypeScript, GraphQL, HTML, CSS',
     },
     {
       category: (
@@ -142,7 +142,7 @@ const About = () => {
           Web Development <br /> Libraries/Frameworks
         </>
       ),
-      details: 'React, Next.js, Gatsby.js, Tailwind CSS',
+      details: 'React, Next.js, Gatsby.js, Tailwind CSS, Styled Components',
     },
     {
       category: (
