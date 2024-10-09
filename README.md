@@ -2,7 +2,9 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/nragland37/my-portfolio/blob/main/LICENSE)
 
 <div align="center">
-  <img alt="Logo" src="/static/assets/folio-logo.gif" width="20%" />
+  <a href="https://www.nicholasragland.com/" target="_blank">
+    <img alt="Logo" src="/static/assets/folio-logo.gif" width="20%" />
+  </a>
 </div>
 <h1 align="center">
   nicholasragland.com
@@ -17,7 +19,11 @@
 
 </div>
 
+<a href="https://www.nicholasragland.com/" target="_blank">
+
 ![demo](https://raw.githubusercontent.com/nragland37/my-portfolio/main/src/images/demo.png)
+
+</a>
 
 > [!IMPORTANT] 
 > This project requires **Node.js version 18 or higher**: [Node.js official website](https://nodejs.org/)
