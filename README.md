@@ -98,6 +98,6 @@ To prepare your project for deployment:
 
 ## Acknowledgments
 
-This project was inspired by an open-source website, which provided a strong foundation for my own work. I modernized the project by updating dependencies, refactoring deprecated code, and implementing new features and custom logic, making it my own. 
+This project was inspired by an open-source website, which provided a strong foundation for my own work. I modernized the project by updating dependencies, refactoring deprecated code, and implementing new features and custom logic. I'm proud of how I transformed it into something uniquely my own, while keeping the original vision intact.
 
 Special thanks to [Brittany Chiang](https://github.com/bchiang7) for the inspiration! 
