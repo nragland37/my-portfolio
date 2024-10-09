@@ -93,3 +93,11 @@ To prepare your project for deployment:
 | White             | ![#f0f4f5](https://via.placeholder.com/10/f0f4f5?text=+) `#f0f4f5` |
 | Green             | ![#1df8d7](https://via.placeholder.com/10/1df8d7?text=+) `#1df8d7` |
 | Sand              | ![#ffcc94](https://via.placeholder.com/10/ffcc94?text=+) `#ffcc94` |
+
+<br />
+
+## Acknowledgments
+
+This project was inspired by an open-source website, which provided a strong foundation for my own work. I modernized the project by updating dependencies, refactoring deprecated code, and implementing new features and custom logic, making it my own. 
+
+Special thanks to [Brittany Chiang](https://github.com/bchiang7) for the inspiration! 
