@@ -89,7 +89,8 @@ const Footer = () => {
       })
       .catch((e) => {
         console.error(e);
-        setGitHubInfo({ isLoading: false }); // Handle error by setting loading state to false
+        // stop loading to prevent continuous requests
+        setGitHubInfo({ isLoading: false });
       });
   }, []);
 
@@ -112,18 +113,22 @@ const Footer = () => {
         <a href="https://github.com/nragland37/my-portfolio">
           <div>© 2024 Nicholas Ragland</div>
 
-          {!githubInfo.isLoading && githubInfo.stars && githubInfo.forks && (
-            <div className="github-stats">
-              <span>
-                <Icon name="Star" />
-                <span>{githubInfo.stars.toLocaleString()}</span>
-              </span>
-              <span>
-                <Icon name="Fork" />
-                <span>{githubInfo.forks.toLocaleString()}</span>
-              </span>
-            </div>
-          )}
+          {/* null checks for no data, not the number 0 
+          (which would be falsy and not render the component) */}
+          {!githubInfo.isLoading &&
+            githubInfo.stars !== null &&
+            githubInfo.forks !== null && (
+              <div className="github-stats">
+                <span>
+                  <Icon name="Star" />
+                  <span>{githubInfo.stars.toLocaleString()}</span>
+                </span>
+                <span>
+                  <Icon name="Fork" />
+                  <span>{githubInfo.forks.toLocaleString()}</span>
+                </span>
+              </div>
+            )}
         </a>
       </StyledCredit>
     </StyledFooter>
