@@ -57,19 +57,44 @@ module.exports = {
     sand: '#ffcc94', // Sand for accent
   },
 
-  srConfig: (delay = 200, viewFactor = 0.25) => ({
-    origin: 'bottom',
-    distance: '20px',
-    duration: 500,
-    delay,
-    rotate: { x: 0, y: 0, z: 0 },
-    opacity: 0,
-    scale: 1,
-    easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
-    mobile: true,
-    reset: false,
-    useDelay: 'always',
-    viewFactor,
-    viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
-  }),
+  /* Loader and transition delays */
+  srConfig: (delay = 200, viewFactor = 0.25) => {
+    // Detect if the user is on a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    const mobileSettings = {
+      origin: 'bottom',
+      distance: '15px',
+      duration: 300, 
+      delay: 100, // Shorter delay for faster mobile load times
+      rotate: { x: 0, y: 0, z: 0 },
+      opacity: 0,
+      scale: 1,
+      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+      mobile: true,
+      reset: false,
+      useDelay: 'always',
+      viewFactor: 0.15, // Smaller viewFactor to trigger animations sooner on scroll
+      viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
+    };
+
+    const desktopSettings = {
+      origin: 'bottom',
+      distance: '20px',
+      duration: 500,
+      delay, // Default delay: 200ms
+      rotate: { x: 0, y: 0, z: 0 },
+      opacity: 0,
+      scale: 1,
+      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+      mobile: false,
+      reset: false,
+      useDelay: 'always',
+      viewFactor, // Default viewFactor: 0.25px
+      viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
+    };
+
+    // Return the appropriate settings based on device type
+    return isMobile ? mobileSettings : desktopSettings;
+  },
 };
