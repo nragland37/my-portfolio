@@ -74,7 +74,7 @@ module.exports = {
       mobile: true,
       reset: false,
       useDelay: 'always',
-      viewFactor: 0.1, // Smaller viewFactor to trigger animations sooner on scroll
+      viewFactor: 0.05, // Smaller viewFactor to trigger animations sooner on scroll
       viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
     };
 
