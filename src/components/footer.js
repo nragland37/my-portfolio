@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -71,22 +70,27 @@ const Footer = () => {
   const [githubInfo, setGitHubInfo] = useState({
     stars: null,
     forks: null,
+    isLoading: true,
   });
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       return;
     }
-    fetch('https://api.github.com/nragland37/my-resume')
+    fetch('https://api.github.com/repos/nragland37/my-portfolio')
       .then((response) => response.json())
       .then((json) => {
         const { stargazers_count, forks_count } = json;
         setGitHubInfo({
           stars: stargazers_count,
           forks: forks_count,
+          isLoading: false,
         });
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        setGitHubInfo({ isLoading: false }); // Handle error by setting loading state to false
+      });
   }, []);
 
   return (
@@ -108,7 +112,7 @@ const Footer = () => {
         <a href="https://github.com/nragland37/my-portfolio">
           <div>© 2024 Nicholas Ragland</div>
 
-          {githubInfo.stars && githubInfo.forks && (
+          {!githubInfo.isLoading && githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">
               <span>
                 <Icon name="Star" />
@@ -124,10 +128,6 @@ const Footer = () => {
       </StyledCredit>
     </StyledFooter>
   );
-};
-
-Footer.propTypes = {
-  githubInfo: PropTypes.object,
 };
 
 export default Footer;
