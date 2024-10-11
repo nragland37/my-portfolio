@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
-import { Analytics } from '@vercel/analytics/react'; 
+import { Analytics } from '@vercel/analytics/react';
 
 const StyledContent = styled.div`
   display: flex;
@@ -54,11 +54,9 @@ const Layout = ({ children, location }) => {
       <div id="root">
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-
           <a className="skip-to-content" href="#content">
             Skip to Content
           </a>
-
           {isLoading && isHome ? (
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
@@ -73,7 +71,8 @@ const Layout = ({ children, location }) => {
               </div>
             </StyledContent>
           )}
-          <Analytics /> {/* Analytics component will be rendered on every page */}
+          <Analytics />{' '}
+          {/* Analytics component will be rendered on every page */}
         </ThemeProvider>
       </div>
     </>

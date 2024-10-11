@@ -134,7 +134,8 @@ const About = () => {
   const skills = [
     {
       category: 'Programming Languages',
-      details: 'Python, C++, R, SQL, JavaScript, TypeScript, GraphQL, HTML, CSS',
+      details:
+        'Python, C++, R, SQL, JavaScript, TypeScript, GraphQL, HTML, CSS',
     },
     {
       category: (

@@ -25,23 +25,26 @@
 
 </a>
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > This project requires **Node.js version 18 or higher**: [Node.js official website](https://nodejs.org/)
 
 ## Getting Started
 
 1. **Install the Gatsby CLI**
+
    ```sh
    npm install -g gatsby-cli # or yarn global add gatsby-cli, pnpm add --global gatsby-cli, bun add --global gatsby-cli
    ```
 
 2. **Clone the repository**
+
    ```sh
    git clone https://github.com/nragland37/my-portfolio.git
    cd my-portfolio
    ```
 
 3. **Install dependencies**
+
    ```sh
    npm install # or yarn, pnpm, bun
    ```
@@ -57,6 +60,7 @@
 To prepare your project for deployment:
 
 1. **Build the project**
+
    ```sh
    npm run build # or yarn build, pnpm build, bun build
    ```
@@ -64,9 +68,11 @@ To prepare your project for deployment:
 2. **Serve the production build**
 
    Test how the production build performs in a simulated server environment locally:
+
    ```sh
    npm run serve # or yarn serve, pnpm serve, bun serve
    ```
+
    Open in browser: http://localhost:9000
 
 <br />
@@ -82,17 +88,17 @@ To prepare your project for deployment:
 
 <br />
 
-| Color Name        | Hex                                                                |
-|-------------------|--------------------------------------------------------------------|
-| Zeus              | ![#171717](https://via.placeholder.com/10/171717?text=+) `#171717` |
-| Light Zeus        | ![#2b2b2b](https://via.placeholder.com/10/2b2b2b?text=+) `#2b2b2b` |
-| Lightest Zeus     | ![#3c3c3c](https://via.placeholder.com/10/3c3c3c?text=+) `#3c3c3c` |
-| Slate             | ![#6e767e](https://via.placeholder.com/10/6e767e?text=+) `#6e767e` |
-| Light Slate       | ![#c5cacc](https://via.placeholder.com/10/c5cacc?text=+) `#c5cacc` |
-| Lightest Slate    | ![#e4e6e7](https://via.placeholder.com/10/e4e6e7?text=+) `#e4e6e7` |
-| White             | ![#f0f4f5](https://via.placeholder.com/10/f0f4f5?text=+) `#f0f4f5` |
-| Green             | ![#1df8d7](https://via.placeholder.com/10/1df8d7?text=+) `#1df8d7` |
-| Sand              | ![#ffcc94](https://via.placeholder.com/10/ffcc94?text=+) `#ffcc94` |
+| Color Name     | Hex                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| Zeus           | ![#171717](https://via.placeholder.com/10/171717?text=+) `#171717` |
+| Light Zeus     | ![#2b2b2b](https://via.placeholder.com/10/2b2b2b?text=+) `#2b2b2b` |
+| Lightest Zeus  | ![#3c3c3c](https://via.placeholder.com/10/3c3c3c?text=+) `#3c3c3c` |
+| Slate          | ![#6e767e](https://via.placeholder.com/10/6e767e?text=+) `#6e767e` |
+| Light Slate    | ![#c5cacc](https://via.placeholder.com/10/c5cacc?text=+) `#c5cacc` |
+| Lightest Slate | ![#e4e6e7](https://via.placeholder.com/10/e4e6e7?text=+) `#e4e6e7` |
+| White          | ![#f0f4f5](https://via.placeholder.com/10/f0f4f5?text=+) `#f0f4f5` |
+| Green          | ![#1df8d7](https://via.placeholder.com/10/1df8d7?text=+) `#1df8d7` |
+| Sand           | ![#ffcc94](https://via.placeholder.com/10/ffcc94?text=+) `#ffcc94` |
 
 <br />
 
@@ -100,4 +106,4 @@ To prepare your project for deployment:
 
 This project was inspired by an open-source website, which provided a strong foundation for my own work. I modernized the project by updating dependencies, refactoring deprecated code, and implementing new features and custom logic. I'm proud of how I transformed it into something uniquely my own, while keeping the original vision intact.
 
-Special thanks to [Brittany Chiang](https://github.com/bchiang7) for the inspiration! 
+Special thanks to [Brittany Chiang](https://github.com/bchiang7) for the inspiration!

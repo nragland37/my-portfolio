@@ -60,7 +60,10 @@ module.exports = {
   /* Loader and transition delays */
   srConfig: (delay = 200, viewFactor = 0.25) => {
     // Detect if the user is on a mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      );
 
     const mobileSettings = {
       origin: 'bottom',
