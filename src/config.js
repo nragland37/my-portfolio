@@ -64,9 +64,9 @@ module.exports = {
 
     const mobileSettings = {
       origin: 'bottom',
-      distance: '15px',
-      duration: 300, 
-      delay: 100, // Shorter delay for faster mobile load times
+      distance: '20px',
+      duration: 500,
+      delay, // Default delay: 200ms
       rotate: { x: 0, y: 0, z: 0 },
       opacity: 0,
       scale: 1,
@@ -74,7 +74,7 @@ module.exports = {
       mobile: true,
       reset: false,
       useDelay: 'always',
-      viewFactor: 0.15, // Smaller viewFactor to trigger animations sooner on scroll
+      viewFactor: 0.1, // Smaller viewFactor to trigger animations sooner on scroll
       viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
     };
 
@@ -82,7 +82,7 @@ module.exports = {
       origin: 'bottom',
       distance: '20px',
       duration: 500,
-      delay, // Default delay: 200ms
+      delay,
       rotate: { x: 0, y: 0, z: 0 },
       opacity: 0,
       scale: 1,
