@@ -39,22 +39,15 @@ const Head = ({ title, description, image }) => {
   };
 
   return (
-    <Helmet
-      title={title}
-      defaultTitle={seo.title}
-      titleTemplate={`%s | ${defaultTitle}`}
-    >
+    <Helmet title={title ? `${title} | ${defaultTitle}` : defaultTitle}>
       <html lang="en" />
-
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
-
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
-
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={twitterUsername} />
       <meta name="twitter:title" content={seo.title} />
@@ -63,8 +56,6 @@ const Head = ({ title, description, image }) => {
     </Helmet>
   );
 };
-
-export default Head;
 
 Head.propTypes = {
   title: PropTypes.string,
@@ -77,3 +68,5 @@ Head.defaultProps = {
   description: null,
   image: null,
 };
+
+export default Head;
