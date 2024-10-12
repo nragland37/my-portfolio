@@ -21,7 +21,7 @@
 
 <a href="https://www.nicholasragland.com/" target="_blank">
 
-![demo](https://raw.githubusercontent.com/nragland37/my-portfolio/main/src/images/demo.png)
+![demo](https://raw.githubusercontent.com/nragland37/my-portfolio/main/src/images/demo.gif)
 
 </a>
 
