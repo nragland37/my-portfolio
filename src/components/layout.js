@@ -19,16 +19,17 @@ const Layout = ({ children, location }) => {
   const [stars2, setStars2] = useState('');
   const [stars3, setStars3] = useState('');
 
-  // Function to update stars on scroll or resize
+  // amount of stars to generate for each layer
   const populateStars = () => {
-    setStars1(generateStars(300)); // small
-    setStars2(generateStars(150)); // medium
-    setStars3(generateStars(100)); // large
+    setStars1(generateStars(500)); // small
+    setStars2(generateStars(300)); // medium
+    setStars3(generateStars(200)); // large
   };
 
+  // bypass SSR so stars
   useEffect(() => {
     if (!isLoading) {
-      populateStars(); // Initial population of stars
+      populateStars();
       window.addEventListener('resize', populateStars); // Update stars on resize
     }
 

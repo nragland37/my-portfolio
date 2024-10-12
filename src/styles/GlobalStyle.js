@@ -374,7 +374,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #logo {
-    color: var(--sand);
+    color: var(--white);
   }
 
   .overline {
@@ -451,7 +451,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
 
   /* Parallax Stars Styles */
   #stars1, #stars2, #stars3 {

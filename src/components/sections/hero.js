@@ -17,7 +17,7 @@ const StyledHeroSection = styled.section`
     padding-top: var(--nav-height);
   }
 
-  h1 {
+  h3 {
     margin: 0 0 30px 4px;
     color: var(--green);
     font-family: var(--font-mono);
@@ -29,7 +29,7 @@ const StyledHeroSection = styled.section`
     }
   }
 
-  h3 {
+  h2 {
     margin-top: 5px;
     color: var(--slate);
     line-height: 0.9;
@@ -59,9 +59,9 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [prefersReducedMotion]);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Nicholas Ragland.</h2>;
-  const three = <h3 className="big-heading">I build things.</h3>;
+  const one = <h3>Hi, my name is</h3>;
+  const two = <h1 className="big-heading">Nicholas Ragland.</h1>;
+  const three = <h2 className="big-heading">I build things.</h2>;
   const four = (
     <>
       <p>
@@ -73,11 +73,11 @@ const Hero = () => {
   const five = (
     <a
       className="email-link"
-      href="https://www.github.com/nragland37"
+      href="https://www.linkedin.com/in/nragland37/"
       target="_blank"
       rel="noreferrer"
     >
-      Check out my GitHub!
+      Check out my LinkedIn!
     </a>
   );
 
