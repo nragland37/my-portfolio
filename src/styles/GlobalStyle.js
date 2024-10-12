@@ -384,7 +384,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-  .subtitle {
+    .subtitle {
     color: var(--sand);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
@@ -429,6 +429,69 @@ const GlobalStyle = createGlobalStyle`
 
   .gatsby-image-outer-wrapper {
     height: 100%;
+  }
+
+  #title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    color: #fff;
+    text-align: center;
+    font-family: Lato;
+    font-size: 2rem;
+    font-weight: 300px;
+    letter-spacing: 10px;
+    margin-top: -60px;
+    padding-left: 10px;
+  }
+
+  #title span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  /* Parallax Stars Styles */
+  #stars1, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    overflow: hidden;
+    transition: transform 0.05s ease-out; 
+    z-index: -1;
+  }
+
+
+  #stars1 {
+    width: 1px;
+    height: 1px;
+    animation: animStar 50s linear infinite;
+  }
+
+  #stars2 {
+    width: 2px;
+    height: 2px;
+    animation: animStar 100s linear infinite;
+  }
+
+  #stars3 {
+    width: 3px;
+    height: 3px;
+    animation: animStar 150s linear infinite;
+  }
+
+  @keyframes animStar {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100vh); /* Move stars upwards */
+    }
   }
 
   ${TransitionStyles};

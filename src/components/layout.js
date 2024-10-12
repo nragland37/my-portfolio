@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import { Analytics } from '@vercel/analytics/react';
+import { generateStars } from '../utils/stars';
 
 const StyledContent = styled.div`
   display: flex;
@@ -14,49 +15,39 @@ const StyledContent = styled.div`
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
+  const [stars1, setStars1] = useState('');
+  const [stars2, setStars2] = useState('');
+  const [stars3, setStars3] = useState('');
 
-  // Sets target="_blank" rel="noopener noreferrer" on external links
-  const handleExternalLinks = () => {
-    const allLinks = Array.from(document.querySelectorAll('a'));
-    if (allLinks.length > 0) {
-      allLinks.forEach((link) => {
-        if (link.host !== window.location.host) {
-          link.setAttribute('rel', 'noopener noreferrer');
-          link.setAttribute('target', '_blank');
-        }
-      });
-    }
+  // Function to update stars on scroll or resize
+  const populateStars = () => {
+    setStars1(generateStars(300)); // small
+    setStars2(generateStars(150)); // medium
+    setStars3(generateStars(100)); // large
   };
 
   useEffect(() => {
-    if (isLoading) {
-      return;
+    if (!isLoading) {
+      populateStars(); // Initial population of stars
+      window.addEventListener('resize', populateStars); // Update stars on resize
     }
 
-    if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView();
-          el.focus();
-        }
-      }, 0);
-    }
-
-    handleExternalLinks();
-  }, [isLoading, location.hash]);
+    return () => {
+      window.removeEventListener('resize', populateStars); // Cleanup on unmount
+    };
+  }, [isLoading]);
 
   return (
     <>
       <Head />
-
       <div id="root">
+        {/* Star background layers */}
+        <div id="stars1" style={{ boxShadow: stars1 }}></div>
+        <div id="stars2" style={{ boxShadow: stars2 }}></div>
+        <div id="stars3" style={{ boxShadow: stars3 }}></div>
+
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <a className="skip-to-content" href="#content">
-            Skip to Content
-          </a>
           {isLoading && isHome ? (
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
@@ -64,15 +55,13 @@ const Layout = ({ children, location }) => {
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
-
               <div id="content">
                 {children}
                 <Footer />
               </div>
             </StyledContent>
           )}
-          <Analytics />{' '}
-          {/* Analytics component will be rendered on every page */}
+          <Analytics />
         </ThemeProvider>
       </div>
     </>
