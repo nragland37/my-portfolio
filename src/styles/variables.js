@@ -74,8 +74,8 @@ const variables = css`
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     /* Scrollbar */
-    --scrollbar-bg: var(--navy);
-    --scrollbar-thumb: var(--dark-navy);
+    --scrollbar-bg: var(--light-zeus);
+    --scrollbar-thumb: var(--zeus);
 
     /* Hamburger */
     --hamburger-width: 30px;

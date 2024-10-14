@@ -5,32 +5,63 @@ const IconLogo = () => (
     id="logo"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
-    viewBox="0 0 84 96"
+    viewBox="0 0 300 300"
   >
     <title>Logo</title>
-    <g transform="translate(-8.000000, -2.000000)">
-      <g transform="translate(11.000000, 5.000000)">
-        <polygon
-          id="Shape"
-          stroke="currentColor"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          points="39 0 0 22 0 67 39 90 78 68 78 23"
-        />
-        <text
-          x="39"
-          y="50"
-          fontSize="40"
-          fill="currentColor"
-          fontFamily="Arial, Helvetica, sans-serif"
-          dominantBaseline="middle"
-          textAnchor="middle"
-        >
-          N
-        </text>
-      </g>
-    </g>
+    {/* Outer Circle */}
+    <circle
+      cx="150"
+      cy="150"
+      r="130"
+      stroke="currentColor"
+      strokeWidth="8"
+      fill="none"
+    />
+
+    {/* Left angle bracket */}
+    <text
+      x="65"
+      y="165"
+      fontSize="100"
+      fill="currentColor"
+      fontFamily="Calibri, sans-mono"
+      dominantBaseline="middle"
+      textAnchor="middle"
+    >
+      {'<'}
+    </text>
+
+    {/* N in Monospaced Style */}
+    <text
+      x="155"
+      y="165"
+      fontSize="170"
+      fill="var(--green)"
+      fontFamily="Calibri, sans-mono"
+      dominantBaseline="middle"
+      textAnchor="middle"
+    >
+      N
+    </text>
+
+    {/* Right angle bracket */}
+    <text
+      x="240"
+      y="165"
+      fontSize="100"
+      fill="currentColor"
+      fontFamily="Calibri, sans-mono"
+      dominantBaseline="middle"
+      textAnchor="middle"
+    >
+      {'>'}
+    </text>
+
+    {/* Data bits on sides */}
+    <circle cx="65" cy="65" r="17" fill="currentColor" />
+    <circle cx="240" cy="65" r="17" fill="currentColor" />
+    <circle cx="65" cy="240" r="17" fill="currentColor" />
+    <circle cx="240" cy="240" r="17" fill="currentColor" />
   </svg>
 );
 

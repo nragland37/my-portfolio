@@ -70,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
+    cursor: none;
 
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
@@ -374,7 +375,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #logo {
-    color: var(--sand);
+    color: var(--white);
   }
 
   .overline {

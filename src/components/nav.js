@@ -2,25 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled, { css } from 'styled-components';
-import { navLinks } from '@config';
+import styled, { css, keyframes } from 'styled-components';
+import { navLinks, socialMedia } from '@config'; 
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
+import { IconLogo, IconCircle, Icon } from '@components/icons'; 
 
+// Pulsing animation keyframe
+const pulseAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+// StyledHeader as before
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
   top: 0;
   z-index: 11;
-  padding: 0px 50px;
+  padding: 0 15%;
   width: 100%;
   height: var(--nav-height);
   background-color: var(--zeus);
-  filter: none !important;
-  pointer-events: auto !important;
-  user-select: auto !important;
   backdrop-filter: blur(5px);
   transition: var(--transition);
 
@@ -54,29 +65,31 @@ const StyledHeader = styled.header`
 `;
 
 const StyledNav = styled.nav`
-  ${({ theme }) => theme.mixins.flexBetween};
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   color: var(--green);
   font-family: var(--font-mono);
-  counter-reset: item 0;
   z-index: 12;
 
   .logo {
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--sand);
-      width: 42px;
-      height: 42px;
+      color: var(--green);
+      width: 60px;
+      height: 60px;
       position: relative;
       z-index: 1;
 
-      .hex-container {
+      .circle-container {
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease-in-out; /* Smooth transition */
         @media (prefers-reduced-motion: no-preference) {
           transition: var(--transition);
         }
@@ -91,7 +104,7 @@ const StyledNav = styled.nav`
           @media (prefers-reduced-motion: no-preference) {
             transition: var(--transition);
           }
-          polygon {
+          circle {
             fill: var(--zeus);
           }
         }
@@ -100,9 +113,13 @@ const StyledNav = styled.nav`
       &:hover,
       &:focus {
         outline: 0;
-        transform: translate(-4px, -4px);
-        .hex-container {
-          transform: translate(4px, 3px);
+
+        .circle-container {
+          opacity: 1; /* Show the circle on hover */
+        }
+
+        .logo-container {
+          animation: ${pulseAnimation} 1s ease-in-out infinite;
         }
       }
     }
@@ -112,41 +129,54 @@ const StyledNav = styled.nav`
 const StyledLinks = styled.div`
   display: flex;
   align-items: center;
+  margin-left: auto;
 
   @media (max-width: 768px) {
     display: none;
   }
 
   ol {
-    ${({ theme }) => theme.mixins.flexBetween};
+    display: flex;
     padding: 0;
     margin: 0;
     list-style: none;
 
     li {
-      margin: 0 px;
       position: relative;
-      counter-increment: item 1;
-      font-size: var(--fz-sm);
+      font-size: var(--fz-md);
 
       a {
-        padding: 15px;
-
-        &:before {
-          content: '0' counter(item) '.';
-          margin-right: 5px;
-          color: var(--green);
-          font-size: var(--fz-xxs);
-          text-align: right;
-        }
+        padding: 24px;
       }
     }
   }
 
   .resume-button {
-    ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
-    font-size: var(--fz-sm);
+    font-size: var(--fz-md);
+  }
+`;
+
+// Social icons styling, horizontally aligned
+const StyledSocial = styled.ul`
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin-left: 15px;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      svg { 
+        width: 30px; 
+        height: 30px; 
+      }
+    }
   }
 `;
 
@@ -157,7 +187,7 @@ const Nav = ({ isHome }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleScroll = () => {
-    setScrolledToTop(window.pageYOffset < 50);
+    setScrolledToTop(window.scrollY < 50);
   };
 
   useEffect(() => {
@@ -185,8 +215,8 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
+          <div className="circle-container">
+            <IconCircle /> {/* Circle is hidden initially */}
           </div>
           <div className="logo-container">
             <IconLogo />
@@ -194,8 +224,8 @@ const Nav = ({ isHome }) => {
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
+          <div className="circle-container">
+            <IconCircle />
           </div>
           <div className="logo-container">
             <IconLogo />
@@ -222,84 +252,74 @@ const Nav = ({ isHome }) => {
       scrolledToTop={scrolledToTop}
     >
       <StyledNav>
-        {prefersReducedMotion ? (
-          <>
-            {Logo}
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames={fadeClass} timeout={timeout}>
+              <>{Logo}</>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
 
-            <StyledLinks>
-              <ol>
-                {navLinks &&
-                  navLinks.map(({ url, name }, i) => (
-                    <li key={i}>
-                      <Link to={url}>{name}</Link>
-                    </li>
-                  ))}
-              </ol>
-              <div>{ResumeLink}</div>
-            </StyledLinks>
-
-            <Menu />
-          </>
-        ) : (
-          <>
+        {/* Links and Social */}
+        <StyledLinks>
+          <ol>
             <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo}</>
-                </CSSTransition>
-              )}
-            </TransitionGroup>
-
-            <StyledLinks>
-              <ol>
-                <TransitionGroup component={null}>
-                  {isMounted &&
-                    navLinks &&
-                    navLinks.map(({ url, name }, i) => (
-                      <CSSTransition
-                        key={i}
-                        classNames={fadeDownClass}
-                        timeout={timeout}
-                      >
-                        <li
-                          key={i}
-                          style={{
-                            transitionDelay: `${isHome ? i * 100 : 0}ms`,
-                          }}
-                        >
-                          <Link to={url}>{name}</Link>
-                        </li>
-                      </CSSTransition>
-                    ))}
-                </TransitionGroup>
-              </ol>
-
-              <TransitionGroup component={null}>
-                {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div
+              {isMounted &&
+                navLinks &&
+                navLinks.map(({ url, name }, i) => (
+                  <CSSTransition
+                    key={i}
+                    classNames={fadeDownClass}
+                    timeout={timeout}
+                  >
+                    <li
+                      key={i}
                       style={{
-                        transitionDelay: `${
-                          isHome ? navLinks.length * 100 : 0
-                        }ms`,
+                        transitionDelay: `${isHome ? i * 100 : 0}ms`,
                       }}
                     >
-                      {ResumeLink}
-                    </div>
+                      <Link to={url}>{name}</Link>
+                    </li>
                   </CSSTransition>
-                )}
-              </TransitionGroup>
-            </StyledLinks>
-
-            <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <Menu />
-                </CSSTransition>
-              )}
+                ))}
             </TransitionGroup>
-          </>
-        )}
+          </ol>
+
+          <TransitionGroup component={null}>
+            {isMounted && (
+              <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                <div
+                  style={{
+                    transitionDelay: `${
+                      isHome ? navLinks.length * 100 : 0
+                    }ms`,
+                  }}
+                >
+                  {ResumeLink}
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </StyledLinks>
+
+        {/* Social Icons */}
+        <StyledSocial>
+          {socialMedia.map(({ url, name }, i) => (
+            <li key={i}>
+              <a href={url} aria-label={name} target="_blank" rel="noreferrer">
+                <Icon name={name} />
+              </a>
+            </li>
+          ))}
+        </StyledSocial>
+        
+        <TransitionGroup component={null}>
+          {isMounted && (
+            <CSSTransition classNames={fadeClass} timeout={timeout}>
+              <Menu />
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </StyledNav>
     </StyledHeader>
   );

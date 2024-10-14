@@ -19,7 +19,7 @@ const StyledLinkWrapper = styled.div`
     background-color: var(--light-slate);
   }
 
-  a {
+  button {
     margin: 20px auto;
     padding: 10px;
     font-family: var(--font-mono);
@@ -30,6 +30,10 @@ const StyledLinkWrapper = styled.div`
     transition:
       transform 0.3s ease,
       color 0.3s ease;
+    background: none;
+    border: none;
+    color: var(--light-slate);
+    cursor: pointer;
 
     &:hover,
     &:focus {
@@ -71,9 +75,7 @@ const Email = ({ isHome }) => {
   return (
     <Side isHome={isHome} orientation="right">
       <StyledLinkWrapper>
-        <a href="#" onClick={handleCopy}>
-          {email}
-        </a>
+        <button onClick={handleCopy}>{email}</button>
         {copied && (
           <div className="copied-message">
             <span>Email Copied!</span>

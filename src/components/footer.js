@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React /*, { useState, useEffect }*/ from 'react';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -67,12 +67,14 @@ const StyledCredit = styled.div`
 `;
 
 const Footer = () => {
+  /*
   const [githubInfo, setGitHubInfo] = useState({
     stars: null,
     forks: null,
     isLoading: true,
   });
 
+  // Fetch GitHub api data
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       return;
@@ -93,6 +95,7 @@ const Footer = () => {
         setGitHubInfo({ isLoading: false });
       });
   }, []);
+  */
 
   return (
     <StyledFooter>
@@ -115,6 +118,7 @@ const Footer = () => {
 
           {/* null checks for no data, not the number 0 
           (which would be falsy and not render the component) */}
+          {/*
           {!githubInfo.isLoading &&
             githubInfo.stars !== null &&
             githubInfo.forks !== null && (
@@ -128,7 +132,7 @@ const Footer = () => {
                   <span>{githubInfo.forks.toLocaleString()}</span>
                 </span>
               </div>
-            )}
+            )} */}
         </a>
       </StyledCredit>
     </StyledFooter>

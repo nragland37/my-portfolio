@@ -30,19 +30,19 @@ module.exports = {
 
   navLinks: [
     {
-      name: 'About',
+      name: 'about',
       url: '/#about',
     },
     {
-      name: 'Experience',
+      name: 'work',
       url: '/#jobs',
     },
     {
-      name: 'Work',
+      name: 'projects',
       url: '/#projects',
     },
     {
-      name: 'Contact',
+      name: 'contact',
       url: '/#contact',
     },
     /*`{
@@ -58,7 +58,7 @@ module.exports = {
   },
 
   /* Loader and transition delays */
-  srConfig: (delay = 200, viewFactor = 0.25) => {
+  srConfig: (delay = 200, viewFactor = 0.15) => {
     // Detect if the user is on a mobile device
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -68,7 +68,7 @@ module.exports = {
     const mobileSettings = {
       origin: 'bottom',
       distance: '20px',
-      duration: 500,
+      duration: 1250,
       delay, // Default delay: 200ms
       rotate: { x: 0, y: 0, z: 0 },
       opacity: 0,
@@ -84,7 +84,7 @@ module.exports = {
     const desktopSettings = {
       origin: 'bottom',
       distance: '20px',
-      duration: 500,
+      duration: 1250,
       delay,
       rotate: { x: 0, y: 0, z: 0 },
       opacity: 0,
@@ -93,7 +93,7 @@ module.exports = {
       mobile: false,
       reset: false,
       useDelay: 'always',
-      viewFactor, // Default viewFactor: 0.25px
+      viewFactor, // Default viewFactor: 0.15
       viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
     };
 

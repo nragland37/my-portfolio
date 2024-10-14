@@ -78,10 +78,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: loaders.null(),
           },
           {
-            test: /animejs/,
-            use: loaders.null(),
-          },
-          {
             test: /miniraf/,
             use: loaders.null(),
           },

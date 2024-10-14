@@ -12,4 +12,4 @@ tech:
   - Object-Oriented Programming
 ---
 
-Comprehensive collection of nearly 50 C++ projects, covering a wide range of topics from the basic Hello World to advanced Self-Balancing AVL Trees, and everything in between.
+Comprehensive collection of 50 C++ projects, covering a wide range of topics from the basic Hello World to advanced Self-Balancing AVL Trees, and everything in between.
