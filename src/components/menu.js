@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { navLinks, socialMedia } from '@config';
 import { useOnClickOutside } from '@hooks';
 import { Icon } from '@components/icons';
@@ -16,18 +16,6 @@ const Menu = () => {
 
   // Close the menu when clicked outside
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));
-
-  // Lock the body scroll when the menu is open
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling on the body
-    } else {
-      document.body.style.overflow = ''; // Re-enable scrolling when menu is closed
-    }
-    return () => {
-      document.body.style.overflow = ''; // Clean up on unmount
-    };
-  }, [menuOpen]);
 
   return (
     <StyledMenu>

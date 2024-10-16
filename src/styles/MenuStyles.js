@@ -94,16 +94,13 @@ export const StyledHamburgerButton = styled.button`
 `;
 
 export const StyleDropbar = styled.aside`
-  display: none;
-
   @media (max-width: 768px) {
-    display: block;
     position: fixed;
     top: 10vh;
     left: 0;
     width: 100%;
     height: 90vh;
-    overflow-y: auto; /* Allows the menu to scroll if it overflows */
+    overflow-y: auto; /* Enables scrolling when the content is too long */
     background-color: var(--white);
     visibility: ${({ menuOpen }) => (menuOpen ? 'visible' : 'hidden')};
     opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
@@ -133,7 +130,7 @@ export const StyleDropbar = styled.aside`
         padding: 0;
         margin: 20px 0;
         text-align: center;
-        width: 100%; /* Full width for clickable nav links */
+        width: 100%;
 
         li {
           cursor: pointer;
@@ -142,9 +139,7 @@ export const StyleDropbar = styled.aside`
             menuOpen
               ? css`
                   ${slowSlideDown} 0.5s ease forwards;
-                  animation-delay: calc(
-                    0.1s * var(--i)
-                  ); /* Staggered delay for each item */
+                  animation-delay: calc(0.1s * var(--i));
                 `
               : 'none'};
 
@@ -166,7 +161,7 @@ export const StyleDropbar = styled.aside`
 
             &:hover {
               color: var(--green);
-              background-color: var(--midnight); /* Color change on hover */
+              background-color: var(--midnight);
             }
           }
         }

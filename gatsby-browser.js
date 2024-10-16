@@ -6,7 +6,6 @@ export const onClientEntry = () => {
   injectSpeedInsights();
 };
 
-
 // Clean up service workers on update
 export const onServiceWorkerUpdateReady = () => {
   if ('serviceWorker' in navigator) {
