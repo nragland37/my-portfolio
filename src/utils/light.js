@@ -1,4 +1,3 @@
-// Toggle between light and dark mode
 export const toggleTheme = () => {
   const root = document.documentElement;
   const currentTheme = localStorage.getItem('theme') || 'dark'; // Default to dark

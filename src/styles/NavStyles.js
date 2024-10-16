@@ -43,10 +43,12 @@ const StyledHeader = styled.header`
     padding: 0 25px;
   }
 
+  /* Scroll behavior is commented out to disable navbar animation on scroll */
+  /*
   @media (prefers-reduced-motion: no-preference) {
     ${(props) =>
       props.scrollDirection === 'up' &&
-      !props.scrolledToTop &&
+      !props.scrolledToTop && 
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
@@ -63,6 +65,7 @@ const StyledHeader = styled.header`
         box-shadow: 0 10px 30px -10px var(--green);
       `};
   }
+  */
 `;
 
 const StyledNav = styled.nav`

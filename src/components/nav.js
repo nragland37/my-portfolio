@@ -9,18 +9,16 @@ import { Menu } from '@components';
 import { IconLogo, IconCircle, Icon } from '@components/icons';
 import { NavStyles } from '@styles';
 
-// Destructuring styled components from NavStyles
-const { StyledHeader, StyledNav, StyledLinks, StyledSocial, StyledMenuButton } =
-  NavStyles;
+const { StyledHeader, StyledNav, StyledLinks, StyledSocial, StyledMenuButton } = NavStyles;
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
-  const scrollDirection = useScrollDirection('down');
+  const scrollDirection = useScrollDirection('down'); // Custom hook to detect scroll direction
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleScroll = () => {
-    setScrolledToTop(window.scrollY < 50);
+    setScrolledToTop(window.scrollY < 50); // Detect if user scrolled past 50px
   };
 
   useEffect(() => {

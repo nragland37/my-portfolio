@@ -1,41 +1,60 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navLinks, socialMedia } from '@config';
-import { useOnClickOutside } from '@hooks';
 import { Icon } from '@components/icons';
-import MenuStyles from '@styles/MenuStyles'; // Import the separated MenuStyles
+import IconLight from '@components/icons/light';
+import { toggleTheme } from '@utils/light';
+import MenuStyles from '@styles/MenuStyles';
 
-const { StyledMenu, StyledHamburgerButton, StyleDropbar } = MenuStyles;
+const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } = MenuStyles;
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const wrapperRef = useRef();
+  const [currentTheme, setCurrentTheme] = useState('dark'); // Default to dark theme
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
+  // Get the current theme from local storage
+  const getCurrentTheme = () => localStorage.getItem('theme') || 'dark'; 
+
+  // Set the initial theme state on load
+  useEffect(() => {
+    const theme = getCurrentTheme(); 
+    setCurrentTheme(theme);
+  }, []);
+
+  // Toggle the menu open/close
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  // Handle theme toggle
+  const handleThemeToggle = () => {
+    toggleTheme(); 
+    const updatedTheme = getCurrentTheme(); 
+    setCurrentTheme(updatedTheme);
   };
-
-  // Close the menu when clicked outside
-  useOnClickOutside(wrapperRef, () => setMenuOpen(false));
 
   return (
     <StyledMenu>
-      <div ref={wrapperRef}>
-        <StyledHamburgerButton
-          menuOpen={menuOpen}
-          onClick={toggleMenu}
-          aria-label="Menu"
-          aria-expanded={menuOpen}
-        >
-          <div className="ham-box">
-            <div className="ham-box-inner" />
-          </div>
-        </StyledHamburgerButton>
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <StyledThemeToggle menuOpen={menuOpen} onClick={handleThemeToggle} aria-label="Toggle theme">
+            <IconLight /> 
+          </StyledThemeToggle>
+
+          <StyledHamburgerButton
+            menuOpen={menuOpen}
+            onClick={toggleMenu}
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+          >
+            <div className="ham-box">
+              <div className="ham-box-inner" />
+            </div>
+          </StyledHamburgerButton>
+        </div>
 
         <StyleDropbar menuOpen={menuOpen}>
           <nav>
             <ol>
               {navLinks.map(({ url, name }, i) => (
-                <li key={i}>
+                <li key={i} style={{ '--i': i }}>
                   <a
                     href={url}
                     onClick={() => setMenuOpen(false)}
@@ -59,7 +78,7 @@ const Menu = () => {
                   rel="noreferrer"
                   tabIndex={menuOpen ? 0 : -1}
                 >
-                  <Icon name={name} />
+                  <Icon name={name} /> 
                 </a>
               ))}
             </div>

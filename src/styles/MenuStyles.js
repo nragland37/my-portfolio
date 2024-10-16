@@ -1,9 +1,9 @@
 import styled, { keyframes, css } from 'styled-components';
 
-// Slide down animation for nav links
-export const slowSlideDown = keyframes`
+// Smooth slide down for the entire dropdown container (slower)
+export const smoothSlideDown = keyframes`
   0% {
-    transform: translateY(-30px); 
+    transform: translateY(-100%);
     opacity: 0;
   }
   100% {
@@ -12,7 +12,18 @@ export const slowSlideDown = keyframes`
   }
 `;
 
-// Fade-in animation for social icons
+// Animation for nav links dropping into place after dropdown opens
+export const navLinksDropIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 export const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -20,7 +31,7 @@ export const fadeInUp = keyframes`
   }
   100% {
     opacity: 1;
-    transform: translateY(0); 
+    transform: translateY(0);
   }
 `;
 
@@ -64,10 +75,9 @@ export const StyledHamburgerButton = styled.button`
     right: 0;
     width: var(--hamburger-width);
     height: 2px;
-    background-color: var(--white);
+    background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')}; /* Green when open */
     transition: all 0.3s ease-in-out;
-    transform: ${({ menuOpen }) =>
-    menuOpen ? `rotate(225deg)` : `rotate(0deg)`};
+    transform: ${({ menuOpen }) => (menuOpen ? 'rotate(225deg)' : 'rotate(0)')};
 
     &:before,
     &:after {
@@ -76,37 +86,60 @@ export const StyledHamburgerButton = styled.button`
       position: absolute;
       width: 100%;
       height: 2px;
-      background-color: var(--white);
+      background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')}; /* Green when open */
       transition: all 0.3s ease-in-out;
     }
 
     &:before {
-      top: ${({ menuOpen }) => (menuOpen ? `0` : `-10px`)};
-      opacity: ${({ menuOpen }) => (menuOpen ? `0` : `1`)};
+      top: ${({ menuOpen }) => (menuOpen ? '0' : '-10px')};
+      opacity: ${({ menuOpen }) => (menuOpen ? '0' : '1')};
     }
 
     &:after {
-      bottom: ${({ menuOpen }) => (menuOpen ? `0` : `-10px`)};
-      transform: ${({ menuOpen }) =>
-    menuOpen ? `rotate(-90deg)` : `rotate(0)`};
+      bottom: ${({ menuOpen }) => (menuOpen ? '0' : '-10px')};
+      transform: ${({ menuOpen }) => (menuOpen ? 'rotate(-90deg)' : 'rotate(0)')};
     }
+  }
+`;
+
+
+export const StyledThemeToggle = styled.button`
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
+  transform: ${({ menuOpen }) => (menuOpen ? 'translateY(0)' : 'translateY(-20px)')};
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')}; /* Disable interaction when menu is closed */
+
+  &:hover,
+  &:focus {
+    transform: translateY(-3px);
+    color: var(--green);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
   }
 `;
 
 export const StyleDropbar = styled.aside`
   @media (max-width: 768px) {
     position: fixed;
-    top: 10vh;
+    top: var(--nav-height); /* Respect the nav height */
     left: 0;
     width: 100%;
-    max-height: 90vh; /* Reduced a bit for better fitting */
-    overflow-y: auto; /* Allows the menu to scroll if it overflows */
+    height: calc(100vh - var(--nav-height)); /* Full height minus nav */
+    overflow-y: auto;
     background-color: var(--white);
     visibility: ${({ menuOpen }) => (menuOpen ? 'visible' : 'hidden')};
     opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
     transform: ${({ menuOpen }) =>
-    menuOpen ? `translateY(0)` : `translateY(-20px)`};
-    transition: all 0.4s ease;
+      menuOpen ? 'translateY(0)' : 'translateY(-100%)'};
+    transition: transform 0.7s ease, opacity 0.7s ease; /* Slower transition */
     z-index: 9;
     display: flex;
     flex-direction: column;
@@ -118,12 +151,6 @@ export const StyleDropbar = styled.aside`
       justify-content: center;
       align-items: center;
       flex-grow: 1;
-      animation: ${({ menuOpen }) =>
-    menuOpen
-      ? css`
-              ${fadeIn} 0.5s ease forwards
-            `
-      : 'none'};
 
       ol {
         list-style: none;
@@ -135,13 +162,17 @@ export const StyleDropbar = styled.aside`
         li {
           cursor: pointer;
           width: 100%;
+          opacity: 0;
+          transform: translateY(-30px);
+          transition: none; /* No transition until the menu is fully dropped */
+
           animation: ${({ menuOpen }) =>
-    menuOpen
-      ? css`
-                  ${slowSlideDown} 0.5s ease forwards;
-                  animation-delay: calc(0.1s * var(--i));
+            menuOpen
+              ? css`
+                  ${navLinksDropIn} 1.25s ease forwards;
+                  animation-delay: calc(0.1s * var(--i)); /* Delay for each item */
                 `
-      : 'none'};
+              : 'none'};
 
           button,
           a {
@@ -174,60 +205,7 @@ export const StyleDropbar = styled.aside`
       align-items: center;
       gap: 1.5rem;
       animation: ${fadeIn} 0.7s ease forwards;
-      margin-top: auto; /* Ensures this section stays at the bottom */
-
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        padding: 0 1rem;
-        opacity: 0;
-        animation: ${fadeInUp} 0.5s ease forwards 0.3s;
-
-        a {
-          svg {
-            color: var(--white);
-            width: 2rem;
-            height: 2rem;
-            transition: color 0.3s ease;
-
-            &:hover {
-              color: var(--green);
-            }
-          }
-        }
-      }
-
-      .resume-button {
-        ${({ theme }) => theme.mixins.bigButton};
-        padding: 0.75rem 1.5rem;
-        font-size: var(--fz-lg);
-        letter-spacing: 0.05em;
-        margin-top: 1rem;
-      }
-    }
-  }
-
-  @media (max-width: 375px) {
-    nav {
-      ol {
-        li {
-          button {
-            font-size: 1.125rem;
-          }
-        }
-      }
-    }
-  }
-
-    .social-section {
-      background-color: var(--midnight);
-      padding: 2rem 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      animation: ${fadeIn} 0.7s ease forwards;
+      margin-top: auto;
 
       .social-icons {
         display: flex;
@@ -277,6 +255,7 @@ export const StyleDropbar = styled.aside`
 const MenuStyles = {
   StyledMenu,
   StyledHamburgerButton,
+  StyledThemeToggle,
   StyleDropbar,
 };
 

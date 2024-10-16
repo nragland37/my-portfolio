@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const variables = css`
   :root {
     /* Default (Dark Mode) Colors */
-    --midnight: #0e1116; /* Original dark hex */
+    --midnight: #0e1116;
     --light-midnight: #1a1d24;
     --lightest-midnight: #282c33;
 
@@ -14,14 +14,14 @@ const variables = css`
     --dark-slate: #3e464f;
     --slate: #5e666e;
     --light-slate: #b5babc;
-    --lightest-slate: #ffffff; /* Light color for dark mode */
+    --lightest-slate: #ffffff;
 
     --contessa: #b46c6c;
     --light-contessa: #d0a4a4;
 
-    --white: #ffffff; /* Default white for text */
+    --white: #ffffff; /
     --offwhite: #ececec;
-    --black: #000000; /* Default black */
+    --black: #000000;
 
     --green: #17d4a9;
     --sand: #efcc94;
@@ -82,7 +82,7 @@ const variables = css`
 
   /* Light Mode Overrides */
   .light-mode {
-    --midnight: #ececec; /* Light mode background */
+    --midnight: #ececec;
     --light-midnight: #ececec;
     --lightest-midnight: #d4d6d7;
 
@@ -93,12 +93,12 @@ const variables = css`
     --dark-slate: #3e464f;
     --slate: #5e666e;
     --light-slate: #b5babc;
-    --lightest-slate: #282c33; /* Dark color for the lightest */
+    --lightest-slate: #282c33;
 
     --contessa: #f0d4d4;
     --light-contessa: #b46c6c;
 
-    --white: #000000; /* Inverted for light mode */
+    --white: #000000; 
     --offwhite: #1a1a1a;
     --black: #ffffff;
 
@@ -113,7 +113,7 @@ const variables = css`
     );
     --cursor-shadow: rgba(0, 0, 0, 0.3);
     --cursor-mouse-down: rgba(0, 0, 0, 0.5);
-    --cursor-trail: 0, 0, 0; /* Black trail for light mode */
+    --cursor-trail: 0, 0, 0; 
   }
 `;
 
