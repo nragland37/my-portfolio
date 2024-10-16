@@ -67,7 +67,7 @@ export const StyledHamburgerButton = styled.button`
     background-color: var(--white);
     transition: all 0.3s ease-in-out;
     transform: ${({ menuOpen }) =>
-      menuOpen ? `rotate(225deg)` : `rotate(0deg)`};
+    menuOpen ? `rotate(225deg)` : `rotate(0deg)`};
 
     &:before,
     &:after {
@@ -88,7 +88,7 @@ export const StyledHamburgerButton = styled.button`
     &:after {
       bottom: ${({ menuOpen }) => (menuOpen ? `0` : `-10px`)};
       transform: ${({ menuOpen }) =>
-        menuOpen ? `rotate(-90deg)` : `rotate(0)`};
+    menuOpen ? `rotate(-90deg)` : `rotate(0)`};
     }
   }
 `;
@@ -99,13 +99,13 @@ export const StyleDropbar = styled.aside`
     top: 10vh;
     left: 0;
     width: 100%;
-    height: 90vh;
-    overflow-y: auto; /* Enables scrolling when the content is too long */
+    max-height: 90vh; /* Reduced a bit for better fitting */
+    overflow-y: auto; /* Allows the menu to scroll if it overflows */
     background-color: var(--white);
     visibility: ${({ menuOpen }) => (menuOpen ? 'visible' : 'hidden')};
     opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
     transform: ${({ menuOpen }) =>
-      menuOpen ? `translateY(0)` : `translateY(-20px)`};
+    menuOpen ? `translateY(0)` : `translateY(-20px)`};
     transition: all 0.4s ease;
     z-index: 9;
     display: flex;
@@ -119,11 +119,11 @@ export const StyleDropbar = styled.aside`
       align-items: center;
       flex-grow: 1;
       animation: ${({ menuOpen }) =>
-        menuOpen
-          ? css`
+    menuOpen
+      ? css`
               ${fadeIn} 0.5s ease forwards
             `
-          : 'none'};
+      : 'none'};
 
       ol {
         list-style: none;
@@ -136,12 +136,12 @@ export const StyleDropbar = styled.aside`
           cursor: pointer;
           width: 100%;
           animation: ${({ menuOpen }) =>
-            menuOpen
-              ? css`
+    menuOpen
+      ? css`
                   ${slowSlideDown} 0.5s ease forwards;
                   animation-delay: calc(0.1s * var(--i));
                 `
-              : 'none'};
+      : 'none'};
 
           button,
           a {
@@ -154,9 +154,7 @@ export const StyleDropbar = styled.aside`
             color: var(--midnight);
             letter-spacing: 0.15em;
             text-align: center;
-            transition:
-              background-color 0.3s ease,
-              color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             text-decoration: none;
 
             &:hover {
@@ -167,6 +165,60 @@ export const StyleDropbar = styled.aside`
         }
       }
     }
+
+    .social-section {
+      background-color: var(--midnight);
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: ${fadeIn} 0.7s ease forwards;
+      margin-top: auto; /* Ensures this section stays at the bottom */
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        opacity: 0;
+        animation: ${fadeInUp} 0.5s ease forwards 0.3s;
+
+        a {
+          svg {
+            color: var(--white);
+            width: 2rem;
+            height: 2rem;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: var(--green);
+            }
+          }
+        }
+      }
+
+      .resume-button {
+        ${({ theme }) => theme.mixins.bigButton};
+        padding: 0.75rem 1.5rem;
+        font-size: var(--fz-lg);
+        letter-spacing: 0.05em;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 375px) {
+    nav {
+      ol {
+        li {
+          button {
+            font-size: 1.125rem;
+          }
+        }
+      }
+    }
+  }
 
     .social-section {
       background-color: var(--midnight);
