@@ -43,17 +43,24 @@ const StyledHeader = styled.header`
     padding: 0 25px;
   }
 
-  /* Scroll behavior is commented out to disable navbar animation on scroll */
+  /* Lighting effect when user scrolls down past the top */
+  ${(props) =>
+    !props.scrolledToTop &&
+    css`
+      background-color: var(--midnight); 
+      box-shadow: 0 10px 30px -10px var(--green);
+      height: var(--nav-scroll-height); 
+    `};
+
+  /* Scroll behavior is commented out to disable navbar disappearing on scroll */
   /*
   @media (prefers-reduced-motion: no-preference) {
     ${(props) =>
       props.scrollDirection === 'up' &&
-      !props.scrolledToTop && 
+      !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
-        transform: translateY(0px);
-        background-color: var(--midnight);
-        box-shadow: 0 10px 30px -10px var(--green);
+        transform: translateY(0px); /* Show navbar when scrolling up */
       `};
 
     ${(props) =>
@@ -61,8 +68,7 @@ const StyledHeader = styled.header`
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
-        transform: translateY(calc(var(--nav-scroll-height) * -1));
-        box-shadow: 0 10px 30px -10px var(--green);
+        transform: translateY(calc(var(--nav-scroll-height) * -1)); /* Hide navbar when scrolling down */
       `};
   }
   */
