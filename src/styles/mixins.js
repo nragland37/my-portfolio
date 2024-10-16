@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const button = css`
   color: var(--white);
-  background-color: transparent;
+  background-color: var(--midnight);
   border: 1px solid var(--sand);
   border-radius: var(--border-radius);
   font-size: var(--fz-xs);
@@ -17,7 +17,7 @@ const button = css`
     outline: none;
     box-shadow: 4px 4px 0 0 var(--sand);
     transform: translate(-5px, -5px);
-    background-color: var(--transparent);
+    background-color: var(--midnight);
   }
   &:after {
     display: none !important;
@@ -89,7 +89,7 @@ const mixins = {
 
   smallButton: css`
     color: var(--white);
-    background-color: transparent;
+    background-color: var(--midnight);
     border: 1px solid var(--sand);
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
@@ -104,7 +104,7 @@ const mixins = {
       outline: none;
       box-shadow: 3px 3px 0 0 var(--sand);
       transform: translate(-4px, -4px);
-      background-color: var(--transparent);
+      background-color: var(--midnight);
     }
     &:after {
       display: none !important;
@@ -112,8 +112,8 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--green);
-    background-color: transparent;
+    color: var(--white);
+    background-color: var(--midnight);
     border: 1px solid var(--green);
     border-radius: var(--border-radius);
     padding: 1.25rem 1.75rem;
@@ -128,7 +128,7 @@ const mixins = {
       outline: none;
       box-shadow: 4px 4px 0 0 var(--green);
       transform: translate(-5px, -5px);
-      background-color: var(--transparent);
+      background-color: var(--midnight);
     }
     &:after {
       display: none !important;
@@ -136,7 +136,7 @@ const mixins = {
   `,
 
   boxShadow: css`
-    box-shadow: 0 10px 30px -15px var(--black);
+    box-shadow: 0 10px 30px -15px var(--zeus);
     transition: var(--transition);
 
     &:hover,

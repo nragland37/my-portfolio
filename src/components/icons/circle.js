@@ -11,9 +11,9 @@ const IconCircle = () => (
     <circle
       cx="50"
       cy="50"
-      r="44"
+      r="46"
       stroke="currentColor"
-      strokeWidth="20"
+      strokeWidth="3"
       fill="none"
     />
   </svg>

@@ -35,11 +35,6 @@ const useScrollDirection = ({
         ticking = true;
       }
     };
-
-    /**
-     * Bind the scroll handler if `off` is set to false.
-     * If `off` is set to true reset the scroll direction.
-     */
     !off
       ? window.addEventListener('scroll', onScroll)
       : setScrollDir(initialDirection);

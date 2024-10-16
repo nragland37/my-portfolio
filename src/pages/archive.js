@@ -9,24 +9,45 @@ import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
+export const pageQuery = graphql`
+  {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      sort: { frontmatter: { date: DESC } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            date
+            title
+            tech
+            github
+            external
+            ios
+            android
+          }
+          html
+        }
+      }
+    }
+  }
+`;
+
 const StyledTableContainer = styled.div`
-  margin: 100px -20px;
+  margin: 80px 0;
 
   @media (max-width: 768px) {
-    margin: 50px -10px;
+    margin: 40px 0;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-
-    .hide-on-mobile {
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
+    font-size: var(--fz-md);
 
     tbody tr {
+      transition: background-color 0.3s ease;
+
       &:hover,
       &:focus {
         background-color: var(--light-zeus);
@@ -35,8 +56,11 @@ const StyledTableContainer = styled.div`
 
     th,
     td {
-      padding: 10px;
+      padding: 15px;
       text-align: left;
+      border-bottom: 1px solid var(--dark-slate);
+      vertical-align: middle;
+      color: var(--light-slate);
 
       &:first-child {
         padding-left: 20px;
@@ -54,27 +78,23 @@ const StyledTableContainer = styled.div`
       }
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
       }
     }
 
-    tr {
-      cursor: default;
-
-      td:first-child {
-        border-top-left-radius: var(--border-radius);
-        border-bottom-left-radius: var(--border-radius);
-      }
-      td:last-child {
-        border-top-right-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
-      }
+    th {
+      text-transform: uppercase;
+      font-size: var(--fz-sm);
+      font-weight: 600;
+      color: var(--green);
     }
 
     td {
       &.year {
-        padding-right: 20px;
+        padding-right: 15px;
+        font-weight: 500;
+        color: var(--lightest-slate);
 
         @media (max-width: 768px) {
           padding-right: 10px;
@@ -83,21 +103,14 @@ const StyledTableContainer = styled.div`
       }
 
       &.title {
-        padding-top: 15px;
-        padding-right: 20px;
-        color: var(--lightest-slate);
-        font-size: var(--fz-xl);
+        color: var(--white);
+        font-size: var(--fz-lg);
         font-weight: 600;
         line-height: 1.25;
       }
 
-      &.company {
-        font-size: var(--fz-lg);
-        white-space: nowrap;
-      }
-
       &.tech {
-        font-size: var(--fz-xxs);
+        font-size: var(--fz-sm);
         font-family: var(--font-mono);
         line-height: 1.5;
         .separator {
@@ -155,7 +168,7 @@ const ArchivePage = ({ location, data }) => {
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Archive</h1>
-          <p className="subtitle">A big list of things I’ve worked on</p>
+          <p className="subtitle">All the things I’ve worked on</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>
@@ -164,7 +177,6 @@ const ArchivePage = ({ location, data }) => {
               <tr>
                 <th>Year</th>
                 <th>Title</th>
-                <th className="hide-on-mobile">Made at</th>
                 <th className="hide-on-mobile">Built with</th>
                 <th>Link</th>
               </tr>
@@ -172,16 +184,8 @@ const ArchivePage = ({ location, data }) => {
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, ios, android, title, tech } =
+                    node.frontmatter;
                   return (
                     <tr key={i} ref={(el) => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(
@@ -189,10 +193,6 @@ const ArchivePage = ({ location, data }) => {
                       ).getFullYear()}`}</td>
 
                       <td className="title">{title}</td>
-
-                      <td className="company hide-on-mobile">
-                        {company ? <span>{company}</span> : <span>—</span>}
-                      </td>
 
                       <td className="tech hide-on-mobile">
                         {tech?.length > 0 &&
@@ -250,28 +250,3 @@ ArchivePage.propTypes = {
 };
 
 export default ArchivePage;
-
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { frontmatter: { date: DESC } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            date
-            title
-            tech
-            github
-            external
-            ios
-            android
-            company
-          }
-          html
-        }
-      }
-    }
-  }
-`;

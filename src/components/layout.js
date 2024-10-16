@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { Head, Nav, Social, Email, Footer } from '@components';
+import { Head, Nav, Options, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import { Analytics } from '@vercel/analytics/react';
-import CustomCursor from '../utils/CustomCursor';
-import StarBackground from '../utils/StarBackground';
+import { initCursor, toggleCursor } from '@utils/cursor';
+import { initTheme, toggleTheme } from '@utils/light';
+import StarBackground from '../styles/StarBackground';
+import CustomCursor from '../styles/CustomCursor';
 
 const StyledContent = styled.div`
   display: flex;
@@ -15,18 +17,30 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
+  const [cursorEnabled, setCursorEnabled] = useState(true); // State for cursor
+
+  useEffect(() => {
+    // Initialize theme and cursor on load
+    initTheme(); // Initialize the theme based on saved preference (dark or light)
+    initCursor(); // Initialize custom cursor
+  }, []);
 
   return (
     <>
       <Head />
       <div id="root">
         <StarBackground />
-        <CustomCursor />
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          {/* Conditionally render the custom cursor if enabled */}
+          {cursorEnabled && <CustomCursor />}
           <StyledContent>
             <Nav isHome={isHome} />
-            <Social isHome={isHome} />
+            <Options
+              isHome={isHome}
+              onToggleTheme={toggleTheme} // Toggle between dark and light themes
+              onToggleCursor={() => toggleCursor(setCursorEnabled)} // Pass the toggleCursor handler
+            />
             <Email isHome={isHome} />
             <div id="content">
               {children}

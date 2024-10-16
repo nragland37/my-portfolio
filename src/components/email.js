@@ -16,23 +16,23 @@ const StyledLinkWrapper = styled.div`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--light-slate);
+    background-color: var(--white);
   }
 
   button {
     margin: 20px auto;
     padding: 10px;
     font-family: var(--font-mono);
-    font-size: var(--fz-xxs);
+    font-size: var(--fz-sm);
     line-height: var(--fz-lg);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     writing-mode: vertical-rl;
     transition:
       transform 0.3s ease,
       color 0.3s ease;
     background: none;
     border: none;
-    color: var(--light-slate);
+    color: var(--white);
     cursor: pointer;
 
     &:hover,
@@ -51,7 +51,6 @@ const StyledLinkWrapper = styled.div`
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     color: var(--green);
-    background-color: var(--lightest-zeus);
     border-radius: var(--border-radius);
     box-shadow: 0 8px 20px -8px rgba(2, 12, 27, 0.7);
     opacity: 0.95;

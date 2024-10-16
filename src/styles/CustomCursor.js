@@ -9,7 +9,7 @@ const StyledCursor = styled.div`
   width: 25px;
   height: 25px;
   background-color: transparent;
-  border: 1.5px solid var(--white);
+  border: 1.5px solid var(--white); /* Use white for cursor border */
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -19,7 +19,7 @@ const StyledCursor = styled.div`
     position: absolute;
     width: 5px;
     height: 5px;
-    background-color: var(--white);
+    background-color: var(--white); /* Inner cursor dot color */
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -29,13 +29,9 @@ const StyledCursor = styled.div`
 
 const TrailSegment = styled.div`
   position: fixed;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0) 80%
-  );
+  width: 25px;
+  height: 25px;
+  background: var(--cursor); /* Use the cursor gradient */
   pointer-events: none;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -44,14 +40,15 @@ const TrailSegment = styled.div`
 
 const CustomCursor = () => {
   const [isMoving, setIsMoving] = useState(false);
-  const [isKeyPressed, setIsKeyPressed] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
   const trailRefs = useRef([]);
   const cursorRef = useRef(null);
-  const trailLength = 10;
+  const trailLength = 15; // Number of trail segments <<<<<<<<<< ATTENTION >>>>>>>>>>
   const mousePosition = useRef({ x: -100, y: -100 });
   const movementTimeout = useRef(null);
   const animationFrameId = useRef(null);
 
+  // Initialize trail segments
   useEffect(() => {
     const segments = Array(trailLength)
       .fill()
@@ -62,6 +59,7 @@ const CustomCursor = () => {
     };
   }, [trailLength]);
 
+  // Handle mouse movement
   useEffect(() => {
     const throttledMouseMove = throttle((e) => {
       const { clientX: x, clientY: y } = e;
@@ -91,28 +89,33 @@ const CustomCursor = () => {
     };
   }, [setIsMoving]);
 
+  // Handle mouse down
   const handleMouseDown = () => {
+    setIsMouseDown(true);
     gsap.to(cursorRef.current, {
       width: 50,
       height: 50,
-      borderColor: 'var(--green)',
-      boxShadow: '0 0 25px rgba(255, 255, 255, 0.5)',
+      borderColor: 'var(--green)', // Use green color when mouse is down
+      boxShadow: '0 0 25px var(--cursor-mouse-down)', // Apply shadow on mouse down
       duration: 0.2,
       ease: 'power2.out',
     });
   };
 
+  // Handle mouse up
   const handleMouseUp = () => {
+    setIsMouseDown(false);
     gsap.to(cursorRef.current, {
       width: 25,
       height: 25,
-      borderColor: 'var(--white)',
+      borderColor: 'var(--white)', // Return to white when mouse is up
       boxShadow: 'none',
       duration: 0.2,
       ease: 'power2.out',
     });
   };
 
+  // Update trail segments
   useEffect(() => {
     const updateTrail = () => {
       trailRefs.current.forEach((ref, index) => {
@@ -124,19 +127,20 @@ const CustomCursor = () => {
           y: mousePosition.current.y,
           duration: 0.3,
           delay,
-          opacity: isMoving || isKeyPressed ? 1 - index / trailLength : 0,
+          opacity: isMoving || isMouseDown ? 1 - index / trailLength : 0,
           ease: 'power2.out',
           scale: 1 + index / trailLength,
-          boxShadow: isMoving || isKeyPressed
-            ? `0 0 10px rgba(255, 255, 255, ${0.2 + index / trailLength})`
-            : 'none',
+          boxShadow:
+            isMoving || isMouseDown
+              ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
+              : 'none',
         });
       });
     };
 
     const animateTrail = () => {
       updateTrail();
-      if (isMoving || isKeyPressed) {
+      if (isMoving || isMouseDown) {
         animationFrameId.current = requestAnimationFrame(animateTrail);
       } else if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
@@ -145,21 +149,9 @@ const CustomCursor = () => {
 
     animateTrail();
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [isMoving, isKeyPressed]);
+  }, [isMoving, isMouseDown]);
 
-  useEffect(() => {
-    const handleKeyDown = () => setIsKeyPressed(true);
-    const handleKeyUp = () => setIsKeyPressed(false);
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, []);
-
+  // Event listeners for mouse down and up
   useEffect(() => {
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);

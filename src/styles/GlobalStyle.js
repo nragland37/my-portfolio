@@ -43,17 +43,17 @@ const GlobalStyle = createGlobalStyle`
   /* Scrollbar Styles */
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--slate) var(--light-zues);
+    scrollbar-color: var(--slate) var(--light-zeus);
   }
   ::-webkit-scrollbar {
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--light-zues);
+    background: var(--light-zeus);
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--slate);
-    border: 3px solid var(--light-zues);
+    border: 3px solid var(--light-zeus);
     border-radius: 10px;
   }
 
@@ -65,8 +65,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--zeus);
-    color: var(--lightest-slate);
+    background-color: var(--midnight);
+    color: var(--white);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
@@ -84,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
       overflow: hidden;
 
       header {
-        background-color: transparent;
+        background-color: var(--midnight);
       }
 
       #content > * {
@@ -295,7 +295,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     & > code {
-      background-color: var(--light-zues);
+      background-color: var(--light-zeus);
       color: var(--white);
       font-size: var(--fz-sm);
       border-radius: var(--border-radius);
@@ -338,7 +338,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background-color: var(--lightest-navy);
+    background-color: var(--light-zeus);
     height: 1px;
     border-width: 0px;
     margin: 1rem;
@@ -347,31 +347,6 @@ const GlobalStyle = createGlobalStyle`
   code {
     font-family: var(--font-mono);
     font-size: var(--fz-md);
-  }
-
-  .skip-to-content {
-    ${({ theme }) => theme.mixins.button};
-    position: absolute;
-    top: auto;
-    left: -999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: -99;
-
-    &:hover,
-    &:focus {
-      background-color: var(--zeus);
-      color: var(--green);
-      top: 0;
-      left: 0;
-      width: auto;
-      height: auto;
-      overflow: auto;
-      z-index: 99;
-      box-shadow: none;
-      transform: none;
-    }
   }
 
   #logo {
@@ -476,13 +451,13 @@ const GlobalStyle = createGlobalStyle`
   #stars2 {
     width: 2px;
     height: 2px;
-    animation: animStar 100s linear infinite;
+    animation: animStar 80s linear infinite;
   }
 
   #stars3 {
     width: 3px;
     height: 3px;
-    animation: animStar 150s linear infinite;
+    animation: animStar 100s linear infinite;
   }
 
   @keyframes animStar {
@@ -493,6 +468,15 @@ const GlobalStyle = createGlobalStyle`
       transform: translateY(-100vh); /* Move stars upwards */
     }
   }
+
+    /* Custom cursor visibility */
+    body.cursor-disabled {
+      cursor: default;
+    }
+
+    body.cursor-enabled {
+      cursor: none;
+    }
 
   ${TransitionStyles};
 

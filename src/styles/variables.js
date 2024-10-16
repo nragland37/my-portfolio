@@ -2,46 +2,39 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    /* Colors */
-    --dark-navy: #2b3140;
-    --navy: #4c5364;
-    --light-navy: #667183;
-    --lightest-navy: #7e8aa3;
-    --navy-shadow: rgba(76, 83, 100, 0.7);
+    /* Default (Dark Mode) Colors */
+    --midnight: #0e1116; /* Original dark hex */
+    --light-midnight: #1a1d24;
+    --lightest-midnight: #282c33;
 
-    --zeus: #171717;
-    --light-zeus: #2b2b2b;
+    --zeus: #1c1c1c;
+    --light-zeus: #2a2a2a;
     --lightest-zeus: #3c3c3c;
-    --dark-slate: #4e565f;
-    --slate: #6e767e;
-    --light-slate: #c5cacc;
-    --lightest-slate: #e4e6e7;
-    --white: #f0f4f5;
-    --white-shadow: rgba(240, 244, 245, 0.7);
 
-    --green: #1df8d7;
-    --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #f57dff;
-    --blue: #57cbff;
-    --yellow: #f5e491;
+    --dark-slate: #3e464f;
+    --slate: #5e666e;
+    --light-slate: #b5babc;
+    --lightest-slate: #ffffff; /* Light color for dark mode */
 
-    --contessa: #c46c6c;
-    --light-contessa: #e0a4a4;
-    --sand: #ffcc94;
-    --trout: #4c5464;
-    --gulf-stream: #78acb0;
-    --studio: #7854b4;
-    --falcon: #7c5464;
+    --contessa: #b46c6c;
+    --light-contessa: #d0a4a4;
 
-    --hint-of-red: #f6f4f3;
-    --santas-gray: #a3a3ac;
-    --mirage: #1c243c;
-    --manatee: #8e8d94;
-    --rolling-stone: #747c83;
-    --ebony-clay: #242443;
-    --gray-chateau: #a4acb2;
-    --black: #000;
-    --transparent-green: rgba(100, 255, 218, 0.1);
+    --white: #ffffff; /* Default white for text */
+    --offwhite: #ececec;
+    --black: #000000; /* Default black */
+
+    --green: #17d4a9;
+    --sand: #efcc94;
+
+    /* Cursor gradients */
+    --cursor: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    --cursor-shadow: rgba(255, 255, 255, 0.3);
+    --cursor-mouse-down: rgba(255, 255, 255, 0.5);
+    --cursor-trail: 255, 255, 255;
 
     /* Fonts */
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text',
@@ -62,8 +55,8 @@ const variables = css`
     --border-radius: 4px;
 
     /* Navigation */
-    --nav-height: 100px;
-    --nav-scroll-height: 70px;
+    --nav-height: 90px;
+    --nav-scroll-height: 90px;
 
     /* Tabs */
     --tab-height: 42px;
@@ -74,7 +67,7 @@ const variables = css`
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     /* Scrollbar */
-    --scrollbar-bg: var(--light-zeus);
+    --scrollbar-bg: var(--lightest-zeus);
     --scrollbar-thumb: var(--zeus);
 
     /* Hamburger */
@@ -85,6 +78,42 @@ const variables = css`
       transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     --ham-after-active: bottom 0.1s ease-out,
       transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+  }
+
+  /* Light Mode Overrides */
+  .light-mode {
+    --midnight: #ececec; /* Light mode background */
+    --light-midnight: #ececec;
+    --lightest-midnight: #d4d6d7;
+
+    --zeus: #ffffff;
+    --light-zeus: #f2f2f2;
+    --lightest-zeus: #e0e0e0;
+
+    --dark-slate: #3e464f;
+    --slate: #5e666e;
+    --light-slate: #b5babc;
+    --lightest-slate: #282c33; /* Dark color for the lightest */
+
+    --contessa: #f0d4d4;
+    --light-contessa: #b46c6c;
+
+    --white: #000000; /* Inverted for light mode */
+    --offwhite: #1a1a1a;
+    --black: #ffffff;
+
+    --green: #17d4a9;
+    --sand: #efcc94;
+
+    /* Cursor gradients */
+    --cursor: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0) 80%
+    );
+    --cursor-shadow: rgba(0, 0, 0, 0.3);
+    --cursor-mouse-down: rgba(0, 0, 0, 0.5);
+    --cursor-trail: 0, 0, 0; /* Black trail for light mode */
   }
 `;
 
