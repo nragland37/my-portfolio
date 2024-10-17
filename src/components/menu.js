@@ -9,30 +9,31 @@ const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } = M
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState('dark'); // Default to dark theme
 
+  // Disable body scroll when menu is open and restore when closed
   useEffect(() => {
-    const theme = localStorage.getItem('theme') || 'dark';
-    setCurrentTheme(theme);
-  }, []);
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling when menu opens
+    } else {
+      document.body.style.overflow = ''; // Restore scrolling when menu closes
+    }
+  }, [menuOpen]);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev); // Toggle the menuOpen state (open/close)
+  };
 
   const handleThemeToggle = () => {
-    toggleTheme();
-    const updatedTheme = localStorage.getItem('theme') || 'dark';
-    setCurrentTheme(updatedTheme);
+    toggleTheme(); // Toggle theme (dark/light mode)
   };
 
   return (
     <StyledMenu>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        {/* Theme toggle button */}
         <StyledThemeToggle menuOpen={menuOpen} onClick={handleThemeToggle} aria-label="Toggle theme">
           <IconLight />
         </StyledThemeToggle>
 
-        {/* Hamburger menu button */}
         <StyledHamburgerButton menuOpen={menuOpen} onClick={toggleMenu} aria-label="Menu" aria-expanded={menuOpen}>
           <div className="ham-box">
             <div className="ham-box-inner" />
@@ -40,7 +41,6 @@ const Menu = () => {
         </StyledHamburgerButton>
       </div>
 
-      {/* Dropdown menu */}
       <StyleDropbar menuOpen={menuOpen}>
         <nav>
           <ol>
@@ -54,7 +54,6 @@ const Menu = () => {
           </ol>
         </nav>
 
-        {/* Social links and resume button */}
         <div className="social-section">
           <div className="social-icons">
             {socialMedia.map(({ url, name }, i) => (

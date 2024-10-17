@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
-// Smooth slide down for the entire dropdown container (slower)
+// Smooth slide down for opening the dropdown
 export const smoothSlideDown = keyframes`
   0% {
     transform: translateY(-100%);
@@ -12,15 +12,27 @@ export const smoothSlideDown = keyframes`
   }
 `;
 
+// Smooth slide up for closing the dropdown
+export const smoothSlideUp = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+`;
+
 // Animation for nav links dropping into place after dropdown opens
 export const navLinksDropIn = keyframes`
   0% {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-30px); 
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); 
   }
 `;
 
@@ -55,7 +67,7 @@ export const StyledMenu = styled.div`
 export const StyledHamburgerButton = styled.button`
   ${({ theme }) => theme.mixins.flexCenter};
   position: relative;
-  z-index: 10;
+  z-index: 10; /* Higher z-index than the dropdown */
   padding: 0;
   border: 0;
   background-color: transparent;
@@ -75,7 +87,7 @@ export const StyledHamburgerButton = styled.button`
     right: 0;
     width: var(--hamburger-width);
     height: 2px;
-    background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')}; /* Green when open */
+    background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')};
     transition: all 0.3s ease-in-out;
     transform: ${({ menuOpen }) => (menuOpen ? 'rotate(225deg)' : 'rotate(0)')};
 
@@ -86,7 +98,7 @@ export const StyledHamburgerButton = styled.button`
       position: absolute;
       width: 100%;
       height: 2px;
-      background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')}; /* Green when open */
+      background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')};
       transition: all 0.3s ease-in-out;
     }
 
@@ -102,7 +114,6 @@ export const StyledHamburgerButton = styled.button`
   }
 `;
 
-
 export const StyledThemeToggle = styled.button`
   padding: 10px;
   background-color: transparent;
@@ -112,7 +123,7 @@ export const StyledThemeToggle = styled.button`
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
   transform: ${({ menuOpen }) => (menuOpen ? 'translateY(0)' : 'translateY(-20px)')};
   transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')}; /* Disable interaction when menu is closed */
+  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')}; /* Disable clicks when menu is closed */
 
   &:hover,
   &:focus {
@@ -129,22 +140,32 @@ export const StyledThemeToggle = styled.button`
 export const StyleDropbar = styled.aside`
   @media (max-width: 768px) {
     position: fixed;
-    top: var(--nav-height); /* Respect the nav height */
+    top: var(--nav-height);
     left: 0;
     width: 100%;
-    min-height: calc(100vh - var(--nav-height)); /* Ensure the dropdown takes full height */
+    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100dvh - var(--nav-height)); /* dynamic viewport height - mostly for iOS browsers / adjusts for the bottom safe area */
     overflow-y: auto;
     background-color: var(--white);
-    padding-bottom: env(safe-area-inset-bottom); /* Account for mobile safe area at the bottom */
-    visibility: ${({ menuOpen }) => (menuOpen ? 'visible' : 'hidden')};
-    opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
-    transform: ${({ menuOpen }) =>
-      menuOpen ? 'translateY(0)' : 'translateY(-100%)'};
-    transition: transform 0.7s ease, opacity 0.7s ease; /* Slower transition */
-    z-index: 9;
+    padding-bottom: env(safe-area-inset-bottom);
+    opacity: 0;
+    transform: translateY(-100%); /* Hide the dropdown by default */
+    z-index: 9; /* Lower z-index than the hamburger button */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    /* Disable pointer events when menu is closed */
+    pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
+
+    /* slide animation */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    ${({ menuOpen }) =>
+      menuOpen &&
+      css`
+        opacity: 1;
+        transform: translateY(0);
+      `}
 
     nav {
       display: flex;
@@ -165,13 +186,13 @@ export const StyleDropbar = styled.aside`
           width: 100%;
           opacity: 0;
           transform: translateY(-30px);
-          transition: none; /* No transition until the menu is fully dropped */
+          transition: none;
 
           animation: ${({ menuOpen }) =>
             menuOpen
               ? css`
-                  ${navLinksDropIn} 1.25s ease forwards;
-                  animation-delay: calc(0.1s * var(--i)); /* Delay for each item */
+                  ${navLinksDropIn} 0.8s ease forwards;
+                  animation-delay: calc(0.15s * var(--i));
                 `
               : 'none'};
 
@@ -207,7 +228,7 @@ export const StyleDropbar = styled.aside`
       gap: 1.5rem;
       animation: ${fadeIn} 0.7s ease forwards;
       margin-top: auto;
-      padding-bottom: env(safe-area-inset-bottom); /* Ensure the social section doesn't get hidden by mobile UI */
+      padding-bottom: env(safe-area-inset-bottom);
 
       .social-icons {
         display: flex;
@@ -222,7 +243,7 @@ export const StyleDropbar = styled.aside`
             color: var(--white);
             width: 2rem;
             height: 2rem;
-            transition: color 0.3s ease;
+            transition: color 0.5s ease;
 
             &:hover {
               color: var(--green);
@@ -237,7 +258,7 @@ export const StyleDropbar = styled.aside`
         font-size: var(--fz-lg);
         letter-spacing: 0.05em;
         margin-top: 1rem;
-        margin-bottom: 2rem; /* Add spacing below the resume button */
+        margin-bottom: 2rem;
       }
     }
   }

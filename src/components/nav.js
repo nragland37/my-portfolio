@@ -13,12 +13,12 @@ const { StyledHeader, StyledNav, StyledLinks, StyledSocial, StyledMenuButton } =
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
-  const scrollDirection = useScrollDirection('down'); // Custom hook to detect scroll direction
+  const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleScroll = () => {
-    setScrolledToTop(window.scrollY < 50); // Detect if user scrolled past 50px
+    setScrolledToTop(window.scrollY < 50);
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Nav = ({ isHome }) => {
       {isHome ? (
         <a href="/" aria-label="home">
           <div className="circle-container">
-            <IconCircle /> {/* Subtle circle */}
+            <IconCircle />
           </div>
           <div className="logo-container">
             <IconLogo />
@@ -64,7 +64,7 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  /*
+    /*
   const ResumeLink = (
     <StyledResumeButton
       href="/resume.pdf"
@@ -77,10 +77,7 @@ const Nav = ({ isHome }) => {
   */
 
   return (
-    <StyledHeader
-      scrollDirection={scrollDirection}
-      scrolledToTop={scrolledToTop}
-    >
+    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
         <TransitionGroup component={null}>
           {isMounted && (
@@ -94,17 +91,9 @@ const Nav = ({ isHome }) => {
           <ol>
             <TransitionGroup component={null}>
               {isMounted &&
-                navLinks &&
                 navLinks.map(({ url, name }, i) => (
-                  <CSSTransition
-                    key={i}
-                    classNames={fadeDownClass}
-                    timeout={timeout}
-                  >
-                    <li
-                      key={i}
-                      style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}
-                    >
+                  <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                    <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                       <Link to={url}>{name}</Link>
                     </li>
                   </CSSTransition>
@@ -116,25 +105,10 @@ const Nav = ({ isHome }) => {
         <StyledSocial>
           <TransitionGroup component={null}>
             {isMounted &&
-              socialMedia &&
               socialMedia.map(({ url, name }, i) => (
-                <CSSTransition
-                  key={i}
-                  classNames="social-icon"
-                  timeout={timeout}
-                >
-                  <li
-                    key={i}
-                    style={{
-                      transitionDelay: `${isHome ? i * 100 : 0}ms`,
-                    }}
-                  >
-                    <a
-                      href={url}
-                      aria-label={name}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                <CSSTransition key={i} classNames="social-icon" timeout={timeout}>
+                  <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                    <a href={url} aria-label={name} target="_blank" rel="noreferrer">
                       <Icon name={name} />
                     </a>
                   </li>
@@ -142,7 +116,7 @@ const Nav = ({ isHome }) => {
               ))}
           </TransitionGroup>
         </StyledSocial>
-
+        
         {/*
         <TransitionGroup component={null}>
           {isMounted && (
