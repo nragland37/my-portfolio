@@ -2,26 +2,14 @@ import styled, { css, keyframes } from 'styled-components';
 
 // Keyframes for animations
 const pulseAnimation = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 `;
 
 const fadeInAnimation = keyframes`
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.3); }
+  100% { opacity: 1; transform: scale(1); }
 `;
 
 const StyledHeader = styled.header`
@@ -47,9 +35,9 @@ const StyledHeader = styled.header`
   ${(props) =>
     !props.scrolledToTop &&
     css`
-      background-color: var(--midnight); 
+      background-color: var(--midnight);
       box-shadow: 0 10px 30px -10px var(--green);
-      height: var(--nav-scroll-height); 
+      height: var(--nav-scroll-height);
     `};
 
   /* Scroll behavior is commented out to disable navbar disappearing on scroll */
@@ -98,9 +86,7 @@ const StyledNav = styled.nav`
         left: 0;
         z-index: -1;
         transform: scale(0.5);
-        transition:
-          opacity 0.3s ease-in-out,
-          transform 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
         @media (prefers-reduced-motion: no-preference) {
           transition: var(--transition);
@@ -211,9 +197,7 @@ const StyledSocial = styled.ul`
   .social-icon-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition:
-      opacity 300ms ease-in-out,
-      transform 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
   }
 
   .social-icon-exit {
@@ -224,9 +208,7 @@ const StyledSocial = styled.ul`
   .social-icon-exit-active {
     opacity: 0;
     transform: translateX(50px); /* Exit to the right */
-    transition:
-      opacity 300ms ease-in-out,
-      transform 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
   }
 `;
 

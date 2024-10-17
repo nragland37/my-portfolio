@@ -20,7 +20,7 @@ const variables = css`
     --light-contessa: #d0a4a4;
 
     --white: #ffffff; /
-    --offwhite: #ececec;
+    --offwhite: #dfdbdd;
     --black: #000000;
 
     --green: #17d4a9;

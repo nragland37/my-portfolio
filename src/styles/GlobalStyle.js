@@ -360,7 +360,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-    .subtitle {
+  .subtitle {
     color: var(--sand);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
@@ -469,14 +469,14 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-    /* Custom cursor visibility */
-    body.cursor-disabled {
-      cursor: default;
-    }
+  /* Custom cursor visibility */
+  body.cursor-disabled {
+    cursor: default;
+  }
 
-    body.cursor-enabled {
-      cursor: none;
-    }
+  body.cursor-enabled {
+    cursor: none;
+  }
 
   ${TransitionStyles};
 

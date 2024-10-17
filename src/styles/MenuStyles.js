@@ -132,9 +132,10 @@ export const StyleDropbar = styled.aside`
     top: var(--nav-height); /* Respect the nav height */
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--nav-height)); /* Full height minus nav */
+    min-height: calc(100vh - var(--nav-height)); /* Ensure the dropdown takes full height */
     overflow-y: auto;
     background-color: var(--white);
+    padding-bottom: env(safe-area-inset-bottom); /* Account for mobile safe area at the bottom */
     visibility: ${({ menuOpen }) => (menuOpen ? 'visible' : 'hidden')};
     opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
     transform: ${({ menuOpen }) =>
@@ -206,6 +207,7 @@ export const StyleDropbar = styled.aside`
       gap: 1.5rem;
       animation: ${fadeIn} 0.7s ease forwards;
       margin-top: auto;
+      padding-bottom: env(safe-area-inset-bottom); /* Ensure the social section doesn't get hidden by mobile UI */
 
       .social-icons {
         display: flex;
@@ -235,6 +237,7 @@ export const StyleDropbar = styled.aside`
         font-size: var(--fz-lg);
         letter-spacing: 0.05em;
         margin-top: 1rem;
+        margin-bottom: 2rem; /* Add spacing below the resume button */
       }
     }
   }
