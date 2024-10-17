@@ -83,7 +83,7 @@ export const StyledHamburgerButton = styled.button`
   border: 0;
   background-color: transparent;
   color: var(--white);
-  animation: ${fadeInPosition} 0.5s ease-out; /* fade-in animation on load */
+  animation: ${fadeInPosition} 0.5s ease-out; 
   transition: all 0.3s ease-in-out;
 
   .ham-box {
@@ -156,6 +156,10 @@ export const StyledThemeToggle = styled.button`
 `;
 
 export const StyleDropbar = styled.aside`
+  visibility: hidden; /* Initially hidden to prevent unstyled content */
+  transform: translateY(-100%); /* Start from the hidden state vertically */
+  opacity: 0; /* Start fully transparent */
+
   @media (max-width: 768px) {
     position: fixed;
     top: var(--nav-height);
@@ -165,28 +169,24 @@ export const StyleDropbar = styled.aside`
     min-height: calc(
       100dvh - var(--nav-height)
     ); /* dynamic viewport height - mostly for iOS browsers / adjusts for the bottom safe area */
-    overflow-y: auto;
     background-color: var(--white);
-    padding-bottom: env(safe-area-inset-bottom);
-    opacity: 0;
-    transform: translateY(-100%); /* Hide the dropdown by default */
-    z-index: 9; /* Lower z-index than the hamburger button */
+    z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    /* Disable pointer events when menu is closed */
     pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
-    /* slide animation */
+    /* Properly transition between states */
     transition:
       opacity 0.5s ease,
       transform 0.5s ease;
+
     ${({ menuOpen }) =>
       menuOpen &&
       css`
-        opacity: 1;
-        transform: translateY(0);
+        visibility: visible; /* Become visible when the menu opens */
+        transform: translateY(0); /* Slide down from hidden state vertically */
+        opacity: 1; /* Fade in */
       `}
 
     nav {
@@ -207,7 +207,7 @@ export const StyleDropbar = styled.aside`
           cursor: pointer;
           width: 100%;
           opacity: 0;
-          transform: translateY(-30px);
+          transform: translateY(-30px); /* Move up initially */
           transition: none;
 
           animation: ${({ menuOpen }) =>

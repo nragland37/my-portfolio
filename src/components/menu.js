@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { navLinks, socialMedia } from '@config';
 import { Icon } from '@components/icons';
 import IconLight from '@components/icons/light';
-import { toggleTheme } from '@utils/light';
+import { toggleTheme } from '@utils/light'; // Correctly added back
 import MenuStyles from '@styles/MenuStyles';
 
 const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
@@ -11,12 +11,12 @@ const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Disable body scroll when menu is open and restore when closed
+  // Disable body scroll when the menu is open
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling when menu opens
+      document.body.style.overflow = 'hidden'; // Disable scrolling when menu is open
     } else {
-      document.body.style.overflow = ''; // Restore scrolling when menu closes
+      document.body.style.overflow = ''; // Restore scrolling when menu is closed
     }
   }, [menuOpen]);
 
@@ -33,7 +33,7 @@ const Menu = () => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <StyledThemeToggle
           menuOpen={menuOpen}
-          onClick={handleThemeToggle}
+          onClick={handleThemeToggle} // Re-enabled the theme toggle functionality
           aria-label="Toggle theme"
         >
           <IconLight />
@@ -58,8 +58,12 @@ const Menu = () => {
               <li key={i} style={{ '--i': i }}>
                 <a
                   href={url}
-                  onClick={() => setMenuOpen(false)}
-                  tabIndex={menuOpen ? 0 : -1}
+                  onClick={() =>
+                    setMenuOpen(false)
+                  } /* Close menu when link clicked */
+                  tabIndex={
+                    menuOpen ? 0 : -1
+                  } /* Disable focus when menu is closed */
                 >
                   {name}
                 </a>
