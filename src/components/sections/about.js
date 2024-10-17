@@ -135,7 +135,7 @@ const About = () => {
     {
       category: 'Programming Languages',
       details:
-        'Python, C++, R, SQL, JavaScript, TypeScript, GraphQL, HTML, CSS',
+        'Python, C++, R, SQL, JavaScript, TypeScript, HTML, CSS',
     },
     {
       category: (

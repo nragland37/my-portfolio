@@ -56,6 +56,17 @@ export const fadeIn = keyframes`
   }
 `;
 
+export const fadeInPosition = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-20px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
 export const StyledMenu = styled.div`
   display: none;
 
@@ -72,6 +83,7 @@ export const StyledHamburgerButton = styled.button`
   border: 0;
   background-color: transparent;
   color: var(--white);
+  animation: ${fadeInPosition} 0.5s ease-out; /* fade-in animation on load */
   transition: all 0.3s ease-in-out;
 
   .ham-box {
@@ -123,7 +135,7 @@ export const StyledThemeToggle = styled.button`
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
   transform: ${({ menuOpen }) => (menuOpen ? 'translateY(0)' : 'translateY(-20px)')};
   transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')}; /* Disable clicks when menu is closed */
+  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
   &:hover,
   &:focus {
