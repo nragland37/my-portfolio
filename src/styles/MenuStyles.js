@@ -99,7 +99,8 @@ export const StyledHamburgerButton = styled.button`
     right: 0;
     width: var(--hamburger-width);
     height: 2px;
-    background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')};
+    background-color: ${({ menuOpen }) =>
+      menuOpen ? 'var(--green)' : 'var(--white)'};
     transition: all 0.3s ease-in-out;
     transform: ${({ menuOpen }) => (menuOpen ? 'rotate(225deg)' : 'rotate(0)')};
 
@@ -110,7 +111,8 @@ export const StyledHamburgerButton = styled.button`
       position: absolute;
       width: 100%;
       height: 2px;
-      background-color: ${({ menuOpen }) => (menuOpen ? 'var(--green)' : 'var(--white)')};
+      background-color: ${({ menuOpen }) =>
+        menuOpen ? 'var(--green)' : 'var(--white)'};
       transition: all 0.3s ease-in-out;
     }
 
@@ -121,7 +123,8 @@ export const StyledHamburgerButton = styled.button`
 
     &:after {
       bottom: ${({ menuOpen }) => (menuOpen ? '0' : '-10px')};
-      transform: ${({ menuOpen }) => (menuOpen ? 'rotate(-90deg)' : 'rotate(0)')};
+      transform: ${({ menuOpen }) =>
+        menuOpen ? 'rotate(-90deg)' : 'rotate(0)'};
     }
   }
 `;
@@ -133,8 +136,11 @@ export const StyledThemeToggle = styled.button`
   color: var(--white);
   cursor: pointer;
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
-  transform: ${({ menuOpen }) => (menuOpen ? 'translateY(0)' : 'translateY(-20px)')};
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: ${({ menuOpen }) =>
+    menuOpen ? 'translateY(0)' : 'translateY(-20px)'};
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
   &:hover,
@@ -156,7 +162,9 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
-    min-height: calc(100dvh - var(--nav-height)); /* dynamic viewport height - mostly for iOS browsers / adjusts for the bottom safe area */
+    min-height: calc(
+      100dvh - var(--nav-height)
+    ); /* dynamic viewport height - mostly for iOS browsers / adjusts for the bottom safe area */
     overflow-y: auto;
     background-color: var(--white);
     padding-bottom: env(safe-area-inset-bottom);
@@ -171,7 +179,9 @@ export const StyleDropbar = styled.aside`
     pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
     /* slide animation */
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
     ${({ menuOpen }) =>
       menuOpen &&
       css`
@@ -219,7 +229,9 @@ export const StyleDropbar = styled.aside`
             color: var(--midnight);
             letter-spacing: 0.15em;
             text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition:
+              background-color 0.3s ease,
+              color 0.3s ease;
             text-decoration: none;
 
             &:hover {

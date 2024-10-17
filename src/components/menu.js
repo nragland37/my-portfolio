@@ -5,7 +5,8 @@ import IconLight from '@components/icons/light';
 import { toggleTheme } from '@utils/light';
 import MenuStyles from '@styles/MenuStyles';
 
-const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } = MenuStyles;
+const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
+  MenuStyles;
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,11 +31,20 @@ const Menu = () => {
   return (
     <StyledMenu>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <StyledThemeToggle menuOpen={menuOpen} onClick={handleThemeToggle} aria-label="Toggle theme">
+        <StyledThemeToggle
+          menuOpen={menuOpen}
+          onClick={handleThemeToggle}
+          aria-label="Toggle theme"
+        >
           <IconLight />
         </StyledThemeToggle>
 
-        <StyledHamburgerButton menuOpen={menuOpen} onClick={toggleMenu} aria-label="Menu" aria-expanded={menuOpen}>
+        <StyledHamburgerButton
+          menuOpen={menuOpen}
+          onClick={toggleMenu}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
           <div className="ham-box">
             <div className="ham-box-inner" />
           </div>
@@ -46,7 +56,11 @@ const Menu = () => {
           <ol>
             {navLinks.map(({ url, name }, i) => (
               <li key={i} style={{ '--i': i }}>
-                <a href={url} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
+                <a
+                  href={url}
+                  onClick={() => setMenuOpen(false)}
+                  tabIndex={menuOpen ? 0 : -1}
+                >
                   {name}
                 </a>
               </li>
@@ -57,12 +71,25 @@ const Menu = () => {
         <div className="social-section">
           <div className="social-icons">
             {socialMedia.map(({ url, name }, i) => (
-              <a key={i} href={url} aria-label={name} target="_blank" rel="noreferrer" tabIndex={menuOpen ? 0 : -1}>
+              <a
+                key={i}
+                href={url}
+                aria-label={name}
+                target="_blank"
+                rel="noreferrer"
+                tabIndex={menuOpen ? 0 : -1}
+              >
                 <Icon name={name} />
               </a>
             ))}
           </div>
-          <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer" tabIndex={menuOpen ? 0 : -1}>
+          <a
+            className="resume-button"
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={menuOpen ? 0 : -1}
+          >
             Resume
           </a>
         </div>

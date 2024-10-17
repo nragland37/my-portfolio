@@ -1,12 +1,12 @@
 import React from 'react';
 
-const IconLogo = () => (
+const IconLogo = ({ width = '1000px', height = '1000px' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     viewBox="0 0 1000 1000"
-    width="1000"
-    height="1000"
+    width={width}
+    height={height}
   >
     <title>Nicholas Ragland</title>
     <circle

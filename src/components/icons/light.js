@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconLight = () => (
+const IconLight = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -11,6 +11,7 @@ const IconLight = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-lightbulb"
+    {...props}
   >
     <title>Light Mode</title>
     <circle cx="12" cy="12" r="5" />

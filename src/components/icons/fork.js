@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconFork = () => (
+const IconFork = (props) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -9,6 +9,7 @@ const IconFork = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-git-branch"
+    {...props}
   >
     <title>Git Fork</title>
     <line x1="6" y1="3" x2="6" y2="15"></line>

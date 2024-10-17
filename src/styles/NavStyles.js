@@ -44,20 +44,22 @@ const StyledHeader = styled.header`
   /*
   @media (prefers-reduced-motion: no-preference) {
     ${(props) =>
-      props.scrollDirection === 'up' &&
-      !props.scrolledToTop &&
-      css`
-        height: var(--nav-scroll-height);
-        transform: translateY(0px); /* Show navbar when scrolling up */
-      `};
+    props.scrollDirection === 'up' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(0px); /* Show navbar when scrolling up */
+    `};
 
     ${(props) =>
-      props.scrollDirection === 'down' &&
-      !props.scrolledToTop &&
-      css`
-        height: var(--nav-scroll-height);
-        transform: translateY(calc(var(--nav-scroll-height) * -1)); /* Hide navbar when scrolling down */
-      `};
+    props.scrollDirection === 'down' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(
+        calc(var(--nav-scroll-height) * -1)
+      ); /* Hide navbar when scrolling down */
+    `};
   }
   */
 `;
@@ -86,7 +88,9 @@ const StyledNav = styled.nav`
         left: 0;
         z-index: -1;
         transform: scale(0.5);
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        transition:
+          opacity 0.3s ease-in-out,
+          transform 0.3s ease-in-out;
 
         @media (prefers-reduced-motion: no-preference) {
           transition: var(--transition);
@@ -197,7 +201,9 @@ const StyledSocial = styled.ul`
   .social-icon-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    transition:
+      opacity 300ms ease-in-out,
+      transform 300ms ease-in-out;
   }
 
   .social-icon-exit {
@@ -208,7 +214,9 @@ const StyledSocial = styled.ul`
   .social-icon-exit-active {
     opacity: 0;
     transform: translateX(50px); /* Exit to the right */
-    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    transition:
+      opacity 300ms ease-in-out,
+      transform 300ms ease-in-out;
   }
 `;
 

@@ -20,7 +20,6 @@ import {
   IconTwitter,
 } from '@components/icons';
 
-
 // O(1) lookup using object as a hash map for icon components
 const iconMap = {
   appstore: IconAppStore,
@@ -42,14 +41,27 @@ const iconMap = {
   twitter: IconTwitter,
 };
 
+// Default icon size to avoid flashing large icons
+const DEFAULT_SIZE = {
+  width: '24px', // Default width
+  height: '24px', // Default height
+};
+
 // Retrieves icon component by name, defaults to IconExternal if not found
-const Icon = ({ name }) => {
+const Icon = ({ name, width, height }) => {
   const IconComponent = iconMap[name.toLowerCase()] || IconExternal;
-  return <IconComponent />;
+  return (
+    <IconComponent
+      width={width || DEFAULT_SIZE.width}
+      height={height || DEFAULT_SIZE.height}
+    />
+  );
 };
 
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default Icon;
