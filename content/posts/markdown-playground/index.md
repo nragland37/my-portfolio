@@ -7,7 +7,10 @@ tags:
   - 'Testing'
 ---
 
-![Image Alt](./image.jpg)
+<div align='center'>
+  <iframe src="https://giphy.com/embed/2UuE8KjnWpJOpp3id2" width="640" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen>
+  </iframe>
+</div>
 
 ```jsx
 class FlavorForm extends React.Component { // highlight-line

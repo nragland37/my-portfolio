@@ -415,7 +415,6 @@ const GlobalStyle = createGlobalStyle`
     top: 50%;
     left: 0;
     right: 0;
-
     text-align: center;
     font-family: Lato;
     font-size: 2rem;

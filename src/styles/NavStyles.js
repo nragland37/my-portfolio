@@ -38,6 +38,28 @@ const StyledHeader = styled.header`
       box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
       height: var(--nav-scroll-height);
     `};
+    
+  /* Scroll behavior is commented out to disable navbar disappearing on scroll */
+  /*
+  @media (prefers-reduced-motion: no-preference) {
+    ${(props) =>
+    props.scrollDirection === 'up' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(0px); /* Show navbar when scrolling up */
+    `};
+    ${(props) =>
+    props.scrollDirection === 'down' &&
+    !props.scrolledToTop &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(
+        calc(var(--nav-scroll-height) * -1)
+      ); /* Hide navbar when scrolling down */
+    `};
+  }
+  */
 `;
 
 const StyledNav = styled.nav`
@@ -157,7 +179,7 @@ const StyledSocial = styled.ul`
       svg {
         width: 28px;
         height: 28px;
-        color: var(--social-icon-color);
+        /* color: var(--social-icon-color); */ 
       }
     }
   }
