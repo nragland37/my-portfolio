@@ -16,7 +16,7 @@ const StyledLinkWrapper = styled.div`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--white);
+    background-color: var(--email-text-color);
   }
 
   button {
@@ -32,13 +32,13 @@ const StyledLinkWrapper = styled.div`
       color 0.3s ease;
     background: none;
     border: none;
-    color: var(--white);
+    color: var(--email-text-color);
     cursor: pointer;
 
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: var(--green);
+      color: var(--email-hover-color);
     }
   }
 
@@ -50,9 +50,9 @@ const StyledLinkWrapper = styled.div`
     padding: 8px 12px;
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
-    color: var(--green);
+    color: var(--email-copied-message-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 8px 20px -8px rgba(2, 12, 27, 0.7);
+    box-shadow: 0 8px 20px -8px var(--email-copied-message-shadow);
     opacity: 0.95;
     transition:
       opacity 0.3s ease,

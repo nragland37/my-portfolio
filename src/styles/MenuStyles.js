@@ -78,12 +78,12 @@ export const StyledMenu = styled.div`
 export const StyledHamburgerButton = styled.button`
   ${({ theme }) => theme.mixins.flexCenter};
   position: relative;
-  z-index: 10; /* Higher z-index than the dropdown */
+  z-index: 10;
   padding: 0;
   border: 0;
   background-color: transparent;
-  color: var(--white);
-  animation: ${fadeInPosition} 0.5s ease-out; 
+  color: var(--hamburger-button-color);
+  animation: ${fadeInPosition} 0.5s ease-out;
   transition: all 0.3s ease-in-out;
 
   .ham-box {
@@ -100,7 +100,9 @@ export const StyledHamburgerButton = styled.button`
     width: var(--hamburger-width);
     height: 2px;
     background-color: ${({ menuOpen }) =>
-      menuOpen ? 'var(--green)' : 'var(--white)'};
+      menuOpen
+        ? 'var(--hamburger-active-color)'
+        : 'var(--hamburger-button-color)'};
     transition: all 0.3s ease-in-out;
     transform: ${({ menuOpen }) => (menuOpen ? 'rotate(225deg)' : 'rotate(0)')};
 
@@ -112,7 +114,9 @@ export const StyledHamburgerButton = styled.button`
       width: 100%;
       height: 2px;
       background-color: ${({ menuOpen }) =>
-        menuOpen ? 'var(--green)' : 'var(--white)'};
+        menuOpen
+          ? 'var(--hamburger-active-color)'
+          : 'var(--hamburger-button-color)'};
       transition: all 0.3s ease-in-out;
     }
 
@@ -133,7 +137,7 @@ export const StyledThemeToggle = styled.button`
   padding: 10px;
   background-color: transparent;
   border: none;
-  color: var(--white);
+  color: var(--menu-text-color);
   cursor: pointer;
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
   transform: ${({ menuOpen }) =>
@@ -146,7 +150,7 @@ export const StyledThemeToggle = styled.button`
   &:hover,
   &:focus {
     transform: translateY(-3px);
-    color: var(--green);
+    color: var(--menu-hover-text);
   }
 
   svg {
@@ -156,9 +160,9 @@ export const StyledThemeToggle = styled.button`
 `;
 
 export const StyleDropbar = styled.aside`
-  visibility: hidden; /* Initially hidden to prevent unstyled content */
-  transform: translateY(-100%); /* Start from the hidden state vertically */
-  opacity: 0; /* Start fully transparent */
+  visibility: hidden;
+  transform: translateY(-100%);
+  opacity: 0;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -166,17 +170,13 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
-    min-height: calc(
-      100dvh - var(--nav-height)
-    ); /* dynamic viewport height - mostly for iOS browsers / adjusts for the bottom safe area */
-    background-color: var(--white);
+    min-height: calc(100dvh - var(--nav-height));
+    background-color: var(--menu-background);
     z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
-
-    /* Properly transition between states */
     transition:
       opacity 0.5s ease,
       transform 0.5s ease;
@@ -184,9 +184,9 @@ export const StyleDropbar = styled.aside`
     ${({ menuOpen }) =>
       menuOpen &&
       css`
-        visibility: visible; /* Become visible when the menu opens */
-        transform: translateY(0); /* Slide down from hidden state vertically */
-        opacity: 1; /* Fade in */
+        visibility: visible;
+        transform: translateY(0);
+        opacity: 1;
       `}
 
     nav {
@@ -207,7 +207,7 @@ export const StyleDropbar = styled.aside`
           cursor: pointer;
           width: 100%;
           opacity: 0;
-          transform: translateY(-30px); /* Move up initially */
+          transform: translateY(-30px);
           transition: none;
 
           animation: ${({ menuOpen }) =>
@@ -224,9 +224,9 @@ export const StyleDropbar = styled.aside`
             font-size: 1.25rem;
             width: 100%;
             padding: 1.5rem 0;
-            background-color: var(--white);
+            background-color: var(--menu-background);
             border: none;
-            color: var(--midnight);
+            color: var(--menu-hover-background);
             letter-spacing: 0.15em;
             text-align: center;
             transition:
@@ -235,8 +235,8 @@ export const StyleDropbar = styled.aside`
             text-decoration: none;
 
             &:hover {
-              color: var(--green);
-              background-color: var(--midnight);
+              color: var(--menu-hover-text);
+              background-color: var(--menu-hover-background);
             }
           }
         }
@@ -244,7 +244,7 @@ export const StyleDropbar = styled.aside`
     }
 
     .social-section {
-      background-color: var(--midnight);
+      background-color: var(--social-section-background);
       padding: 2rem 0;
       display: flex;
       flex-direction: column;
@@ -264,13 +264,13 @@ export const StyleDropbar = styled.aside`
 
         a {
           svg {
-            color: var(--white);
+            color: var(--social-icon-color);
             width: 2rem;
             height: 2rem;
             transition: color 0.5s ease;
 
             &:hover {
-              color: var(--green);
+              color: var(--menu-hover-text);
             }
           }
         }

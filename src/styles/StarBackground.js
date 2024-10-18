@@ -5,7 +5,7 @@ const GenerateStars = (count) => {
   for (let i = 0; i < count; i++) {
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * document.documentElement.scrollHeight; // Full page height
-    stars += `${x}px ${y}px var(--white), `;
+    stars += `${x}px ${y}px var(bg-star-color), `;
   }
   // Remove the trailing comma/space at last iteration
   return stars.slice(0, -2);
@@ -18,8 +18,8 @@ const StarBackground = () => {
 
   // amount of stars to generate
   const populateStars = useCallback(() => {
-    setStars1(GenerateStars(1200)); // small
-    setStars2(GenerateStars(400)); // medium
+    setStars1(GenerateStars(500)); // small
+    setStars2(GenerateStars(300)); // medium
     setStars3(GenerateStars(100)); // large
   }, []);
 

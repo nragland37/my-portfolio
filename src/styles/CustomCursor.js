@@ -9,7 +9,7 @@ const StyledCursor = styled.div`
   width: 25px;
   height: 25px;
   background-color: transparent;
-  border: 1.5px solid var(--white); /* Use white for cursor border */
+  border: 1.5px solid var(--cursor-border); /* Outer cursor color */
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -19,7 +19,7 @@ const StyledCursor = styled.div`
     position: absolute;
     width: 5px;
     height: 5px;
-    background-color: var(--white); /* Inner cursor dot color */
+    background-color: var(--cursor-dot); /* Inner cursor dot color */
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -31,7 +31,7 @@ const TrailSegment = styled.div`
   position: fixed;
   width: 25px;
   height: 25px;
-  background: var(--cursor); /* Use the cursor gradient */
+  background: var(--cursor-background);
   pointer-events: none;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -43,7 +43,7 @@ const CustomCursor = () => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const trailRefs = useRef([]);
   const cursorRef = useRef(null);
-  const trailLength = 15; // Number of trail segments <<<<<<<<<< ATTENTION >>>>>>>>>>
+  const trailLength = 10; // Number of trail segments
   const mousePosition = useRef({ x: -100, y: -100 });
   const movementTimeout = useRef(null);
   const animationFrameId = useRef(null);
@@ -68,7 +68,7 @@ const CustomCursor = () => {
       gsap.to(cursorRef.current, {
         x,
         y,
-        duration: 0.8,
+        duration: 0.6, // speed of cursor movement
         ease: 'power2.out',
       });
 
@@ -95,8 +95,8 @@ const CustomCursor = () => {
     gsap.to(cursorRef.current, {
       width: 50,
       height: 50,
-      borderColor: 'var(--green)', // Use green color when mouse is down
-      boxShadow: '0 0 25px var(--cursor-mouse-down)', // Apply shadow on mouse down
+      borderColor: 'var(--cursor-mouse-down-border)', // Use green color when mouse is down
+      boxShadow: '0 0 25px var(--cursor-mouse-down-shadow)', // Apply shadow on mouse down
       duration: 0.2,
       ease: 'power2.out',
     });
@@ -108,7 +108,7 @@ const CustomCursor = () => {
     gsap.to(cursorRef.current, {
       width: 25,
       height: 25,
-      borderColor: 'var(--white)', // Return to white when mouse is up
+      borderColor: 'var(--cursor-border)', // Return to white when mouse is up
       boxShadow: 'none',
       duration: 0.2,
       ease: 'power2.out',
@@ -125,7 +125,7 @@ const CustomCursor = () => {
         gsap.to(segment, {
           x: mousePosition.current.x,
           y: mousePosition.current.y,
-          duration: 0.3,
+          duration: 0.4,
           delay,
           opacity: isMoving || isMouseDown ? 1 - index / trailLength : 0,
           ease: 'power2.out',

@@ -2,7 +2,7 @@
 title: 'markdown-playground'
 description: 'Markdown playground for testing'
 date: '2024-10-03'
-slug: '/pensieve/markdown-playground'
+slug: '/blog/markdown-playground'
 tags:
   - 'Testing'
 ---

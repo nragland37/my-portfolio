@@ -9,14 +9,22 @@ const StyledSideElement = styled.div`
   width: 40px;
   position: fixed;
   bottom: 0;
-  left: ${(props) => (props.orientation === 'left' ? '5%' : 'auto')};
-  right: ${(props) => (props.orientation === 'left' ? 'auto' : '5%')};
+  left: ${(props) =>
+    props.orientation === 'left' ? 'var(--side-element-left-margin)' : 'auto'};
+  right: ${(props) =>
+    props.orientation === 'left' ? 'auto' : 'var(--side-element-right-margin)'};
   z-index: 10;
-  color: var(--white);
+  color: var(--side-color);
 
   @media (max-width: 1080px) {
-    left: ${(props) => (props.orientation === 'left' ? '20px' : 'auto')};
-    right: ${(props) => (props.orientation === 'left' ? 'auto' : '20px')};
+    left: ${(props) =>
+      props.orientation === 'left'
+        ? 'var(--side-element-left-margin-mobile)'
+        : 'auto'};
+    right: ${(props) =>
+      props.orientation === 'left'
+        ? 'auto'
+        : 'var(--side-element-right-margin-mobile)'};
   }
 
   @media (max-width: 768px) {

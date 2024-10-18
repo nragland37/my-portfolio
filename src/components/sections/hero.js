@@ -17,9 +17,19 @@ const StyledHeroSection = styled.section`
     padding-top: var(--nav-height);
   }
 
+  h1 {
+    color: var(--hero-h1-title);
+  }
+
+  h2 {
+    margin-top: 5px;
+    color: var(--hero-h2-title);
+    line-height: 0.9;
+  }
+
   h3 {
     margin: 0 0 30px 4px;
-    color: var(--green);
+    color: var(--hero-h3-title);
     font-family: var(--font-mono);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
@@ -29,18 +39,12 @@ const StyledHeroSection = styled.section`
     }
   }
 
-  h2 {
-    margin-top: 5px;
-    color: var(--slate);
-    line-height: 0.9;
-  }
-
   p {
     margin: 20px 0 0;
     max-width: 540px;
   }
 
-  .email-link {
+  .link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
@@ -72,7 +76,7 @@ const Hero = () => {
   );
   const five = (
     <a
-      className="email-link"
+      className="link"
       href="https://www.linkedin.com/in/nragland37/"
       target="_blank"
       rel="noreferrer"

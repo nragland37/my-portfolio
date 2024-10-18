@@ -40,7 +40,7 @@ const StyledText = styled.div`
         content: '▹';
         position: absolute;
         left: 0;
-        color: var(--green);
+        color: var(--about-skill-bullet);
         font-size: var(--fz-lg);
         line-height: 12px;
       }
@@ -63,7 +63,7 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--white);
+    background-color: var(--about-wrapper-bg);
 
     &:hover,
     &:focus {
@@ -102,12 +102,12 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--sand);
+      background-color: var(--about-blend-overlay);
       mix-blend-mode: screen;
     }
 
     &:after {
-      border: 2px solid var(--sand);
+      border: 2px solid var(--about-border);
       top: 14px;
       left: 14px;
       z-index: -1;
@@ -119,7 +119,7 @@ const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const Category = styled.strong`
-    color: var(--green);
+    color: var(--about-category-text);
     font-weight: bold;
   `;
 

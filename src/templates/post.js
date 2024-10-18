@@ -40,8 +40,8 @@ const StyledPostContent = styled.div`
   }
 
   code {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: var(--midnight);
+    color: var(--white);
     border-radius: var(--border-radius);
     font-size: var(--fz-sm);
     padding: 0.2em 0.4em;
@@ -62,7 +62,7 @@ const PostTemplate = ({ data, location }) => {
             Sorry, the post you're looking for doesn't exist or has been
             removed.
           </p>
-          <Link to="/pensieve">Go back to all posts</Link>
+          <Link to="/blog">Go back to all posts</Link>
         </StyledPostContainer>
       </Layout>
     );
@@ -81,7 +81,7 @@ const PostTemplate = ({ data, location }) => {
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link to="/pensieve">All memories</Link>
+          <Link to="/blog">All memories</Link>
         </span>
 
         <StyledPostHeader>
@@ -100,7 +100,7 @@ const PostTemplate = ({ data, location }) => {
               tags.map((tag, i) => (
                 <Link
                   key={i}
-                  to={`/pensieve/tags/${kebabCase(tag)}/`}
+                  to={`/blog/tags/${kebabCase(tag)}/`}
                   className="tag"
                 >
                   #{tag}
@@ -121,7 +121,7 @@ PostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query ($path: String!) {
+  query PostBySlug($path: String!) {
     markdownRemark(frontmatter: { slug: { eq: $path } }) {
       html
       frontmatter {

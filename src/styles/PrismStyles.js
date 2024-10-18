@@ -1,28 +1,22 @@
 import { css } from 'styled-components';
 
+// Using the current color palette
 const prismColors = {
-  bg: `#112340`,
-  lineHighlight: `#1d2d50`,
-  blue: `#5ccfe6`,
-  purple: `#c3a6ff`,
-  green: `#bae67e`,
-  yellow: `#ffd580`,
-  orange: `#ffae57`,
-  red: `#ef6b73`,
-  grey: `#a2aabc`,
-  comment: `#8695b799`,
+  bg: `var(--midnight)`, // Background for code blocks
+  lineHighlight: `var(--light-midnight)`, // Background for highlighted lines
+  green: `var(--green)`, // Green for important code
+  contessa: `var(--contessa)`, // Contessa for functions, errors, and deletions
+  lightContessa: `var(--light-contessa)`, // Light Contessa for operators, attributes, etc.
+  sand: `var(--sand)`, // Sand for constants, numbers, and more
+  slate: `var(--slate)`, // Slate for punctuation
+  lightSlate: `var(--light-slate)`, // Light Slate for comments
 };
 
-// https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
-
 const PrismStyles = css`
-  /**
-  * Add back the container background-color, border-radius, padding, margin
-  * and overflow that we removed from <pre>.
-  */
+  /* General styles for code blocks */
   .gatsby-highlight {
     background-color: ${prismColors.bg};
-    color: ${prismColors.grey};
+    color: ${prismColors.slate};
     border-radius: var(--border-radius);
     margin: 2em 0;
     padding: 1.25em;
@@ -45,20 +39,14 @@ const PrismStyles = css`
     hyphens: none;
   }
 
-  /**
-  * Remove the default PrismJS theme background-color, border-radius, margin,
-  * padding and overflow.
-  * 1. Make the element just wide enough to fit its content.
-  * 2. Always fill the visible space in .gatsby-highlight.
-  * 3. Adjust the position of the line numbers
-  */
+  /* Remove default PrismJS styles and adjust for gatsby-highlight */
   .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
     padding: 0;
     overflow: initial;
-    float: left; /* 1 */
-    min-width: 100%; /* 2 */
+    float: left;
+    min-width: 100%;
     padding-top: 2em;
   }
 
@@ -68,7 +56,7 @@ const PrismStyles = css`
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     background-color: ${prismColors.bg};
-    color: ${prismColors.grey};
+    color: ${prismColors.slate};
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     border-bottom: 1px solid ${prismColors.lineHighlight};
@@ -84,7 +72,7 @@ const PrismStyles = css`
   .gatsby-highlight-code-line {
     display: block;
     background-color: ${prismColors.lineHighlight};
-    border-left: 2px solid var(--green);
+    border-left: 2px solid ${prismColors.green};
     padding-left: calc(1em + 2px);
     padding-right: 1em;
     margin-right: -1.35em;
@@ -93,7 +81,7 @@ const PrismStyles = css`
 
   /* Language badges */
   .gatsby-highlight pre[class*='language-']::before {
-    background: var(--lightest-navy);
+    background: var(--light-midnight);
     color: var(--white);
     font-size: var(--fz-xxs);
     font-family: var(--font-mono);
@@ -106,92 +94,46 @@ const PrismStyles = css`
     left: 1.25rem;
     padding: 0.25rem 0.5rem;
   }
-  .gatsby-highlight pre[class='language-javascript']::before {
-    content: 'js';
-  }
-  .gatsby-highlight pre[class='language-js']::before {
-    content: 'js';
-  }
-  .gatsby-highlight pre[class='language-jsx']::before {
-    content: 'jsx';
-  }
-  .gatsby-highlight pre[class='language-graphql']::before {
-    content: 'GraphQL';
-  }
-  .gatsby-highlight pre[class='language-html']::before {
-    content: 'html';
-  }
-  .gatsby-highlight pre[class='language-css']::before {
-    content: 'css';
-  }
-  .gatsby-highlight pre[class='language-mdx']::before {
-    content: 'mdx';
-  }
-  .gatsby-highlight pre[class='language-shell']::before {
-    content: 'shell';
-  }
-  .gatsby-highlight pre[class='language-sh']::before {
-    content: 'sh';
-  }
-  .gatsby-highlight pre[class='language-bash']::before {
-    content: 'bash';
-  }
-  .gatsby-highlight pre[class='language-yaml']::before {
-    content: 'yaml';
-  }
-  .gatsby-highlight pre[class='language-markdown']::before {
-    content: 'md';
-  }
-  .gatsby-highlight pre[class='language-json']::before,
-  .gatsby-highlight pre[class='language-json5']::before {
-    content: 'json';
-  }
-  .gatsby-highlight pre[class='language-diff']::before {
-    content: 'diff';
-  }
-  .gatsby-highlight pre[class='language-text']::before {
-    content: 'text';
-  }
-  .gatsby-highlight pre[class='language-flow']::before {
-    content: 'flow';
-  }
 
-  /* Prism Styles */
-  .token {
-    display: inline;
-  }
+  /* Prism token styles */
   .token.comment,
   .token.block-comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${prismColors.comment};
+    color: ${prismColors.lightSlate}; /* Comments */
   }
+
   .token.punctuation {
-    color: ${prismColors.grey};
+    color: ${prismColors.slate}; /* Punctuation */
   }
+
   .token.namespace,
   .token.deleted {
-    color: ${prismColors.red};
+    color: ${prismColors.contessa}; /* Deleted code or errors */
   }
+
   .token.function-name,
   .token.function,
   .token.class-name,
   .token.constant,
   .token.symbol {
-    color: ${prismColors.yellow};
+    color: ${prismColors.sand}; /* Constants, symbols */
   }
+
   .token.attr-name,
   .token.operator,
   .token.rule {
-    color: ${prismColors.orange};
+    color: ${prismColors.lightContessa}; /* Operators, attributes */
   }
+
   .token.keyword,
   .token.boolean,
   .token.number,
   .token.property {
-    color: ${prismColors.purple};
+    color: ${prismColors.sand}; /* Keywords, numbers */
   }
+
   .token.tag,
   .token.selector,
   .token.important,
@@ -199,26 +141,31 @@ const PrismStyles = css`
   .token.builtin,
   .token.entity,
   .token.url {
-    color: ${prismColors.blue};
+    color: ${prismColors.green}; /* Tags, URLs, built-in properties */
   }
+
   .token.string,
   .token.char,
   .token.attr-value,
   .token.regex,
   .token.variable,
   .token.inserted {
-    color: ${prismColors.green};
+    color: ${prismColors.green}; /* Strings, variables */
   }
+
   .token.important,
   .token.bold {
     font-weight: 600;
   }
+
   .token.italic {
     font-style: italic;
   }
+
   .token.entity {
     cursor: help;
   }
+
   .namespace {
     opacity: 0.7;
   }

@@ -48,16 +48,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage({
       path: node.frontmatter.slug,
       component: postTemplate,
-      context: {},
+      context: {
+        path: node.frontmatter.slug, // Ensure the path is passed here
+      },
     });
   });
 
   // Extract tag data from query
   const tags = result.data.tagsGroup.group;
+
   // Make tag pages
   tags.forEach((tag) => {
     createPage({
-      path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,

@@ -20,7 +20,7 @@ const StyledSocialLinks = styled.div`
     width: 100%;
     max-width: 270px;
     margin: 0 auto 10px;
-    color: var(--white);
+    color: var(--footer-social-link-color);
   }
 
   ul {
@@ -40,7 +40,7 @@ const StyledSocialLinks = styled.div`
 `;
 
 const StyledCredit = styled.div`
-  color: var(--white);
+  color: var(--footer-text-color);
   font-family: var(--font-mono);
   font-size: var(--fz-xxs);
   line-height: 1;
@@ -67,36 +67,6 @@ const StyledCredit = styled.div`
 `;
 
 const Footer = () => {
-  /*
-  const [githubInfo, setGitHubInfo] = useState({
-    stars: null,
-    forks: null,
-    isLoading: true,
-  });
-
-  // Fetch GitHub api data
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      return;
-    }
-    fetch('https://api.github.com/repos/nragland37/my-portfolio')
-      .then((response) => response.json())
-      .then((json) => {
-        const { stargazers_count, forks_count } = json;
-        setGitHubInfo({
-          stars: stargazers_count,
-          forks: forks_count,
-          isLoading: false,
-        });
-      })
-      .catch((e) => {
-        console.error(e);
-        // stop loading to prevent continuous requests
-        setGitHubInfo({ isLoading: false });
-      });
-  }, []);
-  */
-
   return (
     <StyledFooter>
       <StyledSocialLinks>
@@ -112,27 +82,9 @@ const Footer = () => {
         </ul>
       </StyledSocialLinks>
 
-      <StyledCredit tabindex="-1">
+      <StyledCredit tabIndex="-1">
         <a href="https://github.com/nragland37/my-portfolio">
           <div>© 2024 Nicholas Ragland</div>
-
-          {/* null checks for no data, not the number 0 
-          (which would be falsy and not render the component) */}
-          {/*
-          {!githubInfo.isLoading &&
-            githubInfo.stars !== null &&
-            githubInfo.forks !== null && (
-              <div className="github-stats">
-                <span>
-                  <Icon name="Star" />
-                  <span>{githubInfo.stars.toLocaleString()}</span>
-                </span>
-                <span>
-                  <Icon name="Fork" />
-                  <span>{githubInfo.forks.toLocaleString()}</span>
-                </span>
-              </div>
-            )} */}
         </a>
       </StyledCredit>
     </StyledFooter>

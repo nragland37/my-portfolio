@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
   padding: 0px 65px;
   width: 100%;
   height: var(--nav-height);
-  background-color: var(--midnight);
+  background-color: var(--nav-background);
   backdrop-filter: blur(5px);
   transition: var(--transition);
 
@@ -31,37 +31,13 @@ const StyledHeader = styled.header`
     padding: 0 25px;
   }
 
-  /* Lighting effect when user scrolls down past the top */
   ${(props) =>
     !props.scrolledToTop &&
     css`
-      background-color: var(--midnight);
-      box-shadow: 0 10px 30px -10px var(--green);
+      background-color: var(--nav-background);
+      box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
       height: var(--nav-scroll-height);
     `};
-
-  /* Scroll behavior is commented out to disable navbar disappearing on scroll */
-  /*
-  @media (prefers-reduced-motion: no-preference) {
-    ${(props) =>
-    props.scrollDirection === 'up' &&
-    !props.scrolledToTop &&
-    css`
-      height: var(--nav-scroll-height);
-      transform: translateY(0px); /* Show navbar when scrolling up */
-    `};
-
-    ${(props) =>
-    props.scrollDirection === 'down' &&
-    !props.scrolledToTop &&
-    css`
-      height: var(--nav-scroll-height);
-      transform: translateY(
-        calc(var(--nav-scroll-height) * -1)
-      ); /* Hide navbar when scrolling down */
-    `};
-  }
-  */
 `;
 
 const StyledNav = styled.nav`
@@ -69,14 +45,14 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  color: var(--green);
+  color: var(--nav-link-color);
   font-family: var(--font-mono);
   z-index: 12;
 
   .logo {
     ${({ theme }) => theme.mixins.flexCenter};
     a {
-      color: var(--white);
+      color: var(--nav-logo-color);
       width: 75px;
       height: 75px;
       position: relative;
@@ -111,7 +87,7 @@ const StyledNav = styled.nav`
             transition: var(--transition);
           }
           circle {
-            fill: var(--midnight);
+            fill: var(--nav-logo-background);
           }
         }
       }
@@ -127,7 +103,7 @@ const StyledNav = styled.nav`
           animation: ${pulseAnimation} 1.5s ease-in-out infinite;
           svg {
             transition: fill 0.3s ease;
-            fill: var(--white);
+            fill: var(--nav-hover-logo-fill);
           }
         }
       }
@@ -181,6 +157,7 @@ const StyledSocial = styled.ul`
       svg {
         width: 28px;
         height: 28px;
+        color: var(--social-icon-color);
       }
     }
   }
@@ -195,7 +172,7 @@ const StyledSocial = styled.ul`
 
   .social-icon-enter {
     opacity: 0;
-    transform: translateX(50px); /* Start from the right */
+    transform: translateX(50px);
   }
 
   .social-icon-enter-active {
@@ -213,7 +190,7 @@ const StyledSocial = styled.ul`
 
   .social-icon-exit-active {
     opacity: 0;
-    transform: translateX(50px); /* Exit to the right */
+    transform: translateX(50px);
     transition:
       opacity 300ms ease-in-out,
       transform 300ms ease-in-out;

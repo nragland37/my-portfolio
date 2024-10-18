@@ -19,7 +19,7 @@ const StyledOptionsList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--white);
+    background-color: var(--options-border-color);
   }
 
   li {
@@ -34,13 +34,13 @@ const StyledOptionsList = styled.ul`
         color 0.3s ease;
       background: none;
       border: none;
-      color: var(--white);
+      color: var(--options-icon-color);
       cursor: pointer;
 
       &:hover,
       &:focus {
         transform: translateY(-3px);
-        color: var(--green);
+        color: var(--options-icon-hover-color);
       }
 
       svg {

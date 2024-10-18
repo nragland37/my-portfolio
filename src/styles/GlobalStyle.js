@@ -6,7 +6,7 @@ import PrismStyles from './PrismStyles';
 
 const GlobalStyle = createGlobalStyle`
   ${fonts};
-  ${variables};
+  ${variables}; 
 
   html {
     box-sizing: border-box;
@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--highlight-bg);
+    color: var(--highlight-text);
   }
 
   :focus {
@@ -43,18 +43,21 @@ const GlobalStyle = createGlobalStyle`
   /* Scrollbar Styles */
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--slate) var(--light-zeus);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
   }
   ::-webkit-scrollbar {
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--light-zeus);
+    background: var(--scrollbar-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--slate);
-    border: 3px solid var(--light-zeus);
-    border-radius: 10px;
+    background-color: var(--scrollbar-thumb);
+    border: 3px solid var(--scrollbar-border);
+    border-radius: var(--scrollbar-border-radius);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
   }
 
   /* Body Styles */
@@ -65,8 +68,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--midnight);
-    color: var(--white);
+    background-color: var(--bg);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
@@ -84,7 +87,7 @@ const GlobalStyle = createGlobalStyle`
       overflow: hidden;
 
       header {
-        background-color: var(--midnight);
+        background-color: var(--bg-header);
       }
 
       #content > * {
@@ -157,7 +160,7 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: var(--lightest-slate);
+    color: var(--text-primary);
     line-height: 1.1;
   }
 
@@ -186,7 +189,7 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: var(--sand);
+      color: var(--section-number);
       font-family: var(--font-mono);
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
@@ -205,7 +208,7 @@ const GlobalStyle = createGlobalStyle`
       width: 300px;
       height: 1px;
       margin-left: 20px;
-      background-color: var(--slate);
+      background-color: var(--section-accent);
 
       @media (max-width: 1080px) {
         width: 200px;
@@ -247,13 +250,13 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
-    color: var(--white);
+    color: var(--section-title);
     position: relative;
     transition: var(--transition);
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: var(--section-title-hover);
     }
 
     &.inline-link {
@@ -295,8 +298,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     & > code {
-      background-color: var(--light-zeus);
-      color: var(--white);
+      background-color: var(--bg-code);
+      color: var(--code);
       font-size: var(--fz-sm);
       border-radius: var(--border-radius);
       padding: 0.3em 0.5em;
@@ -317,14 +320,14 @@ const GlobalStyle = createGlobalStyle`
           content: '▹';
           position: absolute;
           left: 0;
-          color: var(--sand);
+          color: var(--global-fancy-list);
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: var(--sand);
+    border-left-color: var(--blockquote-border);
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -338,7 +341,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background-color: var(--light-zeus);
+    background-color: var(--bg-hr);
     height: 1px;
     border-width: 0px;
     margin: 1rem;
@@ -350,18 +353,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #logo {
-    color: var(--white);
+    color: var(--logo);
   }
 
   .overline {
-    color: var(--sand);
+    color: var(--overline);
     font-family: var(--font-mono);
     font-size: var(--fz-md);
     font-weight: 400;
   }
 
   .subtitle {
-    color: var(--sand);
+    color: var(--subtitle);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
     font-family: var(--font-mono);
@@ -384,7 +387,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: var(--sand);
+    color: var(--breadcrumb);
 
     .arrow {
       display: block;
@@ -412,7 +415,7 @@ const GlobalStyle = createGlobalStyle`
     top: 50%;
     left: 0;
     right: 0;
-    color: #fff;
+
     text-align: center;
     font-family: Lato;
     font-size: 2rem;
@@ -431,6 +434,7 @@ const GlobalStyle = createGlobalStyle`
   /* Parallax Stars Styles */
   #stars1, #stars2, #stars3 {
     position: absolute;
+    border-radius: 50%;
     top: 0;
     left: 0;
     right: 0;
@@ -443,21 +447,21 @@ const GlobalStyle = createGlobalStyle`
 
 
   #stars1 {
-    width: 1px;
-    height: 1px;
-    animation: animStar 50s linear infinite;
+    width: var(--star1-size);
+    height: var(--star1-size);
+    animation: animStar var(--star1-speed) linear infinite;
   }
 
   #stars2 {
-    width: 2px;
-    height: 2px;
-    animation: animStar 80s linear infinite;
+    width: var(--star2-size);
+    height: var(--star2-size);
+    animation: animStar var(--star2-speed) linear infinite;
   }
 
   #stars3 {
-    width: 3px;
-    height: 3px;
-    animation: animStar 100s linear infinite;
+    width: var(--star3-size);
+    height: var(--star3-size);
+    animation: animStar var(--star3-speed) linear infinite;
   }
 
   @keyframes animStar {

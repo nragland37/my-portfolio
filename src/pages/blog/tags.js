@@ -43,7 +43,7 @@ const TagsPage = ({
     <StyledTagsContainer>
       <span className="breadcrumb">
         <span className="arrow">&larr;</span>
-        <Link to="/pensieve">All memories</Link>
+        <Link to="/blog">All memories</Link>
       </span>
 
       <h1>Tags</h1>
@@ -51,7 +51,7 @@ const TagsPage = ({
         {group.map((tag) => (
           <li key={tag.fieldValue}>
             <Link
-              to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`}
+              to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}
               className="inline-link"
             >
               {tag.fieldValue} <span className="count">({tag.totalCount})</span>

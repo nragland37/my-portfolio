@@ -2,7 +2,7 @@
 title: 'Sample Title'
 description: 'This is a sample description'
 date: '2024-10-03'
-slug: '/pensieve/sample'
+slug: '/blog/sample'
 tags:
   - 'sample'
   - 'test'

@@ -58,9 +58,10 @@ const StyledTabButton = styled.button`
   width: 100%;
   height: var(--tab-height);
   padding: 0 20px 2px;
-  border-left: 2px solid var(--sand);
+  border-left: 2px solid var(--jobs-tab-border);
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--white)')};
+  color: ${({ isActive }) =>
+    isActive ? 'var(--jobs-tab-active)' : 'var(--jobs-tab-inactive)'};
   font-family: var(--font-mono);
   font-size: var(--fz-xs);
   text-align: left;
@@ -74,7 +75,7 @@ const StyledTabButton = styled.button`
     ${({ theme }) => theme.mixins.flexCenter};
     width: 100%;
     border-left: 0;
-    border-bottom: none; /* Remove white underline only on mobile */
+    border-bottom: none;
     text-align: left;
     white-space: normal;
     word-wrap: break-word;
@@ -83,7 +84,7 @@ const StyledTabButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: var(--light-zeus);
+    background-color: var(--jobs-hover-bg);
   }
 `;
 
@@ -95,7 +96,7 @@ const StyledHighlight = styled.div`
   width: 2px;
   height: var(--tab-height);
   border-radius: var(--border-radius);
-  background: var(--green);
+  background: var(--jobs-highlight-bg);
   transform: translateY(
     calc(${({ activeTabId }) => activeTabId} * var(--tab-height))
   );
@@ -103,7 +104,7 @@ const StyledHighlight = styled.div`
   transition-delay: 0.1s;
 
   @media (max-width: 600px) {
-    display: none; /* Hide green highlight for mobile */
+    display: none;
   }
 `;
 
@@ -133,20 +134,20 @@ const StyledTabPanel = styled.div`
     line-height: 1.3;
 
     .company {
-      color: var(--sand);
+      color: var(--jobs-company-text);
     }
   }
 
   .department {
     margin-bottom: 10px;
-    color: var(--light-slate);
+    color: var(--jobs-department-text);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
   }
 
   .range {
     margin-bottom: 25px;
-    color: var(--green);
+    color: var(--jobs-range-text);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
   }

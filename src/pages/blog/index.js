@@ -29,6 +29,7 @@ const StyledMainContainer = styled.main`
     margin-top: 20px;
   }
 `;
+
 const StyledGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
   display: grid;
@@ -41,6 +42,7 @@ const StyledGrid = styled.ul`
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 `;
+
 const StyledPost = styled.li`
   transition: var(--transition);
   cursor: default;
@@ -69,7 +71,7 @@ const StyledPost = styled.li`
     padding: 2rem 1.75rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
-    background-color: var(--light-navy);
+    background-color: var(--light-zeus);
 
     header,
     a {
@@ -154,7 +156,7 @@ const PensievePage = ({ location, data }) => {
         <header>
           <h1 className="big-heading">Pensieve</h1>
           <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
+            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/blog">
               a collection of memories
             </a>
           </p>
@@ -186,7 +188,7 @@ const PensievePage = ({ location, data }) => {
                         {tags.map((tag, i) => (
                           <li key={i}>
                             <Link
-                              to={`/pensieve/tags/${kebabCase(tag)}/`}
+                              to={`/blog/tags/${kebabCase(tag)}/`}
                               className="inline-link"
                             >
                               #{tag}
