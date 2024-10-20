@@ -8,6 +8,8 @@ import { Layout } from '@components';
 import { IconBookmark } from '@components/icons';
 
 const StyledMainContainer = styled.main`
+  overflow-x: hidden; /* Prevent horizontal overflow */
+
   & > header {
     margin-bottom: 100px;
     text-align: center;
@@ -77,6 +79,11 @@ const StyledPost = styled.li`
     a {
       width: 100%;
     }
+
+    img, video, iframe {
+      max-width: 100%; /* Prevent media overflow */
+      height: auto; /* Maintain aspect ratio */
+    }
   }
 
   .post__icon {
@@ -145,7 +152,7 @@ const StyledPost = styled.li`
   }
 `;
 
-const PensievePage = ({ location, data }) => {
+const Blog = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
@@ -203,12 +210,12 @@ const PensievePage = ({ location, data }) => {
   );
 };
 
-PensievePage.propTypes = {
+Blog.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default PensievePage;
+export default Blog;
 
 export const pageQuery = graphql`
   {

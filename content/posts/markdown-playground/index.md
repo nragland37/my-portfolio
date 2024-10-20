@@ -7,8 +7,15 @@ tags:
   - 'sample'
 ---
 
-<div align='center'>
-  <iframe src="https://giphy.com/embed/2UuE8KjnWpJOpp3id2" width="640" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen>
+<div align='center' style="width: 100%; max-width: 640px; margin: 0 auto;">
+  <iframe 
+    src="https://giphy.com/embed/2UuE8KjnWpJOpp3id2" 
+    width="100%" 
+    height="100%" 
+    style="aspect-ratio: 16/9;" 
+    frameBorder="0" 
+    class="giphy-embed" 
+    allowFullScreen>
   </iframe>
 </div>
 
