@@ -1,6 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
 
-// Smooth slide down for opening the dropdown
 export const smoothSlideDown = keyframes`
   0% {
     transform: translateY(-100%);
@@ -12,7 +11,6 @@ export const smoothSlideDown = keyframes`
   }
 `;
 
-// Smooth slide up for closing the dropdown
 export const smoothSlideUp = keyframes`
   0% {
     transform: translateY(0);
@@ -24,7 +22,6 @@ export const smoothSlideUp = keyframes`
   }
 `;
 
-// Animation for nav links dropping into place after dropdown opens
 export const navLinksDropIn = keyframes`
   0% {
     opacity: 0;
@@ -36,7 +33,6 @@ export const navLinksDropIn = keyframes`
   }
 `;
 
-// Fade-in animation for elements
 export const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -46,7 +42,6 @@ export const fadeIn = keyframes`
   }
 `;
 
-// Fade-in position for the hamburger button, with added delay
 export const fadeInPositionDelayed = keyframes`
   0% {
     opacity: 0;
@@ -153,7 +148,7 @@ export const StyleDropbar = styled.aside`
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
     min-height: calc(100dvh - var(--nav-height));
-    background-color: var(--menu-background);
+    background-color: rgba(var(--menu-background-rgb), 0.9); /* Slight transparency */
     z-index: 9;
     display: flex;
     flex-direction: column;
