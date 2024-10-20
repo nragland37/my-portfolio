@@ -1,4 +1,3 @@
-// src/styles/darkMode.js
 import { css } from 'styled-components';
 
 const darkMode = css`

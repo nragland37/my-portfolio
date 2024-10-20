@@ -8,27 +8,27 @@ const lightMode = css`
 
     --zeus: #1c1c1c;
     --light-zeus: #2a2a2a;
-    --lightest-zeus: #3d3d3d;  
+    --lightest-zeus: #3d3d3d;
 
-    --dark-slate: #4b5259;      
-    --light-slate: #c9cfd4;     
-    --lightest-slate: #e5e8eb;  
+    --dark-slate: #4b5259;
+    --light-slate: #c9cfd4;
+    --lightest-slate: #e5e8eb;
 
     --contessa: #b46c6c;
     --light-contessa: #d0a4a4;
 
-    --white: #fdfdfd;       
-    --cloud-white: #f2f2f2;    
-    --offwhite: #e6e6e6;      
-    --unicorn-silver: #dedede; 
-    --alto-grey: #d4d4d4;    
-    --dim-gray: #7c7c7c;       
+    --white: #ededed;
+    --cloud-white: #f2f2f2;
+    --offwhite: #e6e6e6;
+    --unicorn-silver: #dedede;
+    --alto-grey: #d4d4d4;
+    --dim-gray: #7c7c7c;
 
     --green: #17d4a9;
     --sand: #efcc94;
     --soft-yellow: #f7e5c6;
     --ocean-blue: #78b0e0;
-    
+
     /********************************/
     /* ----- LIGHT MODE COLORS ----- */
     /********************************/

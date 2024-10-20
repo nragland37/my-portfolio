@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Nicholas Ragland',
     description:
-      'Portfolio of Nicholas Ragland, a software engineer in the United States.',
+      'Portfolio of Nicholas Ragland, a software engineer and cybersecurity specialist in the United States.',
     siteUrl: 'https://www.nicholasragland.com',
     image: '/og.png',
     twitterUsername: '@nragland37',
@@ -17,35 +17,41 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'G-WK1H1CYKSN',
+        head: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://www.nicholasragland.com',
+        sitemap: 'https://www.nicholasragland.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Nicholas Ragland',
         short_name: 'Nick Ragland',
         start_url: '/',
-        background_color: config.colors.zeus,
+        background_color: config.colors.background,
         theme_color: config.colors.green,
-        display: 'minimal-ui',
-        icon: 'static/web-app-manifest-512x512.png', // main icon
+        display: 'standalone',
         icons: [
           {
-            src: 'static/favicon-48x48.png',
-            sizes: '48x48',
-            type: 'image/png',
-          },
-          {
-            src: 'static/android-chrome-192x192.png',
+            src: '/web-app-manifest-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'maskable',
           },
           {
-            src: 'static/web-app-manifest-512x512.png',
+            src: '/web-app-manifest-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-          },
-          {
-            src: 'static/apple-touch-icon.png',
-            sizes: '180x180',
-            type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },

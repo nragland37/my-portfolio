@@ -41,13 +41,11 @@ const iconMap = {
   twitter: IconTwitter,
 };
 
-// Default icon size to avoid flashing large icons
 const DEFAULT_SIZE = {
   width: '24px', // Default width
   height: '24px', // Default height
 };
 
-// Retrieves icon component by name, defaults to IconExternal if not found
 const Icon = ({ name, width, height }) => {
   const IconComponent = iconMap[name.toLowerCase()] || IconExternal;
   return (

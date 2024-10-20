@@ -57,6 +57,15 @@ const StyledTableContainer = styled.div`
         font-weight: 600;
         color: var(--table-accent);
       }
+
+      /* New class for hiding columns on small screens */
+      .hide-on-small-screens {
+        display: table-cell;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
     }
 
     tbody {
@@ -141,6 +150,15 @@ const StyledTableContainer = styled.div`
             }
           }
         }
+
+        /* New class for hiding columns on small screens */
+        &.hide-on-small-screens {
+          display: table-cell;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -188,7 +206,7 @@ const ArchivePage = ({ location, data }) => {
               <tr>
                 <th>Year</th>
                 <th>Title</th>
-                <th className="hide-on-mobile">Built with</th>
+                <th className="hide-on-small-screens">Built with</th>
                 <th>Link</th>
               </tr>
             </thead>
@@ -209,7 +227,7 @@ const ArchivePage = ({ location, data }) => {
 
                       <td className="title">{title}</td>
 
-                      <td className="tech hide-on-mobile">
+                      <td className="tech hide-on-small-screens">
                         {tech?.length > 0 &&
                           tech.map((item, i) => (
                             <span key={i}>
