@@ -5,8 +5,6 @@ date: '2024-10-03'
 slug: '/blog/sample'
 tags:
   - 'sample'
-  - 'test'
-  - 'code'
 draft: false
 ---
 

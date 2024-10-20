@@ -1,6 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
 
-// Keyframes for animations
 const pulseAnimation = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
@@ -17,7 +16,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   z-index: 11;
-  padding: 0px 65px;
+  padding: 0 65px;
   width: 100%;
   height: var(--nav-height);
   background-color: var(--nav-background);
@@ -34,12 +33,10 @@ const StyledHeader = styled.header`
   ${(props) =>
     !props.scrolledToTop &&
     css`
-      background-color: var(--nav-background);
       box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
       height: var(--nav-scroll-height);
-    `};
-    
-  /* Scroll behavior is commented out to disable navbar disappearing on scroll */
+    `}/*****************************************/
+  /* nav bar hide on scroll down */
   /*
   @media (prefers-reduced-motion: no-preference) {
     ${(props) =>
@@ -60,6 +57,7 @@ const StyledHeader = styled.header`
     `};
   }
   */
+  /****************************************/
 `;
 
 const StyledNav = styled.nav`
@@ -73,6 +71,7 @@ const StyledNav = styled.nav`
 
   .logo {
     ${({ theme }) => theme.mixins.flexCenter};
+
     a {
       color: var(--nav-logo-color);
       width: 75px;
@@ -88,11 +87,7 @@ const StyledNav = styled.nav`
         transform: scale(0.5);
         transition:
           opacity 0.3s ease-in-out,
-          transform 0.3s ease-in-out;
-
-        @media (prefers-reduced-motion: no-preference) {
-          transition: var(--transition);
-        }
+          transform 0.8s ease-in-out;
       }
 
       .logo-container {
@@ -103,14 +98,10 @@ const StyledNav = styled.nav`
           user-select: none;
           width: 100%;
           height: 100%;
-          animation: ${fadeInAnimation} 1s ease-in-out;
-
-          @media (prefers-reduced-motion: no-preference) {
-            transition: var(--transition);
-          }
-          circle {
-            fill: var(--nav-logo-background);
-          }
+          animation: ${fadeInAnimation} 1.5s ease-in-out;
+        }
+        circle {
+          fill: var(--nav-logo-background);
         }
       }
 
@@ -120,12 +111,13 @@ const StyledNav = styled.nav`
 
         .circle-container {
           transform: scale(1);
+          transition: transform 0.8s ease-in-out;
         }
+
         .logo-container {
           animation: ${pulseAnimation} 1.5s ease-in-out infinite;
           svg {
             transition: fill 0.3s ease;
-            fill: var(--nav-hover-logo-fill);
           }
         }
       }
@@ -176,18 +168,12 @@ const StyledSocial = styled.ul`
       display: flex;
       align-items: center;
       padding: 10px;
-      svg {
-        width: 28px;
-        height: 28px;
-        /* color: var(--social-icon-color); */ 
-      }
     }
   }
 
   @media (max-width: 920px) {
     margin-left: 10px;
   }
-
   @media (max-width: 768px) {
     display: none;
   }
@@ -225,10 +211,12 @@ const StyledMenuButton = styled.div`
     display: block;
     position: relative;
     z-index: 12;
+
     button {
       background: none;
       border: none;
       cursor: pointer;
+
       svg {
         width: 40px;
         height: 40px;

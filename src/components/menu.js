@@ -58,12 +58,8 @@ const Menu = () => {
               <li key={i} style={{ '--i': i }}>
                 <a
                   href={url}
-                  onClick={() =>
-                    setMenuOpen(false)
-                  } /* Close menu when link clicked */
-                  tabIndex={
-                    menuOpen ? 0 : -1
-                  } /* Disable focus when menu is closed */
+                  onClick={() => setMenuOpen(false)} // Close menu when link clicked
+                  tabIndex={menuOpen ? 0 : -1} // Disable focus when menu is closed
                 >
                   {name}
                 </a>
@@ -80,7 +76,7 @@ const Menu = () => {
                 href={url}
                 aria-label={name}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 tabIndex={menuOpen ? 0 : -1}
               >
                 <Icon name={name} />

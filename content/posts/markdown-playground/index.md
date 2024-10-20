@@ -4,7 +4,7 @@ description: 'Markdown playground for testing'
 date: '2024-10-03'
 slug: '/blog/markdown-playground'
 tags:
-  - 'Testing'
+  - 'sample'
 ---
 
 <div align='center'>

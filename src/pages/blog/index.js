@@ -16,7 +16,7 @@ const StyledMainContainer = styled.main`
       &:hover,
       &:focus {
         cursor:
-          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:var(--black);font-size:24px;'><text y='50%'>⚡</text></svg>")
             20 0,
           auto;
       }
@@ -71,7 +71,7 @@ const StyledPost = styled.li`
     padding: 2rem 1.75rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
-    background-color: var(--light-zeus);
+    background-color: var(--blog-bg);
 
     header,
     a {
@@ -81,7 +81,7 @@ const StyledPost = styled.li`
 
   .post__icon {
     ${({ theme }) => theme.mixins.flexBetween};
-    color: var(--green);
+    color: var(--blog-icon-color);
     margin-bottom: 30px;
     margin-left: -5px;
 
@@ -93,7 +93,7 @@ const StyledPost = styled.li`
 
   .post__title {
     margin: 0 0 10px;
-    color: var(--lightest-slate);
+    color: var(--blog-title-color);
     font-size: var(--fz-xxl);
 
     a {
@@ -113,12 +113,12 @@ const StyledPost = styled.li`
   }
 
   .post__desc {
-    color: var(--light-slate);
+    color: var(--blog-desc-color);
     font-size: 17px;
   }
 
   .post__date {
-    color: var(--light-slate);
+    color: var(--blog-date-color);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
@@ -133,7 +133,7 @@ const StyledPost = styled.li`
     list-style: none;
 
     li {
-      color: var(--green);
+      color: var(--blog-tag-color);
       font-family: var(--font-mono);
       font-size: var(--fz-xxs);
       line-height: 1.75;
@@ -150,16 +150,12 @@ const PensievePage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Pensieve" />
+      <Helmet title="blog" />
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
-          <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/blog">
-              a collection of memories
-            </a>
-          </p>
+          <h1 className="big-heading">blog.</h1>
+          <p className="subtitle">a collection of memories</p>
         </header>
 
         <StyledGrid>

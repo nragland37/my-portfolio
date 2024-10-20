@@ -102,7 +102,12 @@ const Footer = () => {
           {socialMedia &&
             socialMedia.map(({ name, url }, i) => (
               <li key={i}>
-                <a href={url} aria-label={name}>
+                <a
+                  href={url}
+                  aria-label={name}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon name={name} />
                 </a>
               </li>
@@ -111,7 +116,11 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabIndex="-1">
-        <a href="https://github.com/nragland37/my-portfolio">
+        <a
+          href="https://github.com/nragland37/my-portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div>© 2024 Nicholas Ragland</div>
           {/* null checks for no data, not the number 0 
           (which would be falsy and not render the component) */}

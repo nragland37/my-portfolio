@@ -14,7 +14,6 @@ const StyledSideElement = styled.div`
   right: ${(props) =>
     props.orientation === 'left' ? 'auto' : 'var(--side-element-right-margin)'};
   z-index: 10;
-  color: var(--side-color);
 
   @media (max-width: 1080px) {
     left: ${(props) =>

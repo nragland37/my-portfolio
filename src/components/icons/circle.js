@@ -12,10 +12,10 @@ const IconCircle = (props) => (
     <circle
       cx="50"
       cy="50"
-      r="46"
+      r="44"
       stroke="currentColor"
-      strokeWidth="3"
-      fill="none"
+      strokeWidth="5"
+      fill="transparent"
     />
   </svg>
 );

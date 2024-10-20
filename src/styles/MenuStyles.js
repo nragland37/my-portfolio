@@ -36,17 +36,7 @@ export const navLinksDropIn = keyframes`
   }
 `;
 
-export const fadeInUp = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
+// Fade-in animation for elements
 export const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -56,7 +46,8 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const fadeInPosition = keyframes`
+// Fade-in position for the hamburger button, with added delay
+export const fadeInPositionDelayed = keyframes`
   0% {
     opacity: 0;
     transform: translateX(-20px); 
@@ -83,8 +74,8 @@ export const StyledHamburgerButton = styled.button`
   border: 0;
   background-color: transparent;
   color: var(--hamburger-button-color);
-  animation: ${fadeInPosition} 0.5s ease-out;
-  transition: all 0.3s ease-in-out;
+  opacity: 0; /* Start invisible */
+  animation: ${fadeInPositionDelayed} 0.5s ease-out 1s forwards;
 
   .ham-box {
     display: inline-block;
@@ -103,10 +94,9 @@ export const StyledHamburgerButton = styled.button`
       menuOpen
         ? 'var(--hamburger-active-color)'
         : 'var(--hamburger-button-color)'};
-    transition: all 0.3s ease-in-out;
-    transform: ${({ menuOpen }) => (menuOpen ? 'rotate(225deg)' : 'rotate(0)')};
+    transition: var(--hamburger-transition);
+    transform: ${({ menuOpen }) => (menuOpen ? 'rotate(45deg)' : 'rotate(0)')};
 
-    &:before,
     &:after {
       content: '';
       display: block;
@@ -117,15 +107,7 @@ export const StyledHamburgerButton = styled.button`
         menuOpen
           ? 'var(--hamburger-active-color)'
           : 'var(--hamburger-button-color)'};
-      transition: all 0.3s ease-in-out;
-    }
-
-    &:before {
-      top: ${({ menuOpen }) => (menuOpen ? '0' : '-10px')};
-      opacity: ${({ menuOpen }) => (menuOpen ? '0' : '1')};
-    }
-
-    &:after {
+      transition: var(--hamburger-transition);
       bottom: ${({ menuOpen }) => (menuOpen ? '0' : '-10px')};
       transform: ${({ menuOpen }) =>
         menuOpen ? 'rotate(-90deg)' : 'rotate(0)'};
@@ -260,7 +242,7 @@ export const StyleDropbar = styled.aside`
         gap: 1.5rem;
         padding: 0 1rem;
         opacity: 0;
-        animation: ${fadeInUp} 0.5s ease forwards 0.3s;
+        animation: ${fadeIn} 0.5s ease forwards 0.3s;
 
         a {
           svg {

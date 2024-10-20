@@ -1,3 +1,4 @@
+// src/components/Nav.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -14,54 +15,61 @@ const { StyledHeader, StyledNav, StyledLinks, StyledSocial, StyledMenuButton } =
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  const handleScroll = () => {
-    setScrolledToTop(window.scrollY < 50);
-  };
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const timeout = setTimeout(() => {
-      setIsMounted(true);
-    }, 100);
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setScrolledToTop(window.scrollY < 50);
     };
-  }, [prefersReducedMotion, isHome]);
+
+    if (!prefersReducedMotion) {
+      const timeout = setTimeout(() => {
+        setIsMounted(true);
+      }, 100);
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        clearTimeout(timeout);
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    // prevent the scroll animation on the home page when the logo is clicked
+    // which smoothly allows the page to have a complete refresh
+    if (sessionStorage.getItem('freshReload')) {
+      sessionStorage.removeItem('freshReload');
+      window.scrollTo(0, 0); // Ensure scroll is at the top
+    }
+  }, []);
 
   const timeout = isHome ? loaderDelay : 0;
   const fadeClass = isHome ? 'fade' : '';
   const fadeDownClass = isHome ? 'fadedown' : '';
 
+  // Logo component with full page reload functionality
   const Logo = (
     <div className="logo" tabIndex="-1">
-      {isHome ? (
-        <a href="/" aria-label="home">
-          <div className="circle-container">
-            <IconCircle />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
-        </a>
-      ) : (
-        <Link to="/" aria-label="home">
-          <div className="circle-container">
-            <IconCircle />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
-        </Link>
-      )}
+      <a
+        href="/"
+        aria-label="home"
+        onClick={(e) => {
+          e.preventDefault();
+          sessionStorage.setItem('freshReload', 'true'); // Set fresh reload flag
+          window.location.href = '/'; // Reload page
+        }}
+      >
+        <div className="circle-container">
+          <IconCircle />
+        </div>
+        <div className="logo-container">
+          <IconLogo />
+        </div>
+      </a>
     </div>
   );
 
@@ -94,6 +102,7 @@ const Nav = ({ isHome }) => {
         <StyledLinks>
           <ol>
             <TransitionGroup component={null}>
+              {/* Renders links only after mounting to ensure smooth animations */}
               {isMounted &&
                 navLinks.map(({ url, name }, i) => (
                   <CSSTransition

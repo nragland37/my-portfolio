@@ -12,17 +12,18 @@ const StyledTagsContainer = styled.main`
   h1 {
     margin-bottom: 50px;
   }
+
   ul {
-    color: var(--light-slate);
+    color: var(--blog-tags-list-color);
 
     li {
       font-size: var(--fz-xxl);
 
       a {
-        color: var(--light-slate);
+        color: var(--blog-tags-link-color);
 
         .count {
-          color: var(--slate);
+          color: var(--blog-tags-count-color);
           font-family: var(--font-mono);
           font-size: var(--fz-md);
         }

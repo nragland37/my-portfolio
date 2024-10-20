@@ -1,3 +1,4 @@
+// src/pages/archive.js
 import React, { useRef, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -44,97 +45,100 @@ const StyledTableContainer = styled.div`
     width: 100%;
     border-collapse: collapse;
     font-size: var(--fz-md);
+    background-color: var(--table-bg);
+    color: var(--table-text-primary);
 
-    tbody tr {
-      transition: background-color 0.3s ease;
+    thead {
+      background-color: var(--table-header-bg);
 
-      &:hover,
-      &:focus {
-        background-color: var(--light-zeus);
-      }
-    }
-
-    th,
-    td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid var(--dark-slate);
-      vertical-align: middle;
-      color: var(--light-slate);
-
-      &:first-child {
-        padding-left: 20px;
-
-        @media (max-width: 768px) {
-          padding-left: 10px;
-        }
-      }
-      &:last-child {
-        padding-right: 20px;
-
-        @media (max-width: 768px) {
-          padding-right: 10px;
-        }
-      }
-
-      svg {
-        width: 22px;
-        height: 22px;
-      }
-    }
-
-    th {
-      text-transform: uppercase;
-      font-size: var(--fz-sm);
-      font-weight: 600;
-      color: var(--green);
-    }
-
-    td {
-      &.year {
-        padding-right: 15px;
-        font-weight: 500;
-        color: var(--lightest-slate);
-
-        @media (max-width: 768px) {
-          padding-right: 10px;
-          font-size: var(--fz-sm);
-        }
-      }
-
-      &.title {
-        color: var(--white);
-        font-size: var(--fz-lg);
-        font-weight: 600;
-        line-height: 1.25;
-      }
-
-      &.tech {
+      th {
+        text-transform: uppercase;
         font-size: var(--fz-sm);
-        font-family: var(--font-mono);
-        line-height: 1.5;
-        .separator {
-          margin: 0 5px;
-        }
-        span {
-          display: inline-block;
+        font-weight: 600;
+        color: var(--table-accent);
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+          background-color: var(--table-row-hover);
         }
       }
 
-      &.links {
-        min-width: 100px;
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--table-border-color);
+        vertical-align: middle;
+        color: var(--table-text-primary);
 
-        div {
-          display: flex;
-          align-items: center;
+        &:first-child {
+          padding-left: 20px;
 
-          a {
-            ${({ theme }) => theme.mixins.flexCenter};
-            flex-shrink: 0;
+          @media (max-width: 768px) {
+            padding-left: 10px;
+          }
+        }
+
+        &:last-child {
+          padding-right: 20px;
+
+          @media (max-width: 768px) {
+            padding-right: 10px;
+          }
+        }
+
+        &.year {
+          font-weight: 500;
+          color: var(--table-text-year);
+
+          @media (max-width: 768px) {
+            padding-right: 10px;
+            font-size: var(--fz-sm);
+          }
+        }
+
+        &.title {
+          color: var(--table-text-title);
+          font-size: var(--fz-lg);
+          font-weight: 600;
+        }
+
+        &.tech {
+          color: var(--table-text-tech);
+          font-size: var(--fz-sm);
+          font-family: var(--font-mono);
+
+          .separator {
+            color: var(--table-tech-separator);
+            margin: 0 5px;
           }
 
-          a + a {
-            margin-left: 10px;
+          span {
+            display: inline-block;
+          }
+        }
+
+        &.links {
+          min-width: 100px;
+
+          div {
+            display: flex;
+            align-items: center;
+
+            a {
+              ${({ theme }) => theme.mixins.flexCenter};
+              flex-shrink: 0;
+            }
+
+            a + a {
+              margin-left: 10px;
+            }
           }
         }
       }
@@ -161,14 +165,21 @@ const ArchivePage = ({ location, data }) => {
     );
   }, [prefersReducedMotion]);
 
+  const handleRowClick = (external, github) => {
+    const url = external || github;
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <Layout location={location}>
       <Helmet title="Archive" />
 
       <main>
         <header ref={revealTitle}>
-          <h1 className="big-heading">Archive</h1>
-          <p className="subtitle">All the things I’ve worked on</p>
+          <h1 className="big-heading">archive.</h1>
+          <p className="subtitle">A list of stuff and things I've built.</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>
@@ -187,7 +198,11 @@ const ArchivePage = ({ location, data }) => {
                   const { date, github, external, ios, android, title, tech } =
                     node.frontmatter;
                   return (
-                    <tr key={i} ref={(el) => (revealProjects.current[i] = el)}>
+                    <tr
+                      key={i}
+                      ref={(el) => (revealProjects.current[i] = el)}
+                      onClick={() => handleRowClick(external, github)}
+                    >
                       <td className="overline year">{`${new Date(
                         date,
                       ).getFullYear()}`}</td>
@@ -209,23 +224,40 @@ const ArchivePage = ({ location, data }) => {
                       <td className="links">
                         <div>
                           {external && (
-                            <a href={external} aria-label="External Link">
+                            <a
+                              href={external}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="External Link"
+                            >
                               <Icon name="External" />
                             </a>
                           )}
                           {github && (
-                            <a href={github} aria-label="GitHub Link">
+                            <a
+                              href={github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="GitHub Link"
+                            >
                               <Icon name="GitHub" />
                             </a>
                           )}
                           {ios && (
-                            <a href={ios} aria-label="Apple App Store Link">
+                            <a
+                              href={ios}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="Apple App Store Link"
+                            >
                               <Icon name="AppStore" />
                             </a>
                           )}
                           {android && (
                             <a
                               href={android}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               aria-label="Google Play Store Link"
                             >
                               <Icon name="PlayStore" />
