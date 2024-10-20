@@ -2,10 +2,10 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Nicholas Ragland',
+    title: 'Nick Ragland',
     description:
       'Portfolio of Nicholas Ragland, a software engineer and cybersecurity specialist in the United States.',
-    siteUrl: 'https://www.nicholasragland.com',
+    siteUrl: 'https://www.nickragland.com',
     image: '/og.png',
     twitterUsername: '@nragland37',
   },
@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'https://www.nicholasragland.com',
-        sitemap: 'https://www.nicholasragland.com/sitemap.xml',
+        host: 'https://www.nickragland.com',
+        sitemap: 'https://www.nickragland.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
