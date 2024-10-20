@@ -2,7 +2,7 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Nick Ragland',
+    title: 'Nicholas Ragland',
     description:
       'Portfolio of Nicholas Ragland, a software engineer and cybersecurity specialist in the United States.',
     siteUrl: 'https://www.nickragland.com',
