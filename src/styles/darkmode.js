@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const darkMode = css`
-  :root {
+  .dark-mode {
     /* Base Dark Palette */
     --midnight: #0e1116;
     --light-midnight: #1a1d24;
