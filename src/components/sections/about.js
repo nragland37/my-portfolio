@@ -134,7 +134,7 @@ const About = () => {
   const skills = [
     {
       category: 'Programming Languages',
-      details: 'Python, C++, R, SQL, JavaScript, TypeScript, HTML, CSS',
+      details: 'Python, C++, R, SQL, JavaScript, TypeScript, HTML, CSS, GraphQL',
     },
     {
       category: (
@@ -164,7 +164,7 @@ const About = () => {
       ),
       details: `
       Git, GitHub, VSCode, Docker, Jupyter(Notebook/Lab), RStudio, Anaconda,
-      Virtual Machines, WSL2, MSYS2, MinGW, Vercel, Firebase, Oracle Apex, APIs
+      Virtual Machines, WSL2, MSYS2, MinGW, Vercel, Firebase, Oracle Apex, APIs, SEO
     `,
     },
     {
