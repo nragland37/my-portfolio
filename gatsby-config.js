@@ -15,14 +15,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        output: '/sitemap.xml',
-        excludes: ['/offline-plugin-app-shell-fallback/', '/404/', '/404.html'],
-        createLinkInHead: true, // improve SEO for crawlers to discover the sitemap
-      },
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: 'https://www.nicholasragland.com',
