@@ -33,12 +33,17 @@ module.exports = {
           }
         `,
         resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.nodes.map(node => ({
+        serialize: ({ site, allSitePage }) => {
+          if (!allSitePage || !allSitePage.nodes) {
+            console.error('Sitemap generation failed: No site pages found');
+            return [];
+          }
+          return allSitePage.nodes.map((node) => ({
             url: `${site.siteMetadata.siteUrl}${node.path}`,
             changefreq: 'daily',
             priority: 0.7,
-          })),
+          }));
+        },
       },
     },
     {
@@ -151,7 +156,6 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              placeholder: 'blurred',
             },
           },
           {
