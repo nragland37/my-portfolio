@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.nicholasragland.com/sitemap.xml
+Host: https://www.nicholasragland.com

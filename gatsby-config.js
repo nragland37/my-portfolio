@@ -29,14 +29,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-robots-txt`,
-      options: {
-        host: 'https://www.nicholasragland.com',
-        sitemap: 'https://www.nicholasragland.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }],
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Nicholas Ragland',
