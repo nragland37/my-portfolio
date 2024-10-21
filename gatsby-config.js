@@ -14,7 +14,33 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: '/sitemap.xml',
+        query: `
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }
+        `,
+        resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.nodes.map(node => ({
+            url: `${site.siteMetadata.siteUrl}${node.path}`,
+            changefreq: 'daily',
+            priority: 0.7,
+          })),
+      },
+    },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -125,7 +151,7 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: config.colors.green },
+              placeholder: 'blurred',
             },
           },
           {
