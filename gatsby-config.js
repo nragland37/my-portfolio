@@ -18,32 +18,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: '/sitemap.xml',
-        query: `
-          {
-            allSitePage {
-              nodes {
-                path
-              }
-            }
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-          }
-        `,
-        resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
-        serialize: ({ site, allSitePage }) => {
-          if (!allSitePage || !allSitePage.nodes) {
-            console.error('Sitemap generation failed: No site pages found');
-            return [];
-          }
-          return allSitePage.nodes.map((node) => ({
-            url: `${site.siteMetadata.siteUrl}${node.path}`,
-            changefreq: 'daily',
-            priority: 0.7,
-          }));
-        },
+        excludes: ['/offline-plugin-app-shell-fallback/', '/404/', '/404.html'],
       },
     },
     {
