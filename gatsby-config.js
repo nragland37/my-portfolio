@@ -2,12 +2,11 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Nick Ragland',
+    title: 'Nicholas Ragland',
     description:
       'Portfolio of Nicholas Ragland, a software engineer and cybersecurity specialist in the United States.',
-    siteUrl: 'https://www.nickragland.com',
+    siteUrl: 'https://www.nicholasragland.com',
     image: '/og.png',
-    twitterUsername: '@nragland37',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,6 +15,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: 'https://www.nicholasragland.com',
+        stripQueryString: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -26,8 +32,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'https://www.nickragland.com',
-        sitemap: 'https://www.nickragland.com/sitemap.xml',
+        host: 'https://www.nicholasragland.com',
+        sitemap: 'https://www.nicholasragland.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
@@ -37,23 +43,34 @@ module.exports = {
         name: 'Nicholas Ragland',
         short_name: 'Nick Ragland',
         start_url: '/',
-        background_color: config.colors.background,
+        background_color: config.colors.midnight,
         theme_color: config.colors.green,
         display: 'standalone',
         icons: [
           {
-            src: '/web-app-manifest-192x192.png',
+            src: '/favicons/web-app-manifest-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable',
           },
           {
-            src: '/web-app-manifest-512x512.png',
+            src: '/favicons/web-app-manifest-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
           },
+          {
+            src: '/favicons/favicon.ico',
+            sizes: '48x48',
+            type: 'image/x-icon',
+          },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`, `/about/`, `/projects/`, `/blog/*`],
       },
     },
     {
@@ -61,6 +78,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/static/assets`,
       },
     },
     {

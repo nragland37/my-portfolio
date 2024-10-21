@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
+import { format, parseISO } from 'date-fns';
 
 const StyledPostContainer = styled.main`
   max-width: 1000px;
@@ -70,6 +71,7 @@ const PostTemplate = ({ data, location }) => {
 
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags, description } = frontmatter;
+  const formattedDate = format(parseISO(date), 'MMMM d, yyyy'); // Updated date formatting
 
   return (
     <Layout location={location}>
@@ -87,13 +89,7 @@ const PostTemplate = ({ data, location }) => {
         <StyledPostHeader>
           <h1 className="medium-heading">{title}</h1>
           <p className="subtitle">
-            <time>
-              {new Date(date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
+            <time>{formattedDate}</time> {/* Updated date display */}
             <span>&nbsp;&mdash;&nbsp;</span>
             {tags &&
               tags.length > 0 &&

@@ -148,7 +148,10 @@ export const StyleDropbar = styled.aside`
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
     min-height: calc(100dvh - var(--nav-height));
-    background-color: rgba(var(--menu-background-rgb), 0.9); /* Slight transparency */
+    background-color: rgba(
+      var(--menu-background-rgb),
+      0.9
+    ); /* Slight transparency */
     z-index: 9;
     display: flex;
     flex-direction: column;

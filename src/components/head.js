@@ -17,19 +17,13 @@ const Head = ({ title, description, image }) => {
           defaultDescription: description
           siteUrl
           defaultImage: image
-          twitterUsername
         }
       }
     }
   `);
 
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-    defaultImage,
-    twitterUsername,
-  } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, defaultImage } =
+    site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
@@ -43,16 +37,47 @@ const Head = ({ title, description, image }) => {
       <html lang="en" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+
+      {/* Open Graph Meta Tags for General Sharing */}
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content={defaultTitle} />
+
+      {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={twitterUsername} />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+
+      {/* LinkedIn Meta Tags (similar to Open Graph) */}
+      <meta property="og:image:alt" content={seo.description} />
+
+      {/* Generic Meta Tags for Sharing Platforms */}
+      <meta name="application-name" content={defaultTitle} />
+      <meta itemProp="name" content={seo.title} />
+      <meta itemProp="description" content={seo.description} />
+      <meta itemProp="image" content={seo.image} />
+
+      {/* Schema.org Markup for Better Search Visibility */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: seo.title,
+          url: seo.url,
+          description: seo.description,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: `${siteUrl}/search?query={search_term_string}`,
+            'query-input': 'required name=search_term_string',
+          },
+          image: seo.image,
+        })}
+      </script>
     </Helmet>
   );
 };

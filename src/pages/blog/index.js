@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 import { IconBookmark } from '@components/icons';
+import { format, parseISO } from 'date-fns';
 
 const StyledMainContainer = styled.main`
   overflow-x: hidden; /* Prevent horizontal overflow */
@@ -80,7 +81,9 @@ const StyledPost = styled.li`
       width: 100%;
     }
 
-    img, video, iframe {
+    img,
+    video,
+    iframe {
       max-width: 100%; /* Prevent media overflow */
       height: auto; /* Maintain aspect ratio */
     }
@@ -170,7 +173,7 @@ const Blog = ({ location, data }) => {
             posts.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
-              const formattedDate = new Date(date).toLocaleDateString();
+              const formattedDate = format(parseISO(date), 'MMMM d, yyyy'); // Updated date formatting
 
               return (
                 <StyledPost key={i}>
@@ -220,10 +223,7 @@ export default Blog;
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
-        frontmatter: { draft: { ne: true } }
-      }
+      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
       sort: { frontmatter: { date: DESC } }
     ) {
       edges {
@@ -234,7 +234,6 @@ export const pageQuery = graphql`
             slug
             date
             tags
-            draft
           }
           html
         }

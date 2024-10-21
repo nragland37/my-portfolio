@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
+import { format, parseISO } from 'date-fns';
 
 const StyledTagsContainer = styled.main`
   max-width: 1000px;
@@ -70,19 +71,15 @@ const TagTemplate = ({ pageContext, data, location }) => {
           <ul className="fancy-list">
             {edges.map(({ node }) => {
               const { title, slug, date, tags } = node.frontmatter;
+              const formattedDate = format(parseISO(date), 'MMMM d, yyyy'); // Updated date formatting
+
               return (
                 <li key={slug}>
                   <h2>
                     <Link to={slug}>{title}</Link>
                   </h2>
                   <p className="subtitle">
-                    <time>
-                      {new Date(date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
+                    <time>{formattedDate}</time> {/* Updated date display */}
                     <span>&nbsp;&mdash;&nbsp;</span>
                     {tags &&
                       tags.length > 0 &&

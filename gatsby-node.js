@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 const path = require('path');
 const _ = require('lodash');
 
@@ -35,15 +29,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `);
 
-  // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
 
-  // Create post detail pages
   const posts = result.data.postsRemark.edges;
-
   posts.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
@@ -54,10 +45,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  // Extract tag data from query
   const tags = result.data.tagsGroup.group;
-
-  // Make tag pages
   tags.forEach((tag) => {
     createPage({
       path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
@@ -69,9 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
-// https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
   if (stage === 'build-html' || stage === 'develop-html') {
     actions.setWebpackConfig({
       module: {
