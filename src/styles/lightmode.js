@@ -47,7 +47,7 @@ const lightMode = css`
     --menu-hover-text: var(--green);
     --menu-hover-background: var(--light-midnight);
     --social-section-background: var(--midnight);
-    --social-icon-color: var(--cloud-white); 
+    --social-icon-color: var(--cloud-white);
     --resume-button-text: var(--charcoal);
     --resume-button-background: var(--green);
     --hamburger-button-color: var(--charcoal);

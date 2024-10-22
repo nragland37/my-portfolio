@@ -98,7 +98,9 @@ export const StyledThemeToggle = styled.button`
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
   transform: ${({ menuOpen }) =>
     menuOpen ? 'translateY(0)' : 'translateY(-20px)'};
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
   &:hover,
@@ -125,8 +127,13 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
-    min-height: calc(100dvh - var(--nav-height)); /* Fallback for Safari - vh not good enough */
-    background-color: rgba(var(--menu-background), 0.91); /* Subtler background opacity */
+    min-height: calc(
+      100dvh - var(--nav-height)
+    ); /* Fallback for Safari - vh not good enough */
+    background-color: rgba(
+      var(--menu-background),
+      0.91
+    ); /* Subtler background opacity */
     backdrop-filter: blur(1px); /* Moderate blur for smoother effect */
     -webkit-backdrop-filter: blur(5px); /* For Safari support */
     box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
@@ -135,7 +142,9 @@ export const StyleDropbar = styled.aside`
     flex-direction: column;
     justify-content: space-between;
     pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
 
     ${({ menuOpen }) =>
       menuOpen &&
@@ -170,7 +179,9 @@ export const StyleDropbar = styled.aside`
             menuOpen
               ? css`
                   ${navLinksDropIn} 1.5s ease forwards;
-                  animation-delay: calc(0.01999s * var(--i)); /* stagger effect */
+                  animation-delay: calc(
+                    0.01999s * var(--i)
+                  ); /* stagger effect */
                 `
               : 'none'};
 
@@ -180,12 +191,17 @@ export const StyleDropbar = styled.aside`
             font-size: 1.25rem;
             width: 100%;
             padding: 1.5rem 0;
-            background-color: rgba(var(--menu-background), 0); /* Adjust background for subtlety */
+            background-color: rgba(
+              var(--menu-background),
+              0
+            ); /* Adjust background for subtlety */
             border: none;
             color: var(--menu-hover-background);
             letter-spacing: 0.15em;
             text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition:
+              background-color 0.3s ease,
+              color 0.3s ease;
             text-decoration: none;
 
             &:hover {
@@ -198,7 +214,10 @@ export const StyleDropbar = styled.aside`
     }
 
     .social-section {
-      background-color: rgba(var(--menu-background), 0); /* Adjusted for subtle opacity */
+      background-color: rgba(
+        var(--menu-background),
+        0
+      ); /* Adjusted for subtle opacity */
       padding: 2rem 0;
       display: flex;
       flex-direction: column;

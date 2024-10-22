@@ -22,10 +22,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: 'G-WK1H1CYKSN',
         head: true,
+        anonymize: true, // Anonymize IP addresses for GDPR compliance
       },
     },
     {
