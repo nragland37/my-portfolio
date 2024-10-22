@@ -1,22 +1,24 @@
 import { css } from 'styled-components';
 
-// Using the current color palette
 const prismColors = {
-  bg: `var(--midnight)`, // Background for code blocks
-  lineHighlight: `var(--light-midnight)`, // Background for highlighted lines
-  green: `var(--green)`, // Green for important code
-  contessa: `var(--contessa)`, // Contessa for functions, errors, and deletions
-  lightContessa: `var(--light-contessa)`, // Light Contessa for operators, attributes, etc.
-  sand: `var(--sand)`, // Sand for constants, numbers, and more
-  slate: `var(--slate)`, // Slate for punctuation
-  lightSlate: `var(--light-slate)`, // Light Slate for comments
+  bg: '#2a2c2d', // _very-dark-gray
+  lineHighlight: '#222223', // _charcoal
+  green: '#19f9d8', // _green
+  red: '#FF2C6D', // _red
+  lightRed: '#FF4B82', // _light-red
+  orange: '#FFB86C', // _orange
+  gray: '#BBBBBB', // _gray
+  lightGray: '#D0D0D0', // _light-gray
+  blue: '#45A9F9', // _blue
+  lightBlue: '#6FC1FF', // _light-blue
+  purple: '#B084EB', // _purple
+  lightPurple: '#BCAAFE', // _light-purple
 };
 
 const PrismStyles = css`
-  /* General styles for code blocks */
   .gatsby-highlight {
     background-color: ${prismColors.bg};
-    color: ${prismColors.slate};
+    color: ${prismColors.gray};
     border-radius: var(--border-radius);
     margin: 2em 0;
     padding: 1.25em;
@@ -39,7 +41,6 @@ const PrismStyles = css`
     hyphens: none;
   }
 
-  /* Remove default PrismJS styles and adjust for gatsby-highlight */
   .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
@@ -50,13 +51,12 @@ const PrismStyles = css`
     padding-top: 2em;
   }
 
-  /* File names */
   .gatsby-code-title {
     padding: 1em 1.5em;
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     background-color: ${prismColors.bg};
-    color: ${prismColors.slate};
+    color: ${prismColors.gray};
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     border-bottom: 1px solid ${prismColors.lineHighlight};
@@ -68,7 +68,6 @@ const PrismStyles = css`
     }
   }
 
-  /* Line highlighting */
   .gatsby-highlight-code-line {
     display: block;
     background-color: ${prismColors.lineHighlight};
@@ -79,10 +78,9 @@ const PrismStyles = css`
     margin-left: -1.35em;
   }
 
-  /* Language badges */
   .gatsby-highlight pre[class*='language-']::before {
-    background: var(--light-midnight);
-    color: var(--white);
+    background: ${prismColors.lineHighlight};
+    color: ${prismColors.lightGray};
     font-size: var(--fz-xxs);
     font-family: var(--font-mono);
     line-height: 1.5;
@@ -95,22 +93,21 @@ const PrismStyles = css`
     padding: 0.25rem 0.5rem;
   }
 
-  /* Prism token styles */
   .token.comment,
   .token.block-comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${prismColors.lightSlate}; /* Comments */
+    color: ${prismColors.lightGray}; 
   }
 
   .token.punctuation {
-    color: ${prismColors.slate}; /* Punctuation */
+    color: ${prismColors.gray}; 
   }
 
   .token.namespace,
   .token.deleted {
-    color: ${prismColors.contessa}; /* Deleted code or errors */
+    color: ${prismColors.red}; 
   }
 
   .token.function-name,
@@ -118,20 +115,20 @@ const PrismStyles = css`
   .token.class-name,
   .token.constant,
   .token.symbol {
-    color: ${prismColors.sand}; /* Constants, symbols */
+    color: ${prismColors.orange}; 
   }
 
   .token.attr-name,
   .token.operator,
   .token.rule {
-    color: ${prismColors.lightContessa}; /* Operators, attributes */
+    color: ${prismColors.lightRed}; 
   }
 
   .token.keyword,
   .token.boolean,
   .token.number,
   .token.property {
-    color: ${prismColors.sand}; /* Keywords, numbers */
+    color: ${prismColors.orange}; 
   }
 
   .token.tag,
@@ -141,7 +138,7 @@ const PrismStyles = css`
   .token.builtin,
   .token.entity,
   .token.url {
-    color: ${prismColors.green}; /* Tags, URLs, built-in properties */
+    color: ${prismColors.green}; 
   }
 
   .token.string,
@@ -150,7 +147,7 @@ const PrismStyles = css`
   .token.regex,
   .token.variable,
   .token.inserted {
-    color: ${prismColors.green}; /* Strings, variables */
+    color: ${prismColors.green}; 
   }
 
   .token.important,
