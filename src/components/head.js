@@ -36,20 +36,6 @@ const Head = ({ title, description, image }) => {
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
-      {/* Google Tag for Analytics */}
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-WK1H1CYKSN"
-      ></script>
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-WK1H1CYKSN');
-        `}
-      </script>
-
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
