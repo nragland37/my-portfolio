@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
-// https://www.gatsbyjs.com/docs/add-seo-component/
-
 const Head = ({ title, description, image }) => {
   const { pathname } = useLocation();
 
@@ -38,7 +36,21 @@ const Head = ({ title, description, image }) => {
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
-      {/* Open Graph Meta Tags for General Sharing */}
+      {/* Google Tag for Analytics */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-WK1H1CYKSN"
+      ></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-WK1H1CYKSN');
+        `}
+      </script>
+
+      {/* Open Graph Meta Tags */}
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
@@ -53,16 +65,16 @@ const Head = ({ title, description, image }) => {
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
 
-      {/* LinkedIn Meta Tags (similar to Open Graph) */}
+      {/* LinkedIn Meta Tags */}
       <meta property="og:image:alt" content={seo.description} />
 
-      {/* Generic Meta Tags for Sharing Platforms */}
+      {/* Generic Meta Tags */}
       <meta name="application-name" content={defaultTitle} />
       <meta itemProp="name" content={seo.title} />
       <meta itemProp="description" content={seo.description} />
       <meta itemProp="image" content={seo.image} />
 
-      {/* Schema.org Markup for Better Search Visibility */}
+      {/* Schema.org Markup */}
       <script type="application/ld+json">
         {JSON.stringify({
           '@context': 'https://schema.org',
