@@ -3,13 +3,20 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { throttle } from 'lodash';
 
-// Styled component for the custom cursor (outer circle)
+// Detect if the user is on a mobile device
+const isMobile =
+  typeof navigator !== 'undefined' &&
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
+
+// Styled component for the custom cursor
 const StyledCursor = styled.div`
   position: fixed;
-  width: 25px;
-  height: 25px;
+  width: ${isMobile ? '0' : '25px'}; 
+  height: ${isMobile ? '0' : '25px'};
   background-color: transparent;
-  border: 1.5px solid var(--cursor-border); /* Outer cursor color */
+  border: ${isMobile ? 'none' : '1.5px solid var(--cursor-border)'};
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -17,9 +24,9 @@ const StyledCursor = styled.div`
 
   .cursor-dot {
     position: absolute;
-    width: 5px;
-    height: 5px;
-    background-color: var(--cursor-dot); /* Inner cursor dot color */
+    width: ${isMobile ? '0' : '5px'};
+    height: ${isMobile ? '0' : '5px'};
+    background-color: var(--cursor-dot);
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -54,6 +61,7 @@ const CustomCursor = () => {
       .fill()
       .map(() => React.createRef());
     trailRefs.current = segments;
+
     return () => {
       trailRefs.current = [];
     };
@@ -64,14 +72,14 @@ const CustomCursor = () => {
     const throttledMouseMove = throttle((e) => {
       const { clientX: x, clientY: y } = e;
       mousePosition.current = { x, y };
-
+      
       gsap.to(cursorRef.current, {
         x,
         y,
         duration: 0.6, // speed of cursor movement
         ease: 'power2.out',
       });
-
+      
       setIsMoving(true);
       if (movementTimeout.current) {
         clearTimeout(movementTimeout.current);
@@ -89,31 +97,40 @@ const CustomCursor = () => {
     };
   }, [setIsMoving]);
 
-  // Handle mouse down
-  const handleMouseDown = () => {
-    setIsMouseDown(true);
-    gsap.to(cursorRef.current, {
-      width: 50,
-      height: 50,
-      borderColor: 'var(--cursor-mouse-down-border)', // Use green color when mouse is down
-      boxShadow: '0 0 25px var(--cursor-mouse-down-shadow)', // Apply shadow on mouse down
-      duration: 0.2,
-      ease: 'power2.out',
-    });
-  };
+  // Handle mouse down and up
+  useEffect(() => {
+    const handleMouseDown = () => {
+      setIsMouseDown(true);
+      gsap.to(cursorRef.current, {
+        width: 50,
+        height: 50,
+        borderColor: 'var(--cursor-mouse-down-border)',
+        boxShadow: '0 0 25px var(--cursor-mouse-down-shadow)',
+        duration: 0.2,
+        ease: 'power2.out',
+      });e
+    };
 
-  // Handle mouse up
-  const handleMouseUp = () => {
-    setIsMouseDown(false);
-    gsap.to(cursorRef.current, {
-      width: 25,
-      height: 25,
-      borderColor: 'var(--cursor-border)', // Return to white when mouse is up
-      boxShadow: 'none',
-      duration: 0.2,
-      ease: 'power2.out',
-    });
-  };
+    const handleMouseUp = () => {
+      setIsMouseDown(false);
+      gsap.to(cursorRef.current, {
+        width: 25,
+        height: 25,
+        borderColor: 'var(--cursor-border)',
+        boxShadow: 'none',
+        duration: 0.2,
+        ease: 'power2.out',
+      });
+    };
+
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
 
   // Update trail segments
   useEffect(() => {
@@ -130,10 +147,9 @@ const CustomCursor = () => {
           opacity: isMoving || isMouseDown ? 1 - index / trailLength : 0,
           ease: 'power2.out',
           scale: 1 + index / trailLength,
-          boxShadow:
-            isMoving || isMouseDown
-              ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
-              : 'none',
+          boxShadow: isMoving || isMouseDown
+            ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
+            : 'none',
         });
       });
     };
@@ -151,16 +167,6 @@ const CustomCursor = () => {
     return () => cancelAnimationFrame(animationFrameId.current);
   }, [isMoving, isMouseDown]);
 
-  // Event listeners for mouse down and up
-  useEffect(() => {
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   return (
     <>
