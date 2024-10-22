@@ -28,26 +28,26 @@ const lightMode = css`
     /* ----- LIGHT MODE COLORS ----- */
     /********************************/
 
-    /* ----- Cursor ----- */
+    /* ----- Cursor (Inverted) ----- */
     --cursor-border: var(--black);
     --cursor-dot: var(--green);
     --cursor-background: radial-gradient(
       circle,
-      rgba(2, 1, 0, 0.4) 0%,
-      rgba(2, 1, 0, 0) 80%
+      rgba(10, 10, 10, 0.3) 0%,
+      rgba(10, 10, 10, 0) 80%
     );
     --cursor-mouse-down-border: var(--green);
-    --cursor-mouse-down-shadow: rgba(22, 213, 185, 0.5);
-    --cursor-trail-shadow: rgba(22, 213, 185, 0.3);
-    --cursor-trail: 22, 213, 185;
+    --cursor-mouse-down-shadow: rgba(10, 10, 10, 0.5);
+    --cursor-trail-shadow: rgba(25, 249, 216, 0.3);
+    --cursor-trail: 25, 249, 216;
 
     /* ----- Menu ----- */
     --menu-text-color: var(--charcoal);
-    --menu-background: var(--black);
+    --menu-background: 0, 0, 0;
     --menu-hover-text: var(--green);
     --menu-hover-background: var(--light-midnight);
-    --social-section-background: var(--lightest-midnight);
-    --social-icon-color: var(--charcoal);
+    --social-section-background: var(--midnight);
+    --social-icon-color: var(--cloud-white); 
     --resume-button-text: var(--charcoal);
     --resume-button-background: var(--green);
     --hamburger-button-color: var(--charcoal);

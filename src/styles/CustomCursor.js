@@ -13,7 +13,7 @@ const isMobile =
 // Styled component for the custom cursor
 const StyledCursor = styled.div`
   position: fixed;
-  width: ${isMobile ? '0' : '25px'};
+  width: ${isMobile ? '0' : '25px'}; 
   height: ${isMobile ? '0' : '25px'};
   background-color: transparent;
   border: ${isMobile ? 'none' : '1.5px solid var(--cursor-border)'};
@@ -72,14 +72,14 @@ const CustomCursor = () => {
     const throttledMouseMove = throttle((e) => {
       const { clientX: x, clientY: y } = e;
       mousePosition.current = { x, y };
-
+      
       gsap.to(cursorRef.current, {
         x,
         y,
         duration: 0.6, // speed of cursor movement
         ease: 'power2.out',
       });
-
+      
       setIsMoving(true);
       if (movementTimeout.current) {
         clearTimeout(movementTimeout.current);
@@ -109,7 +109,6 @@ const CustomCursor = () => {
         duration: 0.2,
         ease: 'power2.out',
       });
-      e;
     };
 
     const handleMouseUp = () => {
@@ -148,10 +147,9 @@ const CustomCursor = () => {
           opacity: isMoving || isMouseDown ? 1 - index / trailLength : 0,
           ease: 'power2.out',
           scale: 1 + index / trailLength,
-          boxShadow:
-            isMoving || isMouseDown
-              ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
-              : 'none',
+          boxShadow: isMoving || isMouseDown
+            ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
+            : 'none',
         });
       });
     };
@@ -168,6 +166,7 @@ const CustomCursor = () => {
     animateTrail();
     return () => cancelAnimationFrame(animationFrameId.current);
   }, [isMoving, isMouseDown]);
+
 
   return (
     <>

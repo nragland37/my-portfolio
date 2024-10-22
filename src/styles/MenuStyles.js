@@ -1,24 +1,14 @@
 import styled, { keyframes, css } from 'styled-components';
 
-export const smoothSlideDown = keyframes`
+// Keyframes for animations
+export const fadeInPositionDelayed = keyframes`
   0% {
-    transform: translateY(-100%);
     opacity: 0;
+    transform: translateX(-20px); 
   }
   100% {
-    transform: translateY(0);
     opacity: 1;
-  }
-`;
-
-export const smoothSlideUp = keyframes`
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100%);
-    opacity: 0;
+    transform: translateX(0);
   }
 `;
 
@@ -42,17 +32,6 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const fadeInPositionDelayed = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-20px); 
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
 export const StyledMenu = styled.div`
   display: none;
 
@@ -69,7 +48,7 @@ export const StyledHamburgerButton = styled.button`
   border: 0;
   background-color: transparent;
   color: var(--hamburger-button-color);
-  opacity: 0; /* Start invisible */
+  opacity: 0;
   animation: ${fadeInPositionDelayed} 0.5s ease-out 1s forwards;
 
   .ham-box {
@@ -119,9 +98,7 @@ export const StyledThemeToggle = styled.button`
   opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
   transform: ${({ menuOpen }) =>
     menuOpen ? 'translateY(0)' : 'translateY(-20px)'};
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
 
   &:hover,
@@ -136,6 +113,7 @@ export const StyledThemeToggle = styled.button`
   }
 `;
 
+// Refined StyleDropbar with subtle blur and improved color handling
 export const StyleDropbar = styled.aside`
   visibility: hidden;
   transform: translateY(-100%);
@@ -147,19 +125,16 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
-    min-height: calc(100dvh - var(--nav-height));
-    background-color: rgba(
-      var(--menu-background-rgb),
-      0.9
-    ); /* Slight transparency */
+    background-color: rgba(var(--menu-background), 0.91); /* Subtler background opacity */
+    backdrop-filter: blur(1px); /* Moderate blur for smoother effect */
+    -webkit-backdrop-filter: blur(5px); /* For Safari support */
+    box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
     z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 
     ${({ menuOpen }) =>
       menuOpen &&
@@ -186,15 +161,15 @@ export const StyleDropbar = styled.aside`
         li {
           cursor: pointer;
           width: 100%;
-          opacity: 0;
+          opacity: 1;
           transform: translateY(-30px);
           transition: none;
 
           animation: ${({ menuOpen }) =>
             menuOpen
               ? css`
-                  ${navLinksDropIn} 0.8s ease forwards;
-                  animation-delay: calc(0.15s * var(--i));
+                  ${navLinksDropIn} 1.5s ease forwards;
+                  animation-delay: calc(0.01999s * var(--i)); /* stagger effect */
                 `
               : 'none'};
 
@@ -204,14 +179,12 @@ export const StyleDropbar = styled.aside`
             font-size: 1.25rem;
             width: 100%;
             padding: 1.5rem 0;
-            background-color: var(--menu-background);
+            background-color: rgba(var(--menu-background), 0); /* Adjust background for subtlety */
             border: none;
             color: var(--menu-hover-background);
             letter-spacing: 0.15em;
             text-align: center;
-            transition:
-              background-color 0.3s ease,
-              color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             text-decoration: none;
 
             &:hover {
@@ -224,7 +197,7 @@ export const StyleDropbar = styled.aside`
     }
 
     .social-section {
-      background-color: var(--social-section-background);
+      background-color: rgba(var(--menu-background), 0); /* Adjusted for subtle opacity */
       padding: 2rem 0;
       display: flex;
       flex-direction: column;
@@ -239,12 +212,12 @@ export const StyleDropbar = styled.aside`
         justify-content: center;
         gap: 1.5rem;
         padding: 0 1rem;
-        opacity: 0;
         animation: ${fadeIn} 0.5s ease forwards 0.3s;
 
         a {
           svg {
             color: var(--social-icon-color);
+            opacity: 1;
             width: 2rem;
             height: 2rem;
             transition: color 0.5s ease;

@@ -43,11 +43,11 @@ const darkMode = css`
 
     /* ----- Menu ----- */
     --menu-text-color: var(--cloud-white);
-    --menu-background: var(--white);
+    --menu-background: 250, 250, 250;
     --menu-hover-text: var(--green);
     --menu-hover-background: var(--charcoal);
     --social-section-background: var(--midnight);
-    --social-icon-color: var(--cloud-white);
+    --social-icon-color: var(--charcoal); /* Ensure this is fully opaque */
     --resume-button-text: var(--white);
     --resume-button-background: var(--green);
     --hamburger-button-color: var(--white);
