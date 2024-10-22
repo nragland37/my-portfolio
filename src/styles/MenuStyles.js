@@ -125,6 +125,7 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100dvh - var(--nav-height)); /* Fallback for Safari - vh not good enough */
     background-color: rgba(var(--menu-background), 0.91); /* Subtler background opacity */
     backdrop-filter: blur(1px); /* Moderate blur for smoother effect */
     -webkit-backdrop-filter: blur(5px); /* For Safari support */
