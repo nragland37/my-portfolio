@@ -55,9 +55,8 @@ module.exports = {
 
   // Color configuration (matches CSS variables)
   colors: {
-    midnight: '#011627', // Base dark color (used in backgrounds)
+    midnight: '#0e1116', // Base dark color (used in backgrounds)
     green: '#19f9d8', // Primary accent color (used for links, buttons, etc.)
-    sand: '#efcc94', // Warm accent (used sparingly for highlights)
   },
 
   // Options for theme and cursor settings, adapted for mobile and desktop

@@ -36,7 +36,8 @@ module.exports = {
         start_url: '/',
         background_color: config.colors.midnight,
         theme_color: config.colors.green,
-        display: 'standalone',
+        display: 'minimal-ui',
+        icon: 'static/favicons/web-app-manifest-512x512.png',
         icons: [
           {
             src: '/favicons/web-app-manifest-192x192.png',
