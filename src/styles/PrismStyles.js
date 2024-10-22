@@ -98,16 +98,16 @@ const PrismStyles = css`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${prismColors.lightGray}; 
+    color: ${prismColors.lightGray};
   }
 
   .token.punctuation {
-    color: ${prismColors.gray}; 
+    color: ${prismColors.gray};
   }
 
   .token.namespace,
   .token.deleted {
-    color: ${prismColors.red}; 
+    color: ${prismColors.red};
   }
 
   .token.function-name,
@@ -115,20 +115,20 @@ const PrismStyles = css`
   .token.class-name,
   .token.constant,
   .token.symbol {
-    color: ${prismColors.orange}; 
+    color: ${prismColors.orange};
   }
 
   .token.attr-name,
   .token.operator,
   .token.rule {
-    color: ${prismColors.lightRed}; 
+    color: ${prismColors.lightRed};
   }
 
   .token.keyword,
   .token.boolean,
   .token.number,
   .token.property {
-    color: ${prismColors.orange}; 
+    color: ${prismColors.orange};
   }
 
   .token.tag,
@@ -138,7 +138,7 @@ const PrismStyles = css`
   .token.builtin,
   .token.entity,
   .token.url {
-    color: ${prismColors.green}; 
+    color: ${prismColors.green};
   }
 
   .token.string,
@@ -147,7 +147,7 @@ const PrismStyles = css`
   .token.regex,
   .token.variable,
   .token.inserted {
-    color: ${prismColors.green}; 
+    color: ${prismColors.green};
   }
 
   .token.important,

@@ -9,7 +9,7 @@ import { IconBookmark } from '@components/icons';
 import { format, parseISO } from 'date-fns';
 
 const StyledMainContainer = styled.main`
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-x: hidden;
 
   & > header {
     margin-bottom: 100px;
@@ -43,6 +43,11 @@ const StyledGrid = styled.ul`
 
   @media (max-width: 1080px) {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-top: 30px;
   }
 `;
 
@@ -84,8 +89,8 @@ const StyledPost = styled.li`
     img,
     video,
     iframe {
-      max-width: 100%; /* Prevent media overflow */
-      height: auto; /* Maintain aspect ratio */
+      max-width: 100%;
+      height: auto;
     }
   }
 
@@ -120,18 +125,30 @@ const StyledPost = styled.li`
         left: 0;
       }
     }
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-lg);
+    }
   }
 
   .post__desc {
     color: var(--blog-desc-color);
     font-size: 17px;
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-md);
+    }
   }
 
   .post__date {
     color: var(--blog-date-color);
     font-family: var(--font-mono);
-    font-size: var(--fz-xxs);
+    font-size: var(--fz-xs);
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-xxs);
+    }
   }
 
   ul.post__tags {
@@ -145,12 +162,52 @@ const StyledPost = styled.li`
     li {
       color: var(--blog-tag-color);
       font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-xs);
       line-height: 1.75;
 
       &:not(:last-of-type) {
         margin-right: 15px;
       }
+
+      @media (max-width: 768px) {
+        font-size: var(--fz-xxs);
+      }
+    }
+  }
+`;
+
+// Responsive Markdown styles for code blocks
+const StyledCodeBlock = styled.div`
+  .gatsby-highlight {
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: var(--fz-sm);
+    border-radius: var(--border-radius);
+    margin: 1.5em 0;
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-xs);
+      padding: 1rem;
+    }
+  }
+
+  pre[class*='language-'] {
+    background-color: var(--seal);
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: var(--fz-md);
+    line-height: 1.5;
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-sm);
+    }
+  }
+
+  code[class*='language-'] {
+    font-size: var(--fz-md);
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-sm);
     }
   }
 `;
@@ -173,7 +230,7 @@ const Blog = ({ location, data }) => {
             posts.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
-              const formattedDate = format(parseISO(date), 'MMMM d, yyyy'); // Updated date formatting
+              const formattedDate = format(parseISO(date), 'MMMM d, yyyy');
 
               return (
                 <StyledPost key={i}>
@@ -208,6 +265,8 @@ const Blog = ({ location, data }) => {
               );
             })}
         </StyledGrid>
+
+        <StyledCodeBlock />
       </StyledMainContainer>
     </Layout>
   );
