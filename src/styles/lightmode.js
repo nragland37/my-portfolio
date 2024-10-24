@@ -3,26 +3,13 @@ import { css } from 'styled-components';
 const lightMode = css`
   .light-mode {
     /* Base Light Palette */
-    --midnight: #f8f9fa;
-    --light-midnight: #ededed;
-    --lightest-midnight: #dcdcdc;
-
-    /* Refined Grayscale Palette */
-    --very-light-gray: #e6e6e6;
-    --light-gray: #adadad;
-    --gray: #6d7278;
-    --charcoal: #2f3338;
-    --black: #000000;
-
-    /* Light Neutrals */
-    --white: #f8f9fa;
-    --cloud-white: #ededed;
-    --offwhite: #dcdcdc;
+    --midnight: #f8f9fa; /* Base light */
+    --light-midnight: #e4e6e8; /* Slightly darker */
+    --lightest-midnight: #d1d4d8; /* Darkest of the light */
 
     /* Accents: Darker Green and Blue */
     --green: #16d5b9; /* Slightly darker */
     --blue: #5aa3d9; /* Slightly darker */
-    --sand: #efcc94;
 
     /********************************/
     /* ----- LIGHT MODE COLORS ----- */

@@ -63,17 +63,17 @@ module.exports = {
   options: isMobile
     ? [
         {
-          name: 'Light',
+          name: 'light',
           action: 'toggleTheme', // Only toggles light/dark mode for mobile
         },
       ]
     : [
         {
-          name: 'Light',
+          name: 'light',
           action: 'toggleTheme', // Toggling theme on desktop
         },
         {
-          name: 'Cursor',
+          name: 'cursor',
           action: 'toggleCursor', // Toggling cursor animation on desktop
         },
       ],

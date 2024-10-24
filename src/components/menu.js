@@ -23,7 +23,14 @@ const Menu = () => {
 
   return (
     <StyledMenu>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '1.5rem',
+        }}
+      >
         {/* reverse logic - dark-sun / light-moon */}
         <StyledThemeToggle
           onClick={handleThemeToggle}

@@ -3,26 +3,13 @@ import { css } from 'styled-components';
 const darkMode = css`
   .dark-mode {
     /* Base Dark Palette */
-    --midnight: #0e1116;
-    --light-midnight: #1a1d24;
-    --lightest-midnight: #282c33;
-
-    /* Refined Grayscale Palette */
-    --very-light-gray: #e6e6e6;
-    --light-gray: #adadad;
-    --gray: #6d7278;
-    --charcoal: #2f3338;
-    --black: #000000;
-
-    /* Light Neutrals */
-    --white: #f8f9fa;
-    --cloud-white: #ededed;
-    --offwhite: #dcdcdc;
+    --midnight: #0e1116; /* Base dark */
+    --light-midnight: #141820; /* Slightly lighter */
+    --lightest-midnight: #1f232b; /* Lightest of the dark */
 
     /* Accents: Green and Blue */
     --green: #19f9d8;
     --blue: #6fc1ff;
-    --sand: #efcc94;
 
     /********************************/
     /* ----- DARK MODE COLORS ----- */

@@ -14,7 +14,7 @@ const IconCursor = (props) => (
     {...props}
   >
     <title>Cursor</title>
-    <circle cx="12" cy="12" r="12" />
+    <circle cx="12" cy="12" r="11" />
     <circle cx="12" cy="12" r="1" fill="currentColor" />
   </svg>
 );

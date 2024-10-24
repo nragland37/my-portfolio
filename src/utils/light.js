@@ -1,4 +1,4 @@
-const DEFAULT_THEME = 'light';
+const DEFAULT_THEME = 'dark';
 
 /* Set theme and update document classes */
 const setTheme = (theme) => {
@@ -49,11 +49,11 @@ const injectGlobalStyles = () => {
         --theme-toggle-duration: 500ms; 
       }
 
-      .theme-toggle__expand {
+      .theme-toggle__around {
         transition: transform var(--theme-toggle-duration);
       }
 
-      .theme-toggle--toggled .theme-toggle__expand {
+      .theme-toggle--toggled .theme-toggle__around {
         transform: rotate(360deg);
       }
     `;
