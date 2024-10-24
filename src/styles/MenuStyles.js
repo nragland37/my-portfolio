@@ -122,6 +122,9 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
+    min-height: calc(
+      100dvh - var(--nav-height)
+    ); /* Fallback for Safari - vh not good enough */
     background-color: rgba(var(--menu-background), 0.93);
     backdrop-filter: blur(5px);
     box-shadow: 0 10px 30px -10px var(--nav-box-shadow);

@@ -14,11 +14,11 @@ const Menu = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const handleThemeToggle = () => {
-    toggleTheme((isDark) => setIsDarkMode(isDark)); 
+    toggleTheme((isDark) => setIsDarkMode(isDark));
   };
 
   useEffect(() => {
-    initTheme((isDark) => setIsDarkMode(isDark)); 
+    initTheme((isDark) => setIsDarkMode(isDark));
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const Menu = () => {
         {/* reverse logic - dark-sun / light-moon */}
         <StyledThemeToggle
           onClick={handleThemeToggle}
-          className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`} 
+          className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
           aria-label="Toggle theme"
         >
           <Icon name="light" />
