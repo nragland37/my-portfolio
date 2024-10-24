@@ -1,6 +1,4 @@
-// /components/Side.js
-
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react'; // Removed useRef
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';

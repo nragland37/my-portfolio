@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 const pulseAnimation = keyframes`
   0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 `;
 
@@ -74,8 +74,8 @@ const StyledNav = styled.nav`
 
     a {
       color: var(--nav-logo-color);
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
       position: relative;
       z-index: 1;
 
@@ -85,6 +85,7 @@ const StyledNav = styled.nav`
         left: 0;
         z-index: -1;
         transform: scale(0.5);
+        opacity: 0;
         transition:
           opacity 0.3s ease-in-out,
           transform 0.8s ease-in-out;
@@ -110,6 +111,7 @@ const StyledNav = styled.nav`
         outline: 0;
 
         .circle-container {
+          opacity: 1;
           transform: scale(1);
           transition: transform 0.8s ease-in-out;
         }

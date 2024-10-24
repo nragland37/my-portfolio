@@ -1,4 +1,3 @@
-// src/components/Nav.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -141,7 +140,7 @@ const Nav = ({ isHome }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Icon name={name} />
+                      <Icon name={name} width="26" height="26" />
                     </a>
                   </li>
                 </CSSTransition>

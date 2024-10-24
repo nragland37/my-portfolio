@@ -93,6 +93,8 @@ export const StyledThemeToggle = styled.button`
   ${({ theme }) => theme.mixins.flexCenter};
   position: relative;
   z-index: 10;
+  height: 55px;
+  width: 55px;
   padding: 10px;
   background-color: transparent;
   border: none;
