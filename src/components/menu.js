@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navLinks, socialMedia } from '@config';
+import { toggleTheme, initTheme } from '@utils/light';
 import { Icon } from '@components/icons';
-import IconLight from '@components/icons/light';
-import { toggleTheme } from '@utils/light';
 import MenuStyles from '@styles/MenuStyles';
 
 const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
@@ -10,37 +9,32 @@ const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] =
+    useState(); /* Initialize state without default */
 
-  // Commented out for potential future use to manage body scroll
-  /*
-  import { useEffect } from 'react';
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'; // disable scrolling
-    } else {
-      document.body.style.overflow = ''; // restore scrolling
-    }
-  }, [menuOpen]);
-  */
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev); // toggle menuOpen state
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const handleThemeToggle = () => {
-    toggleTheme(); // toggle theme
+    toggleTheme((isDark) =>
+      setIsDarkMode(isDark),
+    ); /* Ensure correct theme state is toggled */
   };
+
+  useEffect(() => {
+    initTheme((isDark) =>
+      setIsDarkMode(isDark),
+    ); /* Set initial theme state based on system or saved preference */
+  }, []);
 
   return (
     <StyledMenu>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <StyledThemeToggle
-          menuOpen={menuOpen}
-          onClick={handleThemeToggle} // re-enabled theme toggle
+          onClick={handleThemeToggle}
+          className={`theme-toggle ${isDarkMode ? 'theme-toggle--toggled' : ''}`}
           aria-label="Toggle theme"
         >
-          <IconLight />
+          <Icon name="light" />
         </StyledThemeToggle>
 
         <StyledHamburgerButton
@@ -62,8 +56,8 @@ const Menu = () => {
               <li key={i} style={{ '--i': i }}>
                 <a
                   href={url}
-                  onClick={() => setMenuOpen(false)} // close menu on link click
-                  tabIndex={menuOpen ? 0 : -1} // disable focus when menu closed
+                  onClick={() => setMenuOpen(false)}
+                  tabIndex={menuOpen ? 0 : -1}
                 >
                   {name}
                 </a>

@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
-// Keyframes for animations
+/* Keyframes for animations */
 export const fadeInPositionDelayed = keyframes`
   0% {
     opacity: 0;
@@ -90,32 +90,27 @@ export const StyledHamburgerButton = styled.button`
 `;
 
 export const StyledThemeToggle = styled.button`
+  ${({ theme }) => theme.mixins.flexCenter};
+  position: relative;
+  z-index: 10;
   padding: 10px;
   background-color: transparent;
   border: none;
   color: var(--menu-text-color);
-  cursor: pointer;
-  opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};
-  transform: ${({ menuOpen }) =>
-    menuOpen ? 'translateY(0)' : 'translateY(-20px)'};
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-  pointer-events: ${({ menuOpen }) => (menuOpen ? 'auto' : 'none')};
-
+  opacity: 0;
+  animation: ${fadeInPositionDelayed} 0.5s ease-out 1s forwards;
   &:hover,
   &:focus {
-    transform: translateY(-3px);
     color: var(--menu-hover-text);
   }
 
   svg {
-    width: 24px;
-    height: 24px;
+    transition:
+      transform 0.75s,
+      color 0.3s;
   }
 `;
 
-// Refined StyleDropbar with subtle blur and improved color handling
 export const StyleDropbar = styled.aside`
   visibility: hidden;
   transform: translateY(-100%);
@@ -127,15 +122,8 @@ export const StyleDropbar = styled.aside`
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--nav-height));
-    min-height: calc(
-      100dvh - var(--nav-height)
-    ); /* Fallback for Safari - vh not good enough */
-    background-color: rgba(
-      var(--menu-background),
-      0.91
-    ); /* Subtler background opacity */
-    backdrop-filter: blur(1px); /* Moderate blur for smoother effect */
-    -webkit-backdrop-filter: blur(5px); /* For Safari support */
+    background-color: rgba(var(--menu-background), 0.93);
+    backdrop-filter: blur(5px);
     box-shadow: 0 10px 30px -10px var(--nav-box-shadow);
     z-index: 9;
     display: flex;
@@ -171,17 +159,13 @@ export const StyleDropbar = styled.aside`
         li {
           cursor: pointer;
           width: 100%;
-          opacity: 1;
+          opacity: 0;
           transform: translateY(-30px);
-          transition: none;
-
           animation: ${({ menuOpen }) =>
             menuOpen
               ? css`
                   ${navLinksDropIn} 1.5s ease forwards;
-                  animation-delay: calc(
-                    0.01999s * var(--i)
-                  ); /* stagger effect */
+                  animation-delay: calc(0.05s * var(--i));
                 `
               : 'none'};
 
@@ -191,10 +175,7 @@ export const StyleDropbar = styled.aside`
             font-size: 1.25rem;
             width: 100%;
             padding: 1.5rem 0;
-            background-color: rgba(
-              var(--menu-background),
-              0
-            ); /* Adjust background for subtlety */
+            background-color: rgba(var(--menu-background), 0);
             border: none;
             color: var(--menu-hover-background);
             letter-spacing: 0.15em;
@@ -206,7 +187,7 @@ export const StyleDropbar = styled.aside`
 
             &:hover {
               color: var(--menu-hover-text);
-              background-color: var(--menu-hover-background);
+              background-color: transparent;
             }
           }
         }
@@ -214,10 +195,7 @@ export const StyleDropbar = styled.aside`
     }
 
     .social-section {
-      background-color: rgba(
-        var(--menu-background),
-        0
-      ); /* Adjusted for subtle opacity */
+      background-color: rgba(var(--menu-background), 0);
       padding: 2rem 0;
       display: flex;
       flex-direction: column;

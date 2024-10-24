@@ -35,7 +35,6 @@ const Head = ({ title, description, image }) => {
       <html lang="en" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
-
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
@@ -44,22 +43,13 @@ const Head = ({ title, description, image }) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content={defaultTitle} />
-
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
-
       {/* LinkedIn Meta Tags */}
       <meta property="og:image:alt" content={seo.description} />
-
-      {/* Generic Meta Tags */}
-      <meta name="application-name" content={defaultTitle} />
-      <meta itemProp="name" content={seo.title} />
-      <meta itemProp="description" content={seo.description} />
-      <meta itemProp="image" content={seo.image} />
-
       {/* Schema.org Markup */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -76,6 +66,21 @@ const Head = ({ title, description, image }) => {
           image: seo.image,
         })}
       </script>
+      {/* Generic Meta Tags */}
+      <meta name="application-name" content={defaultTitle} />
+      <meta itemProp="name" content={seo.title} />
+      <meta itemProp="description" content={seo.description} />
+      <meta itemProp="image" content={seo.image} />
+      {/* Additional meta tags for enhanced SEO and device compatibility */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#000000" />{' '}
+      {/* Adjust this value based on your site's brand color */}
+      <meta name="robots" content="index, follow" />
+      {/* 'expand.min.css' - replace for other styles: https://toggles.dev/ */}
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css"
+      />
     </Helmet>
   );
 };
