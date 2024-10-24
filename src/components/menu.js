@@ -9,29 +9,25 @@ const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] =
-    useState(); /* Initialize state without default */
+  const [isDarkMode, setIsDarkMode] = useState();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const handleThemeToggle = () => {
-    toggleTheme((isDark) =>
-      setIsDarkMode(isDark),
-    ); /* Ensure correct theme state is toggled */
+    toggleTheme((isDark) => setIsDarkMode(isDark)); 
   };
 
   useEffect(() => {
-    initTheme((isDark) =>
-      setIsDarkMode(isDark),
-    ); /* Set initial theme state based on system or saved preference */
+    initTheme((isDark) => setIsDarkMode(isDark)); 
   }, []);
 
   return (
     <StyledMenu>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {/* reverse logic - dark-sun / light-moon */}
         <StyledThemeToggle
           onClick={handleThemeToggle}
-          className={`theme-toggle ${isDarkMode ? 'theme-toggle--toggled' : ''}`}
+          className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`} 
           aria-label="Toggle theme"
         >
           <Icon name="light" />
