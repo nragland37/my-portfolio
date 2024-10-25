@@ -19,6 +19,7 @@ const StyledTitle = styled.h1`
   line-height: 1;
 `;
 const StyledSubtitle = styled.h2`
+  text-align: center;
   font-size: clamp(30px, 5vw, 50px);
   font-weight: 400;
 `;
@@ -43,7 +44,7 @@ const NotFoundPage = ({ location }) => {
   const content = (
     <StyledMainContainer className="fillHeight">
       <StyledTitle>404</StyledTitle>
-      <StyledSubtitle>Page Not Found</StyledSubtitle>
+      <StyledSubtitle>These aren't the droids you're looking for. 😛</StyledSubtitle>
       <StyledHomeButton to="/">Go Home</StyledHomeButton>
     </StyledMainContainer>
   );
