@@ -10,6 +10,7 @@ const darkMode = css`
     /* Accents: Green and Blue */
     --green: #19f9d8;
     --blue: #6fc1ff;
+    --sand: #efcc94;
 
     /********************************/
     /* ----- DARK MODE COLORS ----- */
@@ -121,7 +122,7 @@ const darkMode = css`
     --contact-email-link-bg: var(--midnight);
 
     /* Featured */
-    --featured-overline: var(--green);
+    --featured-overline: var(--sand);
     --featured-title: var(--cloud-white);
     --featured-description-bg: var(--light-midnight);
     --featured-description-text: var(--very-light-gray);

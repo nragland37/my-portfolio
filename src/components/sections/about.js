@@ -7,7 +7,7 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
-
+  
   .inner {
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -179,7 +179,7 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+      <h2 className="numbered-heading">about.</h2>
 
       <div className="inner">
         <StyledText>

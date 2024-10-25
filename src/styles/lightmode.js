@@ -10,6 +10,7 @@ const lightMode = css`
     /* Accents: Darker Green and Blue */
     --green: #16d5b9; /* Slightly darker */
     --blue: #5aa3d9; /* Slightly darker */
+    --sand: #d4a76c; /* Slightly darker */
 
     /********************************/
     /* ----- LIGHT MODE COLORS ----- */
@@ -121,7 +122,7 @@ const lightMode = css`
     --contact-email-link-bg: var(--light-midnight);
 
     /* Featured */
-    --featured-overline: var(--green);
+    --featured-overline: var(--sand);
     --featured-title: var(--charcoal);
     --featured-description-bg: var(--lightest-midnight);
     --featured-description-text: var(--gray);
@@ -129,7 +130,7 @@ const lightMode = css`
     --featured-tech-list-mobile: var(--midnight);
     --featured-link-color: var(--charcoal);
     --featured-image-bg: var(--light-midnight);
-    --featured-image-overlay: var(--lightest-midnight);
+    --featured-image-overlay: var(--charcoal);
 
     /* Hero */
     --hero-h1-title: var(--charcoal);

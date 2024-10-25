@@ -36,7 +36,7 @@ module.exports = {
       url: '/#about',
     },
     {
-      name: 'work',
+      name: 'experience',
       url: '/#jobs',
     },
     {

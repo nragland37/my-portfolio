@@ -14,16 +14,6 @@ const StyledMainContainer = styled.main`
   & > header {
     margin-bottom: 100px;
     text-align: center;
-
-    a {
-      &:hover,
-      &:focus {
-        cursor:
-          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:var(--black);font-size:24px;'><text y='50%'>⚡</text></svg>")
-            20 0,
-          auto;
-      }
-    }
   }
 
   footer {
@@ -133,7 +123,7 @@ const StyledPost = styled.li`
 
   .post__desc {
     color: var(--blog-desc-color);
-    font-size: 17px;
+    font-size: var(--fz-lg);
 
     @media (max-width: 768px) {
       font-size: var(--fz-md);
@@ -192,10 +182,10 @@ const StyledCodeBlock = styled.div`
   }
 
   pre[class*='language-'] {
-    background-color: var(--seal);
+    background-color: var(--code-bg);
     padding: 1rem;
     overflow-x: auto;
-    font-size: var(--fz-md);
+    font-size: var(--fz-sm);
     line-height: 1.5;
 
     @media (max-width: 768px) {

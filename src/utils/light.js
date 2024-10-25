@@ -1,4 +1,4 @@
-const DEFAULT_THEME = 'dark';
+const DEFAULT_THEME = 'light';
 
 /* Set theme and update document classes */
 const setTheme = (theme) => {

@@ -9,6 +9,7 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
+  bottom-margin: 100px;
 
   a {
     position: relative;
@@ -356,8 +357,9 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        projects.
       </h2>
+      <p className="subtitle" style={{ marginBottom: '40px', color: 'var(--sand)', fontSize: '1.25rem', textAlign: 'center' }}>Featured Projects.</p>
 
       <StyledProjectsGrid>
         {featuredProjects &&
@@ -373,7 +375,7 @@ const Featured = () => {
               >
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">Featured Projects.</p>
 
                     <h3 className="project-title">
                       <a href={external} target="_blank" rel="noreferrer">

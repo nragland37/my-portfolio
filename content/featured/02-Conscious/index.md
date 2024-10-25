@@ -3,7 +3,8 @@ date: '2'
 title: 'Conscious Chrome Extension'
 cover: './demo.png'
 github: 'https://github.com/nragland37/Conscious-Chrome-Extension'
-external: 'https://github.com/nragland37/Conscious-Chrome-Extension'
+external: ''
+cta: ''
 
 tech:
   - React
