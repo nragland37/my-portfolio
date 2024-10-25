@@ -359,7 +359,17 @@ const Featured = () => {
       <h2 className="numbered-heading" ref={revealTitle}>
         projects.
       </h2>
-      <p className="subtitle" style={{ marginBottom: '40px', color: 'var(--sand)', fontSize: '1.25rem', textAlign: 'center' }}>Featured Projects.</p>
+      <p
+        className="subtitle"
+        style={{
+          marginBottom: '40px',
+          color: 'var(--sand)',
+          fontSize: '1.25rem',
+          textAlign: 'center',
+        }}
+      >
+        Featured Projects.
+      </p>
 
       <StyledProjectsGrid>
         {featuredProjects &&

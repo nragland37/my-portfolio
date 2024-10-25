@@ -200,13 +200,12 @@ const Projects = () => {
     return (
       <div className="project-inner">
         <header>
-        <h3 className="project-title">
+          <h3 className="project-title">
             <a href={external} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>
           <div className="project-top">
-
             <div className="project-links">
               {github && (
                 <a
