@@ -21,7 +21,7 @@ const Layout = ({ children, location }) => {
 
   useEffect(() => {
     // Initialize theme and cursor on load
-    initTheme(); 
+    initTheme();
     initCursor();
   }, []);
 
