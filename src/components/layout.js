@@ -17,12 +17,12 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [cursorEnabled, setCursorEnabled] = useState(true); // State for cursor
+  const [cursorEnabled, setCursorEnabled] = useState(true);
 
   useEffect(() => {
     // Initialize theme and cursor on load
-    initTheme(); // Initialize the theme based on saved preference (dark or light)
-    initCursor(); // Initialize custom cursor
+    initTheme(); 
+    initCursor();
   }, []);
 
   return (
@@ -47,6 +47,7 @@ const Layout = ({ children, location }) => {
               <Footer />
             </div>
           </StyledContent>
+          {/* Analytics component for Vercel Analytics */}
           <Analytics />
         </ThemeProvider>
       </div>
