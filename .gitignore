@@ -6,6 +6,10 @@ public
 
 src/gatsby-types.d.ts
 
+
 ### Vercel ###
 .vercel
 
+
+### Local env ###
+.env
