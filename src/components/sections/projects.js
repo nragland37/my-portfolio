@@ -196,7 +196,12 @@ const Projects = () => {
         <div className="project-inner">
           <header>
             <h3 className="project-title">
-              <a href={external} target="_blank" rel="noreferrer" aria-label={`Visit ${title} external link`}>
+              <a
+                href={external}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visit ${title} external link`}
+              >
                 {title}
               </a>
             </h3>

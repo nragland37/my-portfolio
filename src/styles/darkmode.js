@@ -21,11 +21,11 @@ const darkMode = css`
     --cursor-dot: var(--green);
     --cursor-background: radial-gradient(
       circle,
-      rgba(248, 249, 250, 0.3) 0%,
-      rgba(248, 249, 250, 0) 80%
+      rgba(10, 10, 10, 0.3) 0%,
+      rgba(10, 10, 10, 0) 80%
     );
     --cursor-mouse-down-border: var(--green);
-    --cursor-mouse-down-shadow: rgba(248, 249, 250, 0.5);
+    --cursor-mouse-down-shadow: rgba(10, 10, 10, 0.5);
     --cursor-trail-shadow: rgba(25, 249, 216, 0.3);
     --cursor-trail: 25, 249, 216;
 

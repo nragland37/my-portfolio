@@ -4,7 +4,7 @@ const lightMode = css`
   .light-mode {
     /* Base Light Palette */
     --white: #f8f9fa;
-    --dark-white: #e4e6e8; 
+    --dark-white: #e4e6e8;
     --darkest-white: #d1d4d8;
 
     /* Accents: Darker Green and Blue */
@@ -17,15 +17,15 @@ const lightMode = css`
     /********************************/
 
     /* ----- Cursor (Inverted) ----- */
-    --cursor-border: var(--black);
+    --cursor-border: var(--charcoal);
     --cursor-dot: var(--green);
     --cursor-background: radial-gradient(
       circle,
-      rgba(10, 10, 10, 0.3) 0%,
-      rgba(10, 10, 10, 0) 80%
+      rgba(248, 249, 250, 0.3) 0%,
+      rgba(248, 249, 250, 0) 80%
     );
     --cursor-mouse-down-border: var(--green);
-    --cursor-mouse-down-shadow: rgba(10, 10, 10, 0.5);
+    --cursor-mouse-down-shadow: rgba(248, 249, 250, 0.5);
     --cursor-trail-shadow: rgba(25, 249, 216, 0.3);
     --cursor-trail: 25, 249, 216;
 
