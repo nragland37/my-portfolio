@@ -220,19 +220,6 @@ const StyledProject = styled.li`
     a {
       ${({ theme }) => theme.mixins.flexCenter};
       padding: 10px;
-
-      &.external {
-        svg {
-          width: 22px;
-          height: 22px;
-          margin-top: -4px;
-        }
-      }
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
     }
 
     .cta {
@@ -363,7 +350,7 @@ const Featured = () => {
         className="subtitle"
         style={{
           marginBottom: '40px',
-          color: 'var(--sand)',
+          color: 'var(--blue)',
           fontSize: '1.25rem',
           textAlign: 'center',
         }}

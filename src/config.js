@@ -82,7 +82,7 @@ module.exports = {
   srConfig: (delay = 200, viewFactor = 0.15) => {
     const commonSettings = {
       origin: 'bottom',
-      distance: '20px',
+      distance: '40px',
       duration: 1250,
       delay,
       rotate: { x: 0, y: 0, z: 0 },
@@ -98,7 +98,7 @@ module.exports = {
       ? {
           ...commonSettings,
           mobile: true,
-          viewFactor: 0.05, // Reduced view factor for mobile
+          viewFactor: 0, // Reduced view factor for mobile
         }
       : {
           ...commonSettings,

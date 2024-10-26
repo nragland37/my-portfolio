@@ -2,10 +2,10 @@ import { css } from 'styled-components';
 
 const darkMode = css`
   .dark-mode {
-    /* Base Dark Palette */
-    --midnight: #0e1116; /* Base dark */
-    --light-midnight: #141820; /* Slightly lighter */
-    --lightest-midnight: #1f232b; /* Lightest of the dark */
+    /* Base Dark Palette 
+    --midnight: #0e1116;
+    --light-midnight: #141820; 
+    --lightest-midnight: #1f232b; 
 
     /* Accents: Green and Blue */
     --green: #19f9d8;
@@ -103,7 +103,7 @@ const darkMode = css`
     --big-button-border: var(--green);
     --big-button-hover-shadow: var(--green);
     --big-button-hover: var(--midnight);
-    --box-shadow-default: var(--lightest-midnight);
+    --box-shadow-default: var(--charcoal);
     --box-shadow-hover-default: var(--green);
     --mixins-fancy-list: var(--cloud-white);
 
@@ -122,7 +122,7 @@ const darkMode = css`
     --contact-email-link-bg: var(--midnight);
 
     /* Featured */
-    --featured-overline: var(--sand);
+    --featured-overline: var(--blue);
     --featured-title: var(--cloud-white);
     --featured-description-bg: var(--light-midnight);
     --featured-description-text: var(--very-light-gray);
@@ -151,13 +151,13 @@ const darkMode = css`
     --projects-bg: var(--lightest-midnight);
     --projects-folder-color: var(--blue);
     --projects-links-color: var(--gray);
-    --projects-title-color: var(--very-light-gray);
-    --projects-description-color: var(--light-gray);
-    --projects-tech-color: var(--gray);
+    --projects-title-color: var(--cloud-white);
+    --projects-description-color: var(--very-light-gray);
+    --projects-tech-color: var(--light-gray);
 
     /* ----- Archive ----- */
     --table-bg: var(--midnight);
-    --table-header-bg: var(--charcoal);
+    --table-header-bg: var(--midnight);
 
     --table-text-year: var(--cloud-white);
     --table-text-title: var(--green);
@@ -165,11 +165,11 @@ const darkMode = css`
     --table-tech-separator: var(--sand);
 
     --table-accent: var(--green);
-    --table-row-hover: var(--gray);
+    --table-row-hover: var(--charcoal);
     --table-border-color: var(--light-gray);
 
     /* ----- Blog ----- */
-    --blog-bg: var(--charcoal);
+    --blog-bg: var(--lightest-midnight);
     --blog-icon-color: var(--green);
     --blog-title-color: var(--cloud-white);
     --blog-desc-color: var(--offwhite);

@@ -56,9 +56,27 @@ const StyledTableContainer = styled.div`
         font-size: var(--fz-sm);
         font-weight: 600;
         color: var(--table-accent);
+        text-align: left; /* Align the table headers to the left */
+        padding-left: 20px; /* Add padding to align with content */
+
+        &:first-child {
+          padding-left: 20px;
+
+          @media (max-width: 768px) {
+            padding-left: 10px;
+          }
+        }
+
+        &:last-child {
+          padding-right: 20px;
+
+          @media (max-width: 768px) {
+            padding-right: 10px;
+          }
+        }
       }
 
-      /* New class for hiding columns on small screens */
+      /* hiding columns on small screens */
       .hide-on-small-screens {
         display: table-cell;
 
@@ -80,7 +98,7 @@ const StyledTableContainer = styled.div`
       }
 
       td {
-        padding: 15px;
+        padding: 25px;
         text-align: left;
         border-bottom: 1px solid var(--table-border-color);
         vertical-align: middle;
@@ -197,7 +215,7 @@ const ArchivePage = ({ location, data }) => {
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">archive.</h1>
-          <p className="subtitle">A list of stuff and things I've built.</p>
+          <p className="subtitle">A list of stuff and things I've made.</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>

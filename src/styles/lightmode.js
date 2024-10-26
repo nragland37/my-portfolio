@@ -3,9 +3,9 @@ import { css } from 'styled-components';
 const lightMode = css`
   .light-mode {
     /* Base Light Palette */
-    --midnight: #f8f9fa; /* Base light */
-    --light-midnight: #e4e6e8; /* Slightly darker */
-    --lightest-midnight: #d1d4d8; /* Darkest of the light */
+    --white: #f8f9fa;
+    --dark-white: #e4e6e8; 
+    --darkest-white: #d1d4d8;
 
     /* Accents: Darker Green and Blue */
     --green: #16d5b9; /* Slightly darker */
@@ -33,8 +33,8 @@ const lightMode = css`
     --menu-text-color: var(--charcoal);
     --menu-background: 0, 0, 0;
     --menu-hover-text: var(--green);
-    --menu-hover-background: var(--light-midnight);
-    --social-section-background: var(--midnight);
+    --menu-hover-background: var(--dark-white);
+    --social-section-background: var(--white);
     --social-icon-color: var(--cloud-white);
     --resume-button-text: var(--charcoal);
     --resume-button-background: var(--green);
@@ -49,8 +49,8 @@ const lightMode = css`
     --nav-logo-svg-fill: var(--charcoal);
 
     /* ----- Global ----- */
-    --bg: var(--midnight);
-    --bg-header: var(--light-midnight);
+    --bg: var(--white);
+    --bg-header: var(--dark-white);
     --bg-star-color: var(--charcoal);
 
     /* Main Text */
@@ -60,33 +60,33 @@ const lightMode = css`
     --section-title-hover: var(--green);
 
     /* Highlight Selection */
-    --highlight-bg: var(--lightest-midnight);
+    --highlight-bg: var(--darkest-white);
     --highlight-text: var(--black);
 
     /* Scrollbar */
-    --scrollbar-bg: var(--light-midnight);
+    --scrollbar-bg: var(--dark-white);
     --scrollbar-thumb: var(--gray);
     --scrollbar-thumb-hover: var(--charcoal);
-    --scrollbar-border: var(--light-midnight);
+    --scrollbar-border: var(--dark-white);
 
     /* Miscellaneous */
-    --bg-code: var(--light-midnight);
+    --bg-code: var(--dark-white);
     --code: var(--charcoal);
     --blockquote-border: var(--blue);
-    --bg-hr: var(--lightest-midnight);
+    --bg-hr: var(--darkest-white);
     --overline: var(--green);
     --subtitle: var(--gray);
     --breadcrumb: var(--charcoal);
     --global-fancy-list: var(--charcoal);
-    --section-accent: var(--light-midnight);
+    --section-accent: var(--dark-white);
     --section-number: var(--green);
 
     /* ----- Mixins ----- */
     --button-default: var(--charcoal);
-    --button-bg-default: var(--midnight);
+    --button-bg-default: var(--white);
     --button-border-default: var(--green);
     --button-hover-shadow-default: var(--green);
-    --button-hover-default: var(--light-midnight);
+    --button-hover-default: var(--dark-white);
     --link: var(--blue);
     --link-hover: var(--green);
     --inline-link: var(--green);
@@ -94,16 +94,16 @@ const lightMode = css`
     --inline-link-hover-accent: var(--blue);
     --inline-link-bg: var(--green);
     --small-button: var(--charcoal);
-    --small-button-bg: var(--midnight);
+    --small-button-bg: var(--white);
     --small-button-border: var(--blue);
     --small-button-hover-shadow: var(--blue);
-    --small-button-hover: var(--light-midnight);
+    --small-button-hover: var(--dark-white);
     --big-button: var(--charcoal);
-    --big-button-bg: var(--midnight);
+    --big-button-bg: var(--white);
     --big-button-border: var(--green);
     --big-button-hover-shadow: var(--green);
-    --big-button-hover: var(--light-midnight);
-    --box-shadow-default: var(--lightest-midnight);
+    --big-button-hover: var(--dark-white);
+    --box-shadow-default: var(--charcoal);
     --box-shadow-hover-default: var(--green);
     --mixins-fancy-list: var(--charcoal);
 
@@ -111,26 +111,26 @@ const lightMode = css`
 
     /* About */
     --about-skill-bullet: var(--green);
-    --about-wrapper-bg: var(--midnight);
-    --about-blend-overlay: var(--green);
+    --about-wrapper-bg: var(--dark-white);
+    --about-blend-overlay: var(--gray);
     --about-border: var(--blue);
     --about-category-text: var(--green);
 
     /* Contact */
     --contact-overline: var(--green);
     --contact-title: var(--charcoal);
-    --contact-email-link-bg: var(--light-midnight);
+    --contact-email-link-bg: var(--dark-white);
 
     /* Featured */
-    --featured-overline: var(--sand);
+    --featured-overline: var(--blue);
     --featured-title: var(--charcoal);
-    --featured-description-bg: var(--lightest-midnight);
+    --featured-description-bg: var(--white);
     --featured-description-text: var(--gray);
     --featured-tech-list: var(--gray);
-    --featured-tech-list-mobile: var(--midnight);
+    --featured-tech-list-mobile: var(--gray);
     --featured-link-color: var(--charcoal);
-    --featured-image-bg: var(--light-midnight);
-    --featured-image-overlay: var(--charcoal);
+    --featured-image-bg: var(--darkest-white);
+    --featured-image-overlay: var(--gray);
 
     /* Hero */
     --hero-h1-title: var(--charcoal);
@@ -141,14 +141,14 @@ const lightMode = css`
     --jobs-tab-border: var(--green);
     --jobs-tab-active: var(--green);
     --jobs-tab-inactive: var(--charcoal);
-    --jobs-hover-bg: var(--lightest-midnight);
+    --jobs-hover-bg: var(--darkest-white);
     --jobs-highlight-bg: var(--green);
     --jobs-company-text: var(--green);
     --jobs-department-text: var(--gray);
     --jobs-range-text: var(--green);
 
     /* Projects */
-    --projects-bg: var(--midnight);
+    --projects-bg: var(--white);
     --projects-folder-color: var(--blue);
     --projects-links-color: var(--gray);
     --projects-title-color: var(--charcoal);
@@ -156,8 +156,8 @@ const lightMode = css`
     --projects-tech-color: var(--gray);
 
     /* ----- Archive ----- */
-    --table-bg: var(--midnight);
-    --table-header-bg: var(--midnight);
+    --table-bg: var(--white);
+    --table-header-bg: var(--white);
 
     --table-text-year: var(--charcoal);
     --table-text-title: var(--green);
@@ -165,15 +165,15 @@ const lightMode = css`
     --table-tech-separator: var(--sand);
 
     --table-accent: var(--green);
-    --table-row-hover: var(--light-gray);
+    --table-row-hover: var(--very-light-gray);
     --table-border-color: var(--light-gray);
 
     /* ----- Blog ----- */
-    --blog-bg: var(--light-midnight);
+    --blog-bg: var(--white);
     --blog-icon-color: var(--green);
     --blog-title-color: var(--charcoal);
-    --blog-desc-color: var(--midnight);
-    --blog-date-color: var(--midnight);
+    --blog-desc-color: var(--gray);
+    --blog-date-color: var(--gray);
     --blog-tag-color: var(--green);
 
     /* ----- Blog/Tags ----- */

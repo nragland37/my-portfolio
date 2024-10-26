@@ -31,7 +31,7 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px; /* Increased gap for better padding */
+    grid-gap: 20px;
     position: relative;
     margin-top: 50px;
 
@@ -55,28 +55,24 @@ const StyledProject = styled.li`
     }
   }
 
-  a {
-    position: relative;
-    z-index: 1;
-  }
-
   .project-inner {
     ${({ theme }) => theme.mixins.boxShadow};
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
     position: relative;
-    height: 100%;
+    height: 325px;
     padding: 2rem 1.75rem;
     border-radius: var(--border-radius);
     background-color: var(--projects-bg);
     transition: var(--transition);
-    overflow: auto;
+    overflow: hidden;
   }
 
   .project-top {
     ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 
     .folder {
       color: var(--projects-folder-color);
@@ -91,23 +87,12 @@ const StyledProject = styled.li`
       align-items: center;
       margin-right: -10px;
       color: var(--projects-links-color);
+      z-index: 2;
 
       a {
         ${({ theme }) => theme.mixins.flexCenter};
         padding: 5px 7px;
-
-        &.external {
-          svg {
-            width: 22px;
-            height: 22px;
-            margin-top: -4px;
-          }
-        }
-
-        svg {
-          width: 20px;
-          height: 20px;
-        }
+        z-index: 3;
       }
     }
   }
@@ -116,11 +101,14 @@ const StyledProject = styled.li`
     margin: 0 0 10px;
     color: var(--projects-title-color);
     font-size: var(--fz-xxl);
+    z-index: 3;
   }
 
   .project-description {
     color: var(--projects-description-color);
     font-size: 17px;
+    flex-grow: 1;
+    overflow: hidden;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -130,7 +118,6 @@ const StyledProject = styled.li`
   .project-tech-list {
     display: flex;
     align-items: flex-end;
-    flex-grow: 1;
     flex-wrap: wrap;
     padding: 0;
     margin: 20px 0 0 0;
@@ -196,57 +183,66 @@ const Projects = () => {
   const projectInner = (node) => {
     const { frontmatter, html } = node;
     const { github, external, title, tech } = frontmatter;
+    const link = external || github;
 
     return (
-      <div className="project-inner">
-        <header>
-          <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
-          </h3>
-          <div className="project-top">
-            <div className="project-links">
-              {github && (
-                <a
-                  href={github}
-                  aria-label="GitHub Link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon name="github" />
-                </a>
-              )}
-              {external && (
-                <a
-                  href={external}
-                  aria-label="External Link"
-                  className="external"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon name="external" />
-                </a>
-              )}
+      <a
+        className="project-link"
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Link to ${title} ${external ? 'external site' : 'GitHub repository'}`}
+      >
+        <div className="project-inner">
+          <header>
+            <h3 className="project-title">
+              <a href={external} target="_blank" rel="noreferrer" aria-label={`Visit ${title} external link`}>
+                {title}
+              </a>
+            </h3>
+
+            <div className="project-top">
+              <div className="project-links">
+                {external && (
+                  <a
+                    href={external}
+                    aria-label={`Visit ${title} external site`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon name="external" />
+                  </a>
+                )}
+                {github && (
+                  <a
+                    href={github}
+                    aria-label={`Visit ${title} GitHub repository`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon name="github" />
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div
-            className="project-description"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </header>
+            <div
+              className="project-description"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          </header>
 
-        <footer>
-          {tech && (
-            <ul className="project-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
-              ))}
-            </ul>
-          )}
-        </footer>
-      </div>
+          <footer>
+            {tech && (
+              <ul className="project-tech-list">
+                {tech.map((tech, i) => (
+                  <li key={i}>{tech}</li>
+                ))}
+              </ul>
+            )}
+          </footer>
+        </div>
+      </a>
     );
   };
 
