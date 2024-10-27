@@ -18,7 +18,9 @@
 </p>
 
 <div align="center">
+  
 ![Vercel](https://vercelbadge.vercel.app/api/nragland37/my-portfolio)
+
 </div>
 
 > [!IMPORTANT]
@@ -84,7 +86,7 @@ To prepare your project for deployment:
 
 <br />
 
-| Color Name     | Hex                                                                |
+| Color    | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
 | Midnight       | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
 | Light Midnight | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
