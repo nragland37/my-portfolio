@@ -351,7 +351,7 @@ const Featured = () => {
         style={{
           marginBottom: '40px',
           color: 'var(--blue)',
-          fontSize: '1.25rem',
+          fontSize: '1.10rem',
           textAlign: 'center',
         }}
       >
