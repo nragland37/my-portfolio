@@ -6,24 +6,20 @@
     <img alt="Logo" src="/static/assets/folio-logo.gif" width="20%" />
   </a>
 </div>
+
 <h1 align="center">
-  nicholasragland.com
+  <a href="https://www.nicholasragland.com/" target="_blank">
+    nicholasragland.com
+  </a>
 </h1>
+
 <p align="center">
   Built with <a href="https://www.gatsbyjs.com/" target="_blank">Gatsby.js</a> and hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>
 </p>
 
 <div align="center">
-  
 ![Vercel](https://vercelbadge.vercel.app/api/nragland37/my-portfolio)
-
 </div>
-
-<a href="https://www.nicholasragland.com/" target="_blank">
-
-![demo](https://raw.githubusercontent.com/nragland37/my-portfolio/main/src/images/demo.gif)
-
-</a>
 
 > [!IMPORTANT]
 > This project requires **Node.js version 18 or higher**: [Node.js official website](https://nodejs.org/)
@@ -90,20 +86,12 @@ To prepare your project for deployment:
 
 | Color Name     | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
-| Zeus           | ![#171717](https://via.placeholder.com/10/171717?text=+) `#171717` |
-| Light Zeus     | ![#2b2b2b](https://via.placeholder.com/10/2b2b2b?text=+) `#2b2b2b` |
-| Lightest Zeus  | ![#3c3c3c](https://via.placeholder.com/10/3c3c3c?text=+) `#3c3c3c` |
-| Slate          | ![#6e767e](https://via.placeholder.com/10/6e767e?text=+) `#6e767e` |
-| Light Slate    | ![#c5cacc](https://via.placeholder.com/10/c5cacc?text=+) `#c5cacc` |
-| Lightest Slate | ![#e4e6e7](https://via.placeholder.com/10/e4e6e7?text=+) `#e4e6e7` |
-| White          | ![#f0f4f5](https://via.placeholder.com/10/f0f4f5?text=+) `#f0f4f5` |
-| Green          | ![#1df8d7](https://via.placeholder.com/10/1df8d7?text=+) `#1df8d7` |
-| Sand           | ![#ffcc94](https://via.placeholder.com/10/ffcc94?text=+) `#ffcc94` |
-
-<br />
-
-## Acknowledgments
-
-This project was inspired by an open-source website, which provided a strong foundation for my own work. I modernized the project by updating dependencies, refactoring deprecated code, and implementing new features and custom logic. I'm proud of how I transformed it into something uniquely my own, while keeping the original vision intact.
-
-Special thanks to [Brittany Chiang](https://github.com/bchiang7) for the inspiration!
+| Midnight       | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
+| Light Midnight | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
+| Lightest Midnight | ![#282c33](https://via.placeholder.com/10/282c33?text=+) `#282c33` |
+| Gray           | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
+| Light Gray     | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
+| Very Light Gray| ![#e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6` |
+| White          | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
+| Green          | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
+| Sand           | ![#efcc94](https://via.placeholder.com/10/efcc94?text=+) `#efcc94` |
