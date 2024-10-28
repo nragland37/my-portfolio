@@ -43,9 +43,9 @@ const globalVariables = css`
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
     /* Font Sizes */
-    --fz-xxs: 12px;
-    --fz-xs: 13px;
-    --fz-sm: 14px;
+    --fz-xxs: 13px;
+    --fz-xs: 14px;
+    --fz-sm: 15px;
     --fz-md: 16px;
     --fz-lg: 18px;
     --fz-xl: 20px;

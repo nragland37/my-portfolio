@@ -412,7 +412,7 @@ const Featured = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          <Icon name="GitHub" />
+                          <Icon name="github" />
                         </a>
                       )}
                       {external && !cta && (
@@ -422,9 +422,7 @@ const Featured = () => {
                           className="external"
                           target="_blank"
                           rel="noreferrer"
-                        >
-                          <Icon name="External" />
-                        </a>
+                        ></a>
                       )}
                     </div>
                   </div>

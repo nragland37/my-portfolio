@@ -136,6 +136,7 @@ const lightMode = css`
     --hero-h1-title: var(--charcoal);
     --hero-h2-title: var(--gray);
     --hero-h3-title: var(--green);
+    --hero-mouse: var(--charcoal);
 
     /* Jobs */
     --jobs-tab-border: var(--green);

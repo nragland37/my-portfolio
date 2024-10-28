@@ -3,7 +3,7 @@ date: '3'
 title: 'C++ Projects'
 cover: './demo.png'
 github: 'https://github.com/nragland37/cpp-projects'
-external: ''
+external: 'https://github.com/nragland37/cpp-projects'
 cta: ''
 
 tech:

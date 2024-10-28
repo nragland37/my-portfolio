@@ -1,9 +1,9 @@
 ---
 date: '1'
-title: 'Student Time Analysis Tool'
+title: 'Event Optimization Tool'
 cover: './demo.png'
-github: 'https://github.com/nragland37/Student-Time-Analysis-Tool'
-external: ''
+github: 'https://github.com/nragland37/Event-Planning-Analysis-Tool'
+external: 'https://nragland37.shinyapps.io/timeanalysis/'
 cta: 'https://nragland37.shinyapps.io/timeanalysis/'
 
 tech:
@@ -13,4 +13,4 @@ tech:
   - Data Analysis
 ---
 
-R-based Shiny application designed to visualize student availability during breaks between classes using interactive heatmaps. It helps identify periods when students are free, enabling institutions to optimize event timing and boost student involvement.
+R-based Shiny application that maps availability and identifies optimal engagement times to enhance participation within an organization.

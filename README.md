@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://www.nicholasragland.com/" target="_blank">
-    <img alt="Logo" src="/static/assets/folio-logo.gif" width="20%" />
+    <img alt="Logo" src="/static/assets/logo-dark.gif" width="20%" />
   </a>
 </div>
 
@@ -86,14 +86,14 @@ To prepare your project for deployment:
 
 <br />
 
-| Color    | Hex                                                                |
-| -------------- | ------------------------------------------------------------------ |
-| Midnight       | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
-| Light Midnight | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Midnight          | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
+| Light Midnight    | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
 | Lightest Midnight | ![#282c33](https://via.placeholder.com/10/282c33?text=+) `#282c33` |
-| Gray           | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
-| Light Gray     | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
-| Very Light Gray| ![#e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6` |
-| White          | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
-| Green          | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
-| Sand           | ![#efcc94](https://via.placeholder.com/10/efcc94?text=+) `#efcc94` |
+| Gray              | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
+| Light Gray        | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
+| Very Light Gray   | ![#e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6` |
+| White             | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
+| Green             | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
+| Sand              | ![#efcc94](https://via.placeholder.com/10/efcc94?text=+) `#efcc94` |

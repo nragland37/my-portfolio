@@ -1,9 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
+// Keyframes for the scroll animation
+const scrollAnimation = keyframes`
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0; }
+`;
+
+// Keyframes for the fade-in animation
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+// Styled component for the Hero section
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
@@ -11,6 +31,7 @@ const StyledHeroSection = styled.section`
   min-height: 100vh;
   height: 100vh;
   padding: 0;
+  position: relative;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -31,7 +52,7 @@ const StyledHeroSection = styled.section`
     margin: 0 0 30px 4px;
     color: var(--hero-h3-title);
     font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+    font-size: clamp(var(--fz-md), 5vw, var(--fz-md));
     font-weight: 400;
 
     @media (max-width: 480px) {
@@ -50,6 +71,40 @@ const StyledHeroSection = styled.section`
   }
 `;
 
+// Styled component for the scroll-down effect
+const ScrollDowns = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+  animation: ${fadeIn} 1s forwards 1s;
+`;
+
+const Mousey = styled.div`
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid var(--hero-mouse);
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+`;
+
+const Scroller = styled.div`
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: var(--hero-mouse);
+  animation: ${scrollAnimation} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94)
+    infinite;
+`;
+
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -63,14 +118,22 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [prefersReducedMotion]);
 
+  const handleScrollClick = () => {
+    window.location.href = '#about';
+  };
+
   const one = <h3>Hi, my name is</h3>;
   const two = <h1 className="big-heading">Nicholas Ragland.</h1>;
-  const three = <h2 className="big-heading">I build things.</h2>;
+  const three = (
+    <h2 className="big-heading" style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}>
+      Building Secure & Scalable <br /> Software Solutions.
+    </h2>
+  );
   const four = (
     <>
       <p>
-        I'm a software engineer with a passion for creating clean, functional,
-        and user-friendly solutions.
+        I'm a Software Engineer and Cybersecurity Specialist with a passion for
+        creating clean, efficient, and secure solutions.
       </p>
     </>
   );
@@ -105,6 +168,13 @@ const Hero = () => {
             ))}
         </TransitionGroup>
       )}
+
+      {/* Scroll Down Indicator */}
+      <ScrollDowns onClick={handleScrollClick}>
+        <Mousey>
+          <Scroller />
+        </Mousey>
+      </ScrollDowns>
     </StyledHeroSection>
   );
 };

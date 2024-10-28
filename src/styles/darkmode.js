@@ -136,6 +136,7 @@ const darkMode = css`
     --hero-h1-title: var(--cloud-white);
     --hero-h2-title: var(--gray);
     --hero-h3-title: var(--green);
+    --hero-mouse: var(--cloud-white);
 
     /* Jobs */
     --jobs-tab-border: var(--green);
