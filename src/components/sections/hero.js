@@ -28,8 +28,8 @@ const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   padding: 0;
   position: relative;
 
@@ -125,15 +125,16 @@ const Hero = () => {
   const one = <h3>Hi, my name is</h3>;
   const two = <h1 className="big-heading">Nicholas Ragland.</h1>;
   const three = (
-    <h2 className="big-heading" style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}>
-      Building Secure & Scalable <br /> Software Solutions.
-    </h2>
+    <h2
+      className="big-heading"
+      style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}
+    ></h2>
   );
   const four = (
     <>
       <p>
-        I'm a Software Engineer and Cybersecurity Specialist with a passion for
-        creating clean, efficient, and secure solutions.
+        Software Engineer and Cybersecurity Specialist with a passion for
+        building clean, efficient, and secure solutions.
       </p>
     </>
   );

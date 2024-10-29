@@ -18,6 +18,7 @@ const lightMode = css`
 
     /* ----- Cursor (Inverted) ----- */
     --cursor-border: var(--charcoal);
+    --cursor-bg: var(--white);
     --cursor-dot: var(--green);
     --cursor-background: radial-gradient(
       circle,

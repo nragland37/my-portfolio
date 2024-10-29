@@ -19,6 +19,7 @@ const darkMode = css`
     /* ----- Cursor ----- */
     --cursor-border: var(--cloud-white);
     --cursor-dot: var(--green);
+    --cursor-bg: var(--charcoal);
     --cursor-background: radial-gradient(
       circle,
       rgba(10, 10, 10, 0.3) 0%,
