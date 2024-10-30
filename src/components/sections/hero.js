@@ -4,14 +4,14 @@ import styled, { keyframes, css } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
-// Keyframes for the scroll animation
+/* Keyframes for the scroll animation */
 const scrollAnimation = keyframes`
   0% { opacity: 0; }
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0; }
 `;
 
-// Keyframes for the fade-in animation
+/* Keyframes for the fade-in animation */
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -23,7 +23,7 @@ const fadeIn = keyframes`
   }
 `;
 
-// Keyframes for the slow infinite zoom-in effect
+/* Keyframes for the slow infinite zoom-in effect */
 const zoomIn = keyframes`
   0% {
     transform: scale(1);
@@ -43,7 +43,7 @@ const zoomIn = keyframes`
   }
 `;
 
-// Styled component for the Hero section
+/* Styled component for the Hero section */
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
@@ -156,7 +156,7 @@ const StyledHeroSection = styled.section`
   }
 `;
 
-// Styled component for the scroll-down effect
+/* Styled component for the scroll-down effect */
 const ScrollDowns = styled.div`
   position: absolute;
   bottom: 10px;
@@ -193,6 +193,7 @@ const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const profileImageRef = React.useRef(null);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -201,6 +202,31 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [prefersReducedMotion]);
 
+  useEffect(() => {
+    /* Observe changes to the profile image class for reset */
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (
+          mutation.type === 'attributes' &&
+          mutation.attributeName === 'class' &&
+          !mutation.target.classList.contains('zooming')
+        ) {
+          mutation.target.style.transform = 'scale(1) translate(0, 0)';
+        }
+      });
+    });
+
+    if (profileImageRef.current) {
+      observer.observe(profileImageRef.current, {
+        attributes: true,
+      });
+    }
+
+    return () => {
+      if (profileImageRef.current) observer.disconnect();
+    };
+  }, []);
+
   const handleScrollClick = () => {
     window.location.href = '#about';
   };
@@ -208,12 +234,12 @@ const Hero = () => {
   const handleImageClick = () => {
     setIsZooming(true);
 
-    // Navigate to #about page after zoom progresses sufficiently
+    /* Navigate to #about page after zoom progresses sufficiently */
     setTimeout(() => {
       window.location.href = '#about';
-    }, 2000); // Adjusted timing for smoother transition
+    }, 2000);
 
-    // Reset the image's state after the animation
+    /* Reset the image's state after the animation */
     setTimeout(() => {
       setIsZooming(false);
     }, 3500);
@@ -225,7 +251,7 @@ const Hero = () => {
     </h1>
   );
 
-  // Sub-heading removed
+  /* Sub-heading removed */
   // const three = (
   //   <h2 className="big-heading" style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}>
   //     Building Secure & Scalable Software Solutions.
@@ -241,7 +267,7 @@ const Hero = () => {
     </>
   );
 
-  // LinkedIn Button (commented out)
+  /* LinkedIn Button (commented out) */
   // const five = (
   //   <a
   //     className="link"
@@ -257,6 +283,7 @@ const Hero = () => {
     <div
       className={`profile-image ${isZooming ? 'zooming' : ''}`}
       onClick={handleImageClick}
+      ref={profileImageRef}
     >
       <img
         src={require('../../images/me.jpg').default}
