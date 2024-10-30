@@ -140,7 +140,7 @@ const About = () => {
     {
       category: (
         <>
-          Web Development <br /> Libraries/Frameworks
+          Web Development <br /> Libraries & Frameworks
         </>
       ),
       details: 'React, Next.js, Gatsby.js, Tailwind CSS, Styled Components',
@@ -148,7 +148,7 @@ const About = () => {
     {
       category: (
         <>
-          Data Science <br /> Libraries/Frameworks
+          Data Science <br /> Libraries & Frameworks
         </>
       ),
       details: 'Pandas, NumPy, Shiny, Plotly, Tidyverse',
