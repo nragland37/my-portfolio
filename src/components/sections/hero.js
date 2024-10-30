@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { keyframes, css } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
@@ -62,7 +62,7 @@ const StyledHeroSection = styled.section`
 
   h1 {
     color: var(--hero-h1-title);
-    font-size: clamp(50px, 17vw, 120px);
+    font-size: clamp(40px, 15vw, 112px);
     margin-bottom: 25px;
     text-align: left;
   }
@@ -110,23 +110,23 @@ const StyledHeroSection = styled.section`
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
+    will-change: transform;
 
     /* Responsive image size adjustments */
     @media (max-width: 768px) {
-      width: 210px;
-      height: 210px;
-    }
-    @media (max-width: 480px) {
       width: 200px;
       height: 200px;
+    }
+    @media (max-width: 480px) {
+      width: 180px;
+      height: 180px;
     }
 
     ${({ isZooming }) =>
       isZooming &&
       css`
         animation: ${zoomIn} 3s forwards;
-        z-index: 1000;
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -194,38 +194,39 @@ const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const profileImageRef = React.useRef(null);
+  const profileImageRef = useRef(null);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const timeout = setTimeout(() => setIsMounted(true), navDelay);
-    return () => clearTimeout(timeout);
+    setTimeout(() => setIsMounted(true), navDelay);
   }, [prefersReducedMotion]);
 
   useEffect(() => {
+    /* Copy ref to local variable for stable cleanup */
+    const currentImageRef = profileImageRef.current;
+
     /* Observe changes to the profile image class for reset */
     const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
+      mutationsList.forEach((mutation) => {
         if (
           mutation.type === 'attributes' &&
           mutation.attributeName === 'class' &&
           !mutation.target.classList.contains('zooming')
         ) {
-          mutation.target.style.transform = '';
+          mutation.target.style.transform = 'scale(1) translate(0, 0)';
         }
-      }
+      });
     });
 
-    const imgElement = profileImageRef.current;
-    if (imgElement) {
-      observer.observe(imgElement, {
+    if (currentImageRef) {
+      observer.observe(currentImageRef, {
         attributes: true,
       });
     }
 
     return () => {
-      if (imgElement) observer.disconnect();
+      if (currentImageRef) observer.disconnect();
     };
   }, []);
 
@@ -234,6 +235,12 @@ const Hero = () => {
   };
 
   const handleImageClick = () => {
+    const imageElement = profileImageRef.current;
+    if (imageElement) {
+      const rect = imageElement.getBoundingClientRect();
+      imageElement.style.transformOrigin = `${rect.width / 2}px ${rect.height / 2}px`;
+    }
+
     setIsZooming(true);
 
     /* Navigate to #about page after zoom progresses sufficiently */
@@ -244,6 +251,9 @@ const Hero = () => {
     /* Reset the image's state after the animation */
     setTimeout(() => {
       setIsZooming(false);
+      if (profileImageRef.current) {
+        profileImageRef.current.style.transformOrigin = 'center';
+      }
     }, 3500);
   };
 
