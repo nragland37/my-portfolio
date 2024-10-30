@@ -9,6 +9,43 @@ const IconLogo = ({ width = '1000px', height = '1000px' }) => (
     height={height}
   >
     <title>Nicholas Ragland</title>
+
+    <circle
+      cx="500"
+      cy="500"
+      r="380"
+      stroke="currentColor"
+      strokeWidth="25"
+      fill="none"
+    />
+
+    <text
+      x="500"
+      y="550"
+      fontSize="550"
+      fill="currentColor"
+      fontFamily="Arial, Helvetica, sans-serif"
+      fontWeight="bold"
+      dominantBaseline="middle"
+      textAnchor="middle"
+    >
+      N
+    </text>
+  </svg>
+);
+
+export default IconLogo;
+
+/*
+const IconLogo = ({ width = '1000px', height = '1000px' }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    viewBox="0 0 1000 1000"
+    width={width}
+    height={height}
+  >
+    <title>Nicholas Ragland</title>
     <circle
       cx="500"
       cy="500"
@@ -58,3 +95,4 @@ const IconLogo = ({ width = '1000px', height = '1000px' }) => (
 );
 
 export default IconLogo;
+*/

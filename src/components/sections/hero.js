@@ -27,15 +27,18 @@ const fadeIn = keyframes`
 const zoomIn = keyframes`
   0% {
     transform: scale(1);
-    opacity: 0;
-  } 5% {
-    transform: scale(1);
     opacity: 1;
-  } 60% {
+  }
+  50% {
     transform: scale(5);
-    opacity: 0.69;
-  } 100% {
-    transform: scale(101);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(20);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(100);
     opacity: 0;
   }
 `;
@@ -59,8 +62,8 @@ const StyledHeroSection = styled.section`
 
   h1 {
     color: var(--hero-h1-title);
-    font-size: clamp(60px, 21vw, 120px);
-    margin-bottom: 50px;
+    font-size: clamp(50px, 17vw, 120px);
+    margin-bottom: 25px;
     text-align: left;
   }
 
@@ -111,7 +114,7 @@ const StyledHeroSection = styled.section`
     ${({ isZooming }) =>
       isZooming &&
       css`
-        animation: ${zoomIn} 2s forwards;
+        animation: ${zoomIn} 3s forwards;
         z-index: 1000;
         position: absolute;
         top: 50%;
@@ -182,9 +185,7 @@ const Hero = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
@@ -197,17 +198,22 @@ const Hero = () => {
   const handleImageClick = () => {
     setIsZooming(true);
 
+    // Navigate to #about page after zoom progresses sufficiently
     setTimeout(() => {
       window.location.href = '#about';
-    }, 900);
+    }, 2000); // Adjusted timing for smoother transition
 
+    // Reset the image's state after the animation
     setTimeout(() => {
       setIsZooming(false);
-    }, 4000);
+    }, 3500);
   };
 
-  // const one = <h3>Hi, my name is</h3>;
-  const two = <h1 className="big-heading">NICHOLAS RAGLAND.</h1>;
+  const two = (
+    <h1 className="big-heading" style={{ alignSelf: 'flex-start' }}>
+      NICHOLAS RAGLAND.
+    </h1>
+  );
 
   // Sub-heading removed
   // const three = (
@@ -237,7 +243,6 @@ const Hero = () => {
   //   </a>
   // );
 
-  // Image added as replacement
   const profileImage = (
     <div
       className="profile-image"
