@@ -111,6 +111,16 @@ const StyledHeroSection = styled.section`
     margin-right: auto;
     cursor: pointer;
 
+    /* Responsive image size adjustments */
+    @media (max-width: 768px) {
+      width: 180px;
+      height: 180px;
+    }
+    @media (max-width: 480px) {
+      width: 140px;
+      height: 140px;
+    }
+
     ${({ isZooming }) =>
       isZooming &&
       css`
@@ -245,8 +255,7 @@ const Hero = () => {
 
   const profileImage = (
     <div
-      className="profile-image"
-      isZooming={isZooming}
+      className={`profile-image ${isZooming ? 'zooming' : ''}`}
       onClick={handleImageClick}
     >
       <img
