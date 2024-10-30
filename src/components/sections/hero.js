@@ -113,12 +113,12 @@ const StyledHeroSection = styled.section`
 
     /* Responsive image size adjustments */
     @media (max-width: 768px) {
-      width: 180px;
-      height: 180px;
+      width: 210px;
+      height: 210px;
     }
     @media (max-width: 480px) {
-      width: 140px;
-      height: 140px;
+      width: 200px;
+      height: 200px;
     }
 
     ${({ isZooming }) =>
@@ -178,6 +178,7 @@ const Mousey = styled.div`
   border-radius: 25px;
   opacity: 0.75;
   box-sizing: content-box;
+  margin-bottom: 10px;
 `;
 
 const Scroller = styled.div`
@@ -205,25 +206,26 @@ const Hero = () => {
   useEffect(() => {
     /* Observe changes to the profile image class for reset */
     const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
+      for (const mutation of mutationsList) {
         if (
           mutation.type === 'attributes' &&
           mutation.attributeName === 'class' &&
           !mutation.target.classList.contains('zooming')
         ) {
-          mutation.target.style.transform = 'scale(1) translate(0, 0)';
+          mutation.target.style.transform = '';
         }
-      });
+      }
     });
 
-    if (profileImageRef.current) {
-      observer.observe(profileImageRef.current, {
+    const imgElement = profileImageRef.current;
+    if (imgElement) {
+      observer.observe(imgElement, {
         attributes: true,
       });
     }
 
     return () => {
-      if (profileImageRef.current) observer.disconnect();
+      if (imgElement) observer.disconnect();
     };
   }, []);
 
@@ -284,6 +286,11 @@ const Hero = () => {
       className={`profile-image ${isZooming ? 'zooming' : ''}`}
       onClick={handleImageClick}
       ref={profileImageRef}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') handleImageClick();
+      }}
     >
       <img
         src={require('../../images/me.jpg').default}
