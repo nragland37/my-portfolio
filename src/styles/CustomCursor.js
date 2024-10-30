@@ -159,17 +159,34 @@ const CustomCursor = () => {
       });
     };
 
-    const links = document.querySelectorAll('a');
-    links.forEach((link) => {
-      link.addEventListener('mouseenter', handleMouseEnterLink);
-      link.addEventListener('mouseleave', handleMouseLeaveLink);
+    // add event listeners to links
+    const addLinkListeners = () => {
+      const links = document.querySelectorAll('a, button, input, textarea');
+      links.forEach((link) => {
+        link.addEventListener('mouseenter', handleMouseEnterLink);
+        link.addEventListener('mouseleave', handleMouseLeaveLink);
+      });
+    };
+
+    // add listeners initially and re-add on DOM mutations
+    addLinkListeners();
+
+    const observer = new MutationObserver(() => {
+      addLinkListeners();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
 
     return () => {
+      const links = document.querySelectorAll('a, button, input, textarea');
       links.forEach((link) => {
         link.removeEventListener('mouseenter', handleMouseEnterLink);
         link.removeEventListener('mouseleave', handleMouseLeaveLink);
       });
+      observer.disconnect();
     };
   }, []);
 
