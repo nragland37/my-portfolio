@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -23,15 +23,34 @@ const fadeIn = keyframes`
   }
 `;
 
+// Keyframes for the slow infinite zoom-in effect
+const zoomIn = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  } 5% {
+    transform: scale(1);
+    opacity: 1;
+  } 60% {
+    transform: scale(5);
+    opacity: 0.69;
+  } 100% {
+    transform: scale(101);
+    opacity: 0;
+  }
+`;
+
 // Styled component for the Hero section
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   min-height: 100dvh;
   height: 100dvh;
-  padding: 0;
+  padding-top: 150px;
   position: relative;
+  overflow: hidden; /* Prevent overflow during zoom */
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -40,6 +59,9 @@ const StyledHeroSection = styled.section`
 
   h1 {
     color: var(--hero-h1-title);
+    font-size: clamp(60px, 21vw, 120px);
+    margin-bottom: 50px;
+    text-align: left;
   }
 
   h2 {
@@ -63,6 +85,56 @@ const StyledHeroSection = styled.section`
   p {
     margin: 20px 0 0;
     max-width: 540px;
+    text-align: center;
+  }
+
+  .profile-image {
+    margin-top: 50px;
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid var(--hero-h1-title);
+    box-shadow: 0px 5px 20px var(--hero-shadow);
+    transition:
+      transform 0.6s ease,
+      box-shadow 0.6s ease,
+      filter 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+
+    ${({ isZooming }) =>
+      isZooming &&
+      css`
+        animation: ${zoomIn} 2s forwards;
+        z-index: 1000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      `}
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2);
+      transition: filter 0.6s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 15px 50px var(--hero-shadow);
+
+      img {
+        filter: grayscale(0%);
+      }
+    }
   }
 
   .link {
@@ -74,8 +146,7 @@ const StyledHeroSection = styled.section`
 // Styled component for the scroll-down effect
 const ScrollDowns = styled.div`
   position: absolute;
-  bottom: 40px;
-  left: 50%;
+  bottom: 10px;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -83,7 +154,7 @@ const ScrollDowns = styled.div`
   cursor: pointer;
   opacity: 0;
   z-index: 10;
-  animation: ${fadeIn} 1s forwards 1s;
+  animation: ${fadeIn} 1.65s forwards 1.65s;
 `;
 
 const Mousey = styled.div`
@@ -107,6 +178,7 @@ const Scroller = styled.div`
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [isZooming, setIsZooming] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -122,10 +194,22 @@ const Hero = () => {
     window.location.href = '#about';
   };
 
-  const one = <h3>Hi, my name is</h3>;
-  const two = <h1 className="big-heading">Nicholas Ragland.</h1>;
+  const handleImageClick = () => {
+    setIsZooming(true);
 
-  // sub-heading removed
+    setTimeout(() => {
+      window.location.href = '#about';
+    }, 900);
+
+    setTimeout(() => {
+      setIsZooming(false);
+    }, 4000);
+  };
+
+  // const one = <h3>Hi, my name is</h3>;
+  const two = <h1 className="big-heading">NICHOLAS RAGLAND.</h1>;
+
+  // Sub-heading removed
   // const three = (
   //   <h2 className="big-heading" style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}>
   //     Building Secure & Scalable Software Solutions.
@@ -134,27 +218,50 @@ const Hero = () => {
 
   const four = (
     <>
-      <p>
+      <p className="center-text">
         Software Engineer and Cybersecurity Specialist with a passion for
         building clean, efficient, and secure solutions.
       </p>
     </>
   );
-  const five = (
-    <a
-      className="link"
-      href="https://www.linkedin.com/in/nragland37/"
-      target="_blank"
-      rel="noreferrer"
+
+  // LinkedIn Button (commented out)
+  // const five = (
+  //   <a
+  //     className="link"
+  //     href="https://www.linkedin.com/in/nragland37/"
+  //     target="_blank"
+  //     rel="noreferrer"
+  //   >
+  //     Check out my LinkedIn!
+  //   </a>
+  // );
+
+  // Image added as replacement
+  const profileImage = (
+    <div
+      className="profile-image"
+      isZooming={isZooming}
+      onClick={handleImageClick}
     >
-      Check out my LinkedIn!
-    </a>
+      <img
+        src={require('../../images/me.jpg').default}
+        alt="Nicholas Ragland"
+      />
+    </div>
   );
 
-  const items = [one, two, /* three, */ four, five];
+  const items = [
+    //one,
+    two,
+    //three,
+    four,
+    profileImage,
+    // five,
+  ];
 
   return (
-    <StyledHeroSection>
+    <StyledHeroSection isZooming={isZooming}>
       {prefersReducedMotion ? (
         <>
           {items.map((item, i) => (
@@ -173,11 +280,13 @@ const Hero = () => {
       )}
 
       {/* Scroll Down Indicator */}
-      <ScrollDowns onClick={handleScrollClick}>
-        <Mousey>
-          <Scroller />
-        </Mousey>
-      </ScrollDowns>
+      {!isZooming && (
+        <ScrollDowns onClick={handleScrollClick}>
+          <Mousey>
+            <Scroller />
+          </Mousey>
+        </ScrollDowns>
+      )}
     </StyledHeroSection>
   );
 };

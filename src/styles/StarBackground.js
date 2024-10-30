@@ -18,9 +18,9 @@ const StarBackground = () => {
 
   // amount of stars to generate
   const populateStars = useCallback(() => {
-    setStars1(GenerateStars(500)); // small
+    setStars1(GenerateStars(750)); // small
     setStars2(GenerateStars(300)); // medium
-    setStars3(GenerateStars(100)); // large
+    setStars3(GenerateStars(80)); // large
   }, []);
 
   useEffect(() => {

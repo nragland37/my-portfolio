@@ -31,10 +31,10 @@ const globalVariables = css`
     --star1-size: 1px;
     --star1-speed: 50s;
 
-    --star2-size: 2px;
+    --star2-size: 2.5px;
     --star2-speed: 80s;
 
-    --star3-size: 3px;
+    --star3-size: 4px;
     --star3-speed: 100s;
 
     /* Fonts */

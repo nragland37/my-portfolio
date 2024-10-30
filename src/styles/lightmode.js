@@ -137,6 +137,7 @@ const lightMode = css`
     --hero-h1-title: var(--charcoal);
     --hero-h2-title: var(--gray);
     --hero-h3-title: var(--green);
+    --hero-shadow: rgba(0, 0, 0, 0.8);
     --hero-mouse: var(--charcoal);
 
     /* Jobs */
