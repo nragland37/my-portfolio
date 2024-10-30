@@ -303,7 +303,7 @@ const Hero = () => {
       }}
     >
       <img
-        src={require('../../images/me.jpg').default}
+        src={require('../../images/hero.jpg').default}
         alt="Nicholas Ragland"
       />
     </div>
