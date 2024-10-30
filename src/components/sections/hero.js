@@ -114,12 +114,12 @@ const StyledHeroSection = styled.section`
 
     /* Responsive image size adjustments */
     @media (max-width: 768px) {
-      width: 200px;
-      height: 200px;
+      width: 205px;
+      height: 205px;
     }
     @media (max-width: 480px) {
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
     }
 
     ${({ isZooming }) =>
