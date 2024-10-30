@@ -48,6 +48,7 @@ const TrailSegment = styled.div`
 const CustomCursor = () => {
   const [isMoving, setIsMoving] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
   const trailRefs = useRef([]);
   const cursorRef = useRef(null);
   const trailLength = 10; // Number of trail segments
@@ -132,6 +133,46 @@ const CustomCursor = () => {
     };
   }, []);
 
+  // Handle hover over links
+  useEffect(() => {
+    const handleMouseEnterLink = () => {
+      setIsHoveringLink(true);
+      gsap.to(cursorRef.current, {
+        width: 50,
+        height: 50,
+        borderColor: 'var(--cursor-link-hover-border)',
+        boxShadow: '0 0 25px var(--cursor-link-hover-shadow)',
+        duration: 0.2,
+        ease: 'power2.out',
+      });
+    };
+
+    const handleMouseLeaveLink = () => {
+      setIsHoveringLink(false);
+      gsap.to(cursorRef.current, {
+        width: 25,
+        height: 25,
+        borderColor: 'var(--cursor-border)',
+        boxShadow: 'none',
+        duration: 0.2,
+        ease: 'power2.out',
+      });
+    };
+
+    const links = document.querySelectorAll('a');
+    links.forEach((link) => {
+      link.addEventListener('mouseenter', handleMouseEnterLink);
+      link.addEventListener('mouseleave', handleMouseLeaveLink);
+    });
+
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener('mouseenter', handleMouseEnterLink);
+        link.removeEventListener('mouseleave', handleMouseLeaveLink);
+      });
+    };
+  }, []);
+
   // Update trail segments
   useEffect(() => {
     const updateTrail = () => {
@@ -144,11 +185,14 @@ const CustomCursor = () => {
           y: mousePosition.current.y,
           duration: 0.4,
           delay,
-          opacity: isMoving || isMouseDown ? 1 - index / trailLength : 0,
+          opacity:
+            isMoving || isMouseDown || isHoveringLink
+              ? 1 - index / trailLength
+              : 0,
           ease: 'power2.out',
           scale: 1 + index / trailLength,
           boxShadow:
-            isMoving || isMouseDown
+            isMoving || isMouseDown || isHoveringLink
               ? `0 0 10px rgba(var(--cursor-trail), ${0.2 + index / trailLength})`
               : 'none',
         });
@@ -157,7 +201,7 @@ const CustomCursor = () => {
 
     const animateTrail = () => {
       updateTrail();
-      if (isMoving || isMouseDown) {
+      if (isMoving || isMouseDown || isHoveringLink) {
         animationFrameId.current = requestAnimationFrame(animateTrail);
       } else if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
@@ -166,7 +210,7 @@ const CustomCursor = () => {
 
     animateTrail();
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [isMoving, isMouseDown]);
+  }, [isMoving, isMouseDown, isHoveringLink]);
 
   return (
     <>

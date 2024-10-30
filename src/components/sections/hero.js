@@ -124,12 +124,14 @@ const Hero = () => {
 
   const one = <h3>Hi, my name is</h3>;
   const two = <h1 className="big-heading">Nicholas Ragland.</h1>;
-  const three = (
-    <h2
-      className="big-heading"
-      style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}
-    ></h2>
-  );
+
+  // sub-heading removed
+  // const three = (
+  //   <h2 className="big-heading" style={{ fontSize: 'clamp(30px, 8vw, 55px)' }}>
+  //     Building Secure & Scalable Software Solutions.
+  //   </h2>
+  // );
+
   const four = (
     <>
       <p>
@@ -149,7 +151,7 @@ const Hero = () => {
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, /* three, */ four, five];
 
   return (
     <StyledHeroSection>
