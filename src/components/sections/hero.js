@@ -53,7 +53,7 @@ const StyledHeroSection = styled.section`
   height: 100dvh;
   padding-top: 150px;
   position: relative;
-  overflow: hidden; /* Prevent overflow during zoom */
+  overflow: hidden;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -106,11 +106,9 @@ const StyledHeroSection = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
     cursor: pointer;
     will-change: transform;
+    transform-origin: center center;
 
     /* Responsive image size adjustments */
     @media (max-width: 768px) {
@@ -126,10 +124,6 @@ const StyledHeroSection = styled.section`
       isZooming &&
       css`
         animation: ${zoomIn} 3s forwards;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
       `}
 
     img {
@@ -178,7 +172,7 @@ const Mousey = styled.div`
   border-radius: 25px;
   opacity: 0.75;
   box-sizing: content-box;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 `;
 
 const Scroller = styled.div`
@@ -202,58 +196,19 @@ const Hero = () => {
     setTimeout(() => setIsMounted(true), navDelay);
   }, [prefersReducedMotion]);
 
-  useEffect(() => {
-    /* Copy ref to local variable for stable cleanup */
-    const currentImageRef = profileImageRef.current;
-
-    /* Observe changes to the profile image class for reset */
-    const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
-        if (
-          mutation.type === 'attributes' &&
-          mutation.attributeName === 'class' &&
-          !mutation.target.classList.contains('zooming')
-        ) {
-          mutation.target.style.transform = 'scale(1) translate(0, 0)';
-        }
-      });
-    });
-
-    if (currentImageRef) {
-      observer.observe(currentImageRef, {
-        attributes: true,
-      });
-    }
-
-    return () => {
-      if (currentImageRef) observer.disconnect();
-    };
-  }, []);
-
   const handleScrollClick = () => {
     window.location.href = '#about';
   };
 
   const handleImageClick = () => {
-    const imageElement = profileImageRef.current;
-    if (imageElement) {
-      const rect = imageElement.getBoundingClientRect();
-      imageElement.style.transformOrigin = `${rect.width / 2}px ${rect.height / 2}px`;
-    }
-
     setIsZooming(true);
 
-    /* Navigate to #about page after zoom progresses sufficiently */
     setTimeout(() => {
       window.location.href = '#about';
     }, 2000);
 
-    /* Reset the image's state after the animation */
     setTimeout(() => {
       setIsZooming(false);
-      if (profileImageRef.current) {
-        profileImageRef.current.style.transformOrigin = 'center';
-      }
     }, 3500);
   };
 
