@@ -125,21 +125,21 @@ const StyledHeroSection = styled.section`
         animation: ${zoomIn} 3s forwards;
       `}
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%) contrast(1.2);
-      transition: filter 0.6s ease;
-    }
-
-    &:hover {
+    &.hover-active, &:hover {
       transform: scale(1.1);
       box-shadow: 0px 15px 50px var(--hero-shadow);
 
       img {
         filter: grayscale(0%);
       }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2);
+      transition: filter 0.6s ease;
     }
   }
 
@@ -179,6 +179,7 @@ const Arrow = styled.div`
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
   const profileImageRef = useRef(null);
 
@@ -187,6 +188,25 @@ const Hero = () => {
 
     setTimeout(() => setIsMounted(true), navDelay);
   }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const profileImage = profileImageRef.current;
+
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        profileImage.classList.add('hover-active');
+      } else {
+        // Scrolling up
+        profileImage.classList.remove('hover-active');
+      }
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // For Mobile or negative scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollTop]);
 
   const handleScrollClick = () => {
     window.location.href = '#about';
