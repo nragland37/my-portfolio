@@ -2,6 +2,7 @@ export { default as IconAppStore } from './appstore';
 export { default as IconBookmark } from './bookmark';
 export { default as IconCircle } from './circle';
 export { default as IconCodepen } from './codepen';
+export { default as IconColor } from './color';
 export { default as IconCursor } from './cursor';
 export { default as IconExternal } from './external';
 export { default as IconFolder } from './folder';

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { navLinks, socialMedia } from '@config';
 import { toggleTheme, initTheme } from '@utils/light';
+import { toggleColorWave, initColorWaveEffect } from '@utils/color';
 import { Icon } from '@components/icons';
 import MenuStyles from '@styles/MenuStyles';
 
@@ -10,6 +11,7 @@ const { StyledMenu, StyledHamburgerButton, StyledThemeToggle, StyleDropbar } =
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState();
+  const [isColorMode, setIsColorMode] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -17,8 +19,13 @@ const Menu = () => {
     toggleTheme((isDark) => setIsDarkMode(isDark));
   };
 
+  const handleColorToggle = () => {
+    toggleColorWave((isColor) => setIsColorMode(isColor));
+  };
+
   useEffect(() => {
     initTheme((isDark) => setIsDarkMode(isDark));
+    initColorWaveEffect((isColor) => setIsColorMode(isColor));
   }, []);
 
   return (
@@ -31,7 +38,16 @@ const Menu = () => {
           gap: '1.5rem',
         }}
       >
-        {/* reverse logic - dark-sun / light-moon */}
+        {/* Color Wave Toggle (Atom Icon) */}
+        <StyledThemeToggle
+          onClick={handleColorToggle}
+          className={`color-toggle ${isColorMode ? 'color-toggle--active' : ''}`}
+          aria-label="Toggle color wave effect"
+        >
+          <Icon name="color" />
+        </StyledThemeToggle>
+
+        {/* Theme Toggle (Light Icon) */}
         <StyledThemeToggle
           onClick={handleThemeToggle}
           className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
@@ -40,6 +56,7 @@ const Menu = () => {
           <Icon name="light" />
         </StyledThemeToggle>
 
+        {/* Hamburger Menu Button */}
         <StyledHamburgerButton
           menuOpen={menuOpen}
           onClick={toggleMenu}

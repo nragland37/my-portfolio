@@ -66,11 +66,19 @@ module.exports = {
           name: 'light',
           action: 'toggleTheme', // Only toggles light/dark mode for mobile
         },
+        {
+          name: 'color',
+          action: 'toggleColorMode', // Allows color mode toggle for mobile
+        },
       ]
     : [
         {
           name: 'light',
           action: 'toggleTheme', // Toggling theme on desktop
+        },
+        {
+          name: 'color',
+          action: 'toggleColorMode', // Toggling color mode on desktop
         },
         {
           name: 'cursor',

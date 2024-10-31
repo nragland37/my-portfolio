@@ -101,7 +101,7 @@ const StyledHeroSection = styled.section`
     border: 1.5px solid var(--hero-h1-title);
     box-shadow: 0px 5px 20px var(--hero-shadow);
     transition:
-      transform 0.3s ease, 
+      transform 0.3s ease,
       box-shadow 0.3s ease,
       filter 0.3s ease;
     display: flex;
@@ -194,7 +194,8 @@ const Hero = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const profileImage = profileImageRef.current;
 
-      if (profileImage) { // Check if profileImage is defined
+      if (profileImage) {
+        // Check if profileImage is defined
         if (scrollTop > lastScrollTop) {
           // Scrolling down
           profileImage.classList.add('hover-active');
@@ -227,7 +228,10 @@ const Hero = () => {
   };
 
   const two = (
-    <h1 className="big-heading" style={{ alignSelf: 'flex-start', marginTop: '85px' }}>
+    <h1
+      className="big-heading"
+      style={{ alignSelf: 'flex-start', marginTop: '85px' }}
+    >
       NICHOLAS RAGLAND.
     </h1>
   );
