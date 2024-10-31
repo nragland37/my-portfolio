@@ -63,7 +63,7 @@ const StyledHeroSection = styled.section`
   h1 {
     color: var(--hero-h1-title);
     font-size: clamp(60px, 18vw, 112px);
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: left;
   }
 
