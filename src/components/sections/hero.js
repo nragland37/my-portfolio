@@ -6,9 +6,9 @@ import { usePrefersReducedMotion } from '@hooks';
 
 /* Keyframes for the scroll animation */
 const scrollAnimation = keyframes`
-  0% { opacity: 0; }
-  10% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(15px); opacity: 0; }
+  0% { opacity: 0; transform: translateY(0); }
+  10% { opacity: 1; transform: translateY(5px); }
+  100% { opacity: 0; transform: translateY(15px); }
 `;
 
 /* Keyframes for the fade-in animation */
@@ -30,11 +30,11 @@ const zoomIn = keyframes`
     opacity: 1;
   }
   50% {
-    transform: scale(5);
+    transform: scale(4);
     opacity: 0.8;
   }
   80% {
-    transform: scale(20);
+    transform: scale(15);
     opacity: 0.5;
   }
   100% {
@@ -51,7 +51,7 @@ const StyledHeroSection = styled.section`
   justify-content: flex-start;
   min-height: 100dvh;
   height: 100dvh;
-  padding-top: 150px;
+  padding-top: 125px;
   position: relative;
   overflow: hidden;
 
@@ -62,7 +62,7 @@ const StyledHeroSection = styled.section`
 
   h1 {
     color: var(--hero-h1-title);
-    font-size: clamp(40px, 15vw, 112px);
+    font-size: clamp(60px, 18vw, 112px);
     margin-bottom: 25px;
     text-align: left;
   }
@@ -86,15 +86,15 @@ const StyledHeroSection = styled.section`
   }
 
   p {
-    margin: 20px 0 0;
+    margin: 50px 0 0;
     max-width: 540px;
     text-align: center;
   }
 
   .profile-image {
     margin-top: 50px;
-    width: 225px;
-    height: 225px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     border: 1.5px solid var(--hero-h1-title);
@@ -110,14 +110,13 @@ const StyledHeroSection = styled.section`
     will-change: transform;
     transform-origin: center center;
 
-    /* Responsive image size adjustments */
     @media (max-width: 768px) {
-      width: 205px;
-      height: 205px;
+      width: 275px;
+      height: 275px;
     }
     @media (max-width: 480px) {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
     }
 
     ${({ isZooming }) =>
@@ -164,26 +163,19 @@ const ScrollDowns = styled.div`
   animation: ${fadeIn} 1.65s forwards 1.65s;
 `;
 
-const Mousey = styled.div`
-  width: 3px;
-  padding: 10px 15px;
-  height: 35px;
-  border: 2px solid var(--hero-mouse);
-  border-radius: 25px;
+const Arrow = styled.div`
+  margin-bottom: 20px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid var(--hero-mouse);
   opacity: 0.75;
-  box-sizing: content-box;
-  margin-bottom: 2px;
-`;
-
-const Scroller = styled.div`
-  width: 3px;
-  height: 10px;
-  border-radius: 25%;
-  background-color: var(--hero-mouse);
   animation: ${scrollAnimation} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94)
     infinite;
 `;
 
+/* Main Hero component */
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
@@ -227,9 +219,10 @@ const Hero = () => {
 
   const four = (
     <>
-      <p className="center-text">
-        Software Engineer and Cybersecurity Specialist with a passion for
-        building clean, efficient, and secure solutions.
+      <p className="center-text" style={{ fontSize: 'clamp(20px, 5vw, 22px)' }}>
+        <span style={{ color: 'var(--green)' }}>Software Engineer</span> and{' '}
+        <span style={{ color: 'var(--green)' }}>Cybersecurity Specialist</span>{' '}
+        with a passion for building clean, efficient, and secure solutions.
       </p>
     </>
   );
@@ -295,9 +288,7 @@ const Hero = () => {
       {/* Scroll Down Indicator */}
       {!isZooming && (
         <ScrollDowns onClick={handleScrollClick}>
-          <Mousey>
-            <Scroller />
-          </Mousey>
+          <Arrow />
         </ScrollDowns>
       )}
     </StyledHeroSection>

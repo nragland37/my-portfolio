@@ -138,6 +138,7 @@ const darkMode = css`
     --hero-h2-title: var(--gray);
     --hero-h3-title: var(--green);
     --hero-shadow: rgba(250, 250, 250, 0.5);
+    --hero-text-shadow: rgba(250, 250, 250, 0.25);
     --hero-mouse: var(--cloud-white);
 
     /* Jobs */

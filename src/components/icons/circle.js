@@ -14,7 +14,7 @@ const IconCircle = (props) => (
       cy="50"
       r="44"
       stroke="var(--green)"
-      strokeWidth="2"
+      strokeWidth="5"
       fill="transparent"
     />
   </svg>
