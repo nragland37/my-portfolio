@@ -93,8 +93,8 @@ const StyledHeroSection = styled.section`
 
   .profile-image {
     margin-top: 50px;
-    width: 300px;
-    height: 300px;
+    width: 275px;
+    height: 275px;
     border-radius: 50%;
     overflow: hidden;
     border: 1.5px solid var(--hero-h1-title);
@@ -111,12 +111,12 @@ const StyledHeroSection = styled.section`
     transform-origin: center center;
 
     @media (max-width: 768px) {
-      width: 275px;
-      height: 275px;
+      width: 225px;
+      height: 225px;
     }
     @media (max-width: 480px) {
-      width: 250px;
-      height: 250px;
+      width: 210px;
+      height: 210px;
     }
 
     ${({ isZooming }) =>
