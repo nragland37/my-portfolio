@@ -23,7 +23,7 @@
 
 <br>
 
-<img src="/src/static/assets/demo.gif" alt="Demo GIF" width="80%" />
+<img alt="Demo GIF" src="/static/assets/demo.gif" width="80%" />
 
 </div>
 
