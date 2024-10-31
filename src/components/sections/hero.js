@@ -54,6 +54,7 @@ const StyledHeroSection = styled.section`
   padding-top: 125px;
   position: relative;
   overflow: hidden;
+  padding-top: 50px;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -100,9 +101,9 @@ const StyledHeroSection = styled.section`
     border: 1.5px solid var(--hero-h1-title);
     box-shadow: 0px 5px 20px var(--hero-shadow);
     transition:
-      transform 0.6s ease,
-      box-shadow 0.6s ease,
-      filter 0.6s ease;
+      transform 0.3s ease, 
+      box-shadow 0.3s ease,
+      filter 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,8 +127,8 @@ const StyledHeroSection = styled.section`
       `}
 
     &.hover-active, &:hover {
-      transform: scale(1.1);
-      box-shadow: 0px 15px 50px var(--hero-shadow);
+      transform: translate(-4px, -4px);
+      box-shadow: 0px 10px 30px var(--hero-shadow);
 
       img {
         filter: grayscale(0%);
@@ -139,7 +140,7 @@ const StyledHeroSection = styled.section`
       height: 100%;
       object-fit: cover;
       filter: grayscale(100%) contrast(1.2);
-      transition: filter 0.6s ease;
+      transition: filter 0.3s ease;
     }
   }
 
@@ -152,7 +153,7 @@ const StyledHeroSection = styled.section`
 /* Styled component for the scroll-down effect */
 const ScrollDowns = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -164,7 +165,6 @@ const ScrollDowns = styled.div`
 `;
 
 const Arrow = styled.div`
-  margin-bottom: 20px;
   width: 0;
   height: 0;
   border-left: 15px solid transparent;
@@ -194,12 +194,14 @@ const Hero = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const profileImage = profileImageRef.current;
 
-      if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        profileImage.classList.add('hover-active');
-      } else {
-        // Scrolling up
-        profileImage.classList.remove('hover-active');
+      if (profileImage) { // Check if profileImage is defined
+        if (scrollTop > lastScrollTop) {
+          // Scrolling down
+          profileImage.classList.add('hover-active');
+        } else {
+          // Scrolling up
+          profileImage.classList.remove('hover-active');
+        }
       }
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // For Mobile or negative scrolling
     };
@@ -225,7 +227,7 @@ const Hero = () => {
   };
 
   const two = (
-    <h1 className="big-heading" style={{ alignSelf: 'flex-start' }}>
+    <h1 className="big-heading" style={{ alignSelf: 'flex-start', marginTop: '85px' }}>
       NICHOLAS RAGLAND.
     </h1>
   );

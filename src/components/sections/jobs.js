@@ -63,7 +63,8 @@ const StyledTabButton = styled.button`
   color: ${({ isActive }) =>
     isActive ? 'var(--jobs-tab-active)' : 'var(--jobs-tab-inactive)'};
   font-family: var(--font-mono);
-  font-size: var(--fz-xs);
+  font-size: var(--fz-sm);
+  font-weight: 600;
   text-align: left;
   white-space: nowrap;
 
@@ -122,6 +123,7 @@ const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
   padding: 10px 5px;
+  margin-bottom: 150px;
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
@@ -129,7 +131,7 @@ const StyledTabPanel = styled.div`
 
   h3 {
     margin-bottom: 2px;
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-xxxl);
     font-weight: 500;
     line-height: 1.3;
 
@@ -142,14 +144,14 @@ const StyledTabPanel = styled.div`
     margin-bottom: 10px;
     color: var(--jobs-department-text);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);
+    font-size: var(--fz-sm);
   }
 
   .range {
     margin-bottom: 25px;
     color: var(--jobs-range-text);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);
+    font-size: var(--fz-sm);
   }
 `;
 

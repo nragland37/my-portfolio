@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
-  max-width: 900px;
+  max-width: 1000px;
 
   .inner {
     display: grid;
@@ -212,7 +212,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/about.jpg"
+              src="../../images/about.png"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
