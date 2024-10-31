@@ -21,6 +21,10 @@
   
 ![Vercel](https://vercelbadge.vercel.app/api/nragland37/my-portfolio)
 
+<br>
+
+<img src="/src/static/assets/demo.gif" alt="Demo GIF" width="80%" />
+
 </div>
 
 > [!IMPORTANT]
