@@ -51,20 +51,18 @@ const StyledHeroSection = styled.section`
   justify-content: flex-start;
   min-height: 100dvh;
   height: 100dvh;
-  padding-top: 125px;
   position: relative;
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: var(--nav-height);
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
-    padding-top: var(--nav-height);
   }
 
   h1 {
     color: var(--hero-h1-title);
     font-size: clamp(60px, 18vw, 112px);
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     text-align: left;
   }
 
@@ -230,7 +228,7 @@ const Hero = () => {
   const two = (
     <h1
       className="big-heading"
-      style={{ alignSelf: 'flex-start', marginTop: '85px' }}
+      style={{ alignSelf: 'flex-start', marginTop: '30px' }}
     >
       NICHOLAS RAGLAND.
     </h1>

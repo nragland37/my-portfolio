@@ -1,4 +1,3 @@
-// /src/components/Options.js
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
@@ -7,7 +6,7 @@ import { Icon } from '@components/icons';
 import { toggleTheme, initTheme } from '@utils/light';
 import { toggleColorWave, initColorWaveEffect } from '@utils/color'; // Import toggleColorWave and initColorWaveEffect
 
-// Animation for fade-in from the left
+/* Animation for fade-in from the left */
 const fadeInLeft = keyframes`
   from {
     opacity: 0;
@@ -47,7 +46,7 @@ const StyledOptionsList = styled.ul`
       }
 
       &:hover svg {
-        color: var(--green); /* Turns the icon color to var(--green) on hover */
+        color: var(--green);
       }
 
       svg {

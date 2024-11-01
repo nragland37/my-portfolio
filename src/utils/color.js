@@ -5,8 +5,12 @@ const setColorWaveEffect = (isActive) => {
   const root = document.documentElement;
   if (isActive) {
     root.classList.add('color-wave');
+    root.classList.add('rotate-icon-clockwise');
+    root.classList.remove('rotate-icon-counterclockwise');
   } else {
+    root.classList.add('rotate-icon-counterclockwise');
     root.classList.remove('color-wave');
+    root.classList.remove('rotate-icon-clockwise');
   }
   localStorage.setItem('colorWaveEffect', isActive ? COLOR_WAVE_MODE : 'off');
 };
@@ -41,7 +45,6 @@ const injectGlobalStyles = () => {
   if (typeof document !== 'undefined') {
     const style = document.createElement('style');
     style.innerHTML = `
-      /* Color wave effect keyframes */
       @keyframes colorWave {
         0% { color: #ff00ff; }
         25% { color: #00ccff; }
@@ -50,12 +53,32 @@ const injectGlobalStyles = () => {
         100% { color: #ff00ff; }
       }
 
-      /* Apply colorWave animation to text elements when color-wave class is active */
+      @keyframes rotateIconClockwise {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes rotateIconCounterclockwise {
+        0% { transform: rotate(360deg); }
+        100% { transform: rotate(0deg); }
+      }
+
+      /* Apply color wave effect to elements */
       .color-wave h1, .color-wave h2, .color-wave h3, 
       .color-wave h4, .color-wave h5, .color-wave h6,
       .color-wave p, .color-wave a, .color-wave span, 
       .color-wave li {
         animation: colorWave 5s linear infinite;
+      }
+
+      .rotate-icon-clockwise svg, .rotate-icon-clockwise img, .rotate-icon-clockwise p {
+        animation: rotateIconClockwise 1s ease-in-out;
+        animation-iteration-count: 1;
+      }
+
+      .rotate-icon-counterclockwise svg {
+        animation: rotateIconCounterclockwise 1s ease-in-out;
+        animation-iteration-count: 1;
       }
     `;
     document.head.appendChild(style);
