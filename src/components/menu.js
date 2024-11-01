@@ -38,8 +38,10 @@ const Menu = () => {
           gap: '1.5rem',
         }}
       >
-        {/* Color Wave Toggle (Atom Icon) */}
+        {/* Color Wave Toggle */}
         <StyledThemeToggle
+          type="button"
+          title="Toggle color wave effect"
           onClick={handleColorToggle}
           className={`color-toggle ${isColorMode ? 'color-toggle--active' : ''}`}
           aria-label="Toggle color wave effect"
@@ -49,6 +51,8 @@ const Menu = () => {
 
         {/* Theme Toggle (Light Icon) */}
         <StyledThemeToggle
+          type="button"
+          title="Toggle theme"
           onClick={handleThemeToggle}
           className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
           aria-label="Toggle theme"

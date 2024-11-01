@@ -66,12 +66,11 @@ const injectGlobalStyles = () => {
       /* Apply color wave effect to elements */
       .color-wave h1, .color-wave h2, .color-wave h3, 
       .color-wave h4, .color-wave h5, .color-wave h6,
-      .color-wave p, .color-wave a, .color-wave span, 
-      .color-wave li {
+      .color-wave a, .color-wave span, .color-wave li {
         animation: colorWave 5s linear infinite;
       }
 
-      .rotate-icon-clockwise svg, .rotate-icon-clockwise img, .rotate-icon-clockwise p {
+      .rotate-icon-clockwise svg, .rotate-icon-clockwise img {
         animation: rotateIconClockwise 1s ease-in-out;
         animation-iteration-count: 1;
       }
