@@ -142,10 +142,10 @@ const darkMode = css`
     --hero-mouse: var(--cloud-white);
 
     /* Jobs */
-    --jobs-tab-border: var(--green);
+    --jobs-tab-border: var(--lightest-midnight);
     --jobs-tab-active: var(--green);
     --jobs-tab-inactive: var(--white);
-    --jobs-hover-bg: var(--midnight);
+    --jobs-hover-bg: var(--lightest-midnight);
     --jobs-highlight-bg: var(--green);
     --jobs-company-text: var(--green);
     --jobs-department-text: var(--light-gray);

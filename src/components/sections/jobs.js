@@ -58,13 +58,13 @@ const StyledTabButton = styled.button`
   width: 100%;
   height: var(--tab-height);
   padding: 0 20px 2px;
-  border-left: 2px solid var(--jobs-tab-border);
+  border-left: 3px solid var(--jobs-tab-border);
   background-color: transparent;
   color: ${({ isActive }) =>
     isActive ? 'var(--jobs-tab-active)' : 'var(--jobs-tab-inactive)'};
   font-family: var(--font-mono);
   font-size: var(--fz-sm);
-  font-weight: 600;
+  font-weight: 400;
   text-align: left;
   white-space: nowrap;
 

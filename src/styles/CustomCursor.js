@@ -36,8 +36,8 @@ const StyledCursor = styled.div`
 
 const TrailSegment = styled.div`
   position: fixed;
-  width: 25px;
-  height: 25px;
+  width: ${isMobile ? '0' : '25px'};
+  height: ${isMobile ? '0' : '25px'};
   background: var(--cursor-background);
   pointer-events: none;
   border-radius: 50%;

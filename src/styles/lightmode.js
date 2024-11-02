@@ -142,10 +142,10 @@ const lightMode = css`
     --hero-mouse: var(--charcoal);
 
     /* Jobs */
-    --jobs-tab-border: var(--green);
+    --jobs-tab-border: var(--dark-white);
     --jobs-tab-active: var(--green);
     --jobs-tab-inactive: var(--charcoal);
-    --jobs-hover-bg: var(--darkest-white);
+    --jobs-hover-bg: var(--dark-white);
     --jobs-highlight-bg: var(--green);
     --jobs-company-text: var(--green);
     --jobs-department-text: var(--gray);

@@ -81,11 +81,11 @@ const globalVariables = css`
   }
 `;
 
-// check components/utils/light.js to changed default theme (light or dark)
+// check components/utils/light.js to change default theme (light or dark)
 const variables = css`
   ${globalVariables}
   ${lightMode} 
-  ${darkMode} /* default theme */
+  ${darkMode}
 `;
 
 export default variables;
