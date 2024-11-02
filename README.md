@@ -1,11 +1,15 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6ad1d4af511a4c6b8944e8b681bab07f)](https://app.codacy.com/gh/nragland37/my-portfolio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/nragland37/my-portfolio/blob/main/LICENSE)
 
+
+<!--
 <div align="center">
   <a href="https://www.nicholasragland.com/" target="_blank">
     <img alt="Logo" src="/static/assets/logo-dark.gif" width="20%" />
   </a>
 </div>
+-->
+
 
 <h1 align="center">
   <a href="https://www.nicholasragland.com/" target="_blank">
@@ -21,9 +25,11 @@
   
 ![Vercel](https://vercelbadge.vercel.app/api/nragland37/my-portfolio)
 
+<!--
 <br>
 
 <img alt="Demo GIF" src="/static/assets/demo.gif" width="80%" />
+-->
 
 </div>
 
@@ -101,3 +107,9 @@ To prepare your project for deployment:
 | White             | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
 | Green             | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
 | Sand              | ![#efcc94](https://via.placeholder.com/10/efcc94?text=+) `#efcc94` |
+
+<br />
+
+## Acknowledgement
+
+Inspired by the portfolios of [Brittany Chiang](https://v4.brittanychiang.com/), [Adham Dannaway](https://www.adhamdannaway.com/), and [Charles Bruyerre](https://itssharl.ee/fr).
