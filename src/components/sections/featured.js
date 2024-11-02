@@ -388,7 +388,9 @@ const Featured = () => {
                     {tech.length && (
                       <ul className="project-tech-list">
                         {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
+                          <li key={i}>
+                            <span>{tech}</span>
+                          </li>
                         ))}
                       </ul>
                     )}
