@@ -28,8 +28,8 @@
 
 <br />
 
-<img alt="Demo GIF" src="/static/assets/demo.gif" width="40%" />
-<img alt="Demo GIF" src="/static/assets/demo_light.gif" width="40%" />
+<img alt="Demo GIF" src="/static/assets/demo.gif" width="49%" />
+<img alt="Demo GIF" src="/static/assets/demo_light.gif" width="49%" />
 
 
 </div>
