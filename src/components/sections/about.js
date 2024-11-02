@@ -118,7 +118,7 @@ const StyledPic = styled.div`
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const Category = styled.strong`
+  const Category = styled.span`
     color: var(--about-category-text);
     font-weight: bold;
   `;
