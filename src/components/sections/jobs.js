@@ -253,7 +253,7 @@ const Jobs = () => {
                     aria-selected={activeTabId === i ? true : false}
                     aria-controls={`panel-${i}`}
                   >
-                    <span>{title}</span>
+                    {title}
                   </StyledTabButton>
                 </li>
               );

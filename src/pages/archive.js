@@ -56,8 +56,8 @@ const StyledTableContainer = styled.div`
         font-size: var(--fz-sm);
         font-weight: 600;
         color: var(--table-accent);
-        text-align: left; /* Align the table headers to the left */
-        padding-left: 20px; /* Add padding to align with content */
+        text-align: left;
+        padding-left: 20px;
 
         &:first-child {
           padding-left: 20px;
@@ -144,6 +144,7 @@ const StyledTableContainer = styled.div`
           .separator {
             color: var(--table-tech-separator);
             margin: 0 5px;
+            font-size: var(--fz-md);
           }
 
           span {

@@ -10,7 +10,6 @@ const darkMode = css`
     /* Accents: Green and Blue */
     --green: #19f9d8;
     --blue: #6fc1ff;
-    --sand: #efcc94;
 
     /********************************/
     /* ----- DARK MODE COLORS ----- */
@@ -164,9 +163,9 @@ const darkMode = css`
     --table-header-bg: var(--midnight);
 
     --table-text-year: var(--cloud-white);
-    --table-text-title: var(--green);
+    --table-text-title: var(--blue);
     --table-text-tech: var(--cloud-white);
-    --table-tech-separator: var(--sand);
+    --table-tech-separator: var(--blue);
 
     --table-accent: var(--green);
     --table-row-hover: var(--charcoal);

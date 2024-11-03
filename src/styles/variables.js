@@ -24,7 +24,6 @@ const globalVariables = css`
     /* Accents: Green and Blue */
     --green: #19f9d8;
     --blue: #6fc1ff;
-    --sand: #efcc94;
 
     /* Stars */
     --bg-star-color: var(--green);
@@ -54,7 +53,7 @@ const globalVariables = css`
     --fz-heading: 32px;
 
     /* Borders */
-    --border-radius: 4px;
+    --border-radius: 8px;
     --scrollbar-border-radius: 10px;
 
     /* Sides */

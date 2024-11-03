@@ -10,7 +10,6 @@ const lightMode = css`
     /* Accents: Darker Green and Blue */
     --green: #16d5b9; /* Slightly darker */
     --blue: #5aa3d9; /* Slightly darker */
-    --sand: #d4a76c; /* Slightly darker */
 
     /********************************/
     /* ----- LIGHT MODE COLORS ----- */
@@ -87,7 +86,7 @@ const lightMode = css`
     --button-bg-default: var(--white);
     --button-border-default: var(--green);
     --button-hover-shadow-default: var(--green);
-    --button-hover-default: var(--dark-white);
+    --button-hover-default: var(--white);
     --link: var(--blue);
     --link-hover: var(--green);
     --inline-link: var(--green);
@@ -98,12 +97,12 @@ const lightMode = css`
     --small-button-bg: var(--white);
     --small-button-border: var(--blue);
     --small-button-hover-shadow: var(--blue);
-    --small-button-hover: var(--dark-white);
+    --small-button-hover: var(--white);
     --big-button: var(--charcoal);
     --big-button-bg: var(--white);
     --big-button-border: var(--green);
     --big-button-hover-shadow: var(--green);
-    --big-button-hover: var(--dark-white);
+    --big-button-hover: var(--white);
     --box-shadow-default: var(--charcoal);
     --box-shadow-hover-default: var(--green);
     --mixins-fancy-list: var(--charcoal);
@@ -120,7 +119,7 @@ const lightMode = css`
     /* Contact */
     --contact-overline: var(--green);
     --contact-title: var(--charcoal);
-    --contact-email-link-bg: var(--dark-white);
+    --contact-email-link-bg: var(--white);
 
     /* Featured */
     --featured-overline: var(--blue);
@@ -164,9 +163,9 @@ const lightMode = css`
     --table-header-bg: var(--white);
 
     --table-text-year: var(--charcoal);
-    --table-text-title: var(--green);
+    --table-text-title: var(--blue);
     --table-text-tech: var(--charcoal);
-    --table-tech-separator: var(--sand);
+    --table-tech-separator: var(--blue);
 
     --table-accent: var(--green);
     --table-row-hover: var(--very-light-gray);

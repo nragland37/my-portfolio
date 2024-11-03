@@ -1,7 +1,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6ad1d4af511a4c6b8944e8b681bab07f)](https://app.codacy.com/gh/nragland37/my-portfolio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/nragland37/my-portfolio/blob/main/LICENSE)
 
-
 <!--
 <div align="center">
   <a href="https://www.nicholasragland.com/" target="_blank">
@@ -9,7 +8,6 @@
   </a>
 </div>
 -->
-
 
 <h1 align="center">
   <a href="https://www.nicholasragland.com/" target="_blank">
@@ -25,12 +23,10 @@
   
 ![Vercel](https://vercelbadge.vercel.app/api/nragland37/my-portfolio)
 
-
 <br />
 
 <img alt="Demo GIF" src="/static/assets/demo.gif" width="49%" />
 <img alt="Demo GIF" src="/static/assets/demo_light.gif" width="49%" />
-
 
 </div>
 

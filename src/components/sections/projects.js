@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -31,8 +31,7 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-    position: relative;
+    gap: 20px;
     margin-top: 50px;
 
     @media (max-width: 1080px) {
@@ -45,6 +44,9 @@ const StyledProject = styled.li`
   position: relative;
   cursor: default;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
   @media (prefers-reduced-motion: no-preference) {
     &:hover,
@@ -57,22 +59,22 @@ const StyledProject = styled.li`
 
   .project-inner {
     ${({ theme }) => theme.mixins.boxShadow};
-    ${({ theme }) => theme.mixins.flexBetween};
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    position: relative;
-    height: 325px;
-    padding: 2rem 1.75rem;
+    padding: 1rem 1.25rem;
     border-radius: var(--border-radius);
     background-color: var(--projects-bg);
     transition: var(--transition);
     overflow: hidden;
+    flex-grow: 1;
+    height: ${({ maxHeight }) =>
+      maxHeight ? `${maxHeight}px` : 'auto'}; 
   }
 
   .project-top {
     ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 25px;
 
     .folder {
       color: var(--projects-folder-color);
@@ -85,7 +87,6 @@ const StyledProject = styled.li`
     .project-links {
       display: flex;
       align-items: center;
-      margin-right: -10px;
       color: var(--projects-links-color);
       z-index: 2;
 
@@ -166,6 +167,8 @@ const Projects = () => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  const [maxHeight, setMaxHeight] = useState(null);
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -176,6 +179,12 @@ const Projects = () => {
     revealProjects.current.forEach((ref, i) =>
       sr.reveal(ref, srConfig(i * 100)),
     );
+
+    // Calculate the maximum height of project cards
+    const heights = revealProjects.current.map(
+      (project) => project.clientHeight,
+    );
+    setMaxHeight(Math.max(...heights));
   }, [prefersReducedMotion]);
 
   const projects = data.projects.edges.filter(({ node }) => node);
@@ -206,31 +215,6 @@ const Projects = () => {
               </a>
             </h3>
 
-            <div className="project-top">
-              <div className="project-links">
-                {external && (
-                  <a
-                    href={external}
-                    aria-label={`Visit ${title} external site`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Icon name="external" />
-                  </a>
-                )}
-                {github && (
-                  <a
-                    href={github}
-                    aria-label={`Visit ${title} GitHub repository`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Icon name="github" />
-                  </a>
-                )}
-              </div>
-            </div>
-
             <div
               className="project-description"
               dangerouslySetInnerHTML={{ __html: html }}
@@ -241,13 +225,36 @@ const Projects = () => {
             {tech && (
               <ul className="project-tech-list">
                 {tech.map((tech, i) => (
-                  <li key={i}>
-                    <span>{tech}</span>
-                  </li>
+                  <li key={i}>{tech}</li>
                 ))}
               </ul>
             )}
           </footer>
+
+          <div className="project-top">
+            <div className="project-links">
+              {external && (
+                <a
+                  href={external}
+                  aria-label={`Visit ${title} external site`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon name="external" />
+                </a>
+              )}
+              {github && (
+                <a
+                  href={github}
+                  aria-label={`Visit ${title} GitHub repository`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon name="github" />
+                </a>
+              )}
+            </div>
+          </div>
         </div>
       </a>
     );
@@ -270,7 +277,13 @@ const Projects = () => {
           <>
             {projects &&
               projects.map(({ node }, i) => (
-                <StyledProject key={i}>{projectInner(node)}</StyledProject>
+                <StyledProject
+                  key={i}
+                  maxHeight={maxHeight}
+                  ref={(el) => (revealProjects.current[i] = el)}
+                >
+                  {projectInner(node)}
+                </StyledProject>
               ))}
           </>
         ) : (
@@ -284,7 +297,7 @@ const Projects = () => {
                   exit={false}
                 >
                   <StyledProject
-                    key={i}
+                    maxHeight={maxHeight}
                     ref={(el) => (revealProjects.current[i] = el)}
                   >
                     {projectInner(node)}

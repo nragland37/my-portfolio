@@ -271,6 +271,7 @@ const StyledProject = styled.li`
         transition: var(--transition);
         background-color: var(--featured-image-overlay);
         mix-blend-mode: screen;
+        border-radius: var(--border-radius);
       }
     }
 
@@ -388,9 +389,7 @@ const Featured = () => {
                     {tech.length && (
                       <ul className="project-tech-list">
                         {tech.map((tech, i) => (
-                          <li key={i}>
-                            <span>{tech}</span>
-                          </li>
+                          <li key={i}>{tech}</li>
                         ))}
                       </ul>
                     )}
@@ -399,7 +398,7 @@ const Featured = () => {
                       {cta && (
                         <a
                           href={cta}
-                          aria-label="Course Link"
+                          aria-label="Try it Now"
                           className="cta"
                           target="_blank"
                           rel="noreferrer"
