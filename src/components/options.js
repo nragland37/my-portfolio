@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import { Side } from '@components';
 import { Icon } from '@components/icons';
 import { toggleTheme, initTheme } from '@utils/light';
-import { toggleColorWave, initColorWaveEffect } from '@utils/color'; // Import toggleColorWave and initColorWaveEffect
+import { toggleColorWave, initColorWaveEffect } from '@utils/color';
 
 /* Animation for fade-in from the left */
 const fadeInLeft = keyframes`
