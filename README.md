@@ -98,12 +98,16 @@ To prepare your project for deployment:
 | Midnight          | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
 | Light Midnight    | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
 | Lightest Midnight | ![#282c33](https://via.placeholder.com/10/282c33?text=+) `#282c33` |
-| Gray              | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
-| Light Gray        | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
 | Very Light Gray   | ![#e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6` |
+| Light Gray        | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
+| Gray              | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
+| Charcoal          | ![#2f3338](https://via.placeholder.com/10/2f3338?text=+) `#2f3338` |
+| Black             | ![#000000](https://via.placeholder.com/10/000000?text=+) `#000000` |
 | White             | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
+| Cloud White       | ![#ededed](https://via.placeholder.com/10/ededed?text=+) `#ededed` |
+| Offwhite          | ![#dcdcdc](https://via.placeholder.com/10/dcdcdc?text=+) `#dcdcdc` |
 | Green             | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
-| Sand              | ![#efcc94](https://via.placeholder.com/10/efcc94?text=+) `#efcc94` |
+| Blue              | ![#6fc1ff](https://via.placeholder.com/10/6fc1ff?text=+) `#6fc1ff` |
 
 <br />
 
