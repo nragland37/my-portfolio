@@ -25,9 +25,8 @@
 
 <br />
 
-<img alt="Demo GIF" src="/static/assets/demo.gif" width="49%" />
-<img alt="Demo GIF" src="/static/assets/demo_light.gif" width="49%" />
-
+<a href="https://www.nicholasragland.com/" target="_blank"> <img alt="Demo GIF" src="/static/assets/demo.gif" width="49%" /> </a>
+<a href="https://www.nicholasragland.com/" target="_blank"> <img alt="Demo GIF" src="/static/assets/demo_light.gif" width="49%" /> </a>
 </div>
 
 > [!IMPORTANT]
