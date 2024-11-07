@@ -20,7 +20,7 @@ const StyledSideElement = styled.div`
   &:after {
     content: '';
     display: block;
-    width: 1px;
+    width: 1.25px;
     height: 0;
     background-color: var(--options-border-color);
     opacity: 0.7;

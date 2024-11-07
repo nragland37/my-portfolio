@@ -69,8 +69,7 @@ const StyledProject = styled.li`
     transition: var(--transition);
     overflow: hidden;
     flex-grow: 1;
-    height: ${({ maxHeight }) =>
-      maxHeight ? `${maxHeight}px` : 'auto'}; 
+    height: ${({ maxHeight }) => (maxHeight ? `${maxHeight}px` : 'auto')};
   }
 
   .project-top {

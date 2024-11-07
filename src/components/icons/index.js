@@ -11,6 +11,7 @@ export { default as IconGitHub } from './github';
 export { default as IconInstagram } from './instagram';
 export { default as IconLeetCode } from './leetcode';
 export { default as IconLight } from './light';
+export { default as IconLightMobile } from './light-mobile';
 export { default as IconLinkedin } from './linkedin';
 export { default as IconLogo } from './logo';
 export { default as IconPlayStore } from './playstore';

@@ -57,7 +57,7 @@ const Menu = () => {
           className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
           aria-label="Toggle theme"
         >
-          <Icon name="light" />
+          <Icon name="lightMobile" />
         </StyledThemeToggle>
 
         {/* Hamburger Menu Button */}

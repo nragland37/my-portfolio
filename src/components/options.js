@@ -18,46 +18,41 @@ const fadeInLeft = keyframes`
   }
 `;
 
-const StyledOptionsList = styled.ul`
+const StyledOptionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
   padding: 0;
-  list-style: none;
   animation: ${fadeInLeft} 1s ease-out;
 
-  li {
-    margin: 10px 0;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 20px 0;
+    background-color: transparent;
+    border: none;
+    color: var(--options-icon-color);
+    cursor: pointer;
+    transition:
+      color 0.3s,
+      transform 0.75s;
 
-    button {
-      position: relative;
-      z-index: 10;
-      padding: 12.5px;
-      background-color: transparent;
-      border: none;
-      color: var(--options-icon-color);
-      cursor: pointer;
+    svg {
+      width: 26px;
+      height: 26px;
+      transition:
+        transform 0.75s,
+        color 0.3s;
+    }
 
-      &:hover,
-      &:focus {
-        transform: translateY(-5px);
-        color: var(--options-icon-hover-color);
-      }
-
-      &:hover svg {
-        color: var(--green);
-      }
-
-      svg {
-        width: 50px;
-        height: 50px;
-        color: var(--options-icon-color);
-        transition:
-          fill 0.3s,
-          color 0.3s,
-          transform 0.75s;
-      }
+    &:hover,
+    &:focus {
+      transform: translateY(-5px);
+      color: var(--options-icon-hover-color);
     }
   }
 `;
@@ -81,35 +76,38 @@ const Options = ({ isHome, onToggleCursor }) => {
 
   return (
     <Side isHome={isHome} orientation="left">
-      <StyledOptionsList>
-        <li>
-          <button
-            type="button"
-            title="Toggle theme"
-            onClick={handleThemeToggle}
-            className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
-            aria-label="Toggle theme"
-          >
-            <Icon name="light" />
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            title="Toggle color wave effect"
-            onClick={handleColorToggle}
-            className={`color-toggle ${isColorMode ? 'color-toggle--active' : ''}`}
-            aria-label="Toggle color wave effect"
-          >
-            <Icon name="color" />
-          </button>
-        </li>
-        <li>
-          <button onClick={onToggleCursor} aria-label="Toggle Cursor">
-            <Icon name="cursor" />
-          </button>
-        </li>
-      </StyledOptionsList>
+      <StyledOptionsContainer>
+        {/* Theme */}
+        <button
+          type="button"
+          title="Toggle theme"
+          onClick={handleThemeToggle}
+          className={`theme-toggle ${isDarkMode ? '' : 'theme-toggle--toggled'}`}
+          aria-label="Toggle theme"
+        >
+          <Icon name="light" />
+        </button>
+
+        {/* Color Wave */}
+        <button
+          type="button"
+          title="Toggle color wave effect"
+          onClick={handleColorToggle}
+          className={`color-toggle ${isColorMode ? 'color-toggle--active' : ''}`}
+          aria-label="Toggle color wave effect"
+        >
+          <Icon name="color" />
+        </button>
+
+        {/* Cursor */}
+        <button
+          type="button"
+          onClick={onToggleCursor}
+          aria-label="Toggle Cursor"
+        >
+          <Icon name="cursor" />
+        </button>
+      </StyledOptionsContainer>
     </Side>
   );
 };

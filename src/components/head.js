@@ -79,6 +79,11 @@ const Head = ({ title, description, image }) => {
       {/* 'expand.min.css' - replace for other styles: https://toggles.dev/ */}
       <link
         rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css"
+      />
+      {/* 'around.min.css' - replace for other styles: https://toggles.dev/ */}
+      <link
+        rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/around.min.css"
       />
     </Helmet>

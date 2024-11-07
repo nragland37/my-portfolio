@@ -49,6 +49,16 @@ const injectGlobalStyles = () => {
         --theme-toggle-duration: 500ms; 
       }
 
+      /* desktop */
+      .theme-toggle__expand {
+        transition: transform var(--theme-toggle-duration);
+      }
+
+      .theme-toggle--toggled .theme-toggle__expand {
+        transform: rotate(360deg);
+      }
+
+      /* mobile */
       .theme-toggle__around {
         transition: transform var(--theme-toggle-duration);
       }
