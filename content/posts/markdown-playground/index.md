@@ -1,11 +1,15 @@
 ---
-title: 'markdown-playground'
-description: 'Markdown playground for testing'
+title: 'Markdown Playground'
+description: 'A fun playground for testing Markdown features'
 date: '2024-10-03'
 slug: '/blog/markdown-playground'
 tags:
-  - 'sample'
+  - 'markdown'
+  - 'testing'
+  - 'learning'
 ---
+
+<a id="top"></a>
 
 <div align='center' style="width: 100%; max-width: 640px; margin: 0 auto;">
   <iframe 
@@ -19,191 +23,92 @@ tags:
   </iframe>
 </div>
 
-```jsx
-class FlavorForm extends React.Component { // highlight-line
-  constructor(props) {
-    super(props);
-    this.state = {value: 'coconut'};
+- [Code](#code)
+- [Headers](#headers)
+- [Bold](#bold)
+- [Italic](#italic)
+- [Blockquotes](#blockquotes)
+- [Lists](#lists)
+- [Links](#links)
+- [Emphasis](#emphasis)
+- [Horizontal Rule](#horizontal-rule)
+- [Line Break](#line-break)
+- [Images](#images)
+- [Tables](#tables)
+- [Footnotes](#footnotes)
+- [Definition Lists](#definition-lists)
+- [Task Lists](#task-lists)
+- [Emoji](#emoji)
+- [HTML](#html)
+- [Escaping](#escaping)
+- [Backslash Escapes](#backslash-escapes)
+- [Automatic URL Linking](#automatic-url-linking)
+- [Strikethrough](#strikethrough)
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+<a id="code"></a>
+<br />
 
-  handleChange(event) {
-    // highlight-next-line
-    this.setState({value: event.target.value});
-  }
+---
 
-  // highlight-start
-  handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
-    event.preventDefault();
-  }
-  // highlight-end
+## Code
 
-  render() {
-    return (
-      { /* highlight-range{1,4-9,12} */ }
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+````markdown
+```javascript
+function example() {
+  console.log('Hello, world!');
+}
+```
+````
+
+```javascript
+function example() {
+  console.log('Hello, world!');
 }
 ```
 
-```javascript:title=highlight.js
-// Here is a comment
-function $initHighlight(block, cls) {
-  try {
-    if (cls.search(/\bno\-highlight\b/) != -1)
-      return process(block, true, 0x0F) +
-             ` class="${cls}"`;
-  } catch (e) {
-    /* handle exception */
-  }
-  for (var i = 0 / 2; i < classes.length; i++) {
-    if (checkCondition(classes[i]) === undefined) {
-      console.log('undefined');
-    }
-  }
+````
+More examples...
 
-  return (
-    <div>
-      <web-component>{block}</web-component>
-    </div>
-  )
-}
+  ```markdown
+  ```python
+  ```html
+  ```css
+  ```java
+  ```c
+  ```cpp
+  ```bash
+  ```shell
+  ```yaml
+  ```json
+  ```markdown
+  ```plaintext
+  ```diff
+  ```makefile
+  ```dockerfile
+  ```nginx
+  ```apache
+  ```apacheconf
+````
 
-export $initHighlight;
-```
+<a id="headers"></a>
+<br />
 
-This is a paragraph.
+<a href="#top" style="float: right;">Back to top</a>
 
-    This is a paragraph.
+---
 
+## Headers
+
+```markdown
 # Header 1
 
 ## Header 2
 
-    Header 1
-    ========
+### Header 3
 
-    Header 2
-    --------
+#### Header 4
 
-```css
-@import 'compass/reset';
-
-// variables
-$colorGreen: #008000;
-$colorGreenDark: darken($colorGreen, 10);
-
-@mixin container {
-  max-width: 980px;
-}
-
-// mixins with parameters
-@mixin button($color: green) {
-  @if ($color == green) {
-    background-color: #008000;
-  } @else if ($color == red) {
-    background-color: #b22222;
-  }
-}
-
-button {
-  @include button(red);
-}
-
-div,
-.navbar,
-#header,
-input[type='input'] {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  width: auto;
-  margin: 0 auto;
-  display: block;
-}
-
-.row-12 > [class*='spans'] {
-  border-left: 1px solid #b5c583;
-}
-
-// nested definitions
-ul {
-  width: 100%;
-  padding: {
-    left: 5px;
-    right: 5px;
-  }
-  li {
-    float: left;
-    margin-right: 10px;
-    .home {
-      background: url('http://placehold.it/20') scroll no-repeat 0 0;
-    }
-  }
-}
-
-.banner {
-  @extend .container;
-}
-
-a {
-  color: $colorGreen;
-  &:hover {
-    color: $colorGreenDark;
-  }
-  &:visited {
-    color: #c458cb;
-  }
-}
-
-@for $i from 1 through 5 {
-  .span#{$i} {
-    width: 20px * $i;
-  }
-}
-
-@mixin mobile {
-  @media screen and (max-width: 600px) {
-    @content;
-  }
-}
-```
-
-```markdown
-# hello world
-
-you can write text [with links](http://example.com) inline or [link references][1].
-
-- one _thing_ has *em*phasis
-- two **things** are **bold**
-
-[1]: http://example.com
-
----
-
-# hello world
-
-<this_is inline="xml"></this_is>
-
-> markdown is so cool
-
-    so are code segments
-
-1. one thing (yeah!)
-2. two thing `i can write code`, and `more` wipee!
+##### Header 5
 ```
 
 # Header 1
@@ -216,153 +121,365 @@ you can write text [with links](http://example.com) inline or [link references][
 
 ##### Header 5
 
-###### Header 6
+<a id="bold"></a>
+<br />
 
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
+<a href="#top" style="float: right;">Back to top</a>
 
-# Header 1
+---
 
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> ## This is a header
->
-> 1. This is the first list item.
-> 2. This is the second list item.
->
-> Here's some example code:
->
->     Markdown.generate();
-
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     Markdown.generate();
-
-- Red
-- Green
-- Blue
-
-- Red
-- Green
-- Blue
-
-- Red
-- Green
-- Blue
+## Bold
 
 ```markdown
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
+**Bold Text**
 ```
 
-1. Buy flour and salt
-2. Mix together with water
-3. Bake
+**Bold Text**
+
+<a id="italic"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Italic
 
 ```markdown
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
+_Italic Text_
 ```
 
-Paragraph:
+_Italic Text_
 
-    Code
+<a id="blockquotes"></a>
+<br />
 
-<!-- -->
-
-    Paragraph:
-
-        Code
+<a href="#top" style="float: right;">Back to top</a>
 
 ---
 
----
+## Blockquotes
+
+```markdown
+> This is a blockquote.
+```
+
+> This is a blockquote.
+
+<a id="lists"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
 
 ---
 
----
+## Lists
+
+Unordered list:
+
+```markdown
+- Item 1
+- Item 2
+```
+
+- Item 1
+- Item 2
+
+<br />
+
+Ordered list:
+
+```markdown
+1. First item
+2. Second item
+```
+
+1. First item
+2. Second item
+
+<a id="links"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
 
 ---
 
-    * * *
+## Links
 
-    ***
+```markdown
+[OpenAI](https://openai.com)
+```
 
-    *****
+[OpenAI](https://openai.com)
 
-    - - -
+<a id="emphasis"></a>
+<br />
 
-    ---------------------------------------
+<a href="#top" style="float: right;">Back to top</a>
 
-This is [an example](http://example.com 'Example') link.
+---
 
-[This link](http://example.com) has no title attr.
+## Emphasis
 
-This is [an example][id] reference-style link.
+Bold and italic combined:
 
-[id]: http://example.com 'Optional Title'
+```markdown
+**_Bold and Italic_**
+```
 
-    This is [an example](http://example.com "Example") link.
+**_Bold and Italic_**
 
-    [This link](http://example.com) has no title attr.
+< a id="horizontal-rule" ></a>
+<br />
 
-    This is [an example] [id] reference-style link.
+<a href="#top" style="float: right;">Back to top</a>
 
-    [id]: http://example.com "Optional Title"
+---
 
-_single asterisks_
+## Horizontal Rule
 
-_single underscores_
+```markdown
+---
+```
 
-**double asterisks**
+---
 
-**double underscores**
+<a id="line-break"></a>
+<br />
 
-    *single asterisks*
+<a href="#top" style="float: right;">Back to top</a>
 
-    _single underscores_
+---
 
-    **double asterisks**
+## Line Break
 
-    __double underscores__
+```markdown
+Line 1 <br /> Line 2
+```
 
-This paragraph has some `code` in it.
+Line 1 <br /> Line 2
 
-    This paragraph has some `code` in it.
+<a id="images"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Images
+
+```markdown
+![Alt Text](https://nicholasragland.com/favicons/web-app-manifest-512x512.png)
+```
+
+![Alt Text](https://nicholasragland.com/favicons/web-app-manifest-512x512.png)
+
+```html
+<img src="https://nicholasragland.com/assets/demo.gif" alt="Demo" />
+```
+
+<img src="https://nicholasragland.com/assets/logo-light.gif" alt="Demo" />
+
+<a id="tables"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Tables
+
+```markdown
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| Row 1    | Data 1   | Data 2   |
+| Row 2    | Data 3   | Data 4   |
+```
+
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| Row 1    | Data 1   | Data 2   |
+| Row 2    | Data 3   | Data 4   |
+
+<a id="footnotes"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Footnotes
+
+```markdown
+Here's a sentence with a footnote.[^1]
+
+[^1]: This is the footnote text.
+```
+
+Here's a sentence with a footnote.[^1]
+
+[^1]: This is the footnote text.
+
+<a id="definition-lists"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Definition Lists
+
+```markdown
+Term 1
+: Definition for term 1
+
+Term 2
+: Definition for term 2
+```
+
+Term 1
+: Definition for term 1
+
+Term 2
+: Definition for term 2
+
+<a id="task-lists"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Task Lists
+
+```markdown
+- [x] Task 1
+- [ ] Task 2
+```
+
+- [x] Task 1
+- [ ] Task 2
+
+<a id="emoji"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Emoji
+
+```markdown
+🥺👾🤖👻
+```
+
+🥺👾🤖👻
+
+<a id="html"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## HTML
+
+```markdown
+<div>
+    <h1>Heading</h1>
+    <p>paragraph</p>
+</div>
+```
+
+<div>
+    <h1>Heading</h1>
+    <p>paragraph</p> 
+</div>
+
+<a id="escaping"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Escaping
+
+```markdown
+\*Escaped asterisk\*
+```
+
+\*Escaped asterisk\*
+
+<a id="backslash-escapes"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Backslash Escapes
+
+```markdown
+\\
+\` 
+\*
+\_
+\{
+\}
+\[
+\]
+\(
+\)
+\#
+\+
+\-
+\.
+\!
+```
+
+\\
+
+\` 
+
+\*
+
+\_
+
+ect.....
+
+<a id="automatic-url-linking"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Automatic URL Linking
+
+```markdown
+https://openai.com
+```
+
+https://openai.com
+
+<a id="strikethrough"></a>
+<br />
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+## Strikethrough
+
+```markdown
+~~Strikethrough Text~~
+```
+
+~~Strikethrough Text~~
+
+<a href="#top" style="float: right;">Back to top</a>
+
+---
+
+<br />
