@@ -229,7 +229,7 @@ Bold and italic combined:
 
 **_Bold and Italic_**
 
-< a id="horizontal-rule" ></a>
+<a id="horizontal-rule" ></a>
 <br />
 
 <a href="#top" style="float: right;">Back to top</a>
@@ -421,9 +421,9 @@ Term 2
 ## Backslash Escapes
 
 ```markdown
-\\
-\` 
 \*
+\\
+\`
 \_
 \{
 \}
@@ -438,11 +438,11 @@ Term 2
 \!
 ```
 
+\*
+
 \\
 
-\` 
-
-\*
+\`
 
 \_
 
