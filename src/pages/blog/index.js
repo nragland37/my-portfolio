@@ -32,17 +32,17 @@ const StyledMainContainer = styled.main`
 const StyledGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 25px;
   margin-top: 50px;
   position: relative;
 
   @media (max-width: 1080px) {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin-top: 30px;
   }
 `;

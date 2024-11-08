@@ -1,5 +1,5 @@
 ---
-title: 'How I Built a Custom Cursor for My Site'
+title: 'How I Built a Custom Cursor'
 description: 'A quick dive into how I implemented a custom cursor with smooth animations for my site'
 date: '2024-10-05'
 slug: '/blog/custom-cursor'
