@@ -63,7 +63,7 @@ const StyledProject = styled.li`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: 1.5rem 1.25rem;
     border-radius: var(--border-radius);
     background-color: var(--projects-bg);
     transition: var(--transition);
@@ -98,7 +98,7 @@ const StyledProject = styled.li`
   }
 
   .project-title {
-    margin: 0 0 10px;
+    margin: 0 0 25px;
     color: var(--projects-title-color);
     font-size: var(--fz-xxl);
     z-index: 3;

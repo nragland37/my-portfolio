@@ -18,8 +18,14 @@ const StyledMainContainer = styled.main`
 
   footer {
     ${({ theme }) => theme.mixins.flexBetween};
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     margin-top: 20px;
+
+    .post__date {
+      margin-bottom: 10px;
+    }
   }
 `;
 
@@ -66,7 +72,7 @@ const StyledPost = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    padding: 1.5rem 1.25rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
     background-color: var(--blog-bg);
@@ -84,20 +90,33 @@ const StyledPost = styled.li`
     }
   }
 
+  .post__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
   .post__icon {
-    ${({ theme }) => theme.mixins.flexBetween};
     color: var(--blog-icon-color);
-    margin-bottom: 30px;
-    margin-left: -5px;
+    margin-right: 0px;
 
     svg {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 768px) {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
 
   .post__title {
-    margin: 0 0 10px;
+    flex: 1;
+    margin: 0;
     color: var(--blog-title-color);
     font-size: var(--fz-xxl);
 
@@ -117,7 +136,7 @@ const StyledPost = styled.li`
     }
 
     @media (max-width: 768px) {
-      font-size: var(--fz-lg);
+      font-size: var(--fz-xxl);
     }
   }
 
@@ -225,15 +244,15 @@ const Blog = ({ location, data }) => {
               return (
                 <StyledPost key={i}>
                   <div className="post__inner">
-                    <header>
-                      <div className="post__icon">
-                        <IconBookmark />
-                      </div>
+                    <header className="post__header">
                       <h5 className="post__title">
                         <Link to={slug}>{title}</Link>
                       </h5>
-                      <p className="post__desc">{description}</p>
+                      <div className="post__icon">
+                        <IconBookmark />
+                      </div>
                     </header>
+                    <p className="post__desc">{description}</p>
 
                     <footer>
                       <span className="post__date">{formattedDate}</span>
