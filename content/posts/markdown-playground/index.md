@@ -1,11 +1,10 @@
 ---
 title: 'Markdown Playground'
-description: 'A fun playground for testing Markdown features'
-date: '2024-10-03'
+description: 'A playground showing off various markdown features'
+date: '2024-12-31'
 slug: '/blog/markdown-playground'
 tags:
   - 'markdown'
-  - 'testing'
   - 'learning'
 ---
 
