@@ -136,8 +136,8 @@ const StyledHeroSection = styled.section`
     }
 
     @media (pointer: coarse) {
-      width: 275px;
-      height: 275px;
+      width: 250px;
+      height: 250px;
       max-width: 100%;
       max-height: 100%;
     }
