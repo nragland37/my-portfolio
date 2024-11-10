@@ -109,6 +109,8 @@ const StyledHeroSection = styled.section`
     will-change: transform;
     transform-origin: center center;
     position: relative;
+    
+    aspect-ratio: 1 / 1;
 
     @media (max-width: 768px) {
       width: 225px;
@@ -135,18 +137,11 @@ const StyledHeroSection = styled.section`
       }
     }
 
-    @media (pointer: coarse) and (min-width: 769px) {
-      width: 240px;
-      height: 240px;
-    }
-
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      max-width: 100%;
-      max-height: 100%;
       border-radius: 50%;
       filter: grayscale(100%) contrast(1.2);
       transition: filter 0.3s ease;
