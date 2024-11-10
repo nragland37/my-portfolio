@@ -137,6 +137,10 @@ const StyledHeroSection = styled.section`
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 50%;
       filter: grayscale(100%) contrast(1.2);
       transition: filter 0.3s ease;
     }
