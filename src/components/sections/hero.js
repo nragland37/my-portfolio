@@ -98,25 +98,21 @@ const StyledHeroSection = styled.section`
     overflow: hidden;
     border: 1.5px solid var(--hero-h1-title);
     box-shadow: 0px 5px 20px var(--hero-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease,
       filter 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     will-change: transform;
     transform-origin: center center;
-    position: relative;
-
-    aspect-ratio: 1 / 1;
 
     @media (max-width: 768px) {
       width: 225px;
       height: 225px;
     }
-
     @media (max-width: 480px) {
       width: 210px;
       height: 210px;
@@ -141,13 +137,8 @@ const StyledHeroSection = styled.section`
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 50%;
       filter: grayscale(100%) contrast(1.2);
       transition: filter 0.3s ease;
-      display: block;
     }
   }
 
