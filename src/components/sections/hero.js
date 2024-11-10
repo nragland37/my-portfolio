@@ -109,7 +109,7 @@ const StyledHeroSection = styled.section`
     will-change: transform;
     transform-origin: center center;
     position: relative;
-    
+
     aspect-ratio: 1 / 1;
 
     @media (max-width: 768px) {
@@ -142,6 +142,8 @@ const StyledHeroSection = styled.section`
       height: 100%;
       object-fit: cover;
       object-position: center;
+      max-width: 100%;
+      max-height: 100%;
       border-radius: 50%;
       filter: grayscale(100%) contrast(1.2);
       transition: filter 0.3s ease;
