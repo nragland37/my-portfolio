@@ -135,11 +135,9 @@ const StyledHeroSection = styled.section`
       }
     }
 
-    @media (pointer: coarse) {
-      width: 250px;
-      height: 250px;
-      max-width: 100%;
-      max-height: 100%;
+    @media (pointer: coarse) and (min-width: 769px) {
+      width: 240px;
+      height: 240px;
     }
 
     img {
