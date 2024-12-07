@@ -209,6 +209,7 @@ export const StyleDropbar = styled.aside`
       animation: ${fadeIn} 0.7s ease forwards;
       margin-top: auto;
       padding-bottom: env(safe-area-inset-bottom);
+      margin-bottom: 2rem;
 
       .social-icons {
         display: flex;
@@ -238,7 +239,6 @@ export const StyleDropbar = styled.aside`
         font-size: var(--fz-lg);
         letter-spacing: 0.05em;
         margin-top: 1rem;
-        margin-bottom: 2rem;
       }
     }
   }

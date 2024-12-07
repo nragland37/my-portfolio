@@ -105,6 +105,7 @@ const Menu = () => {
               </a>
             ))}
           </div>
+          {/*
           <a
             className="resume-button"
             href="/resume.pdf"
@@ -114,6 +115,7 @@ const Menu = () => {
           >
             Resume
           </a>
+          */}
         </div>
       </StyleDropbar>
     </StyledMenu>

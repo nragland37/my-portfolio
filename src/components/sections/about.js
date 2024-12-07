@@ -155,7 +155,7 @@ const About = () => {
     },
     {
       category: 'Design & Productivity Tools',
-      details: 'Figma, Adobe InDesign & Acrobat, Microsoft Excel',
+      details: 'Adobe InDesign & Acrobat, Microsoft Excel',
     },
     {
       category: (
