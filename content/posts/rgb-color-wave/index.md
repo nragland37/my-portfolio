@@ -1,7 +1,7 @@
 ---
 title: 'Colors, Colors, Spinning Colors!'
 description: 'How I made text come alive with an RGB color wave and animated icons'
-date: '2024-12-13'
+date: '2024-10-20'
 slug: '/blog/rgb-color-wave'
 tags:
   - 'react'
