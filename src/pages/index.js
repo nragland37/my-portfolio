@@ -8,7 +8,7 @@ import {
   Jobs,
   Featured,
   Projects,
-  Contact,
+  // Contact,
 } from '@components';
 
 const StyledMainContainer = styled.main`
@@ -23,7 +23,7 @@ const IndexPage = ({ location }) => (
       <Jobs />
       <Featured />
       <Projects />
-      <Contact />
+      {/* <Contact /> */}
     </StyledMainContainer>
   </Layout>
 );

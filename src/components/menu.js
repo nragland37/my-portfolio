@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { navLinks, socialMedia } from '@config';
+import { navLinks, socialMedia, email } from '@config';
 import { toggleTheme, initTheme } from '@utils/light';
 import { toggleColorWave, initColorWaveEffect } from '@utils/color';
 import { Icon } from '@components/icons';
@@ -105,9 +105,17 @@ const Menu = () => {
               </a>
             ))}
           </div>
+
+          <a
+            className="menu-button"
+            href={`mailto:${email}`}
+            tabIndex={menuOpen ? 0 : -1}
+          >
+            {email}
+          </a>
           {/*
           <a
-            className="resume-button"
+            className="menu-button"
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"

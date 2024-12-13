@@ -233,7 +233,7 @@ export const StyleDropbar = styled.aside`
         }
       }
 
-      .resume-button {
+      .menu-button {
         ${({ theme }) => theme.mixins.bigButton};
         padding: 0.75rem 1.5rem;
         font-size: var(--fz-lg);

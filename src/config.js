@@ -48,8 +48,12 @@ module.exports = {
       url: '/blog',
     },
     {
+      /*
+    {
       name: 'contact',
       url: '/#contact',
+    },
+    */
     },
   ],
 

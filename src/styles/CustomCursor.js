@@ -161,7 +161,9 @@ const CustomCursor = () => {
 
     // add event listeners to links
     const addLinkListeners = () => {
-      const links = document.querySelectorAll('a, button, input, textarea');
+      const links = document.querySelectorAll(
+        'a, button, input, textarea, img, p',
+      );
       links.forEach((link) => {
         link.addEventListener('mouseenter', handleMouseEnterLink);
         link.addEventListener('mouseleave', handleMouseLeaveLink);
@@ -181,7 +183,9 @@ const CustomCursor = () => {
     });
 
     return () => {
-      const links = document.querySelectorAll('a, button, input, textarea');
+      const links = document.querySelectorAll(
+        'a, button, input, textarea, img, p',
+      );
       links.forEach((link) => {
         link.removeEventListener('mouseenter', handleMouseEnterLink);
         link.removeEventListener('mouseleave', handleMouseLeaveLink);
