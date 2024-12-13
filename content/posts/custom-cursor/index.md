@@ -148,6 +148,4 @@ export const toggleCursor = (setCursorEnabled) => {
 
 This was a fun way to add a bit of flair to my site, making it more interactive without being overwhelming. It’s those small touches that can enhance user experience.
 
-Check it out on the live site, and feel free to toggle the custom cursor on and off. Let me know what you think!
-
 <a href="#top" style="float: right;">Back to top</a>
