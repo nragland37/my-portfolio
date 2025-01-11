@@ -35,7 +35,7 @@ export const toggleColorWave = (updateToggleState) => {
 This function updates the state and saves the user’s preference in localStorage for consistency across sessions.
 
 To actually apply the effect, I used CSS animations injected globally:
-  
+
 ```javascript
 @keyframes colorWave {
   0% { color: #ff00ff; }

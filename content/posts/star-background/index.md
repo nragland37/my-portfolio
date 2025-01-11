@@ -47,7 +47,7 @@ const [stars3, setStars3] = useState('');
 const populateStars = useCallback(() => {
   setStars1(GenerateStars(750)); // Small stars
   setStars2(GenerateStars(300)); // Medium stars
-  setStars3(GenerateStars(80));  // Large stars
+  setStars3(GenerateStars(80)); // Large stars
 }, []);
 
 useEffect(() => {
@@ -105,6 +105,6 @@ This ensures the starry background is visible across the site while keeping it m
 
 ### Wrapping Up
 
-This starry background added just the right touch of whimsy to my site. It’s lightweight, responsive, and creates an engaging visual effect without overwhelming the design.    🌠
+This starry background added just the right touch of whimsy to my site. It’s lightweight, responsive, and creates an engaging visual effect without overwhelming the design. 🌠
 
 <a href="#top" style="float: right;">Back to top</a>

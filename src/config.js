@@ -12,6 +12,10 @@ module.exports = {
   // Social media links
   socialMedia: [
     {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/nicholasragland_/',
+    },
+    {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/nragland37',
     },

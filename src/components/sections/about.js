@@ -186,22 +186,23 @@ const About = () => {
           <div>
             <p>Hello!</p>
             <p>
-              My name is Nicholas Ragland.
-              I specialize in computer science, cybersecurity, and data analytics, 
-              with a recent interest on fullstack development. I love solving challenging 
-              problems! Whether it’s building solutions for complex data projects, 
-              CTF & security challenges, leetcoding, learning new stacks & languages, 
-              or experimenting with new software. I believe being curious and continuously 
-              learning, keeping up with the latest and ever changing technologies, is 
-              the key to success in this field. 
+              My name is Nicholas Ragland. I specialize in computer science,
+              cybersecurity, and data analytics, with a recent interest on
+              fullstack development. I love solving challenging problems!
+              Whether it’s building solutions for complex data projects, CTF &
+              security challenges, leetcoding, learning new stacks & languages,
+              or experimenting with new software. I believe being curious and
+              continuously learning, keeping up with the latest and ever
+              changing technologies, is the key to success in this field.
             </p>
             <p>
-              When I step away from my screen, I enjoy spending time with my family
-              and friends, exploring the outdoors, listening to music, drinking lots of 
-              coffee, and traveling. I also enjoy reading and staying active, keeping a 
-              balance between technology and the real world is so important to me.
-              As cliche as it might seem, I believe that the best way to predict the
-              future is to create it today. Thanks for stopping by!
+              When I step away from my screen, I enjoy spending time with my
+              family and friends, exploring the outdoors, listening to music,
+              drinking lots of coffee, and traveling. I also enjoy reading and
+              staying active, keeping a balance between technology and the real
+              world is so important to me. As cliche as it might seem, I believe
+              that the best way to predict the future is to create it today.
+              Thanks for stopping by!
             </p>
           </div>
 
