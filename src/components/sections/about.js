@@ -193,7 +193,7 @@ const About = () => {
               tackling CTF and security challenges, learning new programming 
               languages, or exploring emerging technologies. I believe being curious 
               and continuously learning, keeping up with the latest and ever
-              changing technologies, is the key to success in this field.
+              changing tech world, is the key to success in this field.
             </p>
             <p>
               Away from the keyboard, I enjoy time spent with family and friends, 
