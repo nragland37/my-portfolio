@@ -196,10 +196,10 @@ const About = () => {
               changing tech world, is the key to success in this field.
             </p>
             <p>
-              Away from the keyboard, I enjoy time spent with family and friends, 
-              exploring the outdoors, listening to music, drinking lots of coffee, 
-              and traveling. I also value reading and staying active, maintaining 
-              a vital balance between technology and the real world.
+            Away from the keyboard, I enjoy time with family and friends, exploring 
+            the outdoors, listening to music, drinking lots of coffee, traveling, 
+            reading, and staying active. All these help me find my balance between 
+            tech and life beyond screens.
             </p>
             <p>
             Thanks for stopping by!
