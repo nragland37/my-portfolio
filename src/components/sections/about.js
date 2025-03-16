@@ -192,8 +192,8 @@ const About = () => {
               - whether that involves building solutions for data-driven projects, 
               tackling CTF and security challenges, learning new programming 
               languages, or exploring emerging technologies. I believe being curious 
-              and continuously learning, keeping up with the latest and ever
-              changing tech world, is the key to success in this field.
+              and continuously learning, keeping up with the latest innovations in 
+              an ever changing tech world, is the key to success in this field.
             </p>
             <p>
             Away from the keyboard, I enjoy time with family and friends, exploring 
