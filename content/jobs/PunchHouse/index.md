@@ -8,8 +8,8 @@ range: 'January 2025 - Present'
 url: 'https://www.getpunchhouse.com/'
 ---
 
-- Collaborate with Co-Founders and Managing Partners to conduct in-depth research and gather business requirements, contributing to the architectural design and planning of the company's technology solutions
-- Consult with vendors to discuss integration possibilities, responsible for drafting detailed reports to align solutions with business needs
-- Design and implement Direct-to-Consumer (DTC) API solutions for real-time sales tracking and inventory management, ensuring efficient data exchange between internal systems and distributor platforms
-- Develop back-end synchronization mechanisms to align sales and inventory data with urgency cues, enhancing operational efficiency
-- Integrate and implement design elements from brand designers into the front-end architecture of the company's website, enhancing user experience and interface design
+- Collaborate with Co-Founders and Managing Partners to conduct in-depth research, gather business requirements, and contribute to the architectural planning of technology solutions
+- Consult with vendors to explore integration opportunities and draft detailed reports to ensure alignment with strategic business goals
+- Architect Direct-to-Consumer (DTC) API solutions for real-time e-commerce sales tracking and inventory management, streamlining data exchange between internal systems and distributor platforms
+- Design back-end synchronization mechanisms that incorporate urgency cues to enhance operational efficiency across workflows
+- Partner with brand designers and leadership to shape the UI/UX, building responsive, accessible components that align with the brand and elevate user experience
