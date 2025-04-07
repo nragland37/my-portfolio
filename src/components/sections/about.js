@@ -192,14 +192,14 @@ const About = () => {
               My name is Nicholas Ragland. I hold degrees in{' '}
               <Highlight>Computer Science</Highlight>,{' '}
               <Highlight>Cybersecurity</Highlight>, and{' '}
-              <Highlight>Data Analytics</Highlight>, with experience in {' '}
-              <Highlight>Full Stack Development</Highlight>. I love solving complex problems - whether
-              that involves building solutions for data-driven projects,
-              tackling CTF and security challenges, learning new programming
-              languages, or exploring emerging technologies. I believe being
-              curious and continuously learning, keeping up with the latest
-              innovations in an ever changing tech world, is the key to success
-              in this field.
+              <Highlight>Data Analytics</Highlight>, with experience in{' '}
+              <Highlight>Full Stack Development</Highlight>. I love solving
+              complex problems - whether that involves building solutions for
+              data-driven projects, tackling CTF and security challenges,
+              learning new programming languages, or exploring emerging
+              technologies. I believe being curious and continuously learning,
+              keeping up with the latest innovations in an ever changing tech
+              world, is the key to success in this field.
             </p>
             <p>
               Away from the keyboard, I enjoy time with family and friends,
