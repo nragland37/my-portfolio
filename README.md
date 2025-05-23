@@ -93,21 +93,21 @@ To prepare your project for deployment:
 
 <br />
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Midnight          | ![#0e1116](https://via.placeholder.com/10/0e1116?text=+) `#0e1116` |
-| Light Midnight    | ![#1a1d24](https://via.placeholder.com/10/1a1d24?text=+) `#1a1d24` |
-| Lightest Midnight | ![#282c33](https://via.placeholder.com/10/282c33?text=+) `#282c33` |
-| Very Light Gray   | ![#e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6` |
-| Light Gray        | ![#adadad](https://via.placeholder.com/10/adadad?text=+) `#adadad` |
-| Gray              | ![#6d7278](https://via.placeholder.com/10/6d7278?text=+) `#6d7278` |
-| Charcoal          | ![#2f3338](https://via.placeholder.com/10/2f3338?text=+) `#2f3338` |
-| Black             | ![#000000](https://via.placeholder.com/10/000000?text=+) `#000000` |
-| White             | ![#f8f9fa](https://via.placeholder.com/10/f8f9fa?text=+) `#f8f9fa` |
-| Cloud White       | ![#ededed](https://via.placeholder.com/10/ededed?text=+) `#ededed` |
-| Offwhite          | ![#dcdcdc](https://via.placeholder.com/10/dcdcdc?text=+) `#dcdcdc` |
-| Green             | ![#19f9d8](https://via.placeholder.com/10/19f9d8?text=+) `#19f9d8` |
-| Blue              | ![#6fc1ff](https://via.placeholder.com/10/6fc1ff?text=+) `#6fc1ff` |
+| Color             | Preview | Hex        |
+| ----------------- | ------- | ---------- |
+| Midnight          | <img src="https://www.colorhexa.com/0e1116.png" width=100% height="12"> | `#0e1116` |
+| Light Midnight    | <img src="https://www.colorhexa.com/1a1d24.png" width=100% height="12"> | `#1a1d24` |
+| Lightest Midnight | <img src="https://www.colorhexa.com/282c33.png" width=100% height="12"> | `#282c33` |
+| Very Light Gray   | <img src="https://www.colorhexa.com/e6e6e6.png" width=100% height="12"> | `#e6e6e6` |
+| Light Gray        | <img src="https://www.colorhexa.com/adadad.png" width=100% height="12"> | `#adadad` |
+| Gray              | <img src="https://www.colorhexa.com/6d7278.png" width=100% height="12"> | `#6d7278` |
+| Charcoal          | <img src="https://www.colorhexa.com/2f3338.png" width=100% height="12"> | `#2f3338` |
+| Black             | <img src="https://www.colorhexa.com/000000.png" width=100% height="12"> | `#000000` |
+| White             | <img src="https://www.colorhexa.com/f8f9fa.png" width=100% height="12"> | `#f8f9fa` |
+| Cloud White       | <img src="https://www.colorhexa.com/ededed.png" width=100% height="12"> | `#ededed` |
+| Offwhite          | <img src="https://www.colorhexa.com/dcdcdc.png" width=100% height="12"> | `#dcdcdc` |
+| Green             | <img src="https://www.colorhexa.com/19f9d8.png" width=100% height="12"> | `#19f9d8` |
+| Blue              | <img src="https://www.colorhexa.com/6fc1ff.png" width=100% height="12"> | `#6fc1ff` |
 
 <br />
 
