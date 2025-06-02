@@ -93,8 +93,8 @@ To prepare your project for deployment:
 
 <br />
 
-| Color             | Preview | Hex        |
-| ----------------- | ------- | ---------- |
+| Color             | Preview                                                                 | Hex       |
+| ----------------- | ----------------------------------------------------------------------- | --------- |
 | Midnight          | <img src="https://www.colorhexa.com/0e1116.png" width=100% height="12"> | `#0e1116` |
 | Light Midnight    | <img src="https://www.colorhexa.com/1a1d24.png" width=100% height="12"> | `#1a1d24` |
 | Lightest Midnight | <img src="https://www.colorhexa.com/282c33.png" width=100% height="12"> | `#282c33` |

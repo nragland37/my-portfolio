@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Head, Nav, Options, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { initCursor, toggleCursor } from '@utils/cursor';
 import { initTheme, toggleTheme } from '@utils/light';
 import StarBackground from '../styles/StarBackground';
@@ -49,6 +50,7 @@ const Layout = ({ children, location }) => {
           </StyledContent>
           {/* Analytics component for Vercel Analytics */}
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </div>
     </>
