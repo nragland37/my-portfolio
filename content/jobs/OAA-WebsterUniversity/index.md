@@ -1,6 +1,6 @@
 ---
 date: '2022-12-01'
-title: 'Student Software Developer'
+title: 'Software Developer Intern'
 company: 'Webster University'
 department: 'Office of Academic Affairs'
 location: 'Webster Groves, MO'
