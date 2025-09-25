@@ -1,6 +1,6 @@
 ---
 date: '2025-1-01'
-title: 'Software Engineer'
+title: 'Lead Software Engineer'
 company: 'Punch House'
 department: 'Contractor'
 location: 'Remote'
