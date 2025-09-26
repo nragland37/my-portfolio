@@ -1,6 +1,6 @@
 ---
 date: '1'
-title: 'Full-Stack DTC E-Commerce Site'
+title: 'DTC E-Commerce Site'
 cover: './demo.png'
 github: ''
 external: 'https://www.getpunchhouse.com/'
