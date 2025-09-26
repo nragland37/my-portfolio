@@ -158,7 +158,7 @@ const About = () => {
     },
     {
       category: 'Design & Productivity Tools',
-      details: 'Adobe InDesign & Acrobat, Microsoft Excel',
+      details: 'Adobe InDesign/ Acrobat/ Illustrator, Microsoft Excel',
     },
     {
       category: (
@@ -167,15 +167,17 @@ const About = () => {
         </>
       ),
       details: `
-      Git, GitHub, VSCode, Docker, Jupyter(Notebook/Lab), RStudio, Anaconda,
-      Virtual Machines, WSL2, MSYS2, MinGW, Vercel, Firebase, Oracle Apex, APIs, SEO
+      Git, GitHub, VSCode, Docker, Jupyter (Notebook/Lab), RStudio, Anaconda,
+      Virtual Machines, WSL2, MSYS2, MinGW, Vercel, Firebase, Oracle Apex, Shopify, 
+      Klaviyo (CRM), APIs, SEO
     `,
     },
     {
       category: 'Security & Networking',
       details: `
       Kali Linux, GNU/Linux, Windows Security Hardening, Bash Scripting, PowerShell, 
-      Penetration Testing, Wireshark, Command Line Tools, CTF Challenges
+      Penetration Testing, Wireshark, Command Line Tools, 
+      Capture the Flag (CTF), Cybersecurity Challenges
     `,
     },
   ];

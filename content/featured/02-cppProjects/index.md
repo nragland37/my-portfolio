@@ -1,5 +1,5 @@
 ---
-date: '3'
+date: '2'
 title: 'C++ Projects'
 cover: './demo.png'
 github: 'https://github.com/nragland37/cpp-projects'
@@ -13,4 +13,6 @@ tech:
   - Object-Oriented Programming
 ---
 
-A widely referenced repository of C++ projects, covering a wide range of topics from the basic Hello World to advanced Self-Balancing AVL Trees, and everything in between.
+[⭐ 500+ GitHub Stars](https://github.com/nragland37/cpp-projects)
+
+A widely referenced open-source GitHub repository showcasing algorithms and advanced data structures, supporting developers and learners globally across the programming community
