@@ -13,6 +13,6 @@ tech:
   - Object-Oriented Programming
 ---
 
-[⭐ 500+ GitHub Stars](https://github.com/nragland37/cpp-projects)
+[★ 500+ GitHub Stars](https://github.com/nragland37/cpp-projects)
 
 A widely referenced open-source GitHub repository showcasing algorithms and advanced data structures, supporting developers and learners globally across the programming community
