@@ -191,13 +191,13 @@ const About = () => {
           <div>
             <p>Hello!</p>
             <p>
-              My name is Nicholas Ragland. I hold degrees in{' '}
-              <Highlight>Computer Science</Highlight>,{' '}
-              <Highlight>Cybersecurity</Highlight>, and{' '}
+              My name is Nicholas Ragland. I hold a degree in{' '}
+              <Highlight>Computer Science</Highlight> with an emphasis in{' '}
+              <Highlight>Cybersecurity</Highlight> and a minor in{' '}
               <Highlight>Data Analytics</Highlight>, with experience in{' '}
-              <Highlight>Full Stack Development</Highlight>. I love solving
-              complex problems - whether that involves building solutions for
-              data-driven projects, tackling CTF and security challenges,
+              <Highlight>Full-Stack Development</Highlight>. I love solving
+              complex problems - whether that means building data-driven
+              solutions, tackling CTF and security challenges,
               learning new programming languages, or exploring emerging
               technologies. I believe being curious and continuously learning,
               keeping up with the latest innovations in an ever changing tech
